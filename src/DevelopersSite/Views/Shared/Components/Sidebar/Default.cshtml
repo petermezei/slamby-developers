@@ -1,0 +1,46 @@
+﻿@inject DevelopersSite.Services.DocumentService service
+@model DevelopersSite.Models.DocumentViewModel
+
+@{ 
+    var latestVersion = Model.Document.Versions.FirstOrDefault();
+}
+
+<div id="sidebar_col" class="affix-top">
+    <div class="dropdown version-selector">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Version - @(Model.Version)
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            @foreach (var version in Model.Document.Versions)
+            {
+                <li>
+                    <a asp-controller="docs" asp-action="Index" asp-route-product="@(Model.Document.Product)" asp-route-version="@version" asp-route-file="">
+                        @(version)@(version == latestVersion ? " (latest)" : "")
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+    
+    <div class="toc">
+        @if (Model.TocContent != null)
+        {
+            @Html.Raw(Model.TocContent)
+        }
+    </div>
+
+    @if (!Model.IsDefaultDocument)
+    {
+        var routeParams = service.GetRouteParams(Model.Document.Product, Model.Version);
+        <div class="back-to-index">
+            <a asp-controller="docs" asp-action="Index" asp-route-product="@(routeParams.Product)" asp-route-version="@routeParams.Version" asp-route-file="@routeParams.File">
+                Back to Index
+            </a>
+        </div>
+    }
+
+    <ul id="sidebar" class="nav nav-stacked">
+        <!-- H2, H3 links go here -->
+    </ul>
+</div>

@@ -1,0 +1,48 @@
+﻿.wrapper {
+    @include make-row();
+    text-align:center;
+
+    .wrapper-left {text-align:left;}
+
+    .content-main {
+        @include make-md-column(8);
+    }
+
+    .content-secondary {
+        @include make-md-column(3);
+        @include make-md-column-offset(1);
+    }
+}
+
+.wrapper-docpage {
+    text-align:left;
+    padding:15px;
+    
+    .list {
+        @include make-md-column(3);
+        //@include make-xs-column(3);
+        border-right:1px solid lightgray;
+
+        .version-selector {
+            margin-bottom:15px;
+        }
+
+        ul {
+            padding:0px;
+            margin:0px;
+            list-style:none;
+        }
+    }
+    .body {
+        @include make-md-column(9);
+        //@include make-xs-column(9);
+
+        .container {
+            @include make-row();
+            @include make-xs-column(12);
+        }
+        img {
+            @include img-responsive();
+        }
+    }
+}

@@ -1,0 +1,2434 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <title>Slamby API</title>
+</head>
+<body>
+<div class="container">
+    <h1>Slamby API</h1>
+    <p><p>Slamby introduces Slamby Service (API). Build powerful data management center, store and analyze your data easily. This documentation shows you a quick overview about the available API endpoints, technical details and business usage.</p>
+    <p>With Slamby you can:</p>
+    <ul>
+    <li>Store and manage your data easily</li>
+    <li>Get high data security and privacy</li>
+    <li>Use improved data analysis</li>
+    </ul>
+    <p>Once you&#39;ve
+    <a href="http://slamby.com/register/">registered your client</a> it&#39;s easy
+    to start working with Slamby API.</p>
+    <p>All endpoints are only accessible via https and are located at
+    <code>api.slamby.com</code>.</p>
+    <pre><code>  <span class="hljs-attribute">https</span>:<span class="hljs-comment">//api.slamby.com/CLIENT_ID</span>
+    </code></pre><blockquote>
+    <p><strong>Tip:</strong> The <code>CLIENT_ID</code> is your unique identifier what you get after your server is ready to use.</p>
+    </blockquote>
+    <h3 id="authentication">Authentication</h3>
+    <p>The base of the authentication is the <code>API_KEY</code>.
+    You have to provide it in the authorization header. It is <strong>required for every API call</strong>.
+    The examples of the documentation is preasuming that you provide the API key in the header.</p>
+    <blockquote>
+    <p><em>Example</em></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  Authorization</td>
+    <td>Slamby <code>API_KEY</code></td>
+    </tr>
+    </tbody>
+    </table>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+    <p><strong>Tip:</strong> You will get your <code>API_KEY</code> after your server is ready to use.</p>
+    </blockquote>
+    <h2 id="dataset">Dataset</h2>
+    <p>Slamby provides <strong>Dataset</strong> as a data storage. A dataset is a JSON document storage that allows to store schema free JSON objects, indexes and additional parameters. Inside you server you can create and manage multiple datasets.</p>
+    <p>With dataset you can:</p>
+    <ul>
+    <li>Create multiple datasets</li>
+    <li>Using schema free JSON objects</li>
+    <li>Set indexes for text processing</li>
+    <li>Running text analysis on the stored data</li>
+    </ul>
+    <blockquote>
+    <p><strong>Tip:</strong> With schema free JSON storage you can easily store your existing schemas. Store document related data - such as image urls, prices - and build powerful queries.</p>
+    </blockquote>
+    <h3 id="create-new-dataset">Create new Dataset</h3>
+    <p>Create a new dataset by providing a sample JSON document and additional parameters.</p>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-DataSets-post">POST /api/DataSets</a>)</p>
+    <pre><code class="lang-JSON">{<br>    "<span class="hljs-attribute">IdField</span>": <span class="hljs-value"><span class="hljs-string">"id"</span></span>,<br>    "<span class="hljs-attribute">InterpretedFields</span>": <span class="hljs-value">[<span class="hljs-string">"title"</span>, <span class="hljs-string">"desc"</span>]</span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"test1"</span></span>,<br>    "<span class="hljs-attribute">NGramCount</span>": <span class="hljs-value"><span class="hljs-string">"3"</span></span>,<br>    "<span class="hljs-attribute">TagField</span>": <span class="hljs-value"><span class="hljs-string">"tag"</span></span>,<br>    "<span class="hljs-attribute">SampleDocument</span>": <span class="hljs-value">{<br>      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,<br>      "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Title"</span></span>,<br>      "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>      "<span class="hljs-attribute">tag</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>}<br></span>}
+    </code></pre>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 201 CREATED</p>
+    </blockquote>
+    <h5 id="check-the-dataset-schema-definition-here-definitions-dataset-">Check the DataSet schema definition <a href="#/definitions/DataSet">here</a></h5>
+    <h3 id="get-dataset">Get Dataset</h3>
+    <p>Get information about a given dataset. A dataset can be accessed by its name.</p>
+    <p>Returns with:</p>
+    <ul>
+    <li>Dataset basic information</li>
+    <li>Dataset settings</li>
+    <li>Schema sample document</li>
+    <li>Dataset statistics</li>
+    </ul>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-DataSets-get">GET /api/DataSets/<code>example</code></a></p>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    <pre><code class="lang-JSON">{<br>  "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example"</span></span>,<br>  "<span class="hljs-attribute">NGramCount</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,<br>  "<span class="hljs-attribute">IdField</span>": <span class="hljs-value"><span class="hljs-string">"id"</span></span>,<br>  "<span class="hljs-attribute">TagField</span>": <span class="hljs-value"><span class="hljs-string">"tag"</span></span>,<br>  "<span class="hljs-attribute">InterpretedFields</span>": <span class="hljs-value">[<br>    <span class="hljs-string">"title"</span>,<br>    <span class="hljs-string">"desc"</span><br>  ]</span>,<br>  "<span class="hljs-attribute">Statistics</span>": <span class="hljs-value">{<br>    "<span class="hljs-attribute">DocumentsCount</span>": <span class="hljs-value"><span class="hljs-number">3</span><br>  </span>}</span>,<br>  "<span class="hljs-attribute">SampleDocument</span>": <span class="hljs-value">{<br>    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,<br>    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example title"</span></span>,<br>    "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Description"</span><br>    <span class="hljs-string">"tag"</span>: [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>  </span>}<br></span>}
+    </code></pre>
+    </blockquote>
+    <h5 id="check-the-dataset-schema-definition-here-definitions-dataset-">Check the DataSet schema definition <a href="#/definitions/DataSet">here</a></h5>
+    <h3 id="get-dataset-list">Get Dataset List</h3>
+    <p>Get a list of the available datasets.</p>
+    <p>Returns with:</p>
+    <ul>
+    <li>Dataset objects array</li>
+    </ul>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-DataSets-get">GET /api/DataSets</a></p>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    <pre><code class="lang-JSON">[<br>  {<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example"</span></span>,<br>    "<span class="hljs-attribute">NGramCount</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,<br>    "<span class="hljs-attribute">IdField</span>": <span class="hljs-value"><span class="hljs-string">"id"</span></span>,<br>    "<span class="hljs-attribute">TagField</span>": <span class="hljs-value"><span class="hljs-string">"tags"</span></span>,<br>    "<span class="hljs-attribute">InterpretedFields</span>": <span class="hljs-value">[<br>      <span class="hljs-string">"title"</span>,<br>      <span class="hljs-string">"desc"</span><br>    ]</span>,<br>    "<span class="hljs-attribute">Statistics</span>": <span class="hljs-value">{<br>      "<span class="hljs-attribute">DocumentsCount</span>": <span class="hljs-value"><span class="hljs-number">3</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">SampleDocument</span>": <span class="hljs-value">{<br>      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,<br>      "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example title"</span></span>,<br>      "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Description"</span><br>      <span class="hljs-string">"tags"</span>: [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>}<br>  </span>},<br>  {<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example2"</span></span>,<br>    "<span class="hljs-attribute">NGramCount</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,<br>    "<span class="hljs-attribute">IdField</span>": <span class="hljs-value"><span class="hljs-string">"id"</span></span>,<br>    "<span class="hljs-attribute">TagField</span>": <span class="hljs-value"><span class="hljs-string">"tags"</span></span>,<br>    "<span class="hljs-attribute">InterpretedFields</span>": <span class="hljs-value">[<br>      <span class="hljs-string">"title"</span>,<br>      <span class="hljs-string">"desc"</span><br>    ]</span>,<br>    "<span class="hljs-attribute">Statistics</span>": <span class="hljs-value">{<br>      "<span class="hljs-attribute">DocumentsCount</span>": <span class="hljs-value"><span class="hljs-number">3</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">SampleDocument</span>": <span class="hljs-value">{<br>      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,<br>      "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example title"</span></span>,<br>      "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Description"</span><br>      <span class="hljs-string">"tags"</span>: [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>}<br>  </span>}<br>]
+    </code></pre>
+    </blockquote>
+    <h5 id="check-the-dataset-schema-definition-here-definitions-dataset-">Check the DataSet schema definition <a href="#/definitions/DataSet">here</a></h5>
+    <h3 id="remove-dataset">Remove Dataset</h3>
+    <p>Removes a given dataset. All the stored data will be removed.</p>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-DataSets-delete">DELETE /api/DataSets/<code>example</code></a></p>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    </blockquote>
+    <h2 id="document">Document</h2>
+    <p>Manage your <strong>documents</strong> easily. Create, edit, remove and running text analysis.</p>
+    <p>Every document is related to a dataset. You have to specify which dataset you want to use in the <code>X-DataSet</code> header by the name of the dataset.</p>
+    <blockquote>
+    <p><strong>Tip:</strong> If you use any of the Document methods without or an unexisting <code>X-DataSet</code> header you will get a <code>Missing X-DataSet header!</code> error.</p>
+    </blockquote>
+    <p>With document you can:</p>
+    <ul>
+    <li>Insert multiple documents</li>
+    <li>Using your own schema</li>
+    <li>Accessing your documents easily</li>
+    <li>Modifying your documents easily</li>
+    <li>Running text analysis</li>
+    </ul>
+    <blockquote>
+    <p><strong>Tip:</strong> Store all the related information - such as text, prices, image urls - and use powerful queries.</p>
+    </blockquote>
+    <h3 id="insert-new-document">Insert New Document</h3>
+    <p>Insert a new document to a dataset using the predefined schema.</p>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-Documents-post">POST /api/Documents</a></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  X-DataSet</td>
+    <td>example</td>
+    </tr>
+    </tbody>
+    </table>
+    <pre><code class="lang-JSON">{<br>  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,<br>  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Title"</span></span>,<br>  "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>  "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br></span>}
+    </code></pre>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 201 CREATED</p>
+    </blockquote>
+    <h3 id="get-document">Get Document</h3>
+    <p>Get a document from a dataset.</p>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-Documents-get">GET /api/Documents/<code>9</code></a></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  X-DataSet</td>
+    <td>example</td>
+    </tr>
+    </tbody>
+    </table>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    <pre><code class="lang-JSON">{<br>  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,<br>  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Title"</span></span>,<br>  "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>  "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br></span>}
+    </code></pre>
+    </blockquote>
+    <h3 id="edit-document">Edit Document</h3>
+    <p>Edit an existing document in a dataset.</p>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-Documents-put">PUT /api/Documents/<code>9</code></a></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  X-DataSet</td>
+    <td>example</td>
+    </tr>
+    </tbody>
+    </table>
+    <pre><code class="lang-JSON">{<br>  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,<br>  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example Modified Product Title"</span></span>,<br>  "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Modified Product Description"</span></span>,<br>  "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]<br></span>}
+    </code></pre>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    </blockquote>
+    <h3 id="copy-to">Copy To</h3>
+    <p>Copying documents from a dataset to another one. You can specify the documents by id. You can copy documents to an existing dataset.
+    The selected documents will <strong>remain in the source dataset</strong> as well.</p>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-Documents-Copy-post">POST /api/Documents/Copy</a></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  X-DataSet</td>
+    <td>example</td>
+    </tr>
+    </tbody>
+    </table>
+    <pre><code class="lang-JSON">{<br>  "<span class="hljs-attribute">DestinationDataSetName</span>": <span class="hljs-value"><span class="hljs-string">"TARGET_DATASET_NAME"</span></span>,<br>  "<span class="hljs-attribute">Ids</span>": <span class="hljs-value">[<span class="hljs-string">"10"</span>, <span class="hljs-string">"11"</span>]<br></span>}
+    </code></pre>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    <p><strong>Tip:</strong> You can use the <a href="#operation--api-Documents-Sample-post">POST /api/Documents/Sample</a> or the <a href="#operation--api-Documents-Filter-post">POST /api/Documents/Filter</a> methods to get document ids easily.</p>
+    </blockquote>
+    <h3 id="move-to">Move To</h3>
+    <p>Moving documents from a dataset to another one. You can specify documents by id. You can move documents to an existing dataset. 
+    The selected documents will be <strong>removed from the source dataset</strong>.</p>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-Documents-Move-post">POST /api/Documents/Move</a></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  X-DataSet</td>
+    <td>example</td>
+    </tr>
+    </tbody>
+    </table>
+    <pre><code class="lang-JSON">{<br>  "<span class="hljs-attribute">DestinationDataSetName</span>": <span class="hljs-value"><span class="hljs-string">"TARGET_DATASET_NAME"</span></span>,<br>  "<span class="hljs-attribute">Ids</span>": <span class="hljs-value">[<span class="hljs-string">"10"</span>, <span class="hljs-string">"11"</span>]<br></span>}
+    </code></pre>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    <p><strong>Tip:</strong> You can use the <a href="#operation--api-Documents-Sample-post">POST /api/Documents/Sample</a> or the <a href="#operation--api-Documents-Filter-post">POST /api/Documents/Filter</a> methods to get document ids easily.</p>
+    </blockquote>
+    <h2 id="tags">Tags</h2>
+    <p>Manage tags to organize your data. Using tags create a tag cloud or a hiearchical tag tree.</p>
+    <p>Every tag is related to a Dataset. You have to specify which dataset you want to use in the <code>X-DataSet</code> header by the name of the dataset.</p>
+    <blockquote>
+    <p><strong>Tip:</strong> If you use any of the tag methods without or an unexisting <code>X-DataSet</code> header you will get a <code>Missing X-DataSet header!</code> error.</p>
+    </blockquote>
+    <p>With Tags you can:</p>
+    <ul>
+    <li>Create new tag</li>
+    <li>Update a tag</li>
+    <li>Get a single tag or a full tag list</li>
+    <li>Organize your tags into hierarchy</li>
+    <li>Use tags for categorization</li>
+    <li>Use tags for tagging.</li>
+    </ul>
+    <h3 id="create-new-tag">Create New Tag</h3>
+    <p>Create a new tag in a dataset.</p>
+    <blockquote>
+    <p><strong>Tip:</strong> To create hierarchy you have to specify the ParentId of the tag. The ParentId is the Id of the parent of the tag. In the dataset there must be an existing tag with the id given in the ParentId. If the tag is a root element, or you don&#39;t want to use hirerchy then just skip the property or set to <code>null</code>.</p>
+    </blockquote>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-Tags-post">POST /api/Tags</a></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  X-DataSet</td>
+    <td>example</td>
+    </tr>
+    </tbody>
+    </table>
+    <pre><code class="lang-JSON">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,<br>  "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example tag 1"</span></span>,<br>  "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+    </code></pre>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 201 CREATED</p>
+    </blockquote>
+    <h3 id="get-tag">Get Tag</h3>
+    <p>Get a tag by its Id.</p>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-Tags-get">GET /api/Tags/<code>1</code></a></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  X-DataSet</td>
+    <td>example</td>
+    </tr>
+    </tbody>
+    </table>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    <pre><code class="lang-JSON">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,<br>  "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example tag 1"</span></span>,<br>  "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+    </code></pre>
+    </blockquote>
+    <h3 id="get-tag-list">Get Tag List</h3>
+    <p>Get all tags list from a given dataset.</p>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-Tags-get">GET /api/Tags</a></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  X-DataSet</td>
+    <td>example</td>
+    </tr>
+    </tbody>
+    </table>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    <pre><code class="lang-JSON">[<br>  {<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example tag 1"</span></span>,<br>    "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>  </span>},<br>  {<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example tag 2"</span></span>,<br>    "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>  </span>}<br>]
+    </code></pre>
+    </blockquote>
+    <h3 id="remove-tag">Remove Tag</h3>
+    <p>Remove a tag from tag list. Documents and datasets are not affected.</p>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#opreation--api-Tags-delete">DELETE /api/Tags/<code>1</code></a></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  X-DataSet</td>
+    <td>example</td>
+    </tr>
+    </tbody>
+    </table>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    </blockquote>
+    <h2 id="sampling">Sampling</h2>
+    <p>Statistical method to support sampling activity. Using sampling you can easily create <strong>random samples</strong> for experiments.</p>
+    <p>With sampling you can:</p>
+    <ul>
+    <li>Create sample easily</li>
+    <li>Set the source categories</li>
+    <li>Use normal or stratified sampling method</li>
+    <li>Set sample size by fix number or percentage</li>
+    <li>Use built in pagination.</li>
+    </ul>
+    <p>For sampling you have to specify which dataset you want to use in the <code>X-DataSet</code> header by the name of the dataset.</p>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-Documents-Sample-post">POST /api/Documents/Sample</a></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  X-DataSet</td>
+    <td>example</td>
+    </tr>
+    </tbody>
+    </table>
+    <pre><code class="lang-JSON">{<br>  "<span class="hljs-attribute">Id</span>" : <span class="hljs-value"><span class="hljs-string">"6902a2d3-0708-41f7-b21d-c5bd4b302bdc"</span></span>,<br>  "<span class="hljs-attribute">IsStratified</span>" : <span class="hljs-value"><span class="hljs-string">"false"</span></span>,<br>  "<span class="hljs-attribute">Percent</span>" : <span class="hljs-value"><span class="hljs-string">"0"</span></span>,<br>  "<span class="hljs-attribute">Size</span>" : <span class="hljs-value"><span class="hljs-string">"15000"</span></span>,<br>  "<span class="hljs-attribute">TagIds</span>" : <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">Pagination</span>" : <span class="hljs-value">{<br>      "<span class="hljs-attribute">Offset</span>" : <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>      "<span class="hljs-attribute">Limit</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,<br>      "<span class="hljs-attribute">OrderDirection</span>" : <span class="hljs-value"><span class="hljs-string">"Asc"</span></span>,<br>      "<span class="hljs-attribute">OrderByField</span>" : <span class="hljs-value"><span class="hljs-string">"id"</span><br>  </span>}<br></span>}
+    </code></pre>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    <pre><code class="lang-JSON">{<br>  "<span class="hljs-attribute">Items</span>": <span class="hljs-value">[<br>    {<br>      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197295447"</span></span>,<br>      "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title"</span></span>,<br>      "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span></span>,<br>      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"2"</span>,<br>        <span class="hljs-string">"3"</span><br>      ]<br>    </span>},<br>    {<br>      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197591439"</span></span>,<br>      "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title"</span></span>,<br>      "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span></span>,<br>      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"3"</span><br>      ]<br>    </span>},<br>    ...<br>  ]</span>,<br>  "<span class="hljs-attribute">Pagination</span>": <span class="hljs-value">{<br>    "<span class="hljs-attribute">Offset</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Limit</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,<br>    "<span class="hljs-attribute">OrderDirection</span>": <span class="hljs-value"><span class="hljs-string">"Asc"</span></span>,<br>    "<span class="hljs-attribute">OrderByField</span>": <span class="hljs-value"><span class="hljs-string">"desc"</span><br>  </span>}</span>,<br>  "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,<br>  "<span class="hljs-attribute">Total</span>": <span class="hljs-value"><span class="hljs-number">15000</span><br></span>}
+    </code></pre>
+    </blockquote>
+    <h5 id="for-the-parameters-explanation-check-the-documentsamplesettings-schema-definition-here-definitions-documentsamplesettings-">For the parameters explanation check the DocumentSampleSettings schema definition <a href="#/definitions/DocumentSampleSettings">here</a></h5>
+    <h5 id="for-the-pagination-explanation-check-the-pagination-section-here-pagination-">For the pagination explanation check the pagination section <a href="#pagination">here</a></h5>
+    <h2 id="filter">Filter</h2>
+    <p>Powerful <strong>search engine</strong>. Build <strong>smart</strong> search functions or filters. Easily access to your datasets with <strong>simple queries</strong>, <strong>logical expressions</strong> and <strong>wild cards</strong>. Manage your language dependencies using <strong>optinal tokenizer</strong>.</p>
+    <p>With Filter you can:</p>
+    <ul>
+    <li>Create simple search queries</li>
+    <li>Filter by tags</li>
+    <li>Search in multiple fields</li>
+    <li>Access to all the available document fields and parameters</li>
+    <li>Use logical expressions</li>
+    <li>Use wild cards</li>
+    <li>Use optional tokenizers</li>
+    <li>Use built in pagination</li>
+    </ul>
+    <p><em>Example REQUEST</em></p>
+    <blockquote>
+    <p><a href="#operation--api-Documents-Filter-post">POST /api/Documents/Filter</a></p>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Header</th>
+    <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>  X-DataSet</td>
+    <td>example</td>
+    </tr>
+    </tbody>
+    </table>
+    <pre><code class="lang-JSON">{<br>    "<span class="hljs-attribute">QueryDictionary</span>" : <span class="hljs-value">{<br>        "<span class="hljs-attribute">title</span>" : <span class="hljs-value"><span class="hljs-string">"michelin"</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">TagIds</span>" : <span class="hljs-value">[<span class="hljs-string">"1"</span>]</span>,<br>    "<span class="hljs-attribute">Pagination</span>" : <span class="hljs-value">{<br>        "<span class="hljs-attribute">Offset</span>" : <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>        "<span class="hljs-attribute">Limit</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,<br>        "<span class="hljs-attribute">OrderDirection</span>" : <span class="hljs-value"><span class="hljs-string">"Asc"</span></span>,<br>        "<span class="hljs-attribute">OrderByField</span>" : <span class="hljs-value"><span class="hljs-string">"title"</span><br>    </span>}<br></span>}
+    </code></pre>
+    </blockquote>
+    <p><em>Example RESPONSE</em></p>
+    <blockquote>
+    <p>HTTP/1.1 200 OK</p>
+    <pre><code class="lang-JSON">{<br>  "<span class="hljs-attribute">Items</span>": <span class="hljs-value">[<br>    {<br>      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197455453"</span></span>,<br>      "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title 1"</span></span>,<br>      "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span></span>,<br>      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"1"</span><br>      ]<br>    </span>},<br>    {<br>      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197455203"</span></span>,<br>      "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title 2"</span></span>,<br>      "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span></span>,<br>      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"1"</span><br>      ]<br>    </span>},<br>    ...<br>  ]</span>,<br>  "<span class="hljs-attribute">Pagination</span>": <span class="hljs-value">{<br>    "<span class="hljs-attribute">Offset</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Limit</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,<br>    "<span class="hljs-attribute">OrderDirection</span>": <span class="hljs-value"><span class="hljs-string">"Asc"</span></span>,<br>    "<span class="hljs-attribute">OrderByField</span>": <span class="hljs-value"><span class="hljs-string">"title"</span><br>  </span>}</span>,<br>  "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,<br>  "<span class="hljs-attribute">Total</span>": <span class="hljs-value"><span class="hljs-number">1543</span><br></span>}
+    </code></pre>
+    </blockquote>
+    <h5 id="for-the-parameters-explanation-check-the-documentfiltersettings-schema-definition-here-definitions-documentfiltersettings-">For the parameters explanation check the DocumentFilterSettings schema definition <a href="#/definitions/DocumentFilterSettings">here</a></h5>
+    <h5 id="for-the-pagination-explanation-check-the-pagination-section-here-pagination-">For the pagination explanation check the pagination section <a href="#pagination">here</a></h5>
+    <blockquote>
+    <p><strong>Tip:</strong> Easily create a powerful search engine by using tokenizer and detailed search queries.</p>
+    </blockquote>
+    <h2 id="general">General</h2>
+    <h3 id="pagination">Pagination</h3>
+    <p>There are situations when your query results lots of data. In these cases the pagination can be handy.
+    You have to only provide an offset and a limit in the pagination object.
+    Optionally you can set a field which will be the base of the ordering and also the direction of the ordering (ascendig or descending).</p>
+    <p>In the result (PaginatedList[Object]) there is an Items property which containing the requested elements (or the part of the requested elements). Also it provides the count of the items (this is equal or lesser than the limit property) and the total count of the requested items. Also it returns the same pagination object which was int the request.</p>
+    <blockquote>
+    <p><em>Example REQUEST</em></p>
+    <pre><code class="lang-json">{<br>    ...<br>    "Pagination" : {<br>        "Offset" : 0,<br>        "Limit": 10,<br>        "OrderDirection" : "Asc",<br>        "OrderByField" : "title"<br>    }<br>}
+    </code></pre>
+    <p><em>Example RESPONSE</em></p>
+    <pre><code class="lang-json">{<br>  "Items": [<br>    {<br>      ...<br>    },<br>    {<br>      ...<br>    },<br>    ...<br>  ],<br>  "Pagination": {<br>    "Offset": 0,<br>    "Limit": 100,<br>    "OrderDirection": "Asc",<br>    "OrderByField": "title"<br>  },<br>  "Count": 10,<br>  "Total": 21<br>}
+    </code></pre>
+    </blockquote>
+    <h5 id="check-the-pagination-schema-definition-here-definitions-pagination-">Check the Pagination schema definition <a href="#/definitions/Pagination">here</a></h5>
+    <h5 id="check-the-paginatedlist-object-schema-definition-here-definitions-paginatedlist-object-">Check the PaginatedList[Object] schema definition <a href="#/definitions/PaginatedList[Object]">here</a></h5>
+    </p>
+    
+        <div id="sw-default-consumes" class="sw-default-value">
+            <span class="sw-default-value-header">Default request content-types:</span>
+            application/json
+        </div>
+        <div id="sw-default-produces" class="sw-default-value">
+            <span class="sw-default-value-header">Default response content-types:</span>
+            application/json
+        </div>
+    
+    <div id="sw-schemes" class="sw-default-value">
+        <span class="sw-default-value-header">Schemes:</span>
+        https
+    </div>
+    
+    
+    
+    
+    <h2>Methods</h2>
+    
+        
+        <span id="path--api-DataSets"></span>
+            <div id="operation--api-DataSets-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/api/DataSets</strong></h3>
+                        Tags:
+                            <a href="#definition-DataSets">DataSets</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Get a list of the available datasets</p>
+            
+                    </section>
+                    
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                            
+                                                                            <section class="json-schema-array-items">
+                                                                                <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/DataSet">DataSet</a>
+                                                                                </span>
+                                                                                <span class="json-property-range" title="Value limits"></span>
+                                                                                
+                                                                                <div class="json-inner-schema">
+                                                                                    
+                                                                                </div>
+                                                                            </section>    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    <div id="operation--api-DataSets-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/api/DataSets</strong></h3>
+                        Tags:
+                            <a href="#definition-DataSets">DataSets</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>To create a new dataset you need to provide the required settings and a sample JSON document that defines your document scheme to use</p>
+            
+                    </section>
+                        
+                            <section class="sw-request-body">
+                                
+                                    <p><a href="#sw-default-consumes">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                    </p>
+                                                <div class="row">
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-6 sw-request-model">
+                            <div  class="panel panel-definition">
+                                <div class="panel-body">
+                                            <a class="json-schema-ref" href="#/definitions/DataSet">DataSet</a>
+                                </div>
+                            </div></div>
+                                        </div>
+                            </section>        
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-201">
+                                        201 Created
+                                    
+                                    </dt>
+                                    <dd class="sw-response-201">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Created</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
+        <span id="path--api-DataSets--name-"></span>
+            <div id="operation--api-DataSets--name--delete" class="swagger--panel-operation-delete panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">DELETE</span> <strong>/api/DataSets/{name}</strong></h3>
+                        Tags:
+                            <a href="#definition-DataSets">DataSets</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>To delete a given dataset, you can refer by its name</p>
+            
+                    </section>
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                name
+                                            <td></td>
+                                            <td>path</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>OK</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    <div id="operation--api-DataSets--name--get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/api/DataSets/{name}</strong></h3>
+                        Tags:
+                            <a href="#definition-DataSets">DataSets</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>To get information about a selected dataset you can refer by its name</p>
+            
+                    </section>
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                name
+                                            <td></td>
+                                            <td>path</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/DataSet">DataSet</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
+        <span id="path--api-Documents"></span>
+            <div id="operation--api-Documents-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/api/Documents</strong></h3>
+                        Tags:
+                            <a href="#definition-Documents">Documents</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Inserting a new document you need to provide your predefined schema</p>
+            
+                    </section>
+                        
+                            <section class="sw-request-body">
+                                
+                                    <p><a href="#sw-default-consumes">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                    </p>
+                                                <div class="row">
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-6 sw-request-model">
+                            <div  class="panel panel-definition">
+                                <div class="panel-body">
+                                        
+                                </div>
+                            </div></div>
+                                        </div>
+                            </section>        
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-201">
+                                        201 Created
+                                    
+                                    </dt>
+                                    <dd class="sw-response-201">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                            
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
+        <span id="path--api-Documents-Copy"></span>
+            <div id="operation--api-Documents-Copy-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/api/Documents/Copy</strong></h3>
+                        Tags:
+                            <a href="#definition-Documents">Documents</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                        
+                            <section class="sw-request-body">
+                                
+                                    <p><a href="#sw-default-consumes">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                    </p>
+                                                <div class="row">
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-6 sw-request-model">
+                            <div  class="panel panel-definition">
+                                <div class="panel-body">
+                                            <a class="json-schema-ref" href="#/definitions/DocumentCopySettings">DocumentCopySettings</a>
+                                </div>
+                            </div></div>
+                                        </div>
+                            </section>        
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>OK</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
+        <span id="path--api-Documents-Filter"></span>
+            <div id="operation--api-Documents-Filter-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/api/Documents/Filter</strong></h3>
+                        Tags:
+                            <a href="#definition-Documents">Documents</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                        
+                            <section class="sw-request-body">
+                                
+                                    <p><a href="#sw-default-consumes">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                    </p>
+                                                <div class="row">
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-6 sw-request-model">
+                            <div  class="panel panel-definition">
+                                <div class="panel-body">
+                                            <a class="json-schema-ref" href="#/definitions/DocumentFilterSettings">DocumentFilterSettings</a>
+                                </div>
+                            </div></div>
+                                        </div>
+                            </section>        
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/PaginatedList[Object]">PaginatedList[Object]</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
+        <span id="path--api-Documents-Move"></span>
+            <div id="operation--api-Documents-Move-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/api/Documents/Move</strong></h3>
+                        Tags:
+                            <a href="#definition-Documents">Documents</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                        
+                            <section class="sw-request-body">
+                                
+                                    <p><a href="#sw-default-consumes">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                    </p>
+                                                <div class="row">
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-6 sw-request-model">
+                            <div  class="panel panel-definition">
+                                <div class="panel-body">
+                                            <a class="json-schema-ref" href="#/definitions/DocumentMoveSettings">DocumentMoveSettings</a>
+                                </div>
+                            </div></div>
+                                        </div>
+                            </section>        
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>OK</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
+        <span id="path--api-Documents-Sample"></span>
+            <div id="operation--api-Documents-Sample-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/api/Documents/Sample</strong></h3>
+                        Tags:
+                            <a href="#definition-Documents">Documents</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Statistical method to support sampling activity. Using this method, you can easily create samples from a given dataset. The sampling process uses random selection from the given dataset</p>
+            
+                    </section>
+                        
+                            <section class="sw-request-body">
+                                
+                                    <p><a href="#sw-default-consumes">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                    </p>
+                                                <div class="row">
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-6 sw-request-model">
+                            <div  class="panel panel-definition">
+                                <div class="panel-body">
+                                            <a class="json-schema-ref" href="#/definitions/DocumentSampleSettings">DocumentSampleSettings</a>
+                                </div>
+                            </div></div>
+                                        </div>
+                            </section>        
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/PaginatedList[Object]">PaginatedList[Object]</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
+        <span id="path--api-Documents--id-"></span>
+            <div id="operation--api-Documents--id--delete" class="swagger--panel-operation-delete panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">DELETE</span> <strong>/api/Documents/{id}</strong></h3>
+                        Tags:
+                            <a href="#definition-Documents">Documents</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                id
+                                            <td></td>
+                                            <td>path</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>OK</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    <div id="operation--api-Documents--id--get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/api/Documents/{id}</strong></h3>
+                        Tags:
+                            <a href="#definition-Documents">Documents</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>You can access a full document by id (refer to the IdField you defined in the DataSet creation)</p>
+            
+                    </section>
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                id
+                                            <td></td>
+                                            <td>path</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <section class="json-schema-description">
+                                                                    <p>dynamic stuff use what you want</p>
+                                                            
+                                                                </section>
+                                                            
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    <div id="operation--api-Documents--id--put" class="swagger--panel-operation-put panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">PUT</span> <strong>/api/Documents/{id}</strong></h3>
+                        Tags:
+                            <a href="#definition-Documents">Documents</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                        
+                            <section class="sw-request-body">
+                                
+                                    <p><a href="#sw-default-consumes">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                    </p>
+                                                <div class="row">
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-6 sw-request-model">
+                            <div  class="panel panel-definition">
+                                <div class="panel-body">
+                                        
+                                </div>
+                            </div></div>
+                                        </div>
+                            </section>        
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                id
+                                            <td></td>
+                                            <td>path</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                            
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
+        <span id="path--api-Tags"></span>
+            <div id="operation--api-Tags-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/api/Tags</strong></h3>
+                        Tags:
+                            <a href="#definition-Tags">Tags</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                withDetails
+                                            <td></td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">boolean</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                            
+                                                                            <section class="json-schema-array-items">
+                                                                                <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/Tag">Tag</a>
+                                                                                </span>
+                                                                                <span class="json-property-range" title="Value limits"></span>
+                                                                                
+                                                                                <div class="json-inner-schema">
+                                                                                    
+                                                                                </div>
+                                                                            </section>    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    <div id="operation--api-Tags-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/api/Tags</strong></h3>
+                        Tags:
+                            <a href="#definition-Tags">Tags</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                        
+                            <section class="sw-request-body">
+                                
+                                    <p><a href="#sw-default-consumes">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                    </p>
+                                                <div class="row">
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-6 sw-request-model">
+                            <div  class="panel panel-definition">
+                                <div class="panel-body">
+                                            <a class="json-schema-ref" href="#/definitions/Tag">Tag</a>
+                                </div>
+                            </div></div>
+                                        </div>
+                            </section>        
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>OK</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-201">
+                                        201 Created
+                                    
+                                    </dt>
+                                    <dd class="sw-response-201">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Created</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
+        <span id="path--api-Tags--id-"></span>
+            <div id="operation--api-Tags--id--delete" class="swagger--panel-operation-delete panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">DELETE</span> <strong>/api/Tags/{id}</strong></h3>
+                        Tags:
+                            <a href="#definition-Tags">Tags</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                id
+                                            <td></td>
+                                            <td>path</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>OK</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    <div id="operation--api-Tags--id--get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/api/Tags/{id}</strong></h3>
+                        Tags:
+                            <a href="#definition-Tags">Tags</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                id
+                                            <td></td>
+                                            <td>path</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                withDetails
+                                            <td></td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">boolean</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/Tag">Tag</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    <div id="operation--api-Tags--id--put" class="swagger--panel-operation-put panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">PUT</span> <strong>/api/Tags/{id}</strong></h3>
+                        Tags:
+                            <a href="#definition-Tags">Tags</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                        
+                            <section class="sw-request-body">
+                                
+                                    <p><a href="#sw-default-consumes">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                    </p>
+                                                <div class="row">
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-6 sw-request-model">
+                            <div  class="panel panel-definition">
+                                <div class="panel-body">
+                                            <a class="json-schema-ref" href="#/definitions/Tag">Tag</a>
+                                </div>
+                            </div></div>
+                                        </div>
+                            </section>        
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                id
+                                            <td></td>
+                                            <td>path</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/Tag">Tag</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>
+     
+    
+                       
+        <h2 id="schema-definitions">Schema definitions</h2>
+    
+            
+                <div id="definition-DataSet" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/DataSet"></a>DataSet:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Name">
+                                                    <span class="json-property-name">Name:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>Name of your dataset. Contains just A-Z letters and numbers without any space. After creating a dataset, you cannot modify it’s name. This field is unique</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="NGramCount">
+                                                    <span class="json-property-name">NGramCount:</span>
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>To deeper analyze your text, a dataset uses ngram to index your document. You can set the ngramcount from 1 to 6</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="IdField">
+                                                    <span class="json-property-name">IdField:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>To identify a document you need to use IDs. You can use your own conventions to name your ID field, but in the settings you need to provide the field name of the id field from your sample document</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="TagField">
+                                                    <span class="json-property-name">TagField:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>For text categorization we provide a predefined document field to store your tags (or categories). If your documents are related to tags or categories, please insert here the tags field name from your sample JSON</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="InterpretedFields">
+                                                    <span class="json-property-name">InterpretedFields:</span>
+                                                    <span class="json-property-type">string[]</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>For text analysis you can set those document fields that contains useful text content. Slamby is doing ngram analysis and text process related works on these fields. How to decide which field you need to set here? Only the interpreted field can be a part of text analyzes. To provide these fields just simply insert the needed text fields from your JSON document</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                                        <section class="json-schema-array-items">
+                                                                            <span class="json-property-type">string</span>
+                                                                            <span class="json-property-range" title="Value limits"></span>
+                                                                            
+                                                                            <div class="json-inner-schema">
+                                                                                
+                                                                            </div>
+                                                                        </section>                </div>
+                                                </dd>
+                                                <dt data-property-name="Statistics">
+                                                    <span class="json-property-name">Statistics:</span>
+                                                    <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/DataSetStats">DataSetStats</a>
+                                                    </span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-read-only"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>These are read only calculated values</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="SampleDocument">
+                                                    <span class="json-property-name">SampleDocument:</span>
+                                                    <span class="json-property-type">object</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>Using flexible document schema, you can store all of your required data inside one simple dataset. To create a dataset with your required schema you can provide a sample document. The schema is flexible; the only requirement is using standard JSON format</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-DataSetStats" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/DataSetStats"></a>DataSetStats:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="DocumentsCount">
+                                                    <span class="json-property-name">DocumentsCount:</span>
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>shows the available document number</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-DocumentCopySettings" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/DocumentCopySettings"></a>DocumentCopySettings:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Ids">
+                                                    <span class="json-property-name">Ids:</span>
+                                                    <span class="json-property-type">string[]</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                                        <section class="json-schema-array-items">
+                                                                            <span class="json-property-type">string</span>
+                                                                            <span class="json-property-range" title="Value limits"></span>
+                                                                            
+                                                                            <div class="json-inner-schema">
+                                                                                
+                                                                            </div>
+                                                                        </section>                </div>
+                                                </dd>
+                                                <dt data-property-name="DestinationDataSetName">
+                                                    <span class="json-property-name">DestinationDataSetName:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-DocumentFilterSettings" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/DocumentFilterSettings"></a>DocumentFilterSettings:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="TagIds">
+                                                    <span class="json-property-name">TagIds:</span>
+                                                    <span class="json-property-type">string[]</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>You can direct your search queries into specific tags. By giving the required tag id list, the filter will affect just the provided tags. It’s useful to create powerful search queries inside given tags. To filter inside a whole dataset, you can set this field to empty</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                                        <section class="json-schema-array-items">
+                                                                            <span class="json-property-type">string</span>
+                                                                            <span class="json-property-range" title="Value limits"></span>
+                                                                            
+                                                                            <div class="json-inner-schema">
+                                                                                
+                                                                            </div>
+                                                                        </section>                </div>
+                                                </dd>
+                                                <dt data-property-name="Pagination">
+                                                    <span class="json-property-name">Pagination:</span>
+                                                    <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/Pagination">Pagination</a>
+                                                    </span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="QueryDictionary">
+                                                    <span class="json-property-name">QueryDictionary:</span>
+                                                    <span class="json-property-type">object</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Set here the filers. The key of an element must be a valid field name, and the value is the query string you want to apply. Can be BOOL expressions. You can use these: AND, OR, NOT. For example: &#39;searchforthis AND NOT butnotthis&#39;. Also you can use wildcards. For example: &#39;exampl*&#39;</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                                    <section class="json-schema-additionalProperties">
+                                                                        <span class="json-property-type"><span class="json-property-type">string</span>
+                                                                    <span class="json-property-range" title="Value limits"></span>
+                                                                    
+                                                                    </span>
+                                                                        
+                                                                    </section>
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-DocumentMoveSettings" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/DocumentMoveSettings"></a>DocumentMoveSettings:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Ids">
+                                                    <span class="json-property-name">Ids:</span>
+                                                    <span class="json-property-type">string[]</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                                        <section class="json-schema-array-items">
+                                                                            <span class="json-property-type">string</span>
+                                                                            <span class="json-property-range" title="Value limits"></span>
+                                                                            
+                                                                            <div class="json-inner-schema">
+                                                                                
+                                                                            </div>
+                                                                        </section>                </div>
+                                                </dd>
+                                                <dt data-property-name="DestinationDataSetName">
+                                                    <span class="json-property-name">DestinationDataSetName:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-DocumentSampleSettings" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/DocumentSampleSettings"></a>DocumentSampleSettings:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Id">
+                                                    <span class="json-property-name">Id:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>It must be a random string for every new sampling, but must be the same for the same sampling during pagination. If you leave it empty than it&#39;ll be generated automatically, but then you can not use pagination</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="TagIds">
+                                                    <span class="json-property-name">TagIds:</span>
+                                                    <span class="json-property-type">string[]</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>You can create a sample from a whole dataset, or just from a given tag section. To create a sample from the whole dataset please keep it empty. To create a sample from a given number of tags please provide the tag ids</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                                        <section class="json-schema-array-items">
+                                                                            <span class="json-property-type">string</span>
+                                                                            <span class="json-property-range" title="Value limits"></span>
+                                                                            
+                                                                            <div class="json-inner-schema">
+                                                                                
+                                                                            </div>
+                                                                        </section>                </div>
+                                                </dd>
+                                                <dt data-property-name="IsStratified">
+                                                    <span class="json-property-name">IsStratified:</span>
+                                                    <span class="json-property-type">boolean</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>You can use stratified sampling. In this case the sampling will be created by tags. For general sampling don&#39;t use stratified sampling!</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Pagination">
+                                                    <span class="json-property-name">Pagination:</span>
+                                                    <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/Pagination">Pagination</a>
+                                                    </span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Percent">
+                                                    <span class="json-property-name">Percent:</span>
+                                                    <span class="json-property-type">number</span>    <span class="json-property-format">(double)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Defining the sample size, you can use percentage or a given number. Using a percentage you can define the document number by a percentage. This percentage will calculate the document number by using the available dataset document number. E.g.: if your dataset contains 100.000 documents and you are using 10% as a sampling size without stratified method, your sample size is 100.000 x 10% = 10.000</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Size">
+                                                    <span class="json-property-name">Size:</span>
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Define your sample size by providing a simple integer. E.g.: if your dataset contains 100.000 documents and you are using 3.000 as a sampling size without stratified method, your sample size is 3.000</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-PaginatedList-Object-" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/PaginatedList[Object]"></a>PaginatedList[Object]:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Items">
+                                                    <span class="json-property-name">Items:</span>
+                                                    <span class="json-property-type">object[]</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Containing the actual displayed items. The type of the elements depend on the method</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                                        <section class="json-schema-array-items">
+                                                                            <span class="json-property-type">object</span>
+                                                                            <span class="json-property-range" title="Value limits"></span>
+                                                                            
+                                                                            <div class="json-inner-schema">
+                                                                                
+                                                                            </div>
+                                                                        </section>                </div>
+                                                </dd>
+                                                <dt data-property-name="Pagination">
+                                                    <span class="json-property-name">Pagination:</span>
+                                                    <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/Pagination">Pagination</a>
+                                                    </span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Count">
+                                                    <span class="json-property-name">Count:</span>
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>The count of the actual returned items</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Total">
+                                                    <span class="json-property-name">Total:</span>
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>The count of all items which are the pagination applied</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-Pagination" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/Pagination"></a>Pagination:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Offset">
+                                                    <span class="json-property-name">Offset:</span>
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>How many element you want to skip. For example if the offset is 6, than the first element will be the 7. in the list</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Limit">
+                                                    <span class="json-property-name">Limit:</span>
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>How many element you want to get back in this request</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="OrderDirection">
+                                                    <span class="json-property-name">OrderDirection:</span>
+                                                    <span class="json-property-type">string</span>    <span class="json-property-enum" title="Possible values">, x &isin; {
+                                                                    <span class="json-property-enum-item">Asc</span>
+                                                                ,
+                                                                    <span class="json-property-enum-item">Desc</span>
+                                                                
+                                                            }
+                                                            </span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>The ordering of the list, Ascending or Descending</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="OrderByField">
+                                                    <span class="json-property-name">OrderByField:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>It must be an existing field. Declares the base of the ordering</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-Tag" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/Tag"></a>Tag:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Id">
+                                                    <span class="json-property-name">Id:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>The identifier of the tag. It must be unique accross the DataSet</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Name">
+                                                    <span class="json-property-name">Name:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>Name of the tag</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="ParentTagId">
+                                                    <span class="json-property-name">ParentTagId:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>The identifier of the parent of the tag. It must be the id of an existing tag</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Properties">
+                                                    <span class="json-property-name">Properties:</span>
+                                                    <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/TagProperties">TagProperties</a>
+                                                    </span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>These are read only calculated values</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-TagProperties" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/TagProperties"></a>TagProperties:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                                <section class="json-schema-description">
+                                    <p>Some calculated values for the tag</p>
+                            
+                                </section>
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Path">
+                                                    <span class="json-property-name">Path:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>A human readable path to the tag</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Level">
+                                                    <span class="json-property-name">Level:</span>
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>The level of the tag in the hierarchy (root level is: 0)</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="IsLeaf">
+                                                    <span class="json-property-name">IsLeaf:</span>
+                                                    <span class="json-property-type">boolean</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>If the tag is a leaf tag. Leaf tag means the tag is not a parent of any other tags</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="DocumentCount">
+                                                    <span class="json-property-name">DocumentCount:</span>
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Document count for the tag</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="WordCount">
+                                                    <span class="json-property-name">WordCount:</span>
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Word count for the tag</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>
+</div>
+</body>
+</html>

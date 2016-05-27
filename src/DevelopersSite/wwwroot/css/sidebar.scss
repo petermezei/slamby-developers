@@ -1,0 +1,95 @@
+﻿.wrapper-docpage {
+    .affix-top,.affix {
+	    position: static;
+    }
+
+    @media (min-width: 979px) {
+      #sidebar_col.affix-top {
+        position: static;
+  	    margin-top:20px;
+  	    width:228px;
+      }
+
+      #sidebar_col.affix {
+        position: fixed;
+        top:85px;
+        width:228px;
+      }
+    }
+
+    #sidebar li {
+        font-size: 1.2em;
+    }
+
+    #sidebar li.active {
+  	    border:0 #eee solid;
+  	    border-right-width:5px;
+    }
+
+    #sidebar li li.active {
+  	    border:0 #eee solid;
+  	    border-left-width:4px;
+     }
+
+    #sidebar li li.active a {
+        margin-left: -4px;
+    }
+
+    #sidebar_col{
+        max-height: 70%;
+    }
+
+    /* hide sidebar sub menus by default */
+    #sidebar.nav .nav {
+	    display: none;
+        font-size:12px;
+    }
+
+    /* show sub menu when parent is active */
+    #sidebar.nav>.active>ul {
+	    display: block;
+    }
+
+    .header-h2 {
+    }
+
+    .header-h3 {
+        margin-left: 10px !important;
+    }
+
+    .nav > li > a {
+        position: relative;
+        display: block;
+        padding: 2px 15px;
+    }
+
+    .hljs {
+        background-color: inherit;
+        color: inherit;
+    }
+
+    .toc {
+        ul {
+            padding-bottom: 30px;
+
+            li {
+                padding: 2px 15px;
+
+                a {
+                    text-decoration: none;
+                    font-size: 1.2em;
+                }
+            }
+            
+        }
+    }
+
+    .back-to-index {
+        a {
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        padding-bottom: 10px;
+    }
+}

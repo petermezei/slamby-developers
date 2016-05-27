@@ -1,0 +1,26 @@
+﻿<footer>
+    <div class="container">
+        <div class="row">
+            <ul>
+                <li class="footer-list-header">About</li>
+                <li><a asp-controller="About" asp-action="Company">Company Information</a></li>
+                <li><a asp-controller="About" asp-action="Jobs">Jobs</a></li>
+                <li><a asp-controller="About" asp-action="Team">Team</a></li>
+            </ul>
+            <ul>
+                <li class="footer-list-header">Developers</li>
+                <li><a href="#">Slamby API</a></li>
+                <li><a href="#">SDK</a></li>
+                <li><a href="#">Slamby TAU</a></li>
+            </ul>
+            <ul>
+                <li class="footer-list-header">Contact</li>
+                <li><a asp-controller="About" asp-action="Press">Press</a></li>
+                <li><a asp-controller="About" asp-action="Contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-closing">
+            Copyright Slamby @DateTime.Now.Year. All right reserved.
+        </div>
+    </div>
+</footer>
