@@ -1,4 +1,5 @@
-#Slamby SDK .NET v0.14
+# Slamby SDK .NET v0.14
+
 Slamby .NET SDK and Nuget Package.
 This project is open source. Please check the documentation and [join](http://www.slamby.com/Community) to the community group.
 
@@ -7,6 +8,7 @@ Github page:  [www.github.com/slamby/slamby-sdk-net](https://github.com/slamby/s
 
 ## Changelog
 ### Features
+
 - added ParallelLimit property to Configuration
 - ability to limit numbers of thread used in certain functions
 
@@ -16,14 +18,17 @@ Github page:  [www.github.com/slamby/slamby-sdk-net](https://github.com/slamby/s
 ## General
 
 ### Request Basics
+
 Configuration example:
-```
+
+```cs
 var configuration = new Configuration
 	{
 		ApiBaseEndpoint = new Uri("https://api.slamby.com/CLIENT_ID/"),
 		ApiSecret = "API_KEY"
 	};
 ```
+
 You have to use this `configuration` object for every `Manager`.
 
 You can find more details about the Authentication [here](http://developers.slamby.com/api/#authentication)
@@ -38,7 +43,7 @@ Slamby SDK.NET sends its version information to the API for version matching. Ma
 
 Every request returns one of the following results:
 
-```
+```cs
 public class ClientResponse
 {
     public bool IsSuccessFul { get; set; }

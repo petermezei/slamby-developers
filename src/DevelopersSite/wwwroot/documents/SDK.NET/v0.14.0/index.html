@@ -1,5 +1,5 @@
-<p>#Slamby SDK .NET v0.14
-Slamby .NET SDK and Nuget Package.
+<h1 id="slamby-sdk-net-v0-14">Slamby SDK .NET v0.14</h1>
+<p>Slamby .NET SDK and Nuget Package.
 This project is open source. Please check the documentation and <a href="http://www.slamby.com/Community">join</a> to the community group.</p>
 <p>Github Slamby page: <a href="https://github.com/slamby">www.github.com/slamby</a>
 Github page:  <a href="https://github.com/slamby/slamby-sdk-net">www.github.com/slamby/slamby-sdk-net</a></p>
@@ -13,12 +13,13 @@ Github page:  <a href="https://github.com/slamby/slamby-sdk-net">www.github.com/
 <h2 id="general">General</h2>
 <h3 id="request-basics">Request Basics</h3>
 <p>Configuration example:</p>
-<pre><code>var configuration = new Configuration
+<pre><code class="lang-cs">var configuration = new Configuration
     {
         ApiBaseEndpoint = new Uri(&quot;https://api.slamby.com/CLIENT_ID/&quot;),
         ApiSecret = &quot;API_KEY&quot;
     };
-</code></pre><p>You have to use this <code>configuration</code> object for every <code>Manager</code>.</p>
+</code></pre>
+<p>You have to use this <code>configuration</code> object for every <code>Manager</code>.</p>
 <p>You can find more details about the Authentication <a href="http://developers.slamby.com/api/#authentication">here</a></p>
 <p>Slamby SDK.NET sends its version information to the API for version matching. Major and minor values should match in order to prevent version incompatibility. </p>
 <p><code>ParallelLimit</code> property enables you to limit or maximize CPU usage in certain functions. Limit value should be greater than zero in order to be sent.</p>
@@ -27,7 +28,7 @@ Github page:  <a href="https://github.com/slamby/slamby-sdk-net">www.github.com/
 </blockquote>
 <h3 id="response-basics">Response Basics</h3>
 <p>Every request returns one of the following results:</p>
-<pre><code>public class ClientResponse
+<pre><code class="lang-cs">public class ClientResponse
 {
     public bool IsSuccessFul { get; set; }
     public HttpStatusCode HttpStatusCode { get; set; }
@@ -40,7 +41,8 @@ public class ClientResponseWithObject&lt;T&gt; : ClientResponse
 {
     public T ResponseObject { get; set; }
 }
-</code></pre><h3 id="logging">Logging</h3>
+</code></pre>
+<h3 id="logging">Logging</h3>
 <p>Logging raw request and response message with <code>RawMessagePublisher</code>. 
 Currently <code>DebugSubscriber</code> is available  which writes messages to <strong>debug output</strong>. Custom subscribers can be created via implementing <code>IRawMessageSubscriber</code> interface.</p>
 <p><em>Example:</em></p>

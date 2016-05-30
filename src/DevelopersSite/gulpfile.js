@@ -2,8 +2,8 @@
 "use strict";
 
 var gulp = require("gulp"),
-    gulpsync = require('gulp-sync')(gulp),
     rimraf = require("rimraf"),
+    del = require('del'),
     concat = require("gulp-concat"),
     cssmin = require("gulp-cssmin"),
     uglify = require("gulp-uglify"),
@@ -13,7 +13,9 @@ var gulp = require("gulp"),
     GitHubApi = require("github"),
     Util = require("github/util"),
     mkdirp = require('mkdirp'),
-    _ = require('lodash');
+    runSequence = require('run-sequence'),
+    _ = require('lodash'),
+    Promise = require('promise');
 
 var paths = {
     webroot: "./wwwroot/"
@@ -54,33 +56,73 @@ gulp.task("min:css", function () {
 
 gulp.task("min", ["min:js", "min:css"]);
 
-gulp.task("generate", gulpsync.sync(["clean:html", "markdown", "swagger"]));
-gulp.task("fetch-generate", gulpsync.sync(["fetch", "generate"]));
+gulp.task("generate", function (cb) {
+    runSequence(
+        "clean:generate",
+        ["swagger", "markdown"],
+        cb);
+});
+gulp.task("fetch-generate", function(cb) {
+    runSequence(
+        ["fetch", "generate"], 
+        cb);
+});
 
-gulp.task("swagger", function () {
+gulp.task("swagger", function (cb) {
     var finder = require('findit2')(paths.documents);
     var path = require('path');
     var bootprint = require('bootprint');
     var bootprintOpenApi = require('bootprint-openapi');
+    var rename_promise = Promise.denodeify(fs.rename);
+    var rmdir_promise = Promise.denodeify(rimraf);     
 
-    return finder.on('file', function (file, stat, linkPath) {
+    var files = [];
+
+    finder.on('file', function (file, stat, linkPath) {
         var match = new RegExp(/\.(json)/g);
         if (match.test(file)) {
-            bootprint.load(bootprintOpenApi)
+            files.push(file);
+        }
+    }).on('end', function () {
+        var promises = [];
+
+        files.forEach(function (file) {
+            var dir = path.dirname(file);
+            var dirOut = dir + '/out';
+
+            var promise = bootprint.load(bootprintOpenApi)
             .merge({
                 handlebars: {
                     partials: './bootprint-openapi/handlebars/partials'
                 }
             })
-            .build(file, path.dirname(file))
+            .build(file, dirOut)
             .generate()
-            .done(console.log);
-        }
+            .then(function(){
+                return rename_promise(dirOut + '/index.html', dir + '/swagger.html');
+            })
+            .then(function(){
+                return rename_promise(dirOut + '/main.css', dir + '/main.css');
+            })
+            .then(function(){
+                return rmdir_promise(dirOut);
+            });
+
+            promises.push(promise);
+        });
+
+        Promise.all(promises).then(function() {
+            cb();
+        })
     });
 });
 
-gulp.task('clean:html', function (cb) {
-    rimraf(paths.documents + "**/**/*.html", cb);
+gulp.task('clean:generate', function (cb) {
+    return del(
+        [   paths.documents + "**/**/*.html",
+            paths.documents + "**/**/*.css",
+            paths.documents + "**/**/*.map"
+        ]);
 });
 
 gulp.task("markdown", function () {
@@ -98,34 +140,6 @@ gulp.task("markdown", function () {
 });
 
 gulp.task("fetch", function () {
-    var repos = [
-        { 
-            user: "slamby", 
-            repo: "slamby-api", 
-            path: paths.webroot + "documents/API/", 
-            files: ["swagger.json"],
-            ignoredTags: [],
-            ignorePatch: true
-        },
-        { 
-            user: "slamby", 
-            repo: "slamby-sdk-net", 
-            path: paths.webroot + "documents/SDK.NET/", 
-            files: ["README.md"],
-            ignoredTags: [
-                "v0.9.0"
-            ],
-            ignorePatch: true
-        },
-        { 
-            user: "slamby", 
-            repo: "slamby-tau", 
-            path: paths.webroot + "documents/TAU/", 
-            files: ["readme.md", "img"],
-            ignoredTags: [],
-            ignorePatch: true
-        }
-    ];
 
     var github = new GitHubApi({
         version: "3.0.0",
@@ -141,29 +155,17 @@ gulp.task("fetch", function () {
         token: "84ac4cb6c6e8b1c0119092ac5babe646921c1e44"
     });
 
-    repos.forEach(function (repo) {
-        var baseMsg = { user: repo.user, repo: repo.repo };
-        var tags = getTags(github, baseMsg);
-    
-        tags.forEach(function (tag) {
-            
-            if (_.indexOf(repo.ignoredTags, tag) != -1) {
-                 return;
-            }
-            if (repo.ignorePatch &&
-                !_.endsWith(tag, ".0")) {
-                return;
-            }
+    var repo = { 
+        user: "slamby", 
+        repo: "slamby-developers", 
+        path: paths.webroot + "documents/", 
+        files: ["src/DevelopersSite/wwwroot/documents"]
+    };
 
-            var tagPath = path.join(repo.path, tag);
-            // make sure directory tree created
-            mkdirp.sync(tagPath); 
-            
-            repo.files.forEach(function (file) {
-                getGitContent(github, baseMsg, file, tag, tagPath);    
-            });
+    repo.files.forEach(function (file) {
+        var baseMsg = { user: repo.user, repo: repo.repo };
+        getGitContent(github, baseMsg, file, "master", repo.path, file);    
         });
-    });
 });
 
 function getTags(github, msg) {
@@ -186,7 +188,7 @@ function getTags(github, msg) {
     return tagNames;
 }
 
-function getGitContent(github, msg, repoPath, ref, output) {
+function getGitContent(github, msg, repoPath, ref, output, basePath) {
     var contentMsg = Util.extend({ path: repoPath, ref: ref }, msg);
 
     github.repos.getContent(contentMsg,
@@ -197,11 +199,8 @@ function getGitContent(github, msg, repoPath, ref, output) {
             }
         
             if (Array.isArray(data)) {
-                // make sure directory tree created
-                mkdirp.sync(path.join(output, repoPath));
-                
                 data.forEach(function (item) {
-                    getGitContent(github, msg, item.path, ref, output); 
+                    getGitContent(github, msg, item.path, ref, output, basePath); 
                 });
                 
                 return;
@@ -209,7 +208,15 @@ function getGitContent(github, msg, repoPath, ref, output) {
         
             try {
                 var buffer = new Buffer(data.content, 'base64');
-                var stream = fs.createWriteStream(path.join(output, repoPath));
+                var outPath = repoPath;
+                if (_.startsWith(outPath, basePath)){
+                    outPath = _.replace(outPath, basePath, '');
+                }
+                
+                outPath = path.join(output, outPath);
+                mkdirp.sync(path.dirname(outPath));
+                
+                var stream = fs.createWriteStream(outPath);
                 stream.write(buffer);
                 stream.end();
             } catch (err) {

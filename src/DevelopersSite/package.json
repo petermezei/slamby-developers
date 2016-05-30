@@ -2,20 +2,23 @@
   "name": "slamby-developers-site",
   "version": "1.0.0",
   "devDependencies": {
+    "bootprint": "^0.8.5",
+    "bootprint-openapi": "^0.16.0",
+    "bower": "^1.7.9",
+    "deasync": "^0.1.6",
+    "findit2": "^2.2.3",
+    "github": "^0.2.4",
     "gulp": "^3.9.1",
     "gulp-concat": "2.5.2",
     "gulp-cssmin": "0.1.7",
+    "gulp-marked": "^1.0.0",
     "gulp-uglify": "1.2.0",
-    "gulp-sync": "^0.1.4",
-    "rimraf": "^2.5.2",
-    "bootprint": "^0.8.5",
-    "bootprint-openapi": "^0.16.0",
-    "findit2": "^2.2.3",
-    "github": "^0.2.4",
-    "deasync": "^0.1.6",
-    "mkdirp": "^0.5.1",
     "lodash": "^4.12.0",
-    "gulp-marked": "^1.0.0"
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.2",
+    "del": "^2.2.0",
+    "run-sequence": "^1.2.1",
+    "promise": "^7.1.1"
   },
   "dependencies": {
   }

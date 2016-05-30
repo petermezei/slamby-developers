@@ -1,4 +1,5 @@
 # Slamby SDK .NET v0.15
+
 Slamby .NET SDK and Nuget Package.
 This project is open source. Please check the documentation and [join](http://www.slamby.com/Community) to the community group.
 
@@ -6,7 +7,9 @@ Github Slamby page: [www.github.com/slamby](https://github.com/slamby)
 Github page:  [www.github.com/slamby/slamby-sdk-net](https://github.com/slamby/slamby-sdk-net)
 
 ## Changelog
+
 ### Features
+
 - added `CreateDataSetSchemaAsync` endpoint call to `DataSetManager`
 
 ---
@@ -15,14 +18,17 @@ Github page:  [www.github.com/slamby/slamby-sdk-net](https://github.com/slamby/s
 ## General
 
 ### Request Basics
+
 Configuration example:
-```
+
+```cs
 var configuration = new Configuration
-	{
-		ApiBaseEndpoint = new Uri("https://api.slamby.com/CLIENT_ID/"),
-		ApiSecret = "API_KEY"
-	};
+    {
+        ApiBaseEndpoint = new Uri("https://api.slamby.com/CLIENT_ID/"),
+        ApiSecret = "API_KEY"
+    };
 ```
+
 You have to use this `configuration` object for every `Manager`.
 
 You can find more details about the Authentication [here](http://developers.slamby.com/api/#authentication)
@@ -37,7 +43,7 @@ Slamby SDK.NET sends its version information to the API for version matching. Ma
 
 Every request returns one of the following results:
 
-```
+```cs
 public class ClientResponse
 {
     public bool IsSuccessFul { get; set; }
@@ -59,7 +65,8 @@ Logging raw request and response message with `RawMessagePublisher`.
 Currently `DebugSubscriber` is available  which writes messages to **debug output**. Custom subscribers can be created via implementing `IRawMessageSubscriber` interface.
 
 _Example:_
-```
+
+```cs
 IRawMessageSubscriber subscriber = new DebugSubscriber();
 RawMessagePublisher.Instance.AddSubscriber(subscriber);
 
@@ -69,7 +76,8 @@ RawMessagePublisher.Instance.RemoveSubscriber(subscriber);
 ```
 
 _Output:_
-```
+
+```cs
 REQUEST #63592531131529252663115
 ----------------------
 POST http://localhost:29689/api/tags
@@ -88,11 +96,12 @@ In all the `Manager` class there are async methods. If you would like to use in 
 
 _Example:_
 
-```
+```cs
 var dataset = manager.GetDataSetAsync().Result;
 ```
 
 ## Dataset
+
 Slamby provides **Dataset** as a data storage. A dataset is a JSON document storage that allows to store schema free JSON objects, indexes and additional parameters. Inside your server you can create and manage multiple datasets.
 
 You can find more details about the Datasets [here.](http://developers.slamby.com/api/#datasets)
@@ -103,7 +112,7 @@ Create a new dataset by providing a sample JSON document and additional paramete
 
 _Example:_
 
-```
+```cs
 var manager = new DataSetManager(configuration);
 var dataset = new Models.DataSet
             {
@@ -123,7 +132,7 @@ var dataset = new Models.DataSet
 var response = await manager.CreateDataSetAsync(dataset);
 if (!response.IsSuccessFul)
 {
-	// handle error with the help of the Errors property in the response
+    // handle error with the help of the Errors property in the response
 }
 ```	
 
@@ -131,7 +140,7 @@ Create a new dataset by providing a JSON schema and additional parameters.
 
 _Example:_
 
-```
+```cs
 var manager = new DataSetManager(configuration);
 var dataset = new Models.DataSet
             {
@@ -157,9 +166,9 @@ var dataset = new Models.DataSet
                     tag =  new 
                     {
                         type = "array",
-                        items = new 
+                        items = new
                         {
-                            type = "byte"    
+                            type = "byte"
                         }
                     }
                 }
@@ -177,10 +186,10 @@ Get information about a given dataset. A dataset can be accessed by its name.
 
 _Example:_
 
-```
+```cs
 var manager = new DataSetManager(configuration);
 var dataset = await manager.GetDataSetAsync();
-```	
+```
 
 ### Get Dataset List
 
@@ -188,10 +197,10 @@ Get a list of the available datasets.
 
 _Example:_
 
-```
+```cs
 var manager = new DataSetManager(configuration);
 var datasets = await manager.GetDataSetsAsync();
-```	
+```
 
 ### Remove Dataset
 
@@ -199,10 +208,10 @@ Removes a given dataset. All the stored data will be removed.
 
 _Example:_
 
-```
+```cs
 var manager = new DataSetManager(configuration);
 var result = await manager.DeleteDataSetAsync("DATASET_NAME");
-```	
+```
 
 ## Document
 
@@ -216,7 +225,7 @@ Insert a new document to a dataset using the predefined schema.
 
 _Example:_
 
-```
+```cs
 var manager = new DocumentManager(configuration, "DATASET_NAME");
 var document = new
             {
@@ -226,7 +235,7 @@ var document = new
                 tag = [2,7]
             };
 var result = await manager.CreateDocumentAsync(document);
-```	
+```
 
 ### Get Document
 
@@ -234,10 +243,10 @@ Get a document from a dataset.
 
 _Example:_
 
-```
+```cs
 var manager = new DocumentManager(configuration, "DATASET_NAME");
 var result = await manager.GetDocumentAsync("DOCUMENT_ID");
-```	
+```
 
 ### Get Document List
 
@@ -245,10 +254,10 @@ Get document list from a dataset.
 
 _Example:_
 
-```
+```cs
 var manager = new DocumentManager(configuration, "DATASET_NAME");
 var result = await manager.GetDocumentsAsync();
-```	
+```
 
 ### Edit Document
 
@@ -256,7 +265,7 @@ Edit an existing document in a dataset.
 
 _Example:_
 
-```
+```cs
 var manager = new DocumentManager(configuration, "DATASET_NAME");
 var document = new
             {
@@ -266,7 +275,7 @@ var document = new
                 tag = "2"
             };
 var result = await manager.UpdateDocumentAsync("45", document);
-```	
+```
 
 ### Copy To
 Copying documents from a dataset to another one. You can specify the documents by id. You can copy documents to an existing dataset.
@@ -276,7 +285,7 @@ The selected documents will **remain in the source dataset** as well.
 
 _Example:_
 
-```
+```cs
 var manager = new DocumentManager(configuration, "DATASET_NAME");
 var settings = new DocumentCopySettings()
 {
@@ -284,7 +293,7 @@ var settings = new DocumentCopySettings()
     TargetDataSetName = "TARGET_DATASET_NAME"
 };
 var result = await manager.CopyDocumentsToAsync(settings);
-```	
+```
 
 > **Tip:** You can use the `Documents/Sample` or the `Documents/Filter` methods to get document ids easily.
 
@@ -297,7 +306,7 @@ The selected documents will be **removed from the source dataset**.
 
 _Example:_
 
-```
+```cs
 var manager = new DocumentManager(configuration, "DATASET_NAME");
 var settings = new DocumentMoveSettings()
 {
@@ -305,7 +314,7 @@ var settings = new DocumentMoveSettings()
     TargetDataSetName = "TARGET_DATASET_NAME"
 };
 var result = await manager.MoveDocumentsToAsync(settings);
-```	
+```
 
 > **Tip:** You can use the `Documents/Sample` or the `Documents/Filter` methods to get document ids easily.
 
@@ -318,11 +327,11 @@ Inserts mass documents to a dataset using the predefined schema.
 
 _Example:_
 
-```
+```cs
 var settings = new DocumentBulkSettings()
-					{
-						Documents = myNewDocumentsList
-					};
+                    {
+                        Documents = myNewDocumentsList
+                    };
 var manager = new DocumentManager(configuration, "DATASET_NAME");
 var result = await manager.BulkDocumentsAsync(settings);
 ```
@@ -339,16 +348,16 @@ Create a new tag in a dataset.
 
 _Example:_
 
-```
+```cs
 var manager = new TagManager(configuration, "DATASET_NAME");
 var tag = new Tag
             {
                 Id = "3",
                 Name = "example tag 1",
-				ParentId = null
+                ParentId = null
             };
 var result = await manager.CreateTagAsync(tag);
-```	
+```
 
 ### Get Tag
 
@@ -356,10 +365,10 @@ Get a tag by its Id.
 
 _Example:_
 
-```
+```cs
 var manager = new TagManager(configuration, "DATASET_NAME");
 var result = await manager.GetTagAsync("3");
-```	
+```
 
 ### Get Tag List
 
@@ -367,7 +376,7 @@ Get all tags list from a given dataset.
 
 _Example:_
 
-```
+```cs
 var manager = new TagManager(configuration, "DATASET_NAME");
 var result = await manager.GetTagsAsync();
 ```
@@ -378,7 +387,7 @@ Update a tag by new values.
 
 _Example:_
 
-```
+```cs
 var manager = new TagManager(configuration, "DATASET_NAME");
 var tag = new Tag
             {
@@ -394,12 +403,13 @@ var result = await manager.UpdateTagAsync("3", tag);
 
 Remove a tag from tag list. By default, documents and datasets are not affected.
 The method have two additional parameter:
+
 - `force` - if true then the tag with children can be deleted, but be careful! All the children will be deleted also.
 - `cleanDocuments` - if true then the removed tag will be also removed from the documents
 
 _Example:_
 
-```
+```cs
 var manager = new TagManager(configuration, "DATASET_NAME");
 var result = await manager.DeleteTagAsync("5");
 ```
@@ -412,11 +422,11 @@ Replaces existing tags with the provided list. Recommended for tag list initaliz
 
 _Example:_
 
-```
+```cs
 var settings = new TagBulkSettings()
-					{
-						Tags = myImportTagList
-					};
+                    {
+                        Tags = myImportTagList
+                    };
 var manager = new TagManager(configuration, "DATASET_NAME");
 var result = await manager.BulkTagsAsync(settings);
 ```
@@ -427,7 +437,7 @@ Remove all not existing tags from the documents.
 
 _Example:_
 
-```
+```cs
 var manager = new TagManager(configuration, "DATASET_NAME");
 var result = await manager.CleanDocumentsAsync();
 ```
@@ -439,7 +449,7 @@ Get words and the occurences of the words.
 
 _Example:_
 
-```
+```cs
 var manager = new TagManager(configuration, "DATASET_NAME");
 var settings = new TagsExportWordsSettings {
     NGramList = new List<int> { 1, 2 },
@@ -451,11 +461,12 @@ var resultProcess = await manager.WordsExportAsync(settings);
 ## Sampling
 
 Statistical method to support sampling activity. Using sampling you can easily create **random samples** for experiments.
-  
+
 You can find more details about the Sampling mechanism [here.](http://developers.slamby.com/api/#sampling)
-  
+
 _Example:_
-```
+
+```cs
 var manager = new DocumentManager(configuration, "DATASET_NAME");
 var settings = new DocumentSampleSettings {
               Id = Guid.NewGuid().ToString(),
@@ -472,16 +483,16 @@ var settings = new DocumentSampleSettings {
 };
 var result = await manager.GetSampleDocumentsAsync(settings);
 ```
-  
 
 ## Filter
+
   Powerful **search engine**. Build **smart** search functions or filters. Easily access to your datasets with **simple queries**, **logical expressions** and **wild cards**. Manage your language dependencies using **optimal tokenizer**.
-  
+
 You can find more details about the Filter mechanism [here.](http://developers.slamby.com/api/#filter)
-  
+
  _Example:_
 
-```
+```cs
 var manager = new DocumentManager(configuration, "DATASET_NAME");
 var settings = new DocumentFilterSettings {
     Filter = new Filter {
@@ -499,24 +510,26 @@ var result = await manager.GetFilteredDocumentsAsync(settings);
 ```
 
 ## Processes
+
 There are long running tasks in the Slamby API. These requests are served in async way. These methods returns with a Process object.
 
 ### Get Process
 
 _Example:_
 
-```
+```cs
 var processManager = new ProcessManager(_configuration);
 var response = processManager.GetProcessAsync(processId));
 
 ```
 
 ### Get Processes
+
 If the parameter is `true` then you get all processes, if it's `false` (default), then you get only the active processes.
 
 _Example:_
 
-```
+```cs
 var allStatus = true;
 var processManager = new ProcessManager(_configuration);
 var response = processManager.GetProcessesAsync(allStatus));
@@ -527,7 +540,7 @@ var response = processManager.GetProcessesAsync(allStatus));
 
 _Example:_
 
-```
+```cs
 var processManager = new ProcessManager(_configuration);
 var cancelRespone = await processManager.CancelProcessAsync(process.Id);
 
@@ -536,13 +549,14 @@ var cancelRespone = await processManager.CancelProcessAsync(process.Id);
 
 
 ## Services
+
 You can quickly create a data processing service from the available service templates. Manage your data processing with services, run different tests, run more data management services parallelly.
 
 ### Create Service
 
 _Example:_
 
-```
+```cs
 var service = new Service()
             {
                 Name = "Test service",
@@ -560,7 +574,7 @@ var createdService = result.ResponseObject;
 
 _Example:_
 
-```
+```cs
 var serviceManager = new ServiceManager(_configuration);
 var servicesResponse = await serviceManager.GetServicesAsync();
 
@@ -570,7 +584,7 @@ var servicesResponse = await serviceManager.GetServicesAsync();
 
 _Example:_
 
-```
+```cs
 var serviceManager = new ServiceManager(_configuration);
 var serviceResponse = await serviceManager.GetServiceAsync(serviceId);
 ```
@@ -582,7 +596,8 @@ var serviceResponse = await serviceManager.GetServiceAsync(serviceId);
 You can modify only the `Name` and `Description` properties.
 
 _Example:_
-```
+
+```cs
 var serviceManager = new ServiceManager(_configuration);
 createdService.Name = "Modified name";
 createdService.Description = "Modified description";
@@ -592,7 +607,8 @@ var modifyResponse = await serviceManager.UpdateServiceAsync(createdService.Id, 
 ### Delete Service
 
 _Example:_
-```
+
+```cs
 var serviceManager = new ServiceManager(_configuration);
 var deleteResponse = await serviceManager.DeleteServiceAsync(createdService.Id);
 ```
@@ -604,7 +620,8 @@ Service for text classification. Create a classifier service from a selected dat
 ### Get Classifier Service
 
 _Example:_
-```
+
+```cs
 var classifierServiceManager = new ClassifierServiceManager(_configuration);
 var classifierServiceResponse = await classifierServiceManager.GetServiceAsync(serviceId);
 ```
@@ -614,7 +631,8 @@ var classifierServiceResponse = await classifierServiceManager.GetServiceAsync(s
 > **Tip:** You can limit used thread count for this function in the configuration object
 
 _Example:_
-```
+
+```cs
 var classifierServiceManager = new ClassifierServiceManager(_configuration);
 var classifierPrepareSettings = new ClassifierPrepareSettings()
         {
@@ -629,7 +647,8 @@ var process = prepareResponse.ResponseObject;
 ### Activate Classifier Service
 
 _Example:_
-```
+
+```cs
 var classifierServiceManager = new ClassifierServiceManager(_configuration);
 var classifierActivateSettings = new Models.Services.ClassifierActivateSettings()
 {
@@ -641,7 +660,8 @@ var activateResponse = await classifierServiceManager.ActivateServiceAsync(servi
 ### Deactivate Classifier Service
 
 _Example:_
-```
+
+```cs
 var classifierServiceManager = new ClassifierServiceManager(_configuration);
 deactivateResponse = await classifierServiceManager.DeactivateServiceAsync(classifierServiceId);
 ```
@@ -649,7 +669,8 @@ deactivateResponse = await classifierServiceManager.DeactivateServiceAsync(class
 ### Classifier Service Recommendation
 
 _Example:_
-```
+
+```cs
 var classifierServiceManager = new ClassifierServiceManager(_configuration);
 var classifierRecommendationRequest = new Models.Services.ClassifierRecommendationRequest()
     {
@@ -664,7 +685,8 @@ var recommendResponse = (await classifierServiceManager.RecommendServiceAsync(se
 ### Classifier Service Export Dictionaries
 
 _Example:_
-```
+
+```cs
 var classifierServiceManager = new ClassifierServiceManager(_configuration);
 var settings = new ExportDictionariesSettings
     {
@@ -682,16 +704,17 @@ Service for document recommendation. Create a prc service from a selected datase
 ### Get Prc Service
 
 _Example:_
-```
+
+```cs
 var prcServiceManager = new PrcServiceManager(_configuration);
 var prcServiceResponse = await prcServiceManager.GetServiceAsync(serviceId);
 ```
 
 ### Prepare Prc Service
 
-
 _Example:_
-```
+
+```cs
 var prcServiceManager = new PrcServiceManager(_configuration);
 var prcPrepareSettings = new PrcPrepareSettings()
         {
@@ -708,7 +731,8 @@ var process = prepareResponse.ResponseObject;
 > **Tip:** You can limit used thread count for this function in the configuration object
 
 _Example:_
-```
+
+```cs
 var prcServiceManager = new PrcServiceManager(_configuration);
 var prcActivateSettings = new Models.Services.PrcActivateSettings()
 {
@@ -720,7 +744,8 @@ var activateResponse = await prcServiceManager.ActivateServiceAsync(serviceId, p
 ### Deactivate Prc Service
 
 _Example:_
-```
+
+```cs
 var prcServiceManager = new prcServiceManager(_configuration);
 deactivateResponse = await prcServiceManager.DeactivateServiceAsync(prcServiceId);
 ```
@@ -728,7 +753,8 @@ deactivateResponse = await prcServiceManager.DeactivateServiceAsync(prcServiceId
 ### Prc Service Recommendation
 
 _Example:_
-```
+
+```cs
 var prcServiceManager = new PrcServiceManager(_configuration);
 var prcRecommendationRequest = new Models.Services.PrcRecommendationRequest()
     {
@@ -740,11 +766,11 @@ var prcRecommendationRequest = new Models.Services.PrcRecommendationRequest()
 var recommendResponse = (await prcServiceManager.RecommendServiceAsync(serviceId, prcRecommendationRequest));
 ```
 
-
 ### Prc Service Export Dictionaries
 
 _Example:_
-```
+
+```cs
 var prcServiceManager = new PrcServiceManager(_configuration);
 var settings = new ExportDictionariesSettings
     {
@@ -758,7 +784,8 @@ var resultProcess = (await prcServiceManager.ExportDictionariesAsync(serviceId, 
 Returns with version, processor, memory and disk information about the API server.
 
 _Example:_
-```
+
+```cs
 var statusManager = new StatusManager(_configuration);
 var resultStatus = await statusManager.GetStatusAsync();
 ```
