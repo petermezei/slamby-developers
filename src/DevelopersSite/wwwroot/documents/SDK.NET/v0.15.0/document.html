@@ -1,0 +1,90 @@
+<h2 id="document">Document</h2>
+<p>Manage your <strong>documents</strong> easily. Create, edit, remove and running text analysis.</p>
+<p>You can find more details about the Documents <a href="http://developers.slamby.com/api/#documents">here.</a></p>
+<h3 id="insert-new-document">Insert New Document</h3>
+<p>Insert a new document to a dataset using the predefined schema.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
+var document = new
+            {
+                id = &quot;42&quot;,
+                title = &quot;Example Product Title&quot;,
+                desc = &quot;Example Product Description&quot;,
+                tag = [2,7]
+            };
+var result = await manager.CreateDocumentAsync(document);
+</code></pre>
+<h3 id="get-document">Get Document</h3>
+<p>Get a document from a dataset.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
+var result = await manager.GetDocumentAsync(&quot;DOCUMENT_ID&quot;);
+</code></pre>
+<h3 id="get-document-list">Get Document List</h3>
+<p>Get document list from a dataset.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
+var result = await manager.GetDocumentsAsync();
+</code></pre>
+<h3 id="edit-document">Edit Document</h3>
+<p>Edit an existing document in a dataset.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
+var document = new
+            {
+                id = &quot;45&quot;,
+                title = &quot;Example Modified Product Title&quot;,
+                desc = &quot;Example Modified Product Description&quot;,
+                tag = &quot;2&quot;
+            };
+var result = await manager.UpdateDocumentAsync(&quot;45&quot;, document);
+</code></pre>
+<h3 id="copy-to">Copy To</h3>
+<p>Copying documents from a dataset to another one. You can specify the documents by id. You can copy documents to an existing dataset.
+The selected documents will <strong>remain in the source dataset</strong> as well.</p>
+<blockquote>
+<p><strong>Tip:</strong> You can limit used thread count for this function in the configuration object</p>
+</blockquote>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
+var settings = new DocumentCopySettings()
+{
+    Ids = new List&lt;string&gt; { &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot; },
+    TargetDataSetName = &quot;TARGET_DATASET_NAME&quot;
+};
+var result = await manager.CopyDocumentsToAsync(settings);
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> You can use the <code>Documents/Sample</code> or the <code>Documents/Filter</code> methods to get document ids easily.</p>
+</blockquote>
+<h3 id="move-to">Move To</h3>
+<p>Moving documents from a dataset to another one. You can specify documents by id. You can move documents to an existing dataset. 
+The selected documents will be <strong>removed from the source dataset</strong>.</p>
+<blockquote>
+<p><strong>Tip:</strong> You can limit used thread count for this function in the configuration object</p>
+</blockquote>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
+var settings = new DocumentMoveSettings()
+{
+    Ids = new List&lt;string&gt; { &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot; },
+    TargetDataSetName = &quot;TARGET_DATASET_NAME&quot;
+};
+var result = await manager.MoveDocumentsToAsync(settings);
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> You can use the <code>Documents/Sample</code> or the <code>Documents/Filter</code> methods to get document ids easily.</p>
+</blockquote>
+<h3 id="bulk-documents">Bulk Documents</h3>
+<p>Inserts mass documents to a dataset using the predefined schema.</p>
+<blockquote>
+<p><strong>Tip:</strong> You can limit used thread count for this function in the configuration object</p>
+</blockquote>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var settings = new DocumentBulkSettings()
+                    {
+                        Documents = myNewDocumentsList
+                    };
+var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
+var result = await manager.BulkDocumentsAsync(settings);
+</code></pre>

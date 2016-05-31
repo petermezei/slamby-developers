@@ -6404,6 +6404,9 @@ span.sw-default-value-header {
 a h1, h2, h3 {
   color: #333333; }
 
+body {
+  margin-top: 50px; }
+
 /*.navbar-default {
     background-color: #5bc0de;
     border-color: #3fb5d8;
@@ -6537,6 +6540,7 @@ footer {
     font-style: italic; }
 
 .wrapper-docpage {
+  min-height: 600px;
   /* hide sidebar sub menus by default */
   /* show sub menu when parent is active */ }
   .wrapper-docpage .affix-top, .wrapper-docpage .affix {

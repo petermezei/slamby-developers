@@ -1,4 +1,4 @@
-﻿(function () {
+﻿    (function () {
     buildMenu();
 
     $('#sidebar_col').affix({

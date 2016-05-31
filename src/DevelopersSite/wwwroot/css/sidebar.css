@@ -1,4 +1,5 @@
 ﻿.wrapper-docpage {
+  min-height: 600px;
   /* hide sidebar sub menus by default */
   /* show sub menu when parent is active */ }
   .wrapper-docpage .affix-top, .wrapper-docpage .affix {

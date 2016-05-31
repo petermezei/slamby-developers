@@ -1,0 +1,287 @@
+<h2 id="dataset">Dataset</h2>
+<p>Slamby provides <strong>Dataset</strong> as a data storage. A dataset is a JSON document storage that allows to store schema free JSON objects, indexes and additional parameters. Inside your server you can create and manage multiple datasets.</p>
+<p>With dataset you can:</p>
+<ul>
+<li>Create multiple datasets</li>
+<li>Using schema free JSON objects</li>
+<li>Set indexes for text processing</li>
+<li>Running text analysis on the stored data</li>
+</ul>
+<blockquote>
+<p><strong>Tip:</strong> With schema free JSON storage you can easily store your existing schemas. Store document related data - such as image urls, prices - and build powerful queries.</p>
+</blockquote>
+<h3 id="create-new-dataset">Create new Dataset</h3>
+<p>Create a new dataset by providing a sample JSON document and additional parameters.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-DataSets-post">POST /api/DataSets</a>)</p>
+<pre><code class="lang-JSON">{
+    &quot;IdField&quot;: &quot;id&quot;,
+    &quot;InterpretedFields&quot;: [&quot;title&quot;, &quot;desc&quot;],
+    &quot;Name&quot;: &quot;test1&quot;,
+    &quot;NGramCount&quot;: &quot;3&quot;,
+    &quot;TagField&quot;: &quot;tag&quot;,
+    &quot;SampleDocument&quot;: {
+        &quot;id&quot;: 9,
+        &quot;title&quot;: &quot;Example Product Title&quot;,
+        &quot;desc&quot;: &quot;Example Product Description&quot;,
+        &quot;tag&quot;: [1,2,3]
+    }
+}
+</code></pre>
+</blockquote>
+<p>Create a new dataset by providing a schema JSON document and additional parameters.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-DataSets-Schema-post">POST /api/DataSets/Schema</a>)</p>
+<pre><code class="lang-JSON">{
+    &quot;IdField&quot;: &quot;id&quot;,
+    &quot;InterpretedFields&quot;: [
+        &quot;title&quot;,
+        &quot;desc&quot;
+    ],
+    &quot;Name&quot;: &quot;test2&quot;,
+    &quot;NGramCount&quot;: &quot;3&quot;,
+    &quot;TagField&quot;: &quot;tag&quot;,
+    &quot;Schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;id&quot;: {
+                &quot;type&quot;: &quot;integer&quot;
+            },
+            &quot;title&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;desc&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;tag&quot;: {
+                &quot;type&quot;: &quot;array&quot;,
+                &quot;items&quot;: {
+                    &quot;type&quot;: &quot;byte&quot;
+                }
+            }
+        }
+    }
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 201 CREATED</p>
+</blockquote>
+<h5 id="check-the-dataset-schema-definition-here-definitions-dataset-">Check the DataSet schema definition <a href="#/definitions/DataSet">here</a></h5>
+<h3 id="data-types">Data Types</h3>
+<p>Defining a dataset schema you can set your custom field type.</p>
+<p><em>Currently available field types:</em></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String</td>
+<td><code>string</code></td>
+</tr>
+<tr>
+<td>Numeric</td>
+<td><code>long</code>, <code>integer</code>, <code>short</code>, <code>byte</code>, <code>double</code>, <code>float</code></td>
+</tr>
+<tr>
+<td>Date</td>
+<td><code>date</code></td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td><code>boolean</code></td>
+</tr>
+<tr>
+<td>Array</td>
+<td><code>array</code></td>
+</tr>
+<tr>
+<td>Object</td>
+<td><code>object</code> for single JSON objects</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example schema</em></p>
+<pre><code class="lang-JSON">{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;name&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;firstName&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;secondName&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                }
+            },
+        &quot;age&quot;: {
+            &quot;type&quot;:&quot;integer&quot;
+        },
+        &quot;sex&quot;: {
+            &quot;type&quot;:&quot;boolean&quot;
+        },
+        &quot;luckyNumbers&quot;: {
+            &quot;type&quot;: &quot;array&quot;,
+            &quot;items&quot;: {
+                &quot;type&quot;: &quot;integer&quot;
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="date-formats">Date Formats</h3>
+<p>You can define your custom date format to specify your needs.
+For dataset date formats you can use the built-in <a href="https://www.elastic.co/guide/en/elasticsearch/reference/2.2/mapping-date-format.html">elastic-search custom formats</a>.
+If you do not provide date format, default value is <code>&quot;strict_date_optional_time||epoch_millis&quot;</code>.</p>
+<p><strong>Built in formats e.g.</strong></p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>epoch_millis</code></td>
+<td>A formatter for the number of milliseconds since the epoch. Note, that this timestamp allows a max length of 13 chars, so only dates between 1653 and 2286 are supported. You should use a different date formatter in that case. </td>
+</tr>
+<tr>
+<td><code>epoch_second</code></td>
+<td>A formatter for the number of seconds since the epoch. Note, that this timestamp allows a max length of 10 chars, so only dates between 1653 and 2286 are supported. You should use a different date formatter in that case. </td>
+</tr>
+<tr>
+<td><code>date_optional_time</code> or <code>strict_date_optional_time</code></td>
+<td>A generic ISO datetime parser where the date is mandatory and the time is optional.</td>
+</tr>
+<tr>
+<td><code>basic_date</code></td>
+<td>A basic formatter for a full date as four digit year, two digit month of year, and two digit day of month: yyyyMMdd.</td>
+</tr>
+<tr>
+<td><code>basic_date_time</code></td>
+<td>A basic formatter that combines a basic date and time, separated by a T: yyyyMMdd&#39;T&#39;HHmmss.SSSZ.</td>
+</tr>
+<tr>
+<td><code>basic_date_time_no_millis</code></td>
+<td>A basic formatter that combines a basic date and time without millis, separated by a T: yyyyMMdd&#39;T&#39;HHmmssZ. </td>
+</tr>
+<tr>
+<td><code>basic_ordinal_date</code></td>
+<td>A formatter for a full ordinal date, using a four digit year and three digit dayOfYear: yyyyDDD. </td>
+</tr>
+</tbody>
+</table>
+<p>...</p>
+<h3 id="get-dataset">Get Dataset</h3>
+<p>Get information about a given dataset. A dataset can be accessed by its name.</p>
+<p>Returns with:</p>
+<ul>
+<li>Dataset basic information</li>
+<li>Dataset settings</li>
+<li>Schema sample document</li>
+<li>Dataset statistics</li>
+</ul>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-DataSets-get">GET /api/DataSets/<code>example</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-JSON">{
+    &quot;Name&quot;: &quot;example&quot;,
+    &quot;NGramCount&quot;: 3,
+    &quot;IdField&quot;: &quot;id&quot;,
+    &quot;TagField&quot;: &quot;tag&quot;,
+    &quot;InterpretedFields&quot;: [
+        &quot;title&quot;,
+        &quot;desc&quot;
+    ],
+    &quot;Statistics&quot;: {
+        &quot;DocumentsCount&quot;: 3
+    },
+    &quot;SampleDocument&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Example title&quot;,
+        &quot;desc&quot;: &quot;Example Description&quot;,
+        &quot;tag&quot;: [1,2,3]
+    }
+}
+</code></pre>
+</blockquote>
+<h5 id="check-the-dataset-schema-definition-here-definitions-dataset-">Check the DataSet schema definition <a href="#/definitions/DataSet">here</a></h5>
+<h3 id="get-dataset-list">Get Dataset List</h3>
+<p>Get a list of the available datasets.</p>
+<p>Returns with:</p>
+<ul>
+<li>Dataset objects array</li>
+</ul>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-DataSets-get">GET /api/DataSets</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-JSON">[
+    {
+    &quot;Name&quot;: &quot;example&quot;,
+    &quot;NGramCount&quot;: 3,
+    &quot;IdField&quot;: &quot;id&quot;,
+    &quot;TagField&quot;: &quot;tags&quot;,
+    &quot;InterpretedFields&quot;: [
+        &quot;title&quot;,
+        &quot;desc&quot;
+    ],
+    &quot;Statistics&quot;: {
+        &quot;DocumentsCount&quot;: 3
+    },
+    &quot;SampleDocument&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Example title&quot;,
+        &quot;desc&quot;: &quot;Example Description&quot;,
+        &quot;tags&quot;: [1,2,3]
+    }
+    },
+    {
+    &quot;Name&quot;: &quot;example2&quot;,
+    &quot;NGramCount&quot;: 3,
+    &quot;IdField&quot;: &quot;id&quot;,
+    &quot;TagField&quot;: &quot;tags&quot;,
+    &quot;InterpretedFields&quot;: [
+        &quot;title&quot;,
+        &quot;desc&quot;
+    ],
+    &quot;Statistics&quot;: {
+        &quot;DocumentsCount&quot;: 3
+    },
+    &quot;SampleDocument&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Example title&quot;,
+        &quot;desc&quot;: &quot;Example Description&quot;,
+        &quot;tags&quot;: [1,2,3]
+    }
+    }
+]
+</code></pre>
+</blockquote>
+<h5 id="check-the-dataset-schema-definition-here-definitions-dataset-">Check the DataSet schema definition <a href="#/definitions/DataSet">here</a></h5>
+<h3 id="remove-dataset">Remove Dataset</h3>
+<p>Removes a given dataset. All the stored data will be removed.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-DataSets-delete">DELETE /api/DataSets/<code>example</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>

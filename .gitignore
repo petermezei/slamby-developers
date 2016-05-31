@@ -9,4 +9,6 @@ node_modules/
 npm-debug.log
 *.suo
 
+Thumbs.db
+
 /src/DevelopersSite/wwwroot/lib

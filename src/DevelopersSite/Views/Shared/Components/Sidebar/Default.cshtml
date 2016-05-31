@@ -15,7 +15,7 @@
             @foreach (var version in Model.Document.Versions)
             {
                 <li>
-                    <a asp-controller="docs" asp-action="Index" asp-route-product="@(Model.Document.Product)" asp-route-version="@version" asp-route-file="">
+                    <a asp-controller="docs" asp-action="Index" asp-route-product="@(Model.Document.Product)" asp-route-version="@version" asp-route-file="index">
                         @(version)@(version == latestVersion ? " (latest)" : "")
                     </a>
                 </li>
@@ -30,7 +30,7 @@
         }
     </div>
 
-    @if (!Model.IsDefaultDocument)
+    @if (!Model.IsStartDocument && string.IsNullOrEmpty(Model.TocContent))
     {
         var routeParams = service.GetRouteParams(Model.Document.Product, Model.Version);
         <div class="back-to-index">

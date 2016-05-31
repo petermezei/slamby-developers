@@ -12,6 +12,6 @@
 
         public string CurrentUrl { get; set; }
 
-        public bool IsDefaultDocument { get; internal set; }
+        public bool IsStartDocument { get; internal set; }
     }
 }

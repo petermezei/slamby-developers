@@ -26,7 +26,7 @@ namespace DevelopersSite.Controllers
         }
 
         [Route("docs/{product?}/{version?}/{file?}")]
-        public IActionResult Index(string product, string version, string file)
+        public IActionResult Index(string product, string version, string file = "index")
         {
             var document = documentService.GetProduct(product);
             if (document == null)
@@ -45,10 +45,10 @@ namespace DevelopersSite.Controllers
                 Version = docVersion.Version,
                 Content = documentService.GetContent(docVersion, filename),
                 CurrentUrl = currentUrl,
-                IsDefaultDocument = documentService.IsDefaultDoc(filename)
+                IsStartDocument = string.Equals(filename, docVersion.StartFilename)
             };
 
-            if (model.IsDefaultDocument &&  
+            if (model.IsStartDocument &&  
                 !string.IsNullOrEmpty(docVersion.TocFilename))
             {
                 model.TocContent = documentService.GetContent(docVersion, docVersion.TocFilename);
