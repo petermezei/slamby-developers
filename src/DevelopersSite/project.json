@@ -36,7 +36,8 @@
   "publishExclude": [
     "**.user",
     "**.vspscc",
-    "bootprint-openapi/**/*.*"
+    "bootprint-openapi/**/*.*",
+    "./global.json"
   ],
   "scripts": {
     "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min", "gulp generate" ]

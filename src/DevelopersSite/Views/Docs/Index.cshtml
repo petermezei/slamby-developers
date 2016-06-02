@@ -16,3 +16,14 @@
         });
     </script>
 }
+
+@section styles {
+    @if (Model.DocumentCount > 2)
+    {
+    <style>
+        .wrapper-docpage #sidebar.nav .nav {
+            display: block;
+        }
+    </style>
+    }
+}

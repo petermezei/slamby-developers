@@ -13,5 +13,7 @@
         public string CurrentUrl { get; set; }
 
         public bool IsStartDocument { get; internal set; }
+
+        public int DocumentCount { get; set; }
     }
 }

@@ -45,7 +45,8 @@ namespace DevelopersSite.Controllers
                 Version = docVersion.Version,
                 Content = documentService.GetContent(docVersion, filename),
                 CurrentUrl = currentUrl,
-                IsStartDocument = string.Equals(filename, docVersion.StartFilename)
+                IsStartDocument = string.Equals(filename, docVersion.StartFilename),
+                DocumentCount = docVersion.ContentFilenames.Count
             };
 
             if (model.IsStartDocument &&  

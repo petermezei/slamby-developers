@@ -1,1 +1,55 @@
-<p>Slamby API welcomepage.</p>
+<h1 id="slamby-api-0-15-0">Slamby API 0.15.0</h1>
+<h2 id="changelog">Changelog</h2>
+<h2 id="features">Features</h2>
+<ul>
+<li>added DataSet schema definition endpoint</li>
+<li>hierarchical interpreted fields</li>
+</ul>
+<hr>
+<p>Slamby introduces Slamby Service (API). Build powerful data management center, store and analyze your data easily. This documentation shows you a quick overview about the available API endpoints, technical details and business usage.
+With Slamby you can:</p>
+<ul>
+<li>Store and manage your data easily</li>
+<li>Get high data security and privacy</li>
+<li>Use improved data analysis</li>
+</ul>
+<p>Once you&#39;ve
+<a href="http://slamby.com/register/">registered your client</a> it&#39;s easy
+to start working with Slamby API.</p>
+<p>All endpoints are only accessible via https and are located at
+<code>api.slamby.com</code>.</p>
+<pre><code>    https://api.slamby.com/CLIENT_ID
+</code></pre><blockquote>
+<p><strong>Tip:</strong> The <code>CLIENT_ID</code> is your unique identifier what you get after your server is ready to use.</p>
+</blockquote>
+<h2 id="authentication">Authentication</h2>
+<p>The base of the authentication is the <code>API_KEY</code>.
+You have to provide it in the authorization header. It is <strong>required for every API call</strong>.
+The examples of the documentation is preasuming that you provide the API key in the header.</p>
+<blockquote>
+<p><em>Example</em></p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>Slamby <code>API_KEY</code></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+<p><strong>Tip:</strong> You will get your <code>API_KEY</code> after your server is ready to use.</p>
+</blockquote>
+<h2 id="api-version">API Version</h2>
+<p>Every response contains API version information in response HTTP <code>X-Api-Version</code> header.</p>
+<blockquote>
+<p><em>Example</em></p>
+<p>X-Api-Version: 0.11.0</p>
+</blockquote>
