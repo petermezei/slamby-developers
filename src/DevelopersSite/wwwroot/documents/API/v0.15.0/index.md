@@ -1,8 +1,8 @@
-## Slamby API 0.15.0
+# Slamby API 0.15.0
 
-### Changelog
+## Changelog
 
-### Features
+## Features
 - added DataSet schema definition endpoint
 - hierarchical interpreted fields
 
@@ -26,7 +26,7 @@ All endpoints are only accessible via https and are located at
 
 > **Tip:** The `CLIENT_ID` is your unique identifier what you get after your server is ready to use.
 
-### Authentication
+## Authentication
 The base of the authentication is the `API_KEY`.
 You have to provide it in the authorization header. It is **required for every API call**.
 The examples of the documentation is preasuming that you provide the API key in the header.
@@ -41,7 +41,7 @@ Authorization|Slamby `API_KEY`
 
 >**Tip:** You will get your `API_KEY` after your server is ready to use.
 
-### API Version
+## API Version
 
 Every response contains API version information in response HTTP `X-Api-Version` header.
 
