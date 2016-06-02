@@ -1,5 +1,3 @@
-- [Changelog](changelog)
-- [General](general)
 - [Dataset](dataset)
 - [Document](document)
 - [Tag](tag)
