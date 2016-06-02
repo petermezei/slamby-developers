@@ -6,3 +6,4 @@
 - [Service](service)
 - [Process](process)
 - [General](general)
+- [Endpoints & Models](swagger)
