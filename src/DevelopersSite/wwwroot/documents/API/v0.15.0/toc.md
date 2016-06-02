@@ -1,7 +1,3 @@
-- [Changelog](changelog)
-- [Features](features)
-- [API version](api_version)
-- [Authentication](authentication)
 - [Dataset](dataset)
 - [Document](document)
 - [Tag](tags)
