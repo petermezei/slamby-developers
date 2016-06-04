@@ -55,7 +55,7 @@ namespace DevelopersSite
             {
                 routes.MapRoute(
                    name: "default",
-                   template: "{controller=docs}/{action=home}");
+                   template: "{controller=home}/{action=index}");
             });            
         }
 

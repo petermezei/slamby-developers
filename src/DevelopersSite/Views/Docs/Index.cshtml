@@ -1,11 +1,13 @@
 ﻿@model DevelopersSite.Models.DocumentViewModel
 
-<div class="wrapper wrapper-docpage">
-    <div class="list">
-        @Component.Invoke("Sidebar", Model)
-    </div>
-    <div class="body" id="documentation">
-        @Html.Raw(Model.Content)
+<div class="container">
+    <div class="wrapper wrapper-docpage">
+        <div class="list">
+            @Component.Invoke("Sidebar", Model)
+        </div>
+        <div class="body" id="documentation">
+            @Html.Raw(Model.Content)
+        </div>
     </div>
 </div>
 
