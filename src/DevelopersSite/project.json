@@ -28,10 +28,18 @@
   "frameworks": {
     "dnx451": {
       "frameworkAssemblies": {
-        "System.Web": "4.0.0.0"
+        "System.Web": "4.0.0.0",
+        "System.XML": "4.0.0.0",
+        "System.Xml.Serialization": "4.0.0.0"
+      },
+      "dependencies": {
+        "Slamby.SDK.Net": "0.15.2"
       }
     },
-    "dnxcore50": { }
+    "dnxcore50": {
+      "dependencies": {
+      }
+    }
   },
 
   "exclude": [

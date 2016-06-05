@@ -74,6 +74,18 @@ function buildMenu() {
 
 $(document).ready(function () {
     $("#SubscribeBtn").click(function () {
-        alert('Ok');
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:5000/home/AddSubscription/',
+            data: {
+                'name': $('#inputEmail3').val(),
+                'name': $("#name").val(),
+                'company': $('#company').val()
+            },
+            success: function (msg) {
+                $('#SubscribtionForm').modal('hide');
+                $('#SubscribtionForm input').val("");
+            }
+        });
     });
 });
