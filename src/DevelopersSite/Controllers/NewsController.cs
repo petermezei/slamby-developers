@@ -19,7 +19,7 @@ namespace DevelopersSite.Controllers
             using (var webClient = new WebClient())
             {
                 var json = webClient.DownloadString("http://13.79.162.110/wp-json/wp/v2/posts?categories=2");
-                var news = JsonConvert.DeserializeObject<List<NewsModel>>(json);
+                var news = JsonConvert.DeserializeObject<List<WordpressPostModel>>(json);
                 ViewBag.news = news;
                 return View();
             }

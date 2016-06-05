@@ -71,3 +71,9 @@ function buildMenu() {
 
     $("#sidebar").append(menuHtml);
 }
+
+$(document).ready(function () {
+    $("#SubscribeBtn").click(function () {
+        alert('Ok');
+    });
+});

@@ -30,20 +30,6 @@
         <script src="~/lib/highlight/src/highlight.js"></script>
         <script src="~/js/prism.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
-        
-        <script>
-            $(document).ready(function () {
-                function showMailingPopUp() {
-                    require(["mojo/signup-forms/Loader"], function (L) { L.start({ "baseUrl": "mc.us8.list-manage.com", "uuid": "2cc8f967bed26c6531c44c771", "lid": "e2fd23eca3" }) })
-                    document.cookie = "MCEvilPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-                };
-                $("#subscribeForm").click(function () {
-                    showMailingPopUp();
-                });
-            })
-        </script>
-
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
@@ -71,7 +57,6 @@
             ga('send', 'pageview');
         </script>
     </environment>
-
     @RenderSection("scripts", required: false)
 </body>
 </html>

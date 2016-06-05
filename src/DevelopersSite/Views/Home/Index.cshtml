@@ -1,102 +1,140 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@*<div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+                <h4>Product Docs</h4>
+                <ul>
+                    <li><a href="/docs/API/">Slamby API</a></li>
+                    <li><a href="/docs/SDK.NET/">Slamby SDK.NET</a></li>
+                    <li><a href="/docs/TAU/">Slamby TAU</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4">
+                <h4>Tutorials, Guides</h4>
+                <ul>
+                    <li>Category Recommendation</li>
+                    <li>Similar Document Recommendation</li>
+                    <li>Duplicate Detector</li>
+                </ul>
+            </div>
+            <div class="col-xs-4">
+                <h4>Video Tutorials</h4>
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=-1TE78i8BAs&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf&index=1" target="_blank">Slamby TAU (0.12.1) Tutorial - Introduction</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=S0H8lufnPng&index=2&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorials - Installation and Server Settings</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=H5_jSZJmTPg&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf&index=3" target="_blank">Slamby TAU (0.12.1) Tutorial - Basics</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=cjdQRfFQd9k&index=4&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - Dataset Managemenet</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=k6Xrr6nmjJ0&index=5&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - Document Management</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=0zhDeW_pQUU&index=6&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - Classifier Service</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=2TwqXjnGWXM&index=7&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - PRC Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr />
+    </div>*@
 
-<div class="container-fluid" style="height:300px;background:url(/images/misc/banner.png) no-repeat;background-size:100% auto;">
-    <div class="row">
-        <div class="col-md-12">
-            <pre style="background-color:transparent;border:none;font-size:20px">
-                <code class="language-python">
-                    import slamby_sdk
-                    from slamby_sdk.rest import ApiException
-                
-                    client = slamby_sdk.ApiClient("https://europe.slamby.com/demo/")
-                    client.set_default_header("Authorization", "Slamby demo")
+<div class="container-fluid" style="background-image:url('images/misc/bgdemo.jpg'); background-size:100% auto; height:30em;">
+    <div class="wrapper"></div>
+</div>
 
-                    slamby_sdk.DocumentApi(client).get_document('119')
-                </code>
-            </pre>
-            @*<img src="https://scontent-vie1-1.xx.fbcdn.net/t39.2365-6/12056999_527586047417155_1427094715_n.jpg" class="img-responsive" style="margin-top:-40%" />*@
+<div class="container">
+    <div class="wrapper">
+        <div class="col-xs-6 col-xs-offset-3 text-center">
+            <h2>Process Your Data Easily</h2>
+            <p class="lead">Build global, scalable, easy to use data-processing solutions</p>
         </div>
     </div>
 </div>
 
 <div class="container text-center">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Slamby For Developers</h2>
-            <p class="lead">Makes your work easy</p>
+    <div class="wrapper">
+        <div class="col-xs-4">
+            <i class="fa fa-newspaper-o fa-3x"></i>
+            <h4>Newsletter</h4>
+            <p>Subscribe to receive our latest developments via e-mail.</p>
+            <button class="btn btn-info" data-toggle="modal" data-target="#SubscribtionForm">Subscribe</button>
+            <!-- Modal -->
+            <div class="modal fade" id="SubscribtionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Community Newsletter</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="name" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="company" class="col-sm-2 control-label">Company</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="company" placeholder="Company Name">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-info" id="SubscribeBtn">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <i class="fa fa-linkedin fa-3x"></i>
+            <h4>LinkedIn Group</h4>
+            <p>Join our group to be aware of our latest developments.</p>
+            <a href="https://www.linkedin.com/groups/8485577" class="btn btn-info" role="button" target="_blank">Join Community</a>
+        </div>
+        <div class="col-xs-4">
+            <i class="fa fa-rss fa-3x"></i>
+            <h4>Developer News</h4>
+            <p>Check the latest developer<br />& product updates.</p>
+            <a href="/News" class="btn btn-info" role="button" target="_self">Read News</a>
         </div>
     </div>
     <hr />
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-xs-4">
-            <h4>Product Docs</h4>
-            <ul>
-                <li><a href="/docs/API/">Slamby API</a></li>
-                <li><a href="/docs/SDK.NET/">Slamby SDK.NET</a></li>
-                <li><a href="/docs/TAU/">Slamby TAU</a></li>
-            </ul>
+    <div class="wrapper">
+        <div class="col-md-12">
+            <h3>Recent Updates</h3>
         </div>
-        <div class="col-xs-4">
-            <h4>Tutorials, Guides</h4>
-            <ul>
-                <li>Category Recommendation</li>
-                <li>Similar Document Recommendation</li>
-                <li>Duplicate Detector</li>
-            </ul>
-        </div>
-        <div class="col-xs-4">
-            <h4>Video Tutorials</h4>
-            <ul>
-                <li><a href="https://www.youtube.com/watch?v=-1TE78i8BAs&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf&index=1" target="_blank">Slamby TAU (0.12.1) Tutorial - Introduction</a></li>
-                <li><a href="https://www.youtube.com/watch?v=S0H8lufnPng&index=2&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorials - Installation and Server Settings</a></li>
-                <li><a href="https://www.youtube.com/watch?v=H5_jSZJmTPg&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf&index=3" target="_blank">Slamby TAU (0.12.1) Tutorial - Basics</a></li>
-                <li><a href="https://www.youtube.com/watch?v=cjdQRfFQd9k&index=4&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - Dataset Managemenet</a></li>
-                <li><a href="https://www.youtube.com/watch?v=k6Xrr6nmjJ0&index=5&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - Document Management</a></li>
-                <li><a href="https://www.youtube.com/watch?v=0zhDeW_pQUU&index=6&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - Classifier Service</a></li>
-                <li><a href="https://www.youtube.com/watch?v=2TwqXjnGWXM&index=7&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - PRC Service</a></li>
-            </ul>
-        </div>
-    </div>
-    <hr />
-</div>
+        <div class="col-md-12">
+            @if (ViewBag.news.Count == 0)
+            {
+                <p>Currently there is no news available.</p>
+            }
+            else
+            {
+                <ul class="list-group">
+                    @foreach (var item in ViewBag.news)
+                {
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <a href="/news" target="_self">@Html.Raw(item.title.rendered)</a>
+                                </div>
+                                <div class="col-xs-4">
+                                    <span class="pull-right text-muted">@item.date.ToString("dd. MMMM, hh:mm")</span>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
 
-<div class="container-fluid" style="margin-top:25px;margin-bottom:25px;">
-    <div class="row" style="padding:25px; background-color:#f3f3f3">
-        <img src="~/images/misc/Docbannertrans.png" class="center-block" />
-    </div>
-</div>
-
-<div class="container text-center">
-    @*<div class="row">
-        <h3>Get Updates</h3>
-        <hr />
-    </div>*@
-    <div class="row">
-        <div class="col-xs-4">
-            <i class="fa fa-newspaper-o fa-4x"></i>
-            <h4>Newsletter</h4>
-            <p>Subscribe to receive our latest developments via e-mail.</p>
-            <button class="btn btn-info" id="subscribeForm">Subscibe</button>
-            
-        </div>
-        <div class="col-xs-4">
-            <i class="fa fa-linkedin fa-4x"></i>
-            <h4>LinkedIn Group</h4>
-            <p>Join our group to be aware of our latest developments.</p>
-            <a href="https://www.linkedin.com/groups/8485577" class="btn btn-info" role="button" target="_blank">Join Community</a>
-        </div>
-        <div class="col-xs-4">
-            <i class="fa fa-rss fa-4x"></i>
-            <h4>Developer News</h4>
-            <p>Check the latest developer<br />& product updates.</p>
-            <a href="/News" class="btn btn-info" role="button" target="_self">Read News</a>
+            }
         </div>
     </div>
 </div>

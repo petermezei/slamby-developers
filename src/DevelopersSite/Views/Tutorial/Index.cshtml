@@ -1,9 +1,16 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-<div class="wrapper">
-    <h1>Tutorials</h1>
+﻿<div class="container">
+    <div class="wrapper wrapper-docpage">
+        <div class="list col-xs-4">
+            <ul>
+                @foreach (var item in ViewBag.tutorials)
+                {
+                    <li><a href="~/tutorial/@item.id" target="_self">@item.title.rendered</a></li>
+                }
+            </ul>
+        </div>
+        <div class="col-xs-8">
+            <h3>@ViewBag.post.title.rendered</h3>
+            <p>@Html.Raw(ViewBag.post.content.rendered)</p>
+        </div>
+    </div>
 </div>

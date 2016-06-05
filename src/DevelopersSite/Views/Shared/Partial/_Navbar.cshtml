@@ -1,6 +1,6 @@
 ﻿@inject DevelopersSite.Services.DocumentService service
 @{
-    var currentProduct = ViewBag.CurrentProduct ?? "API";
+    var currentProduct = ViewBag.CurrentProduct;
 }
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -28,7 +28,7 @@
                     </li>
                 }
                 <li>&nbsp;</li>
-                <li>
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Tutorial" ? "active" : "")">
                     <a href="/tutorial/" target="_self">Tutorials</a>
                 </li>
                 <li>
