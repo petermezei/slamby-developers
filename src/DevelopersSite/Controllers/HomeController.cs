@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
-using System.Net;
-using DevelopersSite.Models;
-using Newtonsoft.Json;
 using Slamby.SDK.Net.Managers;
 using Slamby.SDK.Net;
+using DevelopersSite.Services;
+using DevelopersSite.Models;
+using DevelopersSite.Enums;
+using System.Globalization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,44 +14,59 @@ namespace DevelopersSite.Controllers
 {
     public class HomeController : Controller
     {
-        [HttpGet]
-        public IActionResult Index()
+        readonly WordPressService wordPressService;
+        readonly SiteConfig siteConfig;
+
+        public HomeController(WordPressService wordPressService, SiteConfig siteConfig)
         {
-            using (var webClient = new WebClient())
+            this.siteConfig = siteConfig;
+            this.wordPressService = wordPressService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var model = new NewsViewModel()
             {
-                var json = webClient.DownloadString("http://13.79.162.110/wp-json/wp/v2/posts?categories=2");
-                var news = JsonConvert.DeserializeObject<List<WordpressPostModel>>(json);
-                ViewBag.news = news;
-                return View();
-            }
+                News = await wordPressService.GetPostsByCategory((int)PostCategory.News)
+            };
+
+            return View(model);
         }
         [HttpPost]
-        public async Task AddSubscription(string name="", string company="", string email="")
+        public async Task<IActionResult> AddSubscription(string name="", string company="", string email="")
         {
             try
             {
                 var configuration = new Configuration
                 {
-                    ApiBaseEndpoint = new Uri("https://europe.slamby.com/publi24/"),
-                    ApiSecret = "publi249876"
+                    ApiBaseEndpoint = new Uri(siteConfig.ApiBaseEndpoint),
+                    ApiSecret = siteConfig.ApiSecret
                 };
 
                 var manager = new DocumentManager(configuration, "newsletter");
-                Random rnd = new Random();
                 var document = new
                 {
-                    id = rnd.Next(1, 1000000),
+                    id = Guid.NewGuid(),
                     name = name,
                     company = company,
                     email = email,
-                    date = "2016-06-05"
+                    date = DateTime.Now.ToString(CultureInfo.InvariantCulture.DateTimeFormat.SortableDateTimePattern),
+                    exported = false
                 };
 
                 var result = await manager.CreateDocumentAsync(document);
+                if (result.IsSuccessFul)
+                {
+                    return Ok(new { success = false });
+                }
             }
             catch
             {
+                return HttpBadRequest(new { success = false, message = "Subscribe failed!" });
             }
+
+            return HttpBadRequest(new { success = false, message = "Subscribe failed!" });
         }
     }
 }

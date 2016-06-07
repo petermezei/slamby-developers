@@ -1,32 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using System.Net;
-using Newtonsoft.Json;
+﻿using System.Threading.Tasks;
+using DevelopersSite.Enums;
 using DevelopersSite.Models;
-using System.Globalization;
-using System.IO;
-using System.Xml;
-using System.Xml.Serialization;
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+using DevelopersSite.Services;
+using Microsoft.AspNet.Mvc;
 
 namespace DevelopersSite.Controllers
 {
     public class NewsController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
+        readonly WordPressService wordPresService;
+
+        public NewsController(WordPressService wordPresService)
         {
-            using (var webClient = new WebClient())
+            this.wordPresService = wordPresService;
+        }
+        // GET: /<controller>/
+        public async Task<IActionResult> Index()
+        {
+            var model = new NewsViewModel()
             {
-                var json = webClient.DownloadString("http://13.79.162.110/wp-json/wp/v2/posts?categories=2");
-                var news = JsonConvert.DeserializeObject<List<WordpressPostModel>>(json);
-                ViewBag.news = news;
-                return View();
-            }
+                News = await wordPresService.GetPostsByCategory((int)PostCategory.News)
+            };
+
+            return View(model);
         }
 
         //public object Rss()

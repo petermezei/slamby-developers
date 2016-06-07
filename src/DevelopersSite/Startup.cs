@@ -5,6 +5,7 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.OptionsModel;
 
 namespace DevelopersSite
 {
@@ -15,6 +16,7 @@ namespace DevelopersSite
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.production.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -27,10 +29,14 @@ namespace DevelopersSite
             // Add framework services.
             services.AddMvc();
 
-            services.AddOptions();
-            services.Configure<SiteConfig>(Configuration);
+            services.AddCaching();
 
+            services.AddOptions();
+            services.Configure<SiteConfig>(Configuration.GetSection("SiteConfig"));
+
+            services.AddSingleton<SiteConfig>(sp => sp.GetService<IOptions<SiteConfig>>().Value);
             services.AddSingleton<DocumentService>();
+            services.AddSingleton<WordPressService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
