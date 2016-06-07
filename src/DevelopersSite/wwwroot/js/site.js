@@ -73,6 +73,14 @@ function buildMenu() {
 }
 
 $(document).ready(function () {
+
+    function animation() {
+        setInterval(function () {
+            var $bar = $('.progress-bar');
+            $bar.width($bar.width() + 100)
+        }, 49);
+    };
+
     $("#SubscribeBtn").click(function () {
         $.ajax({
             type: 'POST',
@@ -82,9 +90,17 @@ $(document).ready(function () {
                 'name': $("#name").val(),
                 'company': $('#company').val()
             },
+            beforeSend: function () {
+                $('#SubscriptionForm button').hide();
+                $('#SubscriptionForm .progress').show();
+                animation();
+            },
             success: function (msg) {
                 $('#SubscriptionForm').modal('hide');
                 $('#SubscriptionForm input').val("");
+                $('#SubscriptionForm button').show();
+                $('#SubscriptionForm .progress').hide();
+                $('.progress-bar').width("1%");
             },
             error: function (msg) {
             }

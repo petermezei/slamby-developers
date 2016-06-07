@@ -9,7 +9,7 @@
             <ul>
                 @foreach (var item in Model.Tutorials)
                 {
-                    <li><a href="~/tutorial/@item.Id" target="_self">@item.Title.Rendered</a></li>
+                    <li><a href="~/tutorial/@item.Id" target="_self">@Html.Raw(HtmlEncoder.HtmlEncode(item.Title.Rendered))</a></li>
                 }
             </ul>
         </div>

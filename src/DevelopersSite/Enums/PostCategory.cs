@@ -2,7 +2,7 @@
 {
     public enum PostCategory
     {
-        News = 2,
-        Tutorials = 3
+        News = 262,
+        Tutorials = 263
     }
 }
