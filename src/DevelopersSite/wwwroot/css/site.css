@@ -6570,3 +6570,8 @@ footer {
       text-decoration: none;
       font-size: 1.2em; }
 
+.tutorial img {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+

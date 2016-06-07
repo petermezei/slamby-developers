@@ -20,3 +20,7 @@
 @import 'Custom/_Footer.scss';
 
 @import 'sidebar.scss';
+
+.tutorial img {
+    @include img-responsive();
+}
