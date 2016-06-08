@@ -5,7 +5,7 @@
         <h2>Tutorials</h2>
     </div>
     <div class="wrapper wrapper-docpage">
-        <div class="list col-xs-4">
+        <div class="list col-md-4">
             <ul>
                 @foreach (var item in Model.Tutorials)
                 {
@@ -13,7 +13,7 @@
                 }
             </ul>
         </div>
-        <div class="col-xs-8">
+        <div class="col-md-8">
             <h3>@Html.Raw(Model.Post.Title.Rendered)</h3>
             <p>@Html.Raw(Model.Post.Content.Rendered)</p>
         </div>
