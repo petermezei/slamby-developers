@@ -49,8 +49,7 @@
   },
 
   "exclude": [
-    "wwwroot",
-    "node_modules"
+    "wwwroot"
   ],
   "publishExclude": [
     "**.user",
