@@ -9,12 +9,12 @@
             <ul>
                 @foreach (var item in Model.Tutorials)
                 {
-                    <li><a href="~/tutorial/@item.Id" target="_self">@Html.Raw(HtmlEncoder.HtmlEncode(item.Title.Rendered))</a></li>
+                    <li><a href="~/tutorial/@item.Id" target="_self">@Html.Raw(item.Title.Rendered)</a></li>
                 }
             </ul>
         </div>
         <div class="col-xs-8">
-            <h3>@Model.Post.Title.Rendered</h3>
+            <h3>@Html.Raw(Model.Post.Title.Rendered)</h3>
             <p>@Html.Raw(Model.Post.Content.Rendered)</p>
         </div>
     </div>
