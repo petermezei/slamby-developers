@@ -15,11 +15,22 @@ var gulp = require("gulp"),
     mkdirp = require('mkdirp'),
     runSequence = require('run-sequence'),
     _ = require('lodash'),
-    Promise = require('promise');
+    Promise = require('promise'),
+    gutil = require("gulp-util");
 
 var paths = {
     webroot: "./wwwroot/"
 };
+
+if (gutil.env.type === 'production') {
+    paths.webroot = "../../../wwwroot/";
+}
+
+gulp.task("default", function () {
+    console.log("webroot: " + paths.webroot);
+    console.info("Generate HTML files: `gulp generate`");
+    console.info("Get GitHub documents & generate: `gulp fetch-generate`");
+});
 
 paths.js = paths.webroot + "js/**/*.js";
 paths.minJs = paths.webroot + "js/**/*.min.js";
@@ -118,11 +129,14 @@ gulp.task("swagger", function (cb) {
 });
 
 gulp.task('clean:generate', function (cb) {
+    console.log("Clean generated files in `"+paths.documents+"`");
     return del(
         [   paths.documents + "**/**/*.html",
             paths.documents + "**/**/*.css",
             paths.documents + "**/**/*.map"
-        ]);
+        ],
+        { force: true }
+        );
 });
 
 gulp.task("markdown", function () {
