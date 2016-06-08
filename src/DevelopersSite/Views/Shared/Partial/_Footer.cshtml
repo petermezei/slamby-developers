@@ -2,22 +2,23 @@
     <div class="container">
         <div class="row">
             <ul>
-                <li class="footer-list-header">About</li>
-                <li><a asp-controller="About" asp-action="Company">Company Information</a></li>
-                <li><a asp-controller="About" asp-action="Jobs">Jobs</a></li>
-                <li><a asp-controller="About" asp-action="Team">Team</a></li>
+                <li class="footer-list-header">Products</li>
+                <li><a href="/docs/API">Slamby API</a></li>
+                <li><a href="/docs/SDK.NET/">SDK.NET</a></li>
+                <li><a href="/docs/tau/">Slamby TAU</a></li>
             </ul>
             <ul>
-                <li class="footer-list-header">Developers</li>
-                <li><a href="#">Slamby API</a></li>
-                <li><a href="#">SDK</a></li>
-                <li><a href="#">Slamby TAU</a></li>
+                <li class="footer-list-header">Find Slamby on GitHub</li>
+                <li><a href="https://github.com/slamby/" target="_blank">Slamby Github Page</a></li>
+                <li><a href="https://github.com/slamby/slamby-sdk-python" target="_blank">Python SDK</a></li>
+                <li><a href="https://github.com/slamby/slamby-sdk-javascript" target="_blank">Node.JS SDK</a></li>
+                <li><a href="https://github.com/slamby/slamby-sdk-php" target="_blank">PHP SDK</a></li>
             </ul>
-            <ul>
+            @*<ul>
                 <li class="footer-list-header">Contact</li>
                 <li><a asp-controller="About" asp-action="Press">Press</a></li>
                 <li><a asp-controller="About" asp-action="Contact">Contact</a></li>
-            </ul>
+            </ul>*@
         </div>
         <div class="footer-closing">
             Copyright Slamby @DateTime.Now.Year. All right reserved.

@@ -6414,35 +6414,12 @@ body {
 .wrapper {
   margin-left: -15px;
   margin-right: -15px;
-  text-align: center; }
+  margin-bottom: 25px; }
   .wrapper:before, .wrapper:after {
     content: " ";
     display: table; }
   .wrapper:after {
     clear: both; }
-  .wrapper .wrapper-left {
-    text-align: left; }
-  .wrapper .content-main {
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px; }
-    @media (min-width: 992px) {
-      .wrapper .content-main {
-        float: left;
-        width: 66.66667%; } }
-  .wrapper .content-secondary {
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px; }
-    @media (min-width: 992px) {
-      .wrapper .content-secondary {
-        float: left;
-        width: 25%; } }
-    @media (min-width: 992px) {
-      .wrapper .content-secondary {
-        margin-left: 8.33333%; } }
 
 .wrapper-docpage {
   text-align: left;
@@ -6592,4 +6569,9 @@ footer {
     .wrapper-docpage .back-to-index a {
       text-decoration: none;
       font-size: 1.2em; }
+
+.tutorial img {
+  display: block;
+  max-width: 100%;
+  height: auto; }
 

@@ -1,0 +1,21 @@
+﻿@model TutorialViewModel
+
+<div class="container">
+    <div class="wrapper page-header">
+        <h2>Tutorials</h2>
+    </div>
+    <div class="wrapper wrapper-docpage">
+        <div class="list col-xs-4">
+            <ul>
+                @foreach (var item in Model.Tutorials)
+                {
+                    <li><a href="~/tutorial/@item.Id" target="_self">@Html.Raw(item.Title.Rendered)</a></li>
+                }
+            </ul>
+        </div>
+        <div class="col-xs-8">
+            <h3>@Html.Raw(Model.Post.Title.Rendered)</h3>
+            <p>@Html.Raw(Model.Post.Content.Rendered)</p>
+        </div>
+    </div>
+</div>

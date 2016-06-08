@@ -1,4 +1,4 @@
-﻿    (function () {
+﻿(function () {
     buildMenu();
 
     $('#sidebar_col').affix({
@@ -71,3 +71,23 @@ function buildMenu() {
 
     $("#sidebar").append(menuHtml);
 }
+
+$(document).ready(function () {
+    $("#SubscribeBtn").click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/home/AddSubscription/',
+            data: {
+                'name': $('#inputEmail3').val(),
+                'name': $("#name").val(),
+                'company': $('#company').val()
+            },
+            success: function (msg) {
+                $('#SubscriptionForm').modal('hide');
+                $('#SubscriptionForm input').val("");
+            },
+            error: function (msg) {
+            }
+        });
+    });
+});

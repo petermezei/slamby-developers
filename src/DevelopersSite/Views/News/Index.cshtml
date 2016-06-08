@@ -1,0 +1,22 @@
+﻿@model NewsViewModel
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-12 page-header">
+            <h1>Developer News</h1>
+        </div>
+    </div>
+    @foreach (var item in Model.News)
+    {
+        <div class="row" id="@item.Slug">
+            <div class="col-xs-6 col-xs-offset-2 text-left">
+                <h3>@Html.Raw(item.Title.Rendered)</h3>
+            </div>
+            <div class="col-xs-8 col-xs-offset-2 text-left">
+                <i><span>@Html.Raw(item.Date)</span></i>
+                <p>@Html.Raw(item.Content.Rendered)</p>
+                <hr />
+            </div>
+        </div>
+    }
+</div>

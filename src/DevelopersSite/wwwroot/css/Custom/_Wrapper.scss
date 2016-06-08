@@ -1,17 +1,6 @@
 ﻿.wrapper {
     @include make-row();
-    text-align:center;
-
-    .wrapper-left {text-align:left;}
-
-    .content-main {
-        @include make-md-column(8);
-    }
-
-    .content-secondary {
-        @include make-md-column(3);
-        @include make-md-column-offset(1);
-    }
+    margin-bottom: 25px;
 }
 
 .wrapper-docpage {
