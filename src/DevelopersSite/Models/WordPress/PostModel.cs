@@ -9,5 +9,13 @@ namespace DevelopersSite.Models.WordPress
         public PostContentModel Content { get; set; }
         public DateTime Date { get; set; }
         public string Slug { get; set; }
+
+        public string DateFormatted
+        {
+            get
+            {
+                return Date.ToString("dd. MMMM, hh:mm", System.Globalization.CultureInfo.InvariantCulture);
+            }
+        }
     }
 }
