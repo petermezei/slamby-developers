@@ -1,0 +1,60 @@
+<h2 id="general">General</h2>
+<h3 id="pagination">Pagination</h3>
+<p>There are situations when your query results lots of data. In these cases the pagination can be handy.
+You have to only provide an offset and a limit in the pagination object.
+Optionally you can set a field which will be the base of the ordering and also the direction of the ordering (ascendig or descending). If you specify <code>-1</code> value for <code>Limit</code> then you will get all the elements in one result.</p>
+<p>In the result (PaginatedList[Object]) there is an Items property which containing the requested elements (or the part of the requested elements). Also it provides the count of the items (this is equal or lesser than the limit property) and the total count of the requested items. Also it returns the same pagination object which was int the request.</p>
+<blockquote>
+<p><em>Example REQUEST</em></p>
+<pre><code class="lang-json">{
+    ...
+    &quot;Pagination&quot; : {
+        &quot;Offset&quot; : 0,
+        &quot;Limit&quot;: 10,
+        &quot;OrderDirection&quot; : &quot;Asc&quot;,
+        &quot;OrderByField&quot; : &quot;title&quot;
+    }
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<pre><code class="lang-json">{
+    &quot;Items&quot;: [
+    {
+        ...
+    },
+    {
+        ...
+    },
+    ...
+    ],
+    &quot;Pagination&quot;: {
+    &quot;Offset&quot;: 0,
+    &quot;Limit&quot;: 100,
+    &quot;OrderDirection&quot;: &quot;Asc&quot;,
+    &quot;OrderByField&quot;: &quot;title&quot;
+    },
+    &quot;Count&quot;: 10,
+    &quot;Total&quot;: 21
+}
+</code></pre>
+</blockquote>
+<h5 id="check-the-pagination-schema-definition-here-definitions-pagination-">Check the Pagination schema definition <a href="#/definitions/Pagination">here</a></h5>
+<h5 id="check-the-paginatedlist-object-schema-definition-here-definitions-paginatedlist-object-">Check the PaginatedList[Object] schema definition <a href="#/definitions/PaginatedList[Object]">here</a></h5>
+<h3 id="status">Status</h3>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Status-get">GET /api/Status</a>)</p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-JSON">{
+    &quot;ProcessorCount&quot;: 4,
+    &quot;AvailableFreeSpace&quot;: 47895.53,
+    &quot;ApiVersion&quot;: &quot;0.14.0&quot;,
+    &quot;CpuUsage&quot;: 0.6,
+    &quot;TotalMemory&quot;: 996.08,
+    &quot;FreeMemory&quot;: 36.3
+}
+</code></pre>
+</blockquote>
