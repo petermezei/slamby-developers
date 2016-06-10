@@ -10,11 +10,11 @@
 <tbody>
 <tr>
 <td>Header</td>
-<td>Top navigation area, displaying the active window name, dataset-selector menu and drop-down settings.</td>
+<td>Top navigation area, displaying the opened tabs, active processes and drop-down settings.</td>
 </tr>
 <tr>
 <td>Left Menu</td>
-<td>Main menu selector is on the left sidebar, displaying the main menu items. Currently Dataset, Data end Services are available.</td>
+<td>Main menu selector is on the left sidebar, displaying the main menu items. Currently Dataset, Services, Processes and Resources Monitor are available.</td>
 </tr>
 <tr>
 <td>Status Bar</td>
@@ -25,11 +25,13 @@
 <p><em>Example TAU print screen</em>:</p>
 <p><img src="img/main.png" alt="Demo Image2"></p>
 <h3 id="header">Header</h3>
-<h4 id="dataset-selector">Dataset Selector</h4>
-<p>Quick dataset selector. Check your available datasets in drop-down menu and select one to work with.</p>
+<h4 id="opened-tabs">Opened Tabs</h4>
+<p>From version 0.14.0, TAU contains a tab control providing the option to open multiple menu items or data sets. You can open new tab by double click on menu item or dataset.</p>
 <blockquote>
-<p>Using TAU you can select one active dataset to work with. Basically you can set a dataset to work with in Dataset menu, or select a new one in this quick selector.</p>
+<p>Tip: You can split the UI by drag and drop tabs.</p>
 </blockquote>
+<h4 id="active-processes">Active Processes</h4>
+<p>Quick access to current running processes.</p>
 <h4 id="settings">Settings</h4>
 <p>Drop-down settings menu at the top right corner.</p>
 <p><em>Available Menu Items:</em></p>
@@ -43,7 +45,7 @@
 <tbody>
 <tr>
 <td>Settings</td>
-<td>Available TAU configuration settings.<br/><em>Server Settings:</em> Slamby Server URL &amp; API Secret,<br/><em>BulkImportSize</em>: bulk size during import process.</td>
+<td>Available TAU configuration settings.<br/><em>Server Settings:</em> Slamby Server URL &amp; API Secret,<br/><em>BulkImportSize</em>: bulk size during import process.<br/>Version: Show the current and the available TAU versions. Version install: Right click -&gt; Apply</td>
 </tr>
 <tr>
 <td>Refresh</td>
@@ -55,7 +57,7 @@
 </tr>
 <tr>
 <td>About</td>
-<td>Slamby TAU Version number.</td>
+<td>Slamby TAU and SDK Version number.</td>
 </tr>
 </tbody>
 </table>
@@ -68,8 +70,9 @@
 <p>Main navigation. Available Menu Items:</p>
 <ul>
 <li>Dataset</li>
-<li>Data</li>
 <li>Services</li>
+<li>Processes</li>
+<li>Resource Monitor</li>
 </ul>
 <h3 id="status-bar">Status Bar</h3>
 <p>Orange colored status bar in the bottom. Quick access to descriptive data. Contains Status Window.</p>

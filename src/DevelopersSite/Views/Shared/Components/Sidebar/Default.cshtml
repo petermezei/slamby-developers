@@ -34,8 +34,12 @@
     {
         var routeParams = service.GetRouteParams(Model.Document.Product, Model.Version);
         <div class="back-to-index">
-            <a asp-controller="docs" asp-action="Index" asp-route-product="@(routeParams.Product)" asp-route-version="@routeParams.Version" asp-route-file="@routeParams.File">
-                Back to Index
+            <a asp-controller="docs" 
+               asp-action="Index" 
+               asp-route-product="@(routeParams.Product)" 
+               asp-route-version="@routeParams.Version" 
+               asp-route-file="@routeParams.File">
+                <i class="fa fa-angle-left"></i> Back to Index
             </a>
         </div>
     }

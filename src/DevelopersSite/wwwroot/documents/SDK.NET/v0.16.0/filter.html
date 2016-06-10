@@ -1,0 +1,19 @@
+<h2 id="filter">Filter</h2>
+<p>  Powerful <strong>search engine</strong>. Build <strong>smart</strong> search functions or filters. Easily access to your datasets with <strong>simple queries</strong>, <strong>logical expressions</strong> and <strong>wild cards</strong>. Manage your language dependencies using <strong>optimal tokenizer</strong>.</p>
+<p>You can find more details about the Filter mechanism <a href="http://developers.slamby.com/api/#filter">here.</a></p>
+<p> <em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
+var settings = new DocumentFilterSettings {
+    Filter = new Filter {
+        Query = &quot;title:michelin&quot;,
+    TagIds = new List&lt;string&gt; { &quot;1&quot; },
+    },
+    Pagination = new Pagination {
+        Limit = 100,
+        Offset = 0,
+        OrderByField = &quot;title&quot;,
+        OrderDirection = OrderDirectionEnum.Asc
+    }
+};
+var result = await manager.GetFilteredDocumentsAsync(settings);
+</code></pre>
