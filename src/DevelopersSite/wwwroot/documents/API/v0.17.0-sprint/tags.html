@@ -1,0 +1,195 @@
+<h2 id="tags">Tags</h2>
+<p>Manage tags to organize your data. Using tags create a tag cloud or a hiearchical tag tree.</p>
+<p>Every tag is related to a Dataset. You have to specify which dataset you want to use in the <code>X-DataSet</code> header by the name of the dataset.</p>
+<blockquote>
+<p><strong>Tip:</strong> If you use any of the tag methods without or an unexisting <code>X-DataSet</code> header you will get a <code>Missing X-DataSet header!</code> error.</p>
+</blockquote>
+<p>With Tags you can:</p>
+<ul>
+<li>Create new tag</li>
+<li>Update a tag</li>
+<li>Get a single tag or a full tag list</li>
+<li>Organize your tags into hierarchy</li>
+<li>Use tags for categorization</li>
+<li>Use tags for tagging.</li>
+</ul>
+<h3 id="create-new-tag">Create New Tag</h3>
+<p>Create a new tag in a dataset.</p>
+<blockquote>
+<p><strong>Tip:</strong> To create hierarchy you have to specify the ParentId of the tag. The ParentId is the Id of the parent of the tag. In the dataset there must be an existing tag with the id given in the ParentId. If the tag is a root element, or you don&#39;t want to use hierarchy then just skip the property or set to <code>null</code>.</p>
+</blockquote>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Tags-post">POST /api/Tags</a></p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-JSON">{
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;example tag 1&quot;,
+    &quot;ParentId&quot;: null
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 201 CREATED</p>
+</blockquote>
+<h3 id="get-tag">Get Tag</h3>
+<p>Get a tag by its Id. Provide &#39;withDetails=true&#39; query parameter in order to get DocumentCount, WordCount values. Default value is &#39;false&#39; because it takes time to calculate these properties.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Tags-get">GET /api/Tags/<code>1</code>?withDetails=false</a></p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-JSON">{
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;example tag 1&quot;,
+    &quot;ParentId&quot;: &quot;5&quot;,
+    &quot;Properties&quot;: {
+    &quot;Path&quot;: [
+        {
+        &quot;Id&quot;: &quot;5&quot;,
+        &quot;Level&quot;: &quot;1&quot;,
+        &quot;Name&quot;: &quot;example parent tag 5&quot;
+        }
+        ],
+    &quot;Level&quot;: 2,
+    &quot;IsLeaf&quot;: &quot;false&quot;,
+    &quot;DocumentCount&quot;: 33,
+    &quot;WordCount&quot;: 123
+    }
+}
+</code></pre>
+</blockquote>
+<h3 id="get-tag-list">Get Tag List</h3>
+<p>Get all tags list from a given dataset. Provide &#39;withDetails=true&#39; query parameter in order to get DocumentCount, WordCount values. Default value is &#39;false&#39; because it takes time to calculate these properties.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Tags-get">GET /api/Tags?withDetails=false</a></p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-JSON">[
+    {
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;example tag 1&quot;,
+    &quot;ParentId&quot;: null,
+    &quot;Properties&quot;: {
+        &quot;Path&quot;: [],
+        &quot;Level&quot;: 1,
+        &quot;IsLeaf&quot;: true,
+        &quot;DocumentCount&quot;: 0,
+        &quot;WordCount&quot;: 0
+    }
+    },
+    {
+    &quot;Id&quot;: &quot;2&quot;,
+    &quot;Name&quot;: &quot;example tag 2&quot;,
+    &quot;ParentId&quot;: null,
+    &quot;Properties&quot;: {
+        &quot;Path&quot;: [],
+        &quot;Level&quot;: 1,
+        &quot;IsLeaf&quot;: true,
+        &quot;DocumentCount&quot;: 0,
+        &quot;WordCount&quot;: 0
+    }
+    }
+]
+</code></pre>
+</blockquote>
+<h3 id="update-tag">Update Tag</h3>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Tags-put">PUT /api/Tags/<code>1</code></a></p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-JSON">{
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;example tag 1&quot;,
+    &quot;ParentId&quot;: null
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 CREATED</p>
+</blockquote>
+<h3 id="remove-tag">Remove Tag</h3>
+<p>Remove a tag from tag list. Default behavior is that only leaf elements can be deleted. You should provide &#39;force=true&#39; query parameter in order to remove tags with child elements. &#39;cleanDocument&#39;. Setting &#39;cleanDocuments=true&#39; removes the specified tag also from its documents.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Tags-delete">DELETE /api/Tags/<code>1</code>?force=false&amp;cleanDocuments=false</a></p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>

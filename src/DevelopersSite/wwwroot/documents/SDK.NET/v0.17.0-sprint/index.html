@@ -1,0 +1,71 @@
+<h1 id="slamby-sdk-net-v0-16">Slamby SDK .NET v0.16</h1>
+<p>Slamby .NET SDK and Nuget Package.
+This project is open source. Please check the documentation and <a href="http://www.slamby.com/Community">join</a> to the community group.</p>
+<p>Github Slamby page: <a href="https://github.com/slamby">www.github.com/slamby</a>
+Github page:  <a href="https://github.com/slamby/slamby-sdk-net">www.github.com/slamby/slamby-sdk-net</a></p>
+<h2 id="changelog">Changelog</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li>added DataSet update endpoint</li>
+</ul>
+<hr>
+<h2 id="general">General</h2>
+<h3 id="request-basics">Request Basics</h3>
+<p>Configuration example:</p>
+<pre><code class="lang-cs">var configuration = new Configuration
+    {
+        ApiBaseEndpoint = new Uri(&quot;https://api.slamby.com/CLIENT_ID/&quot;),
+        ApiSecret = &quot;API_KEY&quot;
+    };
+</code></pre>
+<p>You have to use this <code>configuration</code> object for every <code>Manager</code>.</p>
+<p>You can find more details about the Authentication <a href="http://developers.slamby.com/api/#authentication">here</a></p>
+<p>Slamby SDK.NET sends its version information to the API for version matching. Major and minor values should match in order to prevent version incompatibility. </p>
+<p><code>ParallelLimit</code> property enables you to limit or maximize CPU usage in certain functions. Limit value should be greater than zero in order to be sent.</p>
+<blockquote>
+<p><strong>Note:</strong> In some cases API can limit your value if your configuration cannot handle it efficiently</p>
+</blockquote>
+<h3 id="response-basics">Response Basics</h3>
+<p>Every request returns one of the following results:</p>
+<pre><code class="lang-cs">public class ClientResponse
+{
+    public bool IsSuccessFul { get; set; }
+    public HttpStatusCode HttpStatusCode { get; set; }
+    public string ServerMessage { get; set; }
+    public ErrorsModel Errors { get; set; }
+    public string ApiVersion { get; set; }
+}
+
+public class ClientResponseWithObject&lt;T&gt; : ClientResponse
+{
+    public T ResponseObject { get; set; }
+}
+</code></pre>
+<h3 id="logging">Logging</h3>
+<p>Logging raw request and response message with <code>RawMessagePublisher</code>. 
+Currently <code>DebugSubscriber</code> is available  which writes messages to <strong>debug output</strong>. Custom subscribers can be created via implementing <code>IRawMessageSubscriber</code> interface.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">IRawMessageSubscriber subscriber = new DebugSubscriber();
+RawMessagePublisher.Instance.AddSubscriber(subscriber);
+
+// API calls
+
+RawMessagePublisher.Instance.RemoveSubscriber(subscriber);
+</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="lang-cs">REQUEST #63592531131529252663115
+----------------------
+POST http://localhost:29689/api/tags
+Headers:
+Accept|application/json
+Authorization|Slamby API_KEY
+X-DataSet|test1
+
+Content:  
+{&quot;Id&quot;:&quot;999&quot;,&quot;Name&quot;:&quot;tag&quot;,&quot;ParentTagId&quot;:null,&quot;Properties&quot;:null}
+</code></pre>
+<h3 id="async-methods">Async methods</h3>
+<p>In all the <code>Manager</code> class there are async methods. If you would like to use in a synchronized way, you can get the <code>Result</code> object of the task.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var dataset = manager.GetDataSetAsync().Result;
+</code></pre>

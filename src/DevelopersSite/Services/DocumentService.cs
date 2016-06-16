@@ -45,14 +45,17 @@ namespace DevelopersSite.Services
                 document.Product = Path.GetFileName(typeFolder);
                 document.Title = _siteConfig.Products[document.Product];
 
-                foreach (var versionFolder in Directory.EnumerateDirectories(typeFolder))
+                var versionDirectories = Directory.EnumerateDirectories(typeFolder)
+                    .Where(directory => !directory.EndsWith("-sprint", StringComparison.OrdinalIgnoreCase));
+
+                foreach (var versionDirectory in versionDirectories)
                 {
                     var documentVersionModel = new DocumentVersionModel()
                     {
-                        Path = versionFolder,
-                        ContentFilenames = Directory.EnumerateFiles(versionFolder, "*.html", SearchOption.AllDirectories).Select(Path.GetFileName).ToList(),
-                        Version = Path.GetFileName(versionFolder),
-                        StaticBase = versionFolder.Replace(_webRootPath, string.Empty).Replace('\\', '/').TrimEnd('/') + "/"
+                        Path = versionDirectory,
+                        ContentFilenames = Directory.EnumerateFiles(versionDirectory, "*.html", SearchOption.AllDirectories).Select(Path.GetFileName).ToList(),
+                        Version = Path.GetFileName(versionDirectory),
+                        StaticBase = versionDirectory.Replace(_webRootPath, string.Empty).Replace('\\', '/').TrimEnd('/') + "/"
                     };
 
                     documentVersionModel.StartFilename = documentVersionModel
