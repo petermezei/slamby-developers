@@ -136,7 +136,7 @@ var classifierRecommendationRequest = new Models.Services.ClassifierRecommendati
         NeedTagInResult = true,
         Count = 5
     };
-var recommendResponse = (await classifierServiceManager.RecommendServiceAsync(serviceId, classifierRecommendationRequest));
+var recommendResponse = (await classifierServiceManager.RecommendAsync(serviceId, classifierRecommendationRequest));
 ```
 
 
@@ -221,7 +221,21 @@ var prcRecommendationRequest = new Models.Services.PrcRecommendationRequest()
         Count = 5,
         TagId = "10"
     };
-var recommendResponse = (await prcServiceManager.RecommendServiceAsync(serviceId, prcRecommendationRequest));
+var recommendResponse = (await prcServiceManager.RecommendAsync(serviceId, prcRecommendationRequest));
+```
+
+### Prc Service Keywords Extraction
+
+_Example:_
+
+```cs
+var prcServiceManager = new PrcServiceManager(_configuration);
+var prcKeywordsRequest = new SDK.Net.Models.Services.PrcKeywordsRequest()
+{
+    Text = "get the keywords from this text",
+    TagId = "10"
+};
+var keywordsResponse = (await prcServiceManager.KeywordsAsync(serviceId, prcKeywordsRequest));
 ```
 
 ### Prc Service Export Dictionaries

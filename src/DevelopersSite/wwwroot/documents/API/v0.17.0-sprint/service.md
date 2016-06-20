@@ -220,6 +220,18 @@ Built-in text classification engine. Uses the prepared Classifier dictionaries a
 ]
 ```
 
+
+#### Emphasizing
+
+During the recommendation process, if there are any emphasized tag in the TOP N result list then Slamby checks if the given document contains the name of the emphasized tag.
+If yes, then Slamby changes the order of the recommended tags and moves the emphasized results to the first place.
+If there are more than one emphasized tag on the list that meeting with the criteria then all of them will be moved to the top (with keeping their orders).
+If the `IsEmphasized` parameter is true in a result element, it means that the actual result was emphasized. The score is the original in each case.
+With the usage of the score, the original order can be restored anytime.
+
+> **Tip:** You have to define the emphasized tags during the activation of the service 
+
+
 ### Export dictionaries
 
 *Example Request*
@@ -338,27 +350,55 @@ Built-in text classification engine. Uses the prepared Classifier dictionaries a
 ```JSON
 [
     {
-    "DocumentId": "1777237",
-    "Score": 0.89313365295595715,
-    "Document": {
-        "id": "1777237",
-        "tag_id": "tag1Id",
-        "title": "Lorem",
-        "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
-    }
+        "DocumentId": "1777237",
+        "Score": 0.89313365295595715,
+        "Document": {
+            "id": "1777237",
+            "tag_id": "tag1Id",
+            "title": "Lorem",
+            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+        }
     },
     {
-    "DocumentId": "6507461",
-    "Score": 0.7894283811358983,
-    "Document": {
-        "ad_id": "6507461",
-        "tag_id": "tag1Id",
-        "title": "Duis aute irure dolorem",
-        "body": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-    }
+        "DocumentId": "6507461",
+        "Score": 0.7894283811358983,
+        "Document": {
+            "ad_id": "6507461",
+            "tag_id": "tag1Id",
+            "title": "Duis aute irure dolorem",
+            "body": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        }
     }
 ]
 ```
+
+### Keywords Extraction
+
+With this function, you can easily extract the relevant keywords (according to the given tag) from your text, with the help of PRC service.
+
+*Example Request*
+> [POST /api/Services/Prc/`GUID`/Keywords](#operation--api-Services-Prc-Keywords-post)
+```JSON
+{
+    "Text": "Lorem Ipsum Dolorem",
+    "TagId": "tag1Id"
+}
+```
+
+*Example Response*
+```JSON
+[
+  {
+    "Word": "lorem",
+    "Score": 75.457626224664608
+  },
+  {
+    "Word": "ipsum",
+    "Score": 40.333326695449692
+  }
+]
+```
+
 
 ### Export dictionaries
 
