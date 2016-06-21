@@ -2,7 +2,8 @@
 
 ## Changelog
 
-## Features
+### Features
+
 - added Service alias support, services can be accessed via `id` and `alias` too
 
 ---
@@ -18,9 +19,9 @@ Once you've
 to start working with Slamby API.
 
 All endpoints are only accessible via https and are located at
-`api.slamby.com`.
+`europe.slamby.com`.
 ```
-    https://api.slamby.com/CLIENT_ID
+    https://europe.slamby.com/CLIENT_ID
 ```
 
 > **Tip:** The `CLIENT_ID` is your unique identifier what you get after your server is ready to use.
@@ -46,5 +47,5 @@ Every response contains API version information in response HTTP `X-Api-Version`
 
 >*Example*
 >
-X-Api-Version: 0.11.0
+X-Api-Version: 0.17.0
 

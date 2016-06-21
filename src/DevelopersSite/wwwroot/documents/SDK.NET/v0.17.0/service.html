@@ -88,7 +88,7 @@ var classifierRecommendationRequest = new Models.Services.ClassifierRecommendati
         NeedTagInResult = true,
         Count = 5
     };
-var recommendResponse = (await classifierServiceManager.RecommendServiceAsync(serviceId, classifierRecommendationRequest));
+var recommendResponse = (await classifierServiceManager.RecommendAsync(serviceId, classifierRecommendationRequest));
 </code></pre>
 <h3 id="classifier-service-export-dictionaries">Classifier Service Export Dictionaries</h3>
 <p><em>Example:</em></p>
@@ -145,7 +145,17 @@ var prcRecommendationRequest = new Models.Services.PrcRecommendationRequest()
         Count = 5,
         TagId = &quot;10&quot;
     };
-var recommendResponse = (await prcServiceManager.RecommendServiceAsync(serviceId, prcRecommendationRequest));
+var recommendResponse = (await prcServiceManager.RecommendAsync(serviceId, prcRecommendationRequest));
+</code></pre>
+<h3 id="prc-service-keywords-extraction">Prc Service Keywords Extraction</h3>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var prcServiceManager = new PrcServiceManager(_configuration);
+var prcKeywordsRequest = new SDK.Net.Models.Services.PrcKeywordsRequest()
+{
+    Text = &quot;get the keywords from this text&quot;,
+    TagId = &quot;10&quot;
+};
+var keywordsResponse = (await prcServiceManager.KeywordsAsync(serviceId, prcKeywordsRequest));
 </code></pre>
 <h3 id="prc-service-export-dictionaries">Prc Service Export Dictionaries</h3>
 <p><em>Example:</em></p>

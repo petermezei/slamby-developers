@@ -209,6 +209,15 @@
     }
 ]
 </code></pre>
+<h4 id="emphasizing">Emphasizing</h4>
+<p>During the recommendation process, if there are any emphasized tag in the TOP N result list then Slamby checks if the given document contains the name of the emphasized tag.
+If yes, then Slamby changes the order of the recommended tags and moves the emphasized results to the first place.
+If there are more than one emphasized tag on the list that meeting with the criteria then all of them will be moved to the top (with keeping their orders).
+If the <code>IsEmphasized</code> parameter is true in a result element, it means that the actual result was emphasized. The score is the original in each case.
+With the usage of the score, the original order can be restored anytime.</p>
+<blockquote>
+<p><strong>Tip:</strong> You have to define the emphasized tags during the activation of the service </p>
+</blockquote>
 <h3 id="export-dictionaries">Export dictionaries</h3>
 <p><em>Example Request</em></p>
 <blockquote>
@@ -320,25 +329,48 @@
 <p><em>Example Response</em></p>
 <pre><code class="lang-JSON">[
     {
-    &quot;DocumentId&quot;: &quot;1777237&quot;,
-    &quot;Score&quot;: 0.89313365295595715,
-    &quot;Document&quot;: {
-        &quot;id&quot;: &quot;1777237&quot;,
-        &quot;tag_id&quot;: &quot;tag1Id&quot;,
-        &quot;title&quot;: &quot;Lorem&quot;,
-        &quot;body&quot;: &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor&quot;
-    }
+        &quot;DocumentId&quot;: &quot;1777237&quot;,
+        &quot;Score&quot;: 0.89313365295595715,
+        &quot;Document&quot;: {
+            &quot;id&quot;: &quot;1777237&quot;,
+            &quot;tag_id&quot;: &quot;tag1Id&quot;,
+            &quot;title&quot;: &quot;Lorem&quot;,
+            &quot;body&quot;: &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor&quot;
+        }
     },
     {
-    &quot;DocumentId&quot;: &quot;6507461&quot;,
-    &quot;Score&quot;: 0.7894283811358983,
-    &quot;Document&quot;: {
-        &quot;ad_id&quot;: &quot;6507461&quot;,
-        &quot;tag_id&quot;: &quot;tag1Id&quot;,
-        &quot;title&quot;: &quot;Duis aute irure dolorem&quot;,
-        &quot;body&quot;: &quot;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&quot;
+        &quot;DocumentId&quot;: &quot;6507461&quot;,
+        &quot;Score&quot;: 0.7894283811358983,
+        &quot;Document&quot;: {
+            &quot;ad_id&quot;: &quot;6507461&quot;,
+            &quot;tag_id&quot;: &quot;tag1Id&quot;,
+            &quot;title&quot;: &quot;Duis aute irure dolorem&quot;,
+            &quot;body&quot;: &quot;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&quot;
+        }
     }
-    }
+]
+</code></pre>
+<h3 id="keywords-extraction">Keywords Extraction</h3>
+<p>With this function, you can easily extract the relevant keywords (according to the given tag) from your text, with the help of PRC service.</p>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Prc-Keywords-post">POST /api/Services/Prc/<code>GUID</code>/Keywords</a></p>
+<pre><code class="lang-JSON">{
+    &quot;Text&quot;: &quot;Lorem Ipsum Dolorem&quot;,
+    &quot;TagId&quot;: &quot;tag1Id&quot;
+}
+</code></pre>
+</blockquote>
+<p><em>Example Response</em></p>
+<pre><code class="lang-JSON">[
+  {
+    &quot;Word&quot;: &quot;lorem&quot;,
+    &quot;Score&quot;: 75.457626224664608
+  },
+  {
+    &quot;Word&quot;: &quot;ipsum&quot;,
+    &quot;Score&quot;: 40.333326695449692
+  }
 ]
 </code></pre>
 <h3 id="export-dictionaries">Export dictionaries</h3>
