@@ -2658,6 +2658,143 @@
                         </section>
                 </div>
             </div>    
+        <span id="path--api-Services-Prc--id--Keywords"></span>
+            <div id="operation--api-Services-Prc--id--Keywords-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/api/Services/Prc/{id}/Keywords</strong></h3>
+                        Tags:
+                            <a href="#definition-PrcService">PrcService</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                        
+                            <section class="sw-request-body">
+                                
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-6 sw-request-model">
+                            <div  class="panel panel-definition">
+                                <div class="panel-body">
+                                            <a class="json-schema-ref" href="#/definitions/PrcKeywordsRequest">PrcKeywordsRequest</a>
+                                </div>
+                            </div></div>
+                                        </div>
+                            </section>        
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                id
+                                            <td></td>
+                                            <td>path</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                isStrict
+                                            <td></td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">boolean</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                            
+                                                                            <section class="json-schema-array-items">
+                                                                                <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/PrcKeywordsResult">PrcKeywordsResult</a>
+                                                                                </span>
+                                                                                <span class="json-property-range" title="Value limits"></span>
+                                                                                
+                                                                                <div class="json-inner-schema">
+                                                                                    
+                                                                                </div>
+                                                                            </section>    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-400">
+                                        400 Bad Request
+                                    
+                                    </dt>
+                                    <dd class="sw-response-400">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>BadRequest</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-406">
+                                        406 Not Acceptable
+                                    
+                                    </dt>
+                                    <dd class="sw-response-406">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>NotAcceptable</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
         <span id="path--api-Services-Prc--id--Prepare"></span>
             <div id="operation--api-Services-Prc--id--Prepare-post" class="swagger--panel-operation-post panel">
                 <div class="panel-heading">
@@ -2826,6 +2963,40 @@
                                                                                 </div>
                                                                             </section>    </div>
                                                 </div></div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-400">
+                                        400 Bad Request
+                                    
+                                    </dt>
+                                    <dd class="sw-response-400">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>BadRequest</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-406">
+                                        406 Not Acceptable
+                                    
+                                    </dt>
+                                    <dd class="sw-response-406">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>NotAcceptable</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
                                             
                                             </div>                </dd>
                             </dl>
@@ -3570,14 +3741,17 @@
                                     <dd class="sw-response-404">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p>NotFound</p>
-                                            
+                                                    
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 
                                                 <div class="col-md-6 sw-response-model">
-                                            </div>
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/ErrorsModel">ErrorsModel</a>
+                                                    </div>
+                                                </div></div>
                                             
                                             </div>                </dd>
                                     <dt class="sw-response-409">
@@ -4186,6 +4360,19 @@
                                                         
                                                     </div>
                                                 </dd>
+                                                <dt data-property-name="IsEmphasized">
+                                                    <span class="json-property-name">IsEmphasized:</span>
+                                                    <span class="json-property-type">boolean</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>If there was applied emphasizing by this tag</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
                                         </dl>
                                     </section>
                     </div>
@@ -4240,7 +4427,8 @@
                                                     
                                                 </dt>
                                                 <dd>
-                                                    
+                                                    <p>Service unique identifier. It cannot be modified.</p>
+                                    
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
@@ -4253,7 +4441,22 @@
                                                         <span class="json-property-required"></span>
                                                 </dt>
                                                 <dd>
+                                                    <p>User defined name for the service</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Alias">
+                                                    <span class="json-property-name">Alias:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
                                                     
+                                                </dt>
+                                                <dd>
+                                                    <p>Alias name of the service. Services can be accessed via this name.
+                                                Alias can be modified. It is unique amongst the services.</p>
+                                    
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
@@ -4265,7 +4468,8 @@
                                                     
                                                 </dt>
                                                 <dd>
-                                                    
+                                                    <p>Service description</p>
+                                    
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
@@ -4310,7 +4514,10 @@
                                                         <span class="json-property-required"></span>
                                                 </dt>
                                                 <dd>
-                                                    
+                                                    <p>Type of the service.
+                                                Currently supported types:</p>
+                                    <pre><code>        -<span class="ruby"> <span class="hljs-constant">Classifier</span><br></span>        -<span class="ruby"> <span class="hljs-constant">Prc</span></span>
+                                    </code></pre>
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
@@ -5282,6 +5489,92 @@
                                     </section>
                     </div>
                 </div>        
+                <div id="definition-PrcKeywordsRequest" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/PrcKeywordsRequest"></a>PrcKeywordsRequest:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Text">
+                                                    <span class="json-property-name">Text:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>The text which you want to extract the keywords from</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="TagId">
+                                                    <span class="json-property-name">TagId:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>The extracting keywords calculation depends on this Tag</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-PrcKeywordsResult" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/PrcKeywordsResult"></a>PrcKeywordsResult:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Word">
+                                                    <span class="json-property-name">Word:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Score">
+                                                    <span class="json-property-name">Score:</span>
+                                                    <span class="json-property-type">number</span>    <span class="json-property-format">(double)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
                 <div id="definition-PrcPrepareSettings" class="panel panel-definition">
                         <div class="panel-heading">
                                 <h3 class="panel-title"><a name="/definitions/PrcPrepareSettings"></a>PrcPrepareSettings:
@@ -5530,7 +5823,8 @@
                                                     
                                                 </dt>
                                                 <dd>
-                                                    
+                                                    <p>Service unique identifier. It cannot be modified.</p>
+                                    
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
@@ -5543,7 +5837,22 @@
                                                         <span class="json-property-required"></span>
                                                 </dt>
                                                 <dd>
+                                                    <p>User defined name for the service</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Alias">
+                                                    <span class="json-property-name">Alias:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
                                                     
+                                                </dt>
+                                                <dd>
+                                                    <p>Alias name of the service. Services can be accessed via this name.
+                                                Alias can be modified. It is unique amongst the services.</p>
+                                    
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
@@ -5555,7 +5864,8 @@
                                                     
                                                 </dt>
                                                 <dd>
-                                                    
+                                                    <p>Service description</p>
+                                    
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
@@ -5600,7 +5910,10 @@
                                                         <span class="json-property-required"></span>
                                                 </dt>
                                                 <dd>
-                                                    
+                                                    <p>Type of the service.
+                                                Currently supported types:</p>
+                                    <pre><code>        -<span class="ruby"> <span class="hljs-constant">Classifier</span><br></span>        -<span class="ruby"> <span class="hljs-constant">Prc</span></span>
+                                    </code></pre>
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
@@ -5831,7 +6144,8 @@
                                                     
                                                 </dt>
                                                 <dd>
-                                                    
+                                                    <p>Service unique identifier. It cannot be modified.</p>
+                                    
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
@@ -5844,7 +6158,22 @@
                                                         <span class="json-property-required"></span>
                                                 </dt>
                                                 <dd>
+                                                    <p>User defined name for the service</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Alias">
+                                                    <span class="json-property-name">Alias:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
                                                     
+                                                </dt>
+                                                <dd>
+                                                    <p>Alias name of the service. Services can be accessed via this name.
+                                                Alias can be modified. It is unique amongst the services.</p>
+                                    
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
@@ -5856,7 +6185,8 @@
                                                     
                                                 </dt>
                                                 <dd>
-                                                    
+                                                    <p>Service description</p>
+                                    
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
@@ -5901,7 +6231,10 @@
                                                         <span class="json-property-required"></span>
                                                 </dt>
                                                 <dd>
-                                                    
+                                                    <p>Type of the service.
+                                                Currently supported types:</p>
+                                    <pre><code>        -<span class="ruby"> <span class="hljs-constant">Classifier</span><br></span>        -<span class="ruby"> <span class="hljs-constant">Prc</span></span>
+                                    </code></pre>
                                                     <div class="json-inner-schema">
                                                         
                                                     </div>
