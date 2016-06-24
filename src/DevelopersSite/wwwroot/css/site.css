@@ -6428,21 +6428,16 @@ body {
   text-align: left;
   padding: 15px; }
   .wrapper-docpage .list {
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
     border-right: 1px solid lightgray; }
-    @media (min-width: 992px) {
-      .wrapper-docpage .list {
-        float: left;
-        width: 25%; } }
     .wrapper-docpage .list .version-selector {
       margin-bottom: 15px; }
     .wrapper-docpage .list ul {
       padding: 0px;
       margin: 0px;
       list-style: none; }
+    .wrapper-docpage .list ul li {
+      padding-bottom: 5px;
+      border-bottom: 1px solid lightgray; }
   .wrapper-docpage .body {
     position: relative;
     min-height: 1px;

@@ -8,7 +8,7 @@
     padding:15px;
     
     .list {
-        @include make-md-column(3);
+        //@include make-md-column(3);
         //@include make-xs-column(3);
         border-right:1px solid lightgray;
 
@@ -20,6 +20,11 @@
             padding:0px;
             margin:0px;
             list-style:none;
+        }
+
+        ul li {
+            padding-bottom:5px;
+            border-bottom:1px solid lightgray;
         }
     }
     .body {
