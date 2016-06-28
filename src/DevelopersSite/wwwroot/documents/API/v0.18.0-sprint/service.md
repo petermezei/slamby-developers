@@ -156,6 +156,8 @@ This request is a long running task so the API do it in async way. Therefore the
 
 Each service has two status: active, deactive. When a preparation/training process is ready, the service has a deactivated status. A deactivated service is ready, but its not loaded into memory and the API is not able to process the incoming requests. To use a service set the status to Activated. After the activation process the service is ready to use, all the required files are loaded and stored in memory, the API endpoint is active.
 
+This request can be a long running task so the API do it in async way. Therefore the response is a Process.
+
 *Example REQUEST*
 > [POST /api/Services/Classifier/`GUID or Alias`/Activate](#operation--api-Services-Classifier-Activate-post)
 ```JSON
@@ -167,7 +169,21 @@ Each service has two status: active, deactive. When a preparation/training proce
 ```
 
 *Example RESPONSE*
-> HTTP/1.1 200 OK
+> HTTP/1.1 202 ACCEPTED
+```JSON
+{
+  "Id": "d46850e8-1a22-43f5-b304-d22e6b7e5e6a",
+  "Start": "2016-06-28T10:53:36.9553132Z",
+  "End": "0001-01-01T00:00:00",
+  "Percent": 0,
+  "Description": "Activating Classifier service Example name of a classifier service...",
+  "Status": "InProgress",
+  "Type": "ClassifierActivate",
+  "ErrorMessages": [],
+  "ResultMessage": null
+}
+```
+
 
 ### Deactivate Classifier Service
 
@@ -312,6 +328,8 @@ With the usage of the score, the original order can be restored anytime.
 
 ### Activate Prc Service
 
+This request can be a long running task so the API do it in async way. Therefore the response is a Process.
+
 *Example REQUEST*
 > [POST /api/Services/Prc/`GUID or Alias`/Activate](#operation--api-Services-Prc-Activate-post)
 ```JSON
@@ -321,7 +339,21 @@ With the usage of the score, the original order can be restored anytime.
 ```
 
 *Example RESPONSE*
-> HTTP/1.1 200 OK
+> HTTP/1.1 202 ACCEPTED
+```JSON
+{
+  "Id": "181b445c-3c91-44bb-bcf7-759a7e40a98c",
+  "Start": "2016-06-28T10:49:52.5726793Z",
+  "End": "0001-01-01T00:00:00",
+  "Percent": 0,
+  "Description": "Activating Prc service prc...",
+  "Status": "InProgress",
+  "Type": "PrcActivate",
+  "ErrorMessages": [],
+  "ResultMessage": null
+}
+```
+
 
 ### Deactivate Prc Service
 
