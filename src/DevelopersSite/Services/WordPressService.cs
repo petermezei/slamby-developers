@@ -22,7 +22,7 @@ namespace DevelopersSite.Services
 
         public async Task<IEnumerable<PostModel>> GetPostsByCategory(int category)
         {
-            return await SendRequest<IEnumerable<PostModel>>($"{siteConfig.WordPressApiUrl}posts?categories={category}");
+            return await SendRequest<IEnumerable<PostModel>>($"{siteConfig.WordPressApiUrl}posts?categories={category}&per_page=30");
         }
 
         public async Task<PostModel> GetPost(int id)
