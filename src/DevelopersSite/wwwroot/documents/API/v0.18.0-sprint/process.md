@@ -26,7 +26,7 @@ Get a process by its Id.
 ```
 
 ### Cancel Process
-Cancel the process. Only Process with status `InProgress` can be canceled. The method returns with `HTTP/1.1 202 ACCEPTED` because it can take time to cancel a process. You have to check periodically that whether the process status is already `Canceled`.
+Cancel the process. Only Process with status `InProgress` can be canceled. The method returns with `HTTP/1.1 202 ACCEPTED` because it can take time to cancel a process. After it's accepted, the status of the process will be `Cancelling`. You have to check periodically that whether the process status is already `Canceled`.
 
 *Example REQUEST*
 > [POST /api/Processes/`GUID`](#operation--api-Processes-Cancel-post)
