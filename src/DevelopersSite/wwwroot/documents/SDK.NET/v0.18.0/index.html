@@ -1,12 +1,20 @@
-<h1 id="slamby-sdk-net-v0-17">Slamby SDK .NET v0.17</h1>
-<p>Slamby .NET SDK and Nuget Package.
+<h1 id="slamby-sdk-net-v0-18">Slamby SDK .NET v0.18</h1>
+<p>Slamby .NET SDK and NuGet Package.
 This project is open source. Please check the documentation and <a href="http://www.slamby.com/Community">join</a> to the community group.</p>
-<p>Github Slamby page: <a href="https://github.com/slamby">www.github.com/slamby</a>
-Github page:  <a href="https://github.com/slamby/slamby-sdk-net">www.github.com/slamby/slamby-sdk-net</a></p>
+<p>GitHub Slamby page: <a href="https://github.com/slamby">www.github.com/slamby</a>
+GitHub page:  <a href="https://github.com/slamby/slamby-sdk-net">www.github.com/slamby/slamby-sdk-net</a></p>
 <h2 id="changelog">Changelog</h2>
 <h3 id="features">Features</h3>
 <ul>
-<li>added DataSet update endpoint</li>
+<li>modified DocumentManagent GetFilteredDocumentsAsync function to handle <code>ScrollId</code></li>
+<li><code>[BREAKING CHANGES]</code> changed the following models: <ul>
+<li>Order </li>
+<li>Pagination </li>
+<li>PaginatedList</li>
+<li>DocumentSampleSettings</li>
+<li>DocumentFilterSettings</li>
+</ul>
+</li>
 </ul>
 <hr>
 <h2 id="general">General</h2>
@@ -19,7 +27,7 @@ Github page:  <a href="https://github.com/slamby/slamby-sdk-net">www.github.com/
     };
 </code></pre>
 <p>You have to use this <code>configuration</code> object for every <code>Manager</code>.</p>
-<p>You can find more details about the Authentication <a href="http://developers.slamby.com/api/#authentication">here</a></p>
+<p>You can find more details about the Authentication <a href="/docs/api/{{docversion}}/index#authentication">here</a></p>
 <p>Slamby SDK.NET sends its version information to the API for version matching. Major and minor values should match in order to prevent version incompatibility. </p>
 <p><code>ParallelLimit</code> property enables you to limit or maximize CPU usage in certain functions. Limit value should be greater than zero in order to be sent.</p>
 <blockquote>

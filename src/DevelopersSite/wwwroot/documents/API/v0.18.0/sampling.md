@@ -6,7 +6,7 @@ With sampling you can:
 - Set the source categories
 - Use normal or stratified sampling method
 - Set sample size by fix number or percentage
-- Use built in pagination.
+- Filter fields
 
 For sampling you have to specify which dataset you want to use in the `X-DataSet` header by the name of the dataset.
 
@@ -20,15 +20,10 @@ X-DataSet|example
 {
     "Id" : "6902a2d3-0708-41f7-b21d-c5bd4b302bdc",
     "IsStratified" : "false",
-    "Percent" : "0",
-    "Size" : "15000",
+    "Percent" : "10",
+    "Size" : "0",
     "TagIds" : [],
-    "Pagination" : {
-        "Offset" : 0,
-        "Limit": 100,
-        "OrderDirection" : "Asc",
-        "OrderByField" : "id"
-    }
+    "Fields": ["id", "name", "desc"]
 }
 ```
 
@@ -37,33 +32,24 @@ X-DataSet|example
 ```JSON
 {
     "Items": [
-    {
-        "id": "1455197295447",
-        "title": "example title",
-        "desc": "example description",
-        "tags": [
-        "2",
-        "3"
-        ]
-    },
-    {
-        "id": "1455197591439",
-        "title": "example title",
-        "desc": "example description",
-        "tags": [
-        "3"
-        ]
-    },
-    ...
+        {
+            "id": "1455197295447",
+            "title": "example title",
+            "desc": "example description",
+            "tags": [ "2", "3"]
+        },
+        {
+            "id": "1455197591439",
+            "title": "example title",
+            "desc": "example description",
+            "tags": [
+            "3"
+            ]
+        },
+        ...
     ],
-    "Pagination": {
-    "Offset": 0,
-    "Limit": 100,
-    "OrderDirection": "Asc",
-    "OrderByField": "desc"
-    },
-    "Count": 100,
-    "Total": 15000
+    "Count": 15,
+    "Total": 150
 }
 ```
 

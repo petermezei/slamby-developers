@@ -14,7 +14,7 @@
 <p>Create a new dataset by providing a sample JSON document and additional parameters.</p>
 <p><em>Example REQUEST</em></p>
 <blockquote>
-<p><a href="#operation--api-DataSets-post">POST /api/DataSets</a>)</p>
+<p><a href="#operation--api-DataSets-post">POST /api/DataSets</a></p>
 <pre><code class="lang-JSON">{
     &quot;IdField&quot;: &quot;id&quot;,
     &quot;InterpretedFields&quot;: [&quot;title&quot;, &quot;desc&quot;],
@@ -33,7 +33,7 @@
 <p>Create a new dataset by providing a schema JSON document and additional parameters.</p>
 <p><em>Example REQUEST</em></p>
 <blockquote>
-<p><a href="#operation--api-DataSets-Schema-post">POST /api/DataSets/Schema</a>)</p>
+<p><a href="#operation--api-DataSets-Schema-post">POST /api/DataSets/Schema</a></p>
 <pre><code class="lang-JSON">{
     &quot;IdField&quot;: &quot;id&quot;,
     &quot;InterpretedFields&quot;: [
@@ -106,6 +106,10 @@
 <td>Object</td>
 <td><code>object</code> for single JSON objects</td>
 </tr>
+<tr>
+<td>Document</td>
+<td><code>attachment</code> accepts valid base64 encoded string</td>
+</tr>
 </tbody>
 </table>
 <p><em>Example schema</em></p>
@@ -137,11 +141,11 @@
     }
 }
 </code></pre>
-<h3 id="date-formats">Date Formats</h3>
+<h4 id="date-formats">Date Formats</h4>
 <p>You can define your custom date format to specify your needs.
 For dataset date formats you can use the built-in <a href="https://www.elastic.co/guide/en/elasticsearch/reference/2.2/mapping-date-format.html">elastic-search custom formats</a>.
 If you do not provide date format, default value is <code>&quot;strict_date_optional_time||epoch_millis&quot;</code>.</p>
-<p><strong>Built in formats e.g.</strong></p>
+<p><strong>Built in formats (excerpt)</strong></p>
 <table>
 <thead>
 <tr>
@@ -181,6 +185,10 @@ If you do not provide date format, default value is <code>&quot;strict_date_opti
 </tbody>
 </table>
 <p>...</p>
+<h4 id="document-format">Document Format</h4>
+<p>Property type must be set to <code>attachment</code> at DataSet schema creation. That is why it can be achieved via schema and not sample document definition. Content of this field must contain <code>base64</code> encoded binary content of a document such as .pdf, .doc. Uploaded document text will be extracted and wil be used when this field is used in Classifier or Prc services.</p>
+<h5 id="supported-file-formats">Supported file formats</h5>
+<p>Behind parsing documents there is an Apache Tika which provides extracted text. It supports wide variety of document formats. For detailed supported format list please visit <a href="http://tika.apache.org/1.13/formats.html">Apache Tika format page</a>.</p>
 <h3 id="get-dataset">Get Dataset</h3>
 <p>Get information about a given dataset. A dataset can be accessed by its name.</p>
 <p>Returns with:</p>

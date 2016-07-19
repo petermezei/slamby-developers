@@ -57,6 +57,7 @@ namespace DevelopersSite.Controllers
 
             ViewBag.StaticBase = docVersion.StaticBase;
             ViewBag.CurrentProduct = product;
+            ViewBag.Title = model.Document.Product;
 
             return View(model);
         }

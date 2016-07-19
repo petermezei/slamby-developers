@@ -10,7 +10,7 @@
             <ul>
                 @foreach (var item in Model.Tutorials)
                 {
-                    <li><a href="~/tutorial/@item.Id" target="_self">@Html.Raw(item.Title.Rendered)</a></li>
+                    <li><a href="~/tutorial/@item.Slug" target="_self">@Html.Raw(item.Title.Rendered)</a></li>
                 }
             </ul>
         </div>

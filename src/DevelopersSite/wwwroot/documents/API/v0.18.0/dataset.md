@@ -15,7 +15,7 @@ Create a new dataset by providing a sample JSON document and additional paramete
 
 *Example REQUEST*
 
-> [POST /api/DataSets](#operation--api-DataSets-post))
+> [POST /api/DataSets](#operation--api-DataSets-post)
 ```JSON
 {
     "IdField": "id",
@@ -36,7 +36,7 @@ Create a new dataset by providing a schema JSON document and additional paramete
 
 *Example REQUEST*
 
-> [POST /api/DataSets/Schema](#operation--api-DataSets-Schema-post))
+> [POST /api/DataSets/Schema](#operation--api-DataSets-Schema-post)
 ```JSON
 {
     "IdField": "id",
@@ -91,6 +91,7 @@ Date    |   `date`
 Boolean |   `boolean`
 Array   |   `array`
 Object  |   `object` for single JSON objects
+Document|   `attachment` accepts valid base64 encoded string
 
 *Example schema*
 
@@ -124,13 +125,13 @@ Object  |   `object` for single JSON objects
 }
 ```
 
-### Date Formats
+#### Date Formats
 
 You can define your custom date format to specify your needs.
 For dataset date formats you can use the built-in [elastic-search custom formats](https://www.elastic.co/guide/en/elasticsearch/reference/2.2/mapping-date-format.html).
 If you do not provide date format, default value is `"strict_date_optional_time||epoch_millis"`.
 
-**Built in formats e.g.**
+**Built in formats (excerpt)**
 
 name    |   Description
 --- |   ---
@@ -142,6 +143,14 @@ name    |   Description
 `basic_date_time_no_millis`   |   A basic formatter that combines a basic date and time without millis, separated by a T: yyyyMMdd'T'HHmmssZ. 
 `basic_ordinal_date`  |   A formatter for a full ordinal date, using a four digit year and three digit dayOfYear: yyyyDDD. 
 ...
+
+#### Document Format
+
+Property type must be set to `attachment` at DataSet schema creation. That is why it can be achieved via schema and not sample document definition. Content of this field must contain `base64` encoded binary content of a document such as .pdf, .doc. Uploaded document text will be extracted and wil be used when this field is used in Classifier or Prc services.
+
+##### Supported file formats
+
+Behind parsing documents there is an Apache Tika which provides extracted text. It supports wide variety of document formats. For detailed supported format list please visit [Apache Tika format page](http://tika.apache.org/1.13/formats.html).
 
 ### Get Dataset
 Get information about a given dataset. A dataset can be accessed by its name.

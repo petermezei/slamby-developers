@@ -18,27 +18,30 @@ namespace DevelopersSite.Controllers
             this.wordPressService = wordPressService;
         }
 
-        [Route("tutorial/{id?}")]
-        public async Task<IActionResult> Index(int id = 0)
+        [Route("tutorial/{slug?}")]
+        public async Task<IActionResult> Index(string slug = null)
         {
-            var tutorials = await wordPressService.GetPostsByCategory((int)PostCategory.Tutorials);
-            var firstId = tutorials.Select(s => s.Id).FirstOrDefault();
+            var tutorials = (await wordPressService.GetPostsByCategory((int)PostCategory.Tutorials)).OrderByDescending(o => o.Id);
+            var firstSlug = tutorials.Select(s => s.Slug).FirstOrDefault();
 
-            if (firstId == 0)
+            if (string.IsNullOrEmpty(firstSlug))
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            if (id == 0)
+            if (string.IsNullOrEmpty(slug))
             {    
-                return RedirectToAction("Index", "Tutorial", new { id = firstId });
+                return RedirectToAction("Index", "Tutorial", new { slug = firstSlug });
             }
 
+            var id = tutorials.Where(t => t.Slug == slug).Select(s => s.Id).Single();
             var model = new TutorialViewModel()
             {
                 Tutorials = tutorials,
                 Post = await wordPressService.GetPost(id)
             };
+
+            ViewBag.Title = model.Post.Title.Rendered;
 
             return View(model);
         }

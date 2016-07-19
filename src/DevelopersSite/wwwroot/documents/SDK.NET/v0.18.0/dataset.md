@@ -2,7 +2,7 @@
 
 Slamby provides **Dataset** as a data storage. A dataset is a JSON document storage that allows to store schema free JSON objects, indexes and additional parameters. Inside your server you can create and manage multiple datasets.
 
-You can find more details about the Datasets [here.](http://developers.slamby.com/api/#datasets)
+You can find more details about the Datasets [here.](/docs/api/{{docversion}}/dataset)
 
 ### Create new Dataset
 

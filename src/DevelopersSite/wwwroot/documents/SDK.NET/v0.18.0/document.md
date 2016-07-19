@@ -2,7 +2,7 @@
 
 Manage your **documents** easily. Create, edit, remove and running text analysis.
 
-You can find more details about the Documents [here.](http://developers.slamby.com/api/#documents)
+You can find more details about the Documents [here.](/docs/api/{{docversion}}/document)
 
 ### Insert New Document
 

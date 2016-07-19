@@ -1,16 +1,22 @@
-# Slamby SDK .NET v0.17
+# Slamby SDK .NET v0.18
 
-Slamby .NET SDK and Nuget Package.
+Slamby .NET SDK and NuGet Package.
 This project is open source. Please check the documentation and [join](http://www.slamby.com/Community) to the community group.
 
-Github Slamby page: [www.github.com/slamby](https://github.com/slamby)
-Github page:  [www.github.com/slamby/slamby-sdk-net](https://github.com/slamby/slamby-sdk-net)
+GitHub Slamby page: [www.github.com/slamby](https://github.com/slamby)
+GitHub page:  [www.github.com/slamby/slamby-sdk-net](https://github.com/slamby/slamby-sdk-net)
 
 ## Changelog
 
 ### Features
 
-- added DataSet update endpoint
+- modified DocumentManagent GetFilteredDocumentsAsync function to handle `ScrollId`
+- `[BREAKING CHANGES]` changed the following models: 
+    - Order 
+    - Pagination 
+    - PaginatedList
+    - DocumentSampleSettings
+    - DocumentFilterSettings
 
 ---
 
@@ -30,7 +36,7 @@ var configuration = new Configuration
 
 You have to use this `configuration` object for every `Manager`.
 
-You can find more details about the Authentication [here](http://developers.slamby.com/api/#authentication)
+You can find more details about the Authentication [here](/docs/api/{{docversion}}/index#authentication)
 
 Slamby SDK.NET sends its version information to the API for version matching. Major and minor values should match in order to prevent version incompatibility. 
 

@@ -2,7 +2,7 @@
 
 Manage tags to organize your data. Using tags create a tag cloud or a hierarchical tag tree.
 
-You can find more details about the Tags [here](http://developers.slamby.com/api/#tags).
+You can find more details about the Tags [here](/docs/api/{{docversion}}/tags).
 
 ### Create New Tag
 

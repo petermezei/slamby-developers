@@ -26,7 +26,7 @@
 </code></pre>
 </blockquote>
 <h3 id="cancel-process">Cancel Process</h3>
-<p>Cancel the process. Only Process with status <code>InProgress</code> can be canceled. The method returns with <code>HTTP/1.1 202 ACCEPTED</code> because it can take time to cancel a process. You have to check periodically that whether the process status is already <code>Canceled</code>.</p>
+<p>Cancel the process. Only Process with status <code>InProgress</code> can be canceled. The method returns with <code>HTTP/1.1 202 ACCEPTED</code> because it can take time to cancel a process. After it&#39;s accepted, the status of the process will be <code>Cancelling</code>. You have to check periodically that whether the process status is already <code>Canceled</code>.</p>
 <p><em>Example REQUEST</em></p>
 <blockquote>
 <p><a href="#operation--api-Processes-Cancel-post">POST /api/Processes/<code>GUID</code></a></p>

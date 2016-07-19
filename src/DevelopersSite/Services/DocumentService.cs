@@ -94,7 +94,8 @@ namespace DevelopersSite.Services
 
             if (string.IsNullOrWhiteSpace(version) || version == "latest")
             {
-                docVersion = document.DocumentVersions.First();
+                var ver = document.Versions.First();
+                docVersion = document.DocumentVersions.First(dv => dv.Version == ver);
             }
             else
             {
@@ -102,7 +103,8 @@ namespace DevelopersSite.Services
 
                 if (docVersion == null)
                 {
-                    docVersion = document.DocumentVersions.First();
+                    var ver = document.Versions.First();
+                    docVersion = document.DocumentVersions.First(dv => dv.Version == ver);
                 }
             }
 
@@ -148,6 +150,8 @@ namespace DevelopersSite.Services
             });
 
             content = content.Replace("<table>", "<table class=\"table table-bordered\">");
+            content = content.Replace("{{version}}", documentVersion.Version.Substring(1)); // version without "v"
+            content = content.Replace("{{docversion}}", documentVersion.Version);
 
             return content;
         }

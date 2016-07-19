@@ -1,10 +1,12 @@
-# Slamby API 0.17.0
+# Slamby API {{version}}
 
 ## Changelog
 
 ### Features
 
-- added Service alias support, services can be accessed via `id` and `alias` too
+- modified paging experience with `ScrollId`
+- added partial document update
+- added `attachment` DataSet field type (document text extraction)
 
 ---
 
@@ -18,8 +20,8 @@ Once you've
 [registered your client](http://slamby.com/register/) it's easy
 to start working with Slamby API.
 
-All endpoints are only accessible via https and are located at
-`europe.slamby.com`.
+All endpoints are only accessible via https and are located at `europe.slamby.com` or `asia.slamby.com`.
+
 ```
     https://europe.slamby.com/CLIENT_ID
 ```
@@ -47,5 +49,5 @@ Every response contains API version information in response HTTP `X-Api-Version`
 
 >*Example*
 >
-X-Api-Version: 0.17.0
+X-Api-Version: {{version}}
 

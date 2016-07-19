@@ -2,7 +2,7 @@
 
   Powerful **search engine**. Build **smart** search functions or filters. Easily access to your datasets with **simple queries**, **logical expressions** and **wild cards**. Manage your language dependencies using **optimal tokenizer**.
 
-You can find more details about the Filter mechanism [here.](http://developers.slamby.com/api/#filter)
+You can find more details about the Filter mechanism [here](/docs/api/{{docversion}}/filter).
 
  _Example:_
 
@@ -11,14 +11,19 @@ var manager = new DocumentManager(configuration, "DATASET_NAME");
 var settings = new DocumentFilterSettings {
     Filter = new Filter {
         Query = "title:michelin",
-    TagIds = new List<string> { "1" },
+        TagIds = new List<string> { "1" },
     },
-    Pagination = new Pagination {
-        Limit = 100,
-        Offset = 0,
+    Order = new Order {
         OrderByField = "title",
         OrderDirection = OrderDirectionEnum.Asc
-    }
+    },
+    Pagination = new Pagination {
+        Limit = 100
+    },
+    Fields = new List<string> { "*" }
 };
-var result = await manager.GetFilteredDocumentsAsync(settings);
+var result = await manager.GetFilteredDocumentsAsync(settings, null);
+
+// Get next items 
+var nextResult = await manager.GetFilteredDocumentsAsync(null, result.ScrollId);
 ```
