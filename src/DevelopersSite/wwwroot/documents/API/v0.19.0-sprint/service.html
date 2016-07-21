@@ -1,0 +1,424 @@
+<h2 id="services">Services</h2>
+<p>Slamby introduces services. You can quickly create a data processing service from the available service templates. Manage your data processing with services, run different tests, run more data management services parallelly.</p>
+<p><strong>Service definition:</strong> a data management service with custom settings, dedicated resources and available API endpoint.</p>
+<p>With services you can:</p>
+<ul>
+<li>Create a service</li>
+<li>Get your services list</li>
+<li>Get a service</li>
+<li>Remove a service</li>
+<li>Manage processes</li>
+</ul>
+<blockquote>
+<p><strong>Tip:</strong> Unlike Id Service Alias is defined by the user and it is also unique among services. Alias name should be URL encoded (e.g.: &quot;My Service&quot; -&gt; &quot;My%20Service&quot;) when used in url.</p>
+</blockquote>
+<h3 id="get-service">Get Service</h3>
+<p>You can get general information about a service using the Id or Alias of the service. </p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-get">GET /api/Services/<code>GUID or Alias</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-JSON">{
+    &quot;Id&quot;: &quot;57c845dc-6aa4-475c-bbf2-0d682f471f32&quot;,
+    &quot;Name&quot;: &quot;Example name of a service&quot;,
+    &quot;Alias&quot;: &quot;The Service&quot;
+    &quot;Description&quot;: &quot;This is an example service description&quot;,
+    &quot;Status&quot;: &quot;New&quot;,
+    &quot;Type&quot;: &quot;Classifier&quot;,
+    &quot;ProcessIdList&quot;: [
+    &quot;e251dbbf-04ff-4d34-a959-90dc4a602142&quot;,
+    &quot;d335edaf-354a-482c-ade4-4d8172f81a40&quot;
+    ],
+    &quot;ActualProcessId&quot;: null
+}
+</code></pre>
+</blockquote>
+<h3 id="create-new-service">Create New Service</h3>
+<p>Create a new Service</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-post">POST /api/Services</a></p>
+<pre><code class="lang-JSON">{
+    &quot;Name&quot;: &quot;Example name of a service&quot;,
+    &quot;Description&quot;: &quot;This is an example service description&quot;,
+    &quot;Type&quot; : &quot;Classifier&quot;,
+    &quot;Alias&quot; : &quot;The Service&quot;
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 201 CREATED</p>
+</blockquote>
+<h3 id="update-service">Update Service</h3>
+<p>You can update only the Name and the Description field. If specified Alias is exist on another Service then it will be removed first.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-put">PUT /api/Services/<code>GUID or Alias</code></a></p>
+<pre><code class="lang-JSON">{
+    &quot;Name&quot;: &quot;Updated example name of a service&quot;,
+    &quot;Description&quot;: &quot;This is an updated example service description&quot;,
+    &quot;Alias&quot;: &quot;My Updated Service&quot;
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 CREATED</p>
+</blockquote>
+<h3 id="remove-service">Remove Service</h3>
+<p>You remove a service anytime. If it&#39;s in Activated status then it will be Deactivated first. If it&#39;s in Busy status then it will be cancelled first. </p>
+<blockquote>
+<p>WARNING: If you use Alias for deletion then make sure the Alias is on the right service!</p>
+</blockquote>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-delete">DELETE /api/Services/<code>GUID or Alias</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<h2 id="classifier-service">Classifier Service</h2>
+<p>Service for text classification. Create a classifier service from a selected dataset, specify your settings and use this service API endpoint to classify your incoming text.</p>
+<blockquote>
+<p>Currently Slamby provides <code>Slamby Twister</code> as a highly accurate classification algorithm designed for e-commerce market.</p>
+</blockquote>
+<h3 id="get-classifier-service">Get Classifier Service</h3>
+<p>You can get classifier specified information about a classifier service with the Id of the service</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Classifier-get">GET /api/Services/Classifier/<code>GUID or Alias</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-JSON">{
+    &quot;Id&quot;: &quot;83326e75-dd16-4e5c-a66d-5ea5197bd8e0&quot;,
+    &quot;Name&quot;: &quot;Example name of a classifier service&quot;,
+    &quot;Description&quot;: &quot;This is an example classifier service description&quot;,
+    &quot;Status&quot;: &quot;New&quot;,
+    &quot;Type&quot;: &quot;Classifier&quot;,
+    &quot;ProcessIdList&quot;: null,
+    &quot;ActualProcessId&quot;: null,
+    &quot;PrepareSettings&quot;: null,
+    &quot;ActivateSettings&quot;: null
+}
+</code></pre>
+</blockquote>
+<h3 id="prepare-classifier-service">Prepare Classifier Service</h3>
+<p>Training Process Steps:</p>
+<ol>
+<li>Give a suitable name to the service,</li>
+<li>Set the ngram values,</li>
+<li>Provide the tag ids the you are going to use during the training,</li>
+<li>Start the training process.</li>
+</ol>
+<blockquote>
+<p>For Training process Slamby is using <code>Slamby Twister</code> as its own classification algorithm. </p>
+</blockquote>
+<p>This request is a long running task so the API do it in async way. Therefore the response is a Process.</p>
+<blockquote>
+<p><code>N-gram seetings</code>: each dataset has an n-gram setting. For set the required n-gram the minimum value is 1, the maximum value equals with the maximum n-gram number of the given dataset. Using a [1,2,3] n-gram settings means during the training process the classifier is going to create 1,2,3 n-gram dictionaries. <a href="https://en.wikipedia.org/wiki/N-gram">Learn more about N-gram</a></p>
+</blockquote>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Classifier-Prepare-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/Prepare</a></p>
+<pre><code class="lang-JSON">{
+    &quot;DataSetName&quot; : &quot;test dataset&quot;,
+    &quot;NGramList&quot;: [1,2],
+    &quot;TagIdList&quot;: [&quot;tag1Id&quot;,&quot;tag2Id&quot;]
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+<pre><code class="lang-JSON">{
+    &quot;Id&quot;: &quot;d335edaf-354a-482c-ade4-4d8172f81a40&quot;,
+    &quot;Start&quot;: &quot;2016-03-16T13:12:15.5520625Z&quot;,
+    &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
+    &quot;Percent&quot;: 0,
+    &quot;Status&quot;: &quot;InProgress&quot;
+}
+</code></pre>
+</blockquote>
+<h3 id="activate-classifier-service">Activate Classifier Service</h3>
+<p>Each service has two status: active, deactive. When a preparation/training process is ready, the service has a deactivated status. A deactivated service is ready, but its not loaded into memory and the API is not able to process the incoming requests. To use a service set the status to Activated. After the activation process the service is ready to use, all the required files are loaded and stored in memory, the API endpoint is active.</p>
+<p>This request can be a long running task so the API do it in async way. Therefore the response is a Process.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Classifier-Activate-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/Activate</a></p>
+<pre><code class="lang-JSON">{
+    &quot;NGramList&quot;: [1,2],
+    &quot;EmphasizedTagIdList&quot;: null,
+    &quot;TagIdList&quot;: null
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+<pre><code class="lang-JSON">{
+  &quot;Id&quot;: &quot;d46850e8-1a22-43f5-b304-d22e6b7e5e6a&quot;,
+  &quot;Start&quot;: &quot;2016-06-28T10:53:36.9553132Z&quot;,
+  &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
+  &quot;Percent&quot;: 0,
+  &quot;Description&quot;: &quot;Activating Classifier service Example name of a classifier service...&quot;,
+  &quot;Status&quot;: &quot;InProgress&quot;,
+  &quot;Type&quot;: &quot;ClassifierActivate&quot;,
+  &quot;ErrorMessages&quot;: [],
+  &quot;ResultMessage&quot;: null
+}
+</code></pre>
+</blockquote>
+<h3 id="deactivate-classifier-service">Deactivate Classifier Service</h3>
+<p>When a service is not needed for continous usage you can deactivate it. After deactivating a service, all the settings and files remain, but they are not using any resources (memory, cores). You can store your deactivated services and activate them anytime.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Classifier-Deactivate-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/Deactivate</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<h3 id="recommend">Recommend</h3>
+<p>Built-in text classification engine. Uses the prepared Classifier dictionaries and calculations. High speed and classification capability. Built-in n-gram analyzer.</p>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Classifier-Recommend-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/Recommend</a></p>
+<pre><code class="lang-JSON">{
+    &quot;Text&quot;: &quot;Lorem Ipsum Dolorem&quot;,
+    &quot;Count&quot;: &quot;2&quot;,
+    &quot;UseEmphasizing&quot;: false,
+    &quot;NeedTagInResults&quot;: true
+}
+</code></pre>
+</blockquote>
+<p><em>Example Response</em></p>
+<pre><code class="lang-JSON">[
+    {
+        &quot;TagId&quot;: &quot;324&quot;,
+        &quot;Score&quot;: 0.35175663155586434,
+        &quot;Tag&quot;: {
+            &quot;Id&quot;: &quot;324&quot;,
+            &quot;Name&quot;: &quot;Tag name&quot;,
+            &quot;ParentId&quot;: &quot;16&quot;,
+            &quot;Properties&quot;: null
+        }
+    },
+    {
+        &quot;TagId&quot;: &quot;232&quot;,
+        &quot;Score&quot;: 0.30277479057126688,
+        &quot;Tag&quot;: {
+            &quot;Id&quot;: &quot;232&quot;,
+            &quot;Name&quot;: &quot;Tag name&quot;,
+            &quot;ParentId&quot;: &quot;24&quot;,
+            &quot;Properties&quot;: null
+        }
+    }
+]
+</code></pre>
+<h4 id="emphasizing">Emphasizing</h4>
+<p>During the recommendation process, if there are any emphasized tag in the TOP N result list then Slamby checks if the given document contains the name of the emphasized tag.
+If yes, then Slamby changes the order of the recommended tags and moves the emphasized results to the first place.
+If there are more than one emphasized tag on the list that meeting with the criteria then all of them will be moved to the top (with keeping their orders).
+If the <code>IsEmphasized</code> parameter is true in a result element, it means that the actual result was emphasized. The score is the original in each case.
+With the usage of the score, the original order can be restored anytime.</p>
+<blockquote>
+<p><strong>Tip:</strong> You have to define the emphasized tags during the activation of the service </p>
+</blockquote>
+<h3 id="export-dictionaries">Export dictionaries</h3>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Classifier-ExportDictionaries-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/ExportDictionaries</a></p>
+<pre><code class="lang-JSON">{
+    &quot;NGramList&quot;: [1],
+    &quot;TagIdList&quot;: null
+}
+</code></pre>
+<p><strong>Tip:</strong> If you skip the <code>TagIdList</code> or set it to <code>null</code> than the API will use all the leaf tags</p>
+</blockquote>
+<p><em>Example Response</em></p>
+<pre><code class="lang-JSON">{
+    &quot;Id&quot;: &quot;345e1c79-dc78-427f-8ad1-facce75f6ae3&quot;,
+    &quot;Start&quot;: &quot;2016-04-18T13:29:15.3728991Z&quot;,
+    &quot;End&quot;: &quot;2016-04-18T13:29:39.3144202Z&quot;,
+    &quot;Percent&quot;: 0,
+    &quot;Description&quot;: &quot;Exporting dictionaries from Classifier service prc...&quot;,
+    &quot;Status&quot;: &quot;Finished&quot;,
+    &quot;Type&quot;: &quot;ClassifierExportDictionaries&quot;,
+    &quot;ErrorMessages&quot;: [],
+    &quot;ResultMessage&quot;: &quot;Successfully exported dictionaries from Classifier service prc!\nExport file can be download from here: https://api.slamby.com/demo-api/files/345e1c79-dc78-427f-8ad1-facce75f6ae3.zip&quot;
+}
+</code></pre>
+<h2 id="prc-service">Prc Service</h2>
+<h3 id="get-prc-service">Get Prc Service</h3>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Prc-get">GET /api/Services/Prc/<code>GUID or Alias</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-JSON">{
+    &quot;PrepareSettings&quot;: null,
+    &quot;ActivateSettings&quot;: null,
+    &quot;Id&quot;: &quot;996f91f4-f1ca-428b-af1a-929ccf3b0243&quot;,
+    &quot;Name&quot;: &quot;prc&quot;,
+    &quot;Description&quot;: null,
+    &quot;Status&quot;: &quot;New&quot;,
+    &quot;Type&quot;: &quot;Prc&quot;,
+    &quot;ProcessIdList&quot;: [],
+    &quot;ActualProcessId&quot;: null
+}
+</code></pre>
+</blockquote>
+<h3 id="prepare-prc-service">Prepare Prc Service</h3>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Prc-Prepare-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Prepare</a></p>
+<pre><code class="lang-JSON">{
+    &quot;DataSetName&quot; : &quot;test dataset&quot;,
+    &quot;TagIdList&quot;: [&quot;tag1Id&quot;,&quot;tag2Id&quot;]
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+<pre><code class="lang-JSON">{
+    &quot;Id&quot;: &quot;ceed2045-70fb-4785-b483-aadb9bf9a992&quot;,
+    &quot;Start&quot;: &quot;2016-04-18T13:09:49.6032716Z&quot;,
+    &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
+    &quot;Percent&quot;: 0,
+    &quot;Description&quot;: &quot;Preparing Prc service prc...&quot;,
+    &quot;Status&quot;: &quot;InProgress&quot;,
+    &quot;Type&quot;: &quot;PrcPrepare&quot;,
+    &quot;ErrorMessages&quot;: [],
+    &quot;ResultMessage&quot;: &quot;&quot;
+}
+</code></pre>
+</blockquote>
+<h3 id="activate-prc-service">Activate Prc Service</h3>
+<p>This request can be a long running task so the API do it in async way. Therefore the response is a Process.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Prc-Activate-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Activate</a></p>
+<pre><code class="lang-JSON">{
+    &quot;FieldsForRecommendation&quot;: [&quot;title&quot;]
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+<pre><code class="lang-JSON">{
+  &quot;Id&quot;: &quot;181b445c-3c91-44bb-bcf7-759a7e40a98c&quot;,
+  &quot;Start&quot;: &quot;2016-06-28T10:49:52.5726793Z&quot;,
+  &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
+  &quot;Percent&quot;: 0,
+  &quot;Description&quot;: &quot;Activating Prc service prc...&quot;,
+  &quot;Status&quot;: &quot;InProgress&quot;,
+  &quot;Type&quot;: &quot;PrcActivate&quot;,
+  &quot;ErrorMessages&quot;: [],
+  &quot;ResultMessage&quot;: null
+}
+</code></pre>
+</blockquote>
+<h3 id="deactivate-prc-service">Deactivate Prc Service</h3>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Prc-Deactivate-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Deactivate</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<h3 id="recommend">Recommend</h3>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Prc-Recommend-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Recommend</a></p>
+<pre><code class="lang-JSON">{
+    &quot;Text&quot;: &quot;Lorem Ipsum Dolorem&quot;,
+    &quot;Count&quot;: &quot;2&quot;,
+    &quot;Filter&quot;: null,
+    &quot;Weights&quot;: null,
+    &quot;TagId&quot;: &quot;tag1Id&quot;,
+    &quot;NeedDocumentInResult&quot;: true
+}
+</code></pre>
+</blockquote>
+<p><em>Example Response</em></p>
+<pre><code class="lang-JSON">[
+    {
+        &quot;DocumentId&quot;: &quot;1777237&quot;,
+        &quot;Score&quot;: 0.89313365295595715,
+        &quot;Document&quot;: {
+            &quot;id&quot;: &quot;1777237&quot;,
+            &quot;tag_id&quot;: &quot;tag1Id&quot;,
+            &quot;title&quot;: &quot;Lorem&quot;,
+            &quot;body&quot;: &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor&quot;
+        }
+    },
+    {
+        &quot;DocumentId&quot;: &quot;6507461&quot;,
+        &quot;Score&quot;: 0.7894283811358983,
+        &quot;Document&quot;: {
+            &quot;ad_id&quot;: &quot;6507461&quot;,
+            &quot;tag_id&quot;: &quot;tag1Id&quot;,
+            &quot;title&quot;: &quot;Duis aute irure dolorem&quot;,
+            &quot;body&quot;: &quot;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&quot;
+        }
+    }
+]
+</code></pre>
+<h3 id="keywords-extraction">Keywords Extraction</h3>
+<p>With this function, you can easily extract the relevant keywords (according to the given tag) from your text, with the help of PRC service.</p>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Prc-Keywords-post">POST /api/Services/Prc/<code>GUID</code>/Keywords</a></p>
+<pre><code class="lang-JSON">{
+    &quot;Text&quot;: &quot;Lorem Ipsum Dolorem&quot;,
+    &quot;TagId&quot;: &quot;tag1Id&quot;
+}
+</code></pre>
+</blockquote>
+<p><em>Example Response</em></p>
+<pre><code class="lang-JSON">[
+  {
+    &quot;Word&quot;: &quot;lorem&quot;,
+    &quot;Score&quot;: 75.457626224664608
+  },
+  {
+    &quot;Word&quot;: &quot;ipsum&quot;,
+    &quot;Score&quot;: 40.333326695449692
+  }
+]
+</code></pre>
+<h3 id="export-dictionaries">Export dictionaries</h3>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="#operation--api-Services-Prc-ExportDictionaries-post">POST /api/Services/Prc/<code>GUID or Alias</code>/ExportDictionaries</a></p>
+<pre><code class="lang-JSON">{
+    &quot;TagIdList&quot;: null
+}
+</code></pre>
+<p><strong>Tip:</strong> If you skip the <code>TagIdList</code> or set it to <code>null</code> than the API will use all the leaf tags</p>
+</blockquote>
+<p><em>Example Response</em></p>
+<pre><code class="lang-JSON">{
+    &quot;Id&quot;: &quot;345e1c79-dc78-427f-8ad1-facce75f6ae3&quot;,
+    &quot;Start&quot;: &quot;2016-04-18T13:29:15.3728991Z&quot;,
+    &quot;End&quot;: &quot;2016-04-18T13:29:39.3144202Z&quot;,
+    &quot;Percent&quot;: 0,
+    &quot;Description&quot;: &quot;Exporting dictionaries from Prc service prc...&quot;,
+    &quot;Status&quot;: &quot;Finished&quot;,
+    &quot;Type&quot;: &quot;PrcExportDictionaries&quot;,
+    &quot;ErrorMessages&quot;: [],
+    &quot;ResultMessage&quot;: &quot;Successfully exported dictionaries from Prc service prc!\nExport file can be download from here: https://api.slamby.com/demo-api/files/345e1c79-dc78-427f-8ad1-facce75f6ae3.zip&quot;
+}
+</code></pre>

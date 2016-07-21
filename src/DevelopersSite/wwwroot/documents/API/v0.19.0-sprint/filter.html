@@ -1,0 +1,107 @@
+<h2 id="filter">Filter</h2>
+<p>Powerful <strong>search engine</strong>. Build <strong>smart</strong> search functions or filters. Easily access to your datasets with <strong>simple queries</strong>, <strong>logical expressions</strong> and <strong>wild cards</strong>. Manage your language dependencies using <strong>optinal tokenizer</strong>.</p>
+<p>With Filter you can:</p>
+<ul>
+<li>Create simple search queries</li>
+<li>Filter by tags</li>
+<li>Search in multiple fields</li>
+<li>Access to all the available document fields and parameters</li>
+<li>Use logical expressions</li>
+<li>Use wild cards</li>
+<li>Use optional tokenizers</li>
+<li>Use built in pagination</li>
+<li>Filter fields</li>
+</ul>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Documents-Filter-post">POST /api/Documents/Filter</a></p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>If Fields is not set then by default returns with IdField, TagField and InterpretedFields (<code>attachment</code> fields are excluded because their size) of the current DataSet. You can specify a field list or &quot;*&quot; which means all fields will return.</p>
+<pre><code class="lang-JSON">{
+    &quot;Filter&quot; : {
+        &quot;TagIds&quot; : [&quot;1&quot;],
+        &quot;Query&quot; : &quot;title:michelin&quot;
+    },
+    &quot;Order&quot;: {
+        &quot;OrderDirection&quot; : &quot;Asc&quot;,
+        &quot;OrderByField&quot; : &quot;id&quot;
+    },
+    &quot;Pagination&quot; : {
+        &quot;Limit&quot;: 100
+    },
+    &quot;Fields&quot;: [&quot;id&quot;, &quot;name&quot;, &quot;desc&quot;]
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-JSON">{
+    &quot;Items&quot;: [
+        {
+            &quot;id&quot;: &quot;1455197455453&quot;,
+            &quot;title&quot;: &quot;example title 1&quot;,
+            &quot;desc&quot;: &quot;example description&quot;
+        },
+        {
+            &quot;id&quot;: &quot;1455197455203&quot;,
+            &quot;title&quot;: &quot;example title 2&quot;,
+            &quot;desc&quot;: &quot;example description&quot;
+        },
+        ...
+        ],
+    &quot;ScrollId&quot;: &quot;cXVlcnlBbmRGZXRjaDsxOzE2OTA6b3NoRjRMZlVUNUNIWlNxa1RDdzdEZzswOw==&quot;,
+    &quot;Count&quot;: 100,
+    &quot;Total&quot;: 154
+}
+</code></pre>
+</blockquote>
+<p>The <code>ScrollId</code> is used to get the next <code>Limit</code> items if available. Provide the <code>ScrollId</code> from every response to the Filter endpoint to get the next page until the <code>Count</code> is equals with the <code>Limit</code> or a <code>ScrollId</code> is present. </p>
+<blockquote>
+<p>TIP: <code>ScrollId</code> can be same or different from call to call. Use the value from the last response.</p>
+</blockquote>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Documents-Filter-post">POST /api/Documents/Filter/cXVlcnlBbmRGZXRjaDsxOzE2OTA6b3NoRjRMZlVUNUNIWlNxa1RDdzdEZzswOw==</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-JSON">{
+    &quot;Items&quot;: [
+        {
+            &quot;id&quot;: &quot;1455197459967&quot;,
+            &quot;title&quot;: &quot;example title 101&quot;,
+            &quot;desc&quot;: &quot;example description&quot;
+        },
+        {
+            &quot;id&quot;: &quot;1455197451428&quot;,
+            &quot;title&quot;: &quot;example title 102&quot;,
+            &quot;desc&quot;: &quot;example description&quot;
+        },
+        ...
+        ],
+    &quot;ScrollId&quot;: &quot;cXVlcnlBbmRGZXRjaDsxOzE2OTA6b3NoRjRMZlVUNUNIWlNxa1RDdzdEZzswOw==&quot;,
+    &quot;Count&quot;: 54,
+    &quot;Total&quot;: 1543
+}
+</code></pre>
+</blockquote>
+<h5 id="for-the-parameters-explanation-check-the-documentfiltersettings-schema-definition-here-definitions-documentfiltersettings-">For the parameters explanation check the DocumentFilterSettings schema definition <a href="#/definitions/DocumentFilterSettings">here</a></h5>
+<h5 id="for-the-pagination-explanation-check-the-pagination-section-here-pagination-">For the pagination explanation check the pagination section <a href="#pagination">here</a></h5>
+<blockquote>
+<p><strong>Tip:</strong> Easily create a powerful search engine by using tokenizer and detailed search queries.</p>
+</blockquote>

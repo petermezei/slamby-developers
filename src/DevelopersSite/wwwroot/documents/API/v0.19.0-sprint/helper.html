@@ -1,0 +1,26 @@
+<h2 id="helper-functions">Helper functions</h2>
+<h3 id="file-parser">File Parser</h3>
+<p>File parsing and text extraction endpoint. Content must be provided as valid <code>base64</code> string.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Helper-FileParser-post">POST /api/Helper/FileParser</a></p>
+<pre><code class="lang-json">{
+    &quot;Content&quot;: &quot;IkdvZCBTYXZlIHRoZSBRdWVlbiIgKGFsdGVybmF0aXZlbHkgIkdvZCBTYXZlIHRoZSBLaW5nIg==&quot;
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-JSON">{
+  &quot;Content&quot;: &quot;\&quot;God Save the Queen\&quot; (alternatively \&quot;God Save the King\&quot;\n&quot;,
+  &quot;Title&quot;: null,
+  &quot;Date&quot;: null,
+  &quot;Author&quot;: null,
+  &quot;Keywords&quot;: null,
+  &quot;ContentType&quot;: &quot;text/plain; charset=ISO-8859-1&quot;,
+  &quot;ContentLength&quot;: 55,
+  &quot;Language&quot;: &quot;en&quot;
+}
+</code></pre>
+</blockquote>
