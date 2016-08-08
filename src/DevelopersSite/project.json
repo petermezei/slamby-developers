@@ -25,7 +25,7 @@
   },
 
   "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel"
+    "web": "Microsoft.AspNet.Server.Kestrel --server.urls http://*:5000"
   },
 
   "frameworks": {
@@ -59,6 +59,6 @@
     "./global.json"
   ],
   "scripts": {
-    "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min", "gulp generate" ]
+    "prepublish": [ "npm install", "bower install --allow-root", "gulp clean", "gulp min", "gulp generate" ]
   }
 }
