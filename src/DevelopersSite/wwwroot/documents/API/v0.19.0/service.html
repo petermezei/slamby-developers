@@ -130,10 +130,43 @@
 <pre><code class="lang-JSON">{
     &quot;DataSetName&quot; : &quot;test dataset&quot;,
     &quot;NGramList&quot;: [1,2],
-    &quot;TagIdList&quot;: [&quot;tag1Id&quot;,&quot;tag2Id&quot;]
+    &quot;TagIdList&quot;: [&quot;tag1Id&quot;,&quot;tag2Id&quot;],
+    &quot;CompressLevel&quot;: 1,
+    &quot;CompressSettings&quot;: {...}
 }
 </code></pre>
 </blockquote>
+<p><code>Settings</code> explanation</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataSetName</td>
+<td>Dataset as a training database, as a source database.</td>
+</tr>
+<tr>
+<td>NGramList</td>
+<td>Ngram model for prepare process.</td>
+</tr>
+<tr>
+<td>TagIdList</td>
+<td>Tag ID list that will be used during the training. Default value is <code>null</code> that means all the lead nodes.</td>
+</tr>
+<tr>
+<td>CompressLevel</td>
+<td>Built-in compress function. During the training process compress makes the training faster and more efficient. The output files are smaller, that makes the classification process faster. Using compress a smaller server size can serve the same training dataset as a bigger machine. CompressLevel is a built-in compress function, value can be: 1, 2 or 3. 1 is a smaller, 2 is a medium compress level, 3 is a higher compress level.</td>
+</tr>
+<tr>
+<td>CompressSettings</td>
+<td>Customized compress process. Instead of using predefined compress levels, you can use more detailed settings. For this please contact our support.</td>
+</tr>
+</tbody>
+</table>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
 <p>HTTP/1.1 202 ACCEPTED</p>
@@ -329,6 +362,13 @@ With the usage of the score, the original order can be restored anytime.</p>
 }
 </code></pre>
 </blockquote>
+<h3 id="index-on-prc-service">Index on PRC Service</h3>
+<p>After PRC Service Activation the service is available for real-time analysis that might takes time. For real-time quick analysis you can use PRC Index function. It has 2 main part: a furst full index, then a repetable partial index.
+During the index process, PRC Index analyse all the available documents inside the source dataset, and store the results in an index database. Using PRC Index, a quick real-time analysis is available.</p>
+<h4 id="full-index">Full Index</h4>
+<p>First index stage. After a PRC Service is activated its ready for text analysis. To boost its speed we suggest to use PRC Index. During the first full index, using the available PRC Service, your server analysis all of your documents and save the results in an index database.</p>
+<h4 id="partial-index">Partial Index</h4>
+<p>When a first full index is ready, you can syncornize your index dataset by partial index update. Using partial index process, just the new documents will be analyzed and stored. We suggest to use partial PRC Index frequiently.</p>
 <h3 id="deactivate-prc-service">Deactivate Prc Service</h3>
 <p><em>Example REQUEST</em></p>
 <blockquote>
