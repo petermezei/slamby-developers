@@ -136,9 +136,21 @@ This request is a long running task so the API do it in async way. Therefore the
 {
     "DataSetName" : "test dataset",
     "NGramList": [1,2],
-    "TagIdList": ["tag1Id","tag2Id"]
+    "TagIdList": ["tag1Id","tag2Id"],
+    "CompressLevel": 1,
+    "CompressSettings": {...}
 }
 ```
+
+`Settings` explanation
+
+Name    |   Desc
+--- |   ---
+DataSetName |   Dataset as a training database, as a source database.
+NGramList   |   Ngram model for prepare process.
+TagIdList   |   Tag ID list that will be used during the training. Default value is `null` that means all the lead nodes.
+CompressLevel   |   Built-in compress function. During the training process compress makes the training faster and more efficient. The output files are smaller, that makes the classification process faster. Using compress a smaller server size can serve the same training dataset as a bigger machine. CompressLevel is a built-in compress function, value can be: 1, 2 or 3. 1 is a smaller, 2 is a medium compress level, 3 is a higher compress level.
+CompressSettings    |   Customized compress process. Instead of using predefined compress levels, you can use more detailed settings. For this please contact our support.
 
 *Example RESPONSE*
 > HTTP/1.1 202 ACCEPTED
@@ -354,6 +366,15 @@ This request can be a long running task so the API do it in async way. Therefore
 }
 ```
 
+### Index on PRC Service
+After PRC Service Activation the service is available for real-time analysis that might takes time. For real-time quick analysis you can use PRC Index function. It has 2 main part: a furst full index, then a repetable partial index.
+During the index process, PRC Index analyse all the available documents inside the source dataset, and store the results in an index database. Using PRC Index, a quick real-time analysis is available.
+
+#### Full Index
+First index stage. After a PRC Service is activated its ready for text analysis. To boost its speed we suggest to use PRC Index. During the first full index, using the available PRC Service, your server analysis all of your documents and save the results in an index database.
+
+#### Partial Index
+When a first full index is ready, you can syncornize your index dataset by partial index update. Using partial index process, just the new documents will be analyzed and stored. We suggest to use partial PRC Index frequiently.
 
 ### Deactivate Prc Service
 
