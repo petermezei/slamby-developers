@@ -233,9 +233,9 @@ On this tab, you see your available services and create new ones.
 
 ### Classifier Service
 
-To create a classifier service click the create a new button on the bottom left corner. Select classifier service and click new button. At first provide a required name, description and check the service type. When everything ready click the create button.
+To create a classifier service click the create a new button on the bottom left corner. Select classifier service and click the new button. At first provide a required name, description and check the service type. When everything ready click the create button.
 
->`Tip`: To use a service you can use name, id or alias. For integration purpose, we suggest using alias.
+>`Tip`: To use a service you can use name, id or alias. For integration purpose, we suggest using the alias.
 
 When a classifier service created the next step to start the preparation process. During preparation, machine learning process starts.
 
@@ -246,7 +246,7 @@ Name    |   Default value   |   Description
 DatasetName |   null    |   Dataset name as a source for machine learning. E.g. "demo-dataset".
 NGramList   |   [1,2,3] |   Default ngram value. The maximum value depends on the ngram value of the source dataset.
 CompressLevel   |   null    |   Built-in compress function. It can compress the training process. The same prediction quality but smaller resource need. We suggest using 1. Values can be 1,2,3.
-TagIdList   |   null    | tag ids that will participate in the training process. Null value means all the leaf categories in the category tree.
+TagIdList   |   null    | Tag ids that will participate in the training process. Null value means all the leaf categories in the category tree.
 
 >`Tip`: On documents tab, you can select tags tab, where you can select the required tags. To copy the tag ids, select the required tags, then press ctrl+c that copies all the selected tag ids into your clipboard. In the prepare settings you can paste is by pressing ctrl+v. During the training process, you can check the training status and progress on the process tab.
 
@@ -255,6 +255,42 @@ When the preparation finishes you can activate it. During activation, the servic
 **Activate a service**. To activate a service click the activate button. An activation settings panel pops up. Fill the required settings and click activate button again.
 
 **Test a service**. To test an activated service click the recommend button. An input form pops up. Available settings: `Text`:input text, `Count`: top n result to display, `NeedTagInResult`: detailed result.
+
+### PRC Service
+
+To create a PRC service click the create a new button on the bottom left corner. Select PRC service and click the new button. At first type a suitable name, description, and alias. When everything ready click the create button.
+
+>`Tip`: To use a service you can use a name, id or alias. For integration purpose, we suggest using the alias.
+
+When a PRC service created the next step to start the preparation process. During preparation, machine learning process starts.
+
+`Preparation settings`:
+
+Name    |   Default value   |   Description
+--- |   --- |   ---
+DataSetName |   null    |   Dataset name as a source for machine learning. E.g. "demo-dataset".
+TagIdList   |   null    |   Tag ids that will participate in the training process. Null value means all the leaf categories in the category tree.
+CompressLevel   |   0   |   Built-in compress function. It can compress the training process. The same prediction quality but smaller resource need. We suggest using 1. Values can be 1,2,3.
+CompressSettings    |   null    |   Detailed compress settings, for more information please contact `support@slamby.com`
+
+**Activate a service**. To activate a PRC service, click the `activate` button. Required setting `FieldForRecommendation`: default value is null, field list from the source dataset. Similar item recommendation is based on the given fields. Default null value means all the interpreted text fields.
+
+**Test a service**. To test a PRC service click the recommend button.
+
+`Input fields for PRC recommend`
+
+Name    |   Default value   |   Description
+--- |   --- |   ---
+Text    |   null    |   Text to analyse.
+Count   |   3   |   Document count in the result.
+NeedDocumentInResult    |   false   |   True: result documents are displayed, false: only document ids are displayed in the result.
+TagId   |   null    |   Tag id in which the recommendation engine is looking for matching documents.
+Filter  |   null    |   Filter object, matchmaking process starts on the filter results.
+Weights |   []  |   Weigh list. Result order modification using fields and weight.
+
+**Index**. When a PRC service is activated, for faster response time you can use our built-in index. When an index process starts, it analyses all the documents and stores the results in an index database. To start index process click the index button.
+
+**Partial Index**. When an index process is finished, you can refresh your index database by using the partial index. To start partial index click the partial index button.
 
 ## Processes
 
