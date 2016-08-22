@@ -1,7 +1,7 @@
 # Slamby TAU
 _Version: 1.0.0_
 
-*Description*
+*Great application to manage your Slamby Server, access your datasets, documents, import and machine-learning training.*
 
 `GitHub` Page: [https://github.com/slamby/slamby-tau/](https://github.com/slamby/slamby-tau)
 
