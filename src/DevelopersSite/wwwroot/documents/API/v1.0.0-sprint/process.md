@@ -66,7 +66,7 @@ Cancel the process. Only Process with status `InProgress` can be canceled. The m
 
 *Example REQUEST*
 
-> [POST /api/Processes/`GUID`](#operation--api-Processes-Cancel-post)
+> [POST /api/Processes/`GUID`/Cancel](#operation--api-Processes-Cancel-post)
 
 *Example RESPONSE*
 
