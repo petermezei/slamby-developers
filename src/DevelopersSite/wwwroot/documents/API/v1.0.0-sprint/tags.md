@@ -1,5 +1,6 @@
 ## Tags
-Manage tags to organize your data. Using tags create a tag cloud or a hiearchical tag tree.
+
+Manage tags to organize your data. Using tags create a tag cloud or a hierarchical tag tree.
 
 Every tag is related to a Dataset. You have to specify which dataset you want to use in the `X-DataSet` header by the name of the dataset.
 
@@ -14,9 +15,10 @@ With Tags you can:
 * Use tags for tagging.
 
 ### Create New Tag
+
 Create a new tag in a dataset.
 
->**Tip:** To create hierarchy you have to specify the ParentId of the tag. The ParentId is the Id of the parent of the tag. In the dataset there must be an existing tag with the id given in the ParentId. If the tag is a root element, or you don't want to use hierarchy then just skip the property or set to `null`.
+>**Tip:** To create hierarchy you have to specify the ParentId of the tag. The ParentId is the Id of the parent of the tag. In the dataset, there must be an existing tag with the id given in the ParentId. If the tag is a root element, or you don't want to use hierarchy then just skip the property or set to `null`.
 
 *Example REQUEST*
 > [POST /api/Tags](#operation--api-Tags-post)

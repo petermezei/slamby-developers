@@ -1,9 +1,9 @@
 ## Processes
-There are long running tasks in the Slamby API. These requests are served in async way. These methods returns with `HTTP/1.1 202 ACCEPTED`and with a Process object.
+There are long running tasks in the Slamby API. These requests are served in an async way. These methods return with `HTTP/1.1 202 ACCEPTED`and with a Process object.
 
 > **Tip:** You can cancel a process anytime during its progress
 
-### Get Process information
+### Get-Process information
 Get a process by its Id.
 
 *Example REQUEST*

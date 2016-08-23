@@ -1,5 +1,5 @@
 ## Filter
-Powerful **search engine**. Build **smart** search functions or filters. Easily access to your datasets with **simple queries**, **logical expressions** and **wild cards**. Manage your language dependencies using **optinal tokenizer**.
+Powerful **search engine**. Build **smart** search functions or filters. Easily access to your datasets with **simple queries**, **logical expressions** and **wild cards**. Manage your language dependencies using **optional tokenizer**.
 
 With Filter you can:
 * Create simple search queries
@@ -9,7 +9,7 @@ With Filter you can:
 * Use logical expressions
 * Use wild cards
 * Use optional tokenizers
-* Use built in pagination
+* Use built-in pagination
 * Filter fields
 
 *Example REQUEST*
@@ -38,6 +38,19 @@ If Fields is not set then by default returns with IdField, TagField and Interpre
 }
 ```
 
+`Available Filter Object Parameters`
+
+Parameter Group |   Parameter Name    |   Description
+--- |   --- |   ---
+Filter  |   TagIds  |   Source tag id list in which the filter request will be processed.
+Filter  |   Query   |   Search query. Simple search query, logical expressions, field:value form, wildcard.
+Order   |   OrderDirection  |   Asc, Desc
+Order   |   OrderByField    |   Any field from your dataset.
+Pagination  |   Limit   |   Item count in response object. Maximum value is 1000.
+Fields  |   -   |   Requested fields. Empty means all the available fields. The id field is a must.
+
+> `Important`: Maximum pagination limit: 1000.
+
 *Example RESPONSE*
 > HTTP/1.1 200 OK
 ```JSON
@@ -61,7 +74,7 @@ If Fields is not set then by default returns with IdField, TagField and Interpre
 }
 ```
 
-The `ScrollId` is used to get the next `Limit` items if available. Provide the `ScrollId` from every response to the Filter endpoint to get the next page until the `Count` is equals with the `Limit` or a `ScrollId` is present. 
+The `ScrollId` is used to get the next `Limit` items if available. Provide the `ScrollId` from every response to the Filter endpoint to get the next page until the `Count` equals with the `Limit` or a `ScrollId` is present. 
 
 > TIP: `ScrollId` can be same or different from call to call. Use the value from the last response.
 
@@ -91,6 +104,12 @@ The `ScrollId` is used to get the next `Limit` items if available. Provide the `
     "Total": 1543
 }
 ```
+
+### How to use the ScrollId?
+
+When your filter result object contains more items than your count value, you need to use the scroll to scroll over the results. In the first response, you can find a `ScrollId` field that you can use to identify your filter process and request the next items.
+
+As you can see when you have a ScrollId you can use it in your request URL: `POST /API/Documents/Filter/ScrollId`
 
 ##### For the parameters explanation check the DocumentFilterSettings schema definition [here](#/definitions/DocumentFilterSettings)
 ##### For the pagination explanation check the pagination section [here](#pagination)

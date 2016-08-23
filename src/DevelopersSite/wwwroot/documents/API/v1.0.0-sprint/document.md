@@ -13,7 +13,7 @@ With document you can:
 * Modifying your documents easily
 * Running text analysis
 
-> **Tip:** Store all the related information - such as text, prices, image urls - and use powerful queries.
+> **Tip:** Store all the related information - such as text, prices, image URLs - and use powerful queries.
 
 ### Insert New Document
 

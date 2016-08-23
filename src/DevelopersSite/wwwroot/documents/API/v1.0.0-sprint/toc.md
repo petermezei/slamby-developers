@@ -5,6 +5,6 @@
 - [Filter](filter)
 - [Service](service)
 - [Process](process)
-- [General](general)
+- [Status](status)
 - [Endpoints & Models](swagger)
 - [Helper](helper)

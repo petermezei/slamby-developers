@@ -1,5 +1,7 @@
 ﻿## Helper functions
 
+A collection of helper methods.
+
 ### File Parser
 
 File parsing and text extraction endpoint. Content must be provided as valid `base64` string.

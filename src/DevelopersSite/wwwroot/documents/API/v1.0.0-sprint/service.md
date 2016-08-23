@@ -58,7 +58,7 @@ Create a new Service
 
 ### Update Service
 
-You can update only the Name and the Description field. If specified Alias is exist on another Service then it will be removed first.
+You can update only the Name and the Description field. If specified Alias is existed on another Service then it will be removed first.
 
 *Example REQUEST*
 > [PUT /api/Services/`GUID or Alias`](#operation--api-Services-put)
@@ -76,7 +76,7 @@ You can update only the Name and the Description field. If specified Alias is ex
 
 ### Remove Service
 
-You remove a service anytime. If it's in Activated status then it will be Deactivated first. If it's in Busy status then it will be cancelled first. 
+You remove a service anytime. If it's in Activated status then it will be Deactivated first. If it's in Busy status then it will be canceled first. 
 
 > WARNING: If you use Alias for deletion then make sure the Alias is on the right service!
 
@@ -121,14 +121,14 @@ You can get classifier specified information about a classifier service with the
 Training Process Steps:
 1. Give a suitable name to the service,
 2. Set the ngram values,
-3. Provide the tag ids the you are going to use during the training,
+3. Provide the tag ids you are going to use during the training,
 4. Start the training process.
 
 > For Training process Slamby is using `Slamby Twister` as its own classification algorithm. 
 
-This request is a long running task so the API do it in async way. Therefore the response is a Process.
+This request is a long running task so the API do it in an async way. Therefore the response is a Process.
 
-> `N-gram seetings`: each dataset has an n-gram setting. For set the required n-gram the minimum value is 1, the maximum value equals with the maximum n-gram number of the given dataset. Using a [1,2,3] n-gram settings means during the training process the classifier is going to create 1,2,3 n-gram dictionaries. [Learn more about N-gram](https://en.wikipedia.org/wiki/N-gram)
+> `N-gram settings`: each dataset has an n-gram setting. For set the required n-gram the minimum value is 1, the maximum value equals the maximum n-gram number of the given dataset. Using a [1,2,3] n-gram settings means during the training process the classifier is going to create 1,2,3 n-gram dictionaries. [Learn more about N-gram](https://en.wikipedia.org/wiki/N-gram)
 
 *Example REQUEST*
 > [POST /api/Services/Classifier/`GUID or Alias`/Prepare](#operation--api-Services-Classifier-Prepare-post)
@@ -149,7 +149,7 @@ Name    |   Desc
 DataSetName |   Dataset as a training database, as a source database.
 NGramList   |   Ngram model for prepare process.
 TagIdList   |   Tag ID list that will be used during the training. Default value is `null` that means all the lead nodes.
-CompressLevel   |   Built-in compress function. During the training process compress makes the training faster and more efficient. The output files are smaller, that makes the classification process faster. Using compress a smaller server size can serve the same training dataset as a bigger machine. CompressLevel is a built-in compress function, value can be: 1, 2 or 3. 1 is a smaller, 2 is a medium compress level, 3 is a higher compress level.
+CompressLevel   |   Built-in compress function. During the training process compress makes the training faster and more efficient. The output files are smaller, that makes the classification process faster. Using compress a smaller server size can serve the same training dataset as a bigger machine. CompressLevel is a built-in compress function, values can be: 1, 2 or 3. 1 is a smaller, 2 is a medium compress level, 3 is a higher compress level.
 CompressSettings    |   Customized compress process. Instead of using predefined compress levels, you can use more detailed settings. For this please contact our support.
 
 *Example RESPONSE*
@@ -166,9 +166,9 @@ CompressSettings    |   Customized compress process. Instead of using predefined
 
 ### Activate Classifier Service
 
-Each service has two status: active, deactive. When a preparation/training process is ready, the service has a deactivated status. A deactivated service is ready, but its not loaded into memory and the API is not able to process the incoming requests. To use a service set the status to Activated. After the activation process the service is ready to use, all the required files are loaded and stored in memory, the API endpoint is active.
+Each service has two statuses: active, deactive. When a preparation/training process is ready, the service has a deactivated status. A deactivated service is ready, but its not loaded into memory and the API is not able to process the incoming requests. To use a service set the status to Activated. After the activation process, the service is ready to use, all the required files are loaded and stored in memory, the API endpoint is active.
 
-This request can be a long running task so the API do it in async way. Therefore the response is a Process.
+This request can be a long running task so the API do it in an async way. Therefore the response is a Process.
 
 *Example REQUEST*
 > [POST /api/Services/Classifier/`GUID or Alias`/Activate](#operation--api-Services-Classifier-Activate-post)
@@ -199,7 +199,7 @@ This request can be a long running task so the API do it in async way. Therefore
 
 ### Deactivate Classifier Service
 
-When a service is not needed for continous usage you can deactivate it. After deactivating a service, all the settings and files remain, but they are not using any resources (memory, cores). You can store your deactivated services and activate them anytime.
+When a service is not needed for continuous usage you can deactivate it. After deactivating a service, all the settings and files remain, but they are not using any resources (memory, cores). You can store your deactivated services and activate them anytime.
 
 *Example REQUEST*
 > [POST /api/Services/Classifier/`GUID or Alias`/Deactivate](#operation--api-Services-Classifier-Deactivate-post)
@@ -271,7 +271,7 @@ With the usage of the score, the original order can be restored anytime.
 }
 ```
 
-> **Tip:** If you skip the `TagIdList` or set it to `null` than the API will use all the leaf tags
+> **Tip:** If you skip the `TagIdList` or set it to `null` then the API will use all the leaf tags
 
 *Example Response*
 ```JSON
@@ -340,7 +340,7 @@ With the usage of the score, the original order can be restored anytime.
 
 ### Activate Prc Service
 
-This request can be a long running task so the API do it in async way. Therefore the response is a Process.
+This request can be a long running task so the API do it in an async way. Therefore the response is a Process.
 
 *Example REQUEST*
 > [POST /api/Services/Prc/`GUID or Alias`/Activate](#operation--api-Services-Prc-Activate-post)
@@ -367,14 +367,17 @@ This request can be a long running task so the API do it in async way. Therefore
 ```
 
 ### Index on PRC Service
-After PRC Service Activation the service is available for real-time analysis that might takes time. For real-time quick analysis you can use PRC Index function. It has 2 main part: a furst full index, then a repetable partial index.
-During the index process, PRC Index analyse all the available documents inside the source dataset, and store the results in an index database. Using PRC Index, a quick real-time analysis is available.
+
+After PRC Service Activation the service is available for real-time analysis that might take time. For real-time quick analysis, you can use PRC Index function. It has 2 main part: a first full index, then a reputable partial index.
+During the indexing process, PRC Index analyze all the available documents inside the source dataset and store the results in an index database. Using PRC Index, a quick real-time analysis is available.
 
 #### Full Index
-First index stage. After a PRC Service is activated its ready for text analysis. To boost its speed we suggest to use PRC Index. During the first full index, using the available PRC Service, your server analysis all of your documents and save the results in an index database.
+
+First index stage. After a PRC Service is activated its ready for text analysis. To boost its speed we suggest using PRC Index. During the first full index, using the available PRC Service, your server analysis all of your documents and save the results in an index database.
 
 #### Partial Index
-When a first full index is ready, you can syncornize your index dataset by partial index update. Using partial index process, just the new documents will be analyzed and stored. We suggest to use partial PRC Index frequiently.
+
+When a first full index is ready, you can synchronize your index dataset by partial index update. Using partial index process, just the new documents will be analyzed and stored. We suggest using partial PRC Index frequently.
 
 ### Deactivate Prc Service
 
@@ -463,7 +466,7 @@ With this function, you can easily extract the relevant keywords (according to t
 }
 ```
 
-> **Tip:** If you skip the `TagIdList` or set it to `null` than the API will use all the leaf tags
+> **Tip:** If you skip the `TagIdList` or set it to `null` then the API will use all the leaf tags
 
 *Example Response*
 ```JSON
@@ -493,7 +496,7 @@ With this function, you can easily extract the relevant keywords (according to t
 }
 ```
 
-> **Tip:** If you skip the `TagIds` or set it to `null` than the API will use all the tags
+> **Tip:** If you skip the `TagIds` or set it to `null` then the API will use all the tags
 
 *Example Response*
 

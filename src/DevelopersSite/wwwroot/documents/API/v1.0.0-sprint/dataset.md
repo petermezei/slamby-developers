@@ -1,13 +1,14 @@
 ## Dataset
-Slamby provides **Dataset** as a data storage. A dataset is a JSON document storage that allows to store schema free JSON objects, indexes and additional parameters. Inside your server you can create and manage multiple datasets.
+
+Slamby provides **Dataset** as a data storage. A dataset is a JSON document storage that allows storing schema-free JSON objects, indexes, and additional parameters. Inside your server, you can create and manage multiple datasets.
 
 With dataset you can:
 * Create multiple datasets
-* Using schema free JSON objects
+* Using schema-free JSON objects
 * Set indexes for text processing
 * Running text analysis on the stored data
 
-> **Tip:** With schema free JSON storage you can easily store your existing schemas. Store document related data - such as image urls, prices - and build powerful queries.
+> **Tip:** With schema-free JSON storage you can easily store your existing schemas. Store document related data - such as image URLs, prices - and build powerful queries.
 
 ### Create new Dataset
 
@@ -135,22 +136,22 @@ If you do not provide date format, default value is `"strict_date_optional_time|
 
 name    |   Description
 --- |   ---
-`epoch_millis`    |   A formatter for the number of milliseconds since the epoch. Note, that this timestamp allows a max length of 13 chars, so only dates between 1653 and 2286 are supported. You should use a different date formatter in that case. 
+`epoch_millis`    |   A formatted for the number of milliseconds since the epoch. Note, that this timestamp allows a max length of 13 chars, so only dates between 1653 and 2286 are supported. You should use a different date formatter in that case. 
 `epoch_second`    |   A formatter for the number of seconds since the epoch. Note, that this timestamp allows a max length of 10 chars, so only dates between 1653 and 2286 are supported. You should use a different date formatter in that case. 
-`date_optional_time` or `strict_date_optional_time` |    A generic ISO datetime parser where the date is mandatory and the time is optional.
-`basic_date`  |   A basic formatter for a full date as four digit year, two digit month of year, and two digit day of month: yyyyMMdd.
+`date_optional_time` or `strict_date_optional_time` |    A generic ISO DateTime parser where the date is mandatory and the time is optional.
+`basic_date`  |   A basic formatter for a full date as four digit year, two digit month of a year, and two digit day of the month: yyyyMMdd.
 `basic_date_time` |   A basic formatter that combines a basic date and time, separated by a T: yyyyMMdd'T'HHmmss.SSSZ.
-`basic_date_time_no_millis`   |   A basic formatter that combines a basic date and time without millis, separated by a T: yyyyMMdd'T'HHmmssZ. 
+`basic_date_time_no_millis`   |   A basic formatter that combines a basic date and time without millisecond, separated by a T: yyyyMMdd'T'HHmmssZ. 
 `basic_ordinal_date`  |   A formatter for a full ordinal date, using a four digit year and three digit dayOfYear: yyyyDDD. 
 ...
 
 #### Document Format
 
-Property type must be set to `attachment` at DataSet schema creation. That is why it can be achieved via schema and not sample document definition. Content of this field must contain `base64` encoded binary content of a document such as .pdf, .doc. Uploaded document text will be extracted and wil be used when this field is used in Classifier or Prc services.
+Property type must be set to `attachment` at DataSet schema creation. That is why it can be achieved via schema and not sample document definition. The content of this field must contain `base64` encoded binary content of a document such as .pdf, .doc. Uploaded document text will be extracted and will be used when this field is used in Classifier or Prc services.
 
 ##### Supported file formats
 
-Behind parsing documents there is an Apache Tika which provides extracted text. It supports wide variety of document formats. For detailed supported format list please visit [Apache Tika format page](http://tika.apache.org/1.13/formats.html).
+Behind parsing documents, there is an Apache Tika which provides extracted text. It supports a wide variety of document formats. For detailed supported format list please visit [Apache Tika format page](http://tika.apache.org/1.13/formats.html).
 
 ### Get Dataset
 Get information about a given dataset. A dataset can be accessed by its name.
@@ -248,7 +249,7 @@ Returns with:
 
 ### Update Dataset
 
-Updates a dataset. Currently only updating Dataset name is possible. As Dataset names are unique it will return with an error if name is taken by another Dataset. 
+Updates a dataset. Currently only updating Dataset name is possible. As Dataset names are unique it will return with an error if the name is taken by another Dataset. 
 
 *Example REQUEST*
 

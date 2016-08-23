@@ -8,8 +8,10 @@
 
 ---
 
-Slamby introduces Slamby Service (API). Build powerful data management center, store and analyze your data easily. This documentation shows you a quick overview about the available API endpoints, technical details and business usage.
+Slamby introduces Slamby Service (API). Build powerful data management center, store and analyze your data easily. This documentation shows you a quick overview of the available API endpoints, technical details, and business usage.
+
 With Slamby you can:
+
 * Store and manage your data easily
 * Get high data security and privacy
 * Use improved data analysis
@@ -29,7 +31,7 @@ All endpoints are only accessible via https and are located at `europe.slamby.co
 ## Authentication
 The base of the authentication is the `API_KEY`.
 You have to provide it in the authorization header. It is **required for every API call**.
-The examples of the documentation is preasuming that you provide the API key in the header.
+The examples of the documentation are presuming that you provide the API key in the header.
 
 >*Example*
 >
@@ -43,7 +45,7 @@ Authorization|Slamby `API_KEY`
 
 ## API Version
 
-Every response contains API version information in response HTTP `X-Api-Version` header.
+Every response contains API version information in response HTTP `X-API-Version` header.
 
 >*Example*
 >

@@ -1,4 +1,5 @@
 ## Sampling
+
 Statistical method to support sampling activity. Using sampling you can easily create **random samples** for experiments.
 
 With sampling you can:
@@ -8,7 +9,7 @@ With sampling you can:
 - Set sample size by fix number or percentage
 - Filter fields
 
-For sampling you have to specify which dataset you want to use in the `X-DataSet` header by the name of the dataset.
+For sampling, you have to specify which dataset you want to use in the `X-DataSet` header by the name of the dataset.
 
 *Example REQUEST*
 > [POST /api/Documents/Sample](#operation--api-Documents-Sample-post)
@@ -54,4 +55,5 @@ X-DataSet|example
 ```
 
 ##### For the parameters explanation check the DocumentSampleSettings schema definition [here](#/definitions/DocumentSampleSettings)
+
 ##### For the pagination explanation check the pagination section [here](#pagination)
