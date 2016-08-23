@@ -1,6 +1,6 @@
 ## Processes
 
-There are long running tasks in the Slamby API. These requests are served in async way. These methods returns with a Process object.
+There are long running tasks in the Slamby API. These requests are served in an async way. These methods return a Process object.
 
 ### Get Process
 

@@ -102,7 +102,7 @@ var datasets = await manager.GetDataSetsAsync();
 
 ### Update Dataset
 
-Updates a dataset. Currently only updating Dataset name is possible. As Dataset names are unique it will return with an error if name is taken by another Dataset.
+Updates a dataset. Currently only updating Dataset name is possible. As Dataset names are unique it will return with an error if the name is taken by another Dataset.
 
 _Example:_
 

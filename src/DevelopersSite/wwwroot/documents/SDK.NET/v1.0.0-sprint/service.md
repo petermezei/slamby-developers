@@ -46,7 +46,7 @@ var serviceResponse = await serviceManager.GetServiceAsync(serviceId);
 
 ### Update Service
 
-You can modify only the `Name` and `Description` properties. You can use Service Alias instead of Guid Id. If specified Alias is exist on another Service then it will be removed first.
+You can modify only the `Name` and `Description` properties. You can use Service Alias instead of Guid Id. If specified Alias exists on another Service then it will be removed first.
 
 _Example:_
 

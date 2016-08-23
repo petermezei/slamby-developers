@@ -64,7 +64,8 @@ var result = await manager.UpdateTagAsync("3", tag);
 ### Remove Tag
 
 Remove a tag from tag list. By default, documents and datasets are not affected.
-The method have two additional parameter:
+
+The method has two additional parameters:
 
 - `force` - if true then the tag with children can be deleted, but be careful! All the children will be deleted also.
 - `cleanDocuments` - if true then the removed tag will be also removed from the documents
@@ -78,7 +79,7 @@ var result = await manager.DeleteTagAsync("5");
 
 ### Bulk Tag
 
-Replaces existing tags with the provided list. Recommended for tag list initalizing.
+Replaces existing tags with the provided list. Recommended for tag list initializing.
 
 > **Tip:** You can limit used thread count for this function in the configuration object
 
@@ -104,9 +105,9 @@ var manager = new TagManager(configuration, "DATASET_NAME");
 var result = await manager.CleanDocumentsAsync();
 ```
 
-### Words Occurences
+### Words Occurrences
 
-Get words and the occurences of the words.
+Get words and the occurrences of the words.
 
 
 _Example:_
