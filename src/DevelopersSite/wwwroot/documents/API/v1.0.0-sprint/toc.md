@@ -6,5 +6,5 @@
 - [Service](service)
 - [Process](process)
 - [Status](status)
-- [Endpoints & Models](swagger)
 - [Helper](helper)
+- [Endpoints & Models](swagger)

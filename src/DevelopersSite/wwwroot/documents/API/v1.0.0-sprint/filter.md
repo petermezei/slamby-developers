@@ -1,8 +1,11 @@
 ## Filter
-Powerful **search engine**. Build **smart** search functions or filters. Easily access to your datasets with **simple queries**, **logical expressions** and **wild cards**. Manage your language dependencies using **optional tokenizer**.
+
+Built-in **search engine**. Easily access to your documents with **simple search queries**, **logical expressions** and **wild cards**. 
+
+Manage your language dependencies using **optional tokenizer**.
 
 With Filter you can:
-* Create simple search queries
+* Create search queries
 * Filter by tags
 * Search in multiple fields
 * Access to all the available document fields and parameters
@@ -12,9 +15,12 @@ With Filter you can:
 * Use built-in pagination
 * Filter fields
 
+*Using filter please check `scrolling`.*
+
 *Example REQUEST*
+
 > [POST /api/Documents/Filter](#operation--api-Documents-Filter-post)
->
+
 Header   |Value
 ---------|---
 X-DataSet|example
@@ -52,7 +58,9 @@ Fields  |   -   |   Requested fields. Empty means all the available fields. The 
 > `Important`: Maximum pagination limit: 1000.
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
+
 ```JSON
 {
     "Items": [
@@ -78,12 +86,14 @@ The `ScrollId` is used to get the next `Limit` items if available. Provide the `
 
 > TIP: `ScrollId` can be same or different from call to call. Use the value from the last response.
 
-
 *Example REQUEST*
+
 > [POST /api/Documents/Filter/cXVlcnlBbmRGZXRjaDsxOzE2OTA6b3NoRjRMZlVUNUNIWlNxa1RDdzdEZzswOw==](#operation--api-Documents-Filter-post)
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
+
 ```JSON
 {
     "Items": [
@@ -112,6 +122,5 @@ When your filter result object contains more items than your count value, you ne
 As you can see when you have a ScrollId you can use it in your request URL: `POST /API/Documents/Filter/ScrollId`
 
 ##### For the parameters explanation check the DocumentFilterSettings schema definition [here](#/definitions/DocumentFilterSettings)
-##### For the pagination explanation check the pagination section [here](#pagination)
 
-> **Tip:** Easily create a powerful search engine by using tokenizer and detailed search queries.
+##### For the pagination explanation check the pagination section [here](#pagination)

@@ -28,3 +28,16 @@ File parsing and text extraction endpoint. Content must be provided as valid `ba
   "Language": "en"
 }
 ```
+
+`Available response parameters:`
+
+Name  | Description
+--- | ---
+Content | Extracted plain text content
+Title | File metadata title
+Date  |  File metadata date
+Author  | File metadata author
+Keywords  | File metadata keywords
+ContentType | Detected content type and character encoding
+ContentLength | Plain text content length
+Language  | Detected content language

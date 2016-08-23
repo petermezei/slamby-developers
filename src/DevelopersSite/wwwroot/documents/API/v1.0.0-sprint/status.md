@@ -5,7 +5,9 @@
 > [GET /api/Status](#operation--api-Status-get))
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
+
 ```JSON
 {
     "ProcessorCount": 4,

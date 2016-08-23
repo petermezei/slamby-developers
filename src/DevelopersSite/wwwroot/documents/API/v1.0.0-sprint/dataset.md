@@ -7,12 +7,23 @@ With dataset you can:
 * Using schema-free JSON objects
 * Set indexes for text processing
 * Running text analysis on the stored data
+* Run search queries
 
-> **Tip:** With schema-free JSON storage you can easily store your existing schemas. Store document related data - such as image URLs, prices - and build powerful queries.
+> **Tip:** With schema-free JSON storage you can easily use your existing data structures. Store item related data - such as image URLs, prices - and build powerful queries.
 
 ### Create new Dataset
 
-Create a new dataset by providing a sample JSON document and additional parameters.
+You have two options to create a dataset. Define your data structure by sample JSON document, or use document Schema.
+
+**Create dataset using sample JSON document**
+
+Using sample JSON document is the easiest way to create a dataset. Just simply write a sample document that contains all  the necessary fields and sample values that show the expected field type.
+
+In a sample document you can use the following types:
+* Integer by using a number. `eg.: "id":9`
+* String by using a string value. `eg.: "name":"Anakin Skywalker"`
+* List by using a JSON list. `eg.: "tags":[1,2,3]`
+* Object by using a JSON object. `eg.: "details":{...}`
 
 *Example REQUEST*
 
@@ -33,7 +44,20 @@ Create a new dataset by providing a sample JSON document and additional paramete
 }
 ```
 
-Create a new dataset by providing a schema JSON document and additional parameters.
+`Available settings to create a dataset:`
+
+Name    |   Default value   |   Description
+--- |   --- |   ---
+Name    |   empty   |   Name of the dataset. You can use a-z and 0-9. You can rename the dataset in the future.
+NgramCount  |   3   |   Ngram settings. This number shows the n-gram number that is used by the dataset. We recommend using 3 as a value. Higher n-gram count means more precise text analysis, but higher server capacity.
+IdField |   id  |   Which field is used as an id field in your sample document. The id field is required.
+TagField    |   tag |   Which field is used as a tag field in your sample document. The tag field is required.
+InterpretedFileds   |   title, desc  |   Interpreted fields are fields that we would like to use for text analysis in the future. We recommend using each text contained fields as interpreted fields.
+SampleDocument  |   {...}   |   To create a dataset you can use a JSON sample document. In the sample, JSON document uses all the required fields and provide a required type. If you know perfectly which field types you would like to use please use DocumentSchema option and use directly schema.
+
+**Create dataset using document Schema**
+
+Using document Schema you can specify your required field types.
 
 *Example REQUEST*
 
@@ -71,12 +95,12 @@ Create a new dataset by providing a schema JSON document and additional paramete
 }
 ```
 
+> `Tip:` for available field types check the following `Data Types` section.
+
 *Example RESPONSE*
 >HTTP/1.1 201 CREATED
 
 ##### Check the DataSet schema definition [here](#/definitions/DataSet)
-
-
 
 ### Data Types
 
@@ -129,7 +153,9 @@ Document|   `attachment` accepts valid `base64` encoded string
 #### Date Formats
 
 You can define your custom date format to specify your needs.
+
 For dataset date formats you can use the built-in [elastic-search custom formats](https://www.elastic.co/guide/en/elasticsearch/reference/2.2/mapping-date-format.html).
+
 If you do not provide date format, default value is `"strict_date_optional_time||epoch_millis"`.
 
 **Built in formats (excerpt)**
@@ -154,18 +180,22 @@ Property type must be set to `attachment` at DataSet schema creation. That is wh
 Behind parsing documents, there is an Apache Tika which provides extracted text. It supports a wide variety of document formats. For detailed supported format list please visit [Apache Tika format page](http://tika.apache.org/1.13/formats.html).
 
 ### Get Dataset
+
 Get information about a given dataset. A dataset can be accessed by its name.
 
 Returns with:
+
 * Dataset basic information
 * Dataset settings
 * Schema sample document
 * Dataset statistics
 
 *Example REQUEST*
+
 > [GET /api/DataSets/`example`](#operation--api-DataSets-get)
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
 ```JSON
 {
@@ -192,15 +222,18 @@ Returns with:
 ##### Check the DataSet schema definition [here](#/definitions/DataSet)
 
 ### Get Dataset List
+
 Get a list of the available datasets.
 
 Returns with:
 * Dataset objects array
 
 *Example REQUEST*
+
 > [GET /api/DataSets](#operation--api-DataSets-get)
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
 ```JSON
 [
@@ -244,6 +277,19 @@ Returns with:
     }
 ]
 ```
+
+`Available fields in the dataset object`:
+
+Name    |   Description
+--- |   ---
+Name    |   Dataset name (current)
+NGramCount  |   Ngram settings of the given dataset.
+IdField |   IdField of the given schema or sample document
+TagField    |   Tagfield of the given schema or sample document
+InterpretedFields   |   Interpreted fields of the given schema or sample document
+Statistics  |   Dataset statistics. Basic field is DocumentsCount that shows the current document number of the given dataset
+SampleDocument  |   Sample document when we used sample document to create a dataset. When we used schema to create it, SampleDocument value is null
+Schema  |   Schema document when we used document Schema to create this dataset. When we used sample document to create it, Schema value is null
 
 ##### Check the DataSet schema definition [here](#/definitions/DataSet)
 

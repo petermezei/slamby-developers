@@ -1,27 +1,38 @@
 ## Services
 
-Slamby introduces services. You can quickly create a data processing service from the available service templates. Manage your data processing with services, run different tests, run more data management services parallelly.
+Slamby introduces services. You can create a data processing service from the available service templates. Manage your data processing with services, run different tests, run more data management services parallelly.
 
-**Service definition:** a data management service with custom settings, dedicated resources and available API endpoint.
+**Service definition:** a data management service with custom settings, dedicated resources, and available API endpoint.
+
+*Available service types:*
+
+- Text classification service
+- Similar product recommendation service
 
 With services you can:
+
 * Create a service
 * Get your services list
 * Get a service
 * Remove a service
 * Manage processes
+* Create category recommendation engine
+* Create similar product recommendation engine
 
-> **Tip:** Unlike Id Service Alias is defined by the user and it is also unique among services. Alias name should be URL encoded (e.g.: "My Service" -> "My%20Service") when used in url.
+> **Tip:** Unlike Id Service Alias is defined by the user and it is also unique among services. Alias name should be URL-encoded (e.g.: "My Service" -> "My%20Service") when used in URL.
 
 ### Get Service
 
 You can get general information about a service using the Id or Alias of the service. 
 
 *Example REQUEST*
+
 > [GET /api/Services/`GUID or Alias`](#operation--api-Services-get)
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
+
 ```JSON
 {
     "Id": "57c845dc-6aa4-475c-bbf2-0d682f471f32",
@@ -43,7 +54,9 @@ You can get general information about a service using the Id or Alias of the ser
 Create a new Service
 
 *Example REQUEST*
+
 > [POST /api/Services](#operation--api-Services-post)
+
 ```JSON
 {
     "Name": "Example name of a service",
@@ -54,14 +67,17 @@ Create a new Service
 ```
 
 *Example RESPONSE*
+
 > HTTP/1.1 201 CREATED
 
 ### Update Service
 
-You can update only the Name and the Description field. If specified Alias is existed on another Service then it will be removed first.
+You can update only the Name and the Description field. If specified Alias exists on another Service then it will be removed first.
 
 *Example REQUEST*
+
 > [PUT /api/Services/`GUID or Alias`](#operation--api-Services-put)
+
 ```JSON
 {
     "Name": "Updated example name of a service",
@@ -71,21 +87,22 @@ You can update only the Name and the Description field. If specified Alias is ex
 ```
 
 *Example RESPONSE*
-> HTTP/1.1 200 CREATED
 
+> HTTP/1.1 200 CREATED
 
 ### Remove Service
 
 You remove a service anytime. If it's in Activated status then it will be Deactivated first. If it's in Busy status then it will be canceled first. 
 
-> WARNING: If you use Alias for deletion then make sure the Alias is on the right service!
+> `WARNING:` If you use Alias for deletion then make sure the Alias is on the right service!
 
 *Example REQUEST*
+
 > [DELETE /api/Services/`GUID or Alias`](#operation--api-Services-delete)
 
 *Example RESPONSE*
-> HTTP/1.1 200 OK
 
+> HTTP/1.1 200 OK
 
 ## Classifier Service
 
@@ -98,10 +115,13 @@ Service for text classification. Create a classifier service from a selected dat
 You can get classifier specified information about a classifier service with the Id of the service
 
 *Example REQUEST*
+
 > [GET /api/Services/Classifier/`GUID or Alias`](#operation--api-Services-Classifier-get)
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
+
 ```JSON
 {
     "Id": "83326e75-dd16-4e5c-a66d-5ea5197bd8e0",
@@ -119,6 +139,7 @@ You can get classifier specified information about a classifier service with the
 ### Prepare Classifier Service
 
 Training Process Steps:
+
 1. Give a suitable name to the service,
 2. Set the ngram values,
 3. Provide the tag ids you are going to use during the training,
@@ -131,7 +152,9 @@ This request is a long running task so the API do it in an async way. Therefore 
 > `N-gram settings`: each dataset has an n-gram setting. For set the required n-gram the minimum value is 1, the maximum value equals the maximum n-gram number of the given dataset. Using a [1,2,3] n-gram settings means during the training process the classifier is going to create 1,2,3 n-gram dictionaries. [Learn more about N-gram](https://en.wikipedia.org/wiki/N-gram)
 
 *Example REQUEST*
+
 > [POST /api/Services/Classifier/`GUID or Alias`/Prepare](#operation--api-Services-Classifier-Prepare-post)
+
 ```JSON
 {
     "DataSetName" : "test dataset",
@@ -153,7 +176,9 @@ CompressLevel   |   Built-in compress function. During the training process comp
 CompressSettings    |   Customized compress process. Instead of using predefined compress levels, you can use more detailed settings. For this please contact our support.
 
 *Example RESPONSE*
+
 > HTTP/1.1 202 ACCEPTED
+
 ```JSON
 {
     "Id": "d335edaf-354a-482c-ade4-4d8172f81a40",
@@ -166,12 +191,14 @@ CompressSettings    |   Customized compress process. Instead of using predefined
 
 ### Activate Classifier Service
 
-Each service has two statuses: active, deactive. When a preparation/training process is ready, the service has a deactivated status. A deactivated service is ready, but its not loaded into memory and the API is not able to process the incoming requests. To use a service set the status to Activated. After the activation process, the service is ready to use, all the required files are loaded and stored in memory, the API endpoint is active.
+Each service has two statuses: active, deactive. When a preparation/training process is ready, the service has a deactivated status. A deactivated service is ready, but it's not loaded into memory and the API is not able to process the incoming requests. To use a service set the status to Activated. After the activation process, the service is ready to use, all the required files are loaded and stored in memory, the API endpoint is active.
 
 This request can be a long running task so the API do it in an async way. Therefore the response is a Process.
 
 *Example REQUEST*
+
 > [POST /api/Services/Classifier/`GUID or Alias`/Activate](#operation--api-Services-Classifier-Activate-post)
+
 ```JSON
 {
     "NGramList": [1,2],
@@ -181,7 +208,9 @@ This request can be a long running task so the API do it in an async way. Theref
 ```
 
 *Example RESPONSE*
+
 > HTTP/1.1 202 ACCEPTED
+
 ```JSON
 {
   "Id": "d46850e8-1a22-43f5-b304-d22e6b7e5e6a",
@@ -196,15 +225,16 @@ This request can be a long running task so the API do it in an async way. Theref
 }
 ```
 
-
 ### Deactivate Classifier Service
 
 When a service is not needed for continuous usage you can deactivate it. After deactivating a service, all the settings and files remain, but they are not using any resources (memory, cores). You can store your deactivated services and activate them anytime.
 
 *Example REQUEST*
+
 > [POST /api/Services/Classifier/`GUID or Alias`/Deactivate](#operation--api-Services-Classifier-Deactivate-post)
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
 
 ### Recommend
@@ -212,7 +242,9 @@ When a service is not needed for continuous usage you can deactivate it. After d
 Built-in text classification engine. Uses the prepared Classifier dictionaries and calculations. High speed and classification capability. Built-in n-gram analyzer.
 
 *Example Request*
+
 > [POST /api/Services/Classifier/`GUID or Alias`/Recommend](#operation--api-Services-Classifier-Recommend-post)
+
 ```JSON
 {
     "Text": "Lorem Ipsum Dolorem",
@@ -223,6 +255,7 @@ Built-in text classification engine. Uses the prepared Classifier dictionaries a
 ```
 
 *Example Response*
+
 ```JSON
 [
     {
@@ -248,7 +281,6 @@ Built-in text classification engine. Uses the prepared Classifier dictionaries a
 ]
 ```
 
-
 #### Emphasizing
 
 During the recommendation process, if there are any emphasized tag in the TOP N result list then Slamby checks if the given document contains the name of the emphasized tag.
@@ -259,11 +291,12 @@ With the usage of the score, the original order can be restored anytime.
 
 > **Tip:** You have to define the emphasized tags during the activation of the service 
 
-
 ### Export dictionaries
 
 *Example Request*
+
 > [POST /api/Services/Classifier/`GUID or Alias`/ExportDictionaries](#operation--api-Services-Classifier-ExportDictionaries-post)
+
 ```JSON
 {
     "NGramList": [1],
@@ -290,13 +323,18 @@ With the usage of the score, the original order can be restored anytime.
 
 ## Prc Service
 
+Similar product/document recommendation engine.
+
 ### Get Prc Service
 
 *Example REQUEST*
+
 > [GET /api/Services/Prc/`GUID or Alias`](#operation--api-Services-Prc-get)
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
+
 ```JSON
 {
     "PrepareSettings": null,
@@ -314,7 +352,9 @@ With the usage of the score, the original order can be restored anytime.
 ### Prepare Prc Service
 
 *Example REQUEST*
+
 > [POST /api/Services/Prc/`GUID or Alias`/Prepare](#operation--api-Services-Prc-Prepare-post)
+
 ```JSON
 {
     "DataSetName" : "test dataset",
@@ -323,7 +363,9 @@ With the usage of the score, the original order can be restored anytime.
 ```
 
 *Example RESPONSE*
+
 > HTTP/1.1 202 ACCEPTED
+
 ```JSON
 {
     "Id": "ceed2045-70fb-4785-b483-aadb9bf9a992",
@@ -343,7 +385,9 @@ With the usage of the score, the original order can be restored anytime.
 This request can be a long running task so the API do it in an async way. Therefore the response is a Process.
 
 *Example REQUEST*
+
 > [POST /api/Services/Prc/`GUID or Alias`/Activate](#operation--api-Services-Prc-Activate-post)
+
 ```JSON
 {
     "FieldsForRecommendation": ["title"]
@@ -351,7 +395,9 @@ This request can be a long running task so the API do it in an async way. Theref
 ```
 
 *Example RESPONSE*
+
 > HTTP/1.1 202 ACCEPTED
+
 ```JSON
 {
   "Id": "181b445c-3c91-44bb-bcf7-759a7e40a98c",
@@ -369,6 +415,7 @@ This request can be a long running task so the API do it in an async way. Theref
 ### Index on PRC Service
 
 After PRC Service Activation the service is available for real-time analysis that might take time. For real-time quick analysis, you can use PRC Index function. It has 2 main part: a first full index, then a reputable partial index.
+
 During the indexing process, PRC Index analyze all the available documents inside the source dataset and store the results in an index database. Using PRC Index, a quick real-time analysis is available.
 
 #### Full Index
@@ -382,15 +429,19 @@ When a first full index is ready, you can synchronize your index dataset by part
 ### Deactivate Prc Service
 
 *Example REQUEST*
+
 > [POST /api/Services/Prc/`GUID or Alias`/Deactivate](#operation--api-Services-Prc-Deactivate-post)
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
 
 ### Recommend
 
 *Example Request*
+
 > [POST /api/Services/Prc/`GUID or Alias`/Recommend](#operation--api-Services-Prc-Recommend-post)
+
 ```JSON
 {
     "Text": "Lorem Ipsum Dolorem",
@@ -403,6 +454,7 @@ When a first full index is ready, you can synchronize your index dataset by part
 ```
 
 *Example Response*
+
 ```JSON
 [
     {
@@ -433,6 +485,7 @@ When a first full index is ready, you can synchronize your index dataset by part
 With this function, you can easily extract the relevant keywords (according to the given tag) from your text, with the help of PRC service.
 
 *Example Request*
+
 > [POST /api/Services/Prc/`GUID`/Keywords](#operation--api-Services-Prc-Keywords-post)
 ```JSON
 {
@@ -455,11 +508,12 @@ With this function, you can easily extract the relevant keywords (according to t
 ]
 ```
 
-
 ### Export dictionaries
 
 *Example Request*
+
 > [POST /api/Services/Prc/`GUID or Alias`/ExportDictionaries](#operation--api-Services-Prc-ExportDictionaries-post)
+
 ```JSON
 {
     "TagIdList": null
@@ -469,6 +523,7 @@ With this function, you can easily extract the relevant keywords (according to t
 > **Tip:** If you skip the `TagIdList` or set it to `null` then the API will use all the leaf tags
 
 *Example Response*
+
 ```JSON
 {
     "Id": "345e1c79-dc78-427f-8ad1-facce75f6ae3",
@@ -486,7 +541,9 @@ With this function, you can easily extract the relevant keywords (according to t
 ### Index
 
 *Example Request*
+
 > [POST /api/Services/Prc/`GUID or Alias`/Index](#operation--api-Services-Prc-Index-post)
+
 ```JSON
 {
     "Filter": {
@@ -520,12 +577,13 @@ With this function, you can easily extract the relevant keywords (according to t
 Partial indexing all the documents modified since last `Index` or `IndexPartial` call. It can call after an `Index` once called.
 
 *Example Request*
-> [POST /api/Services/Prc/`GUID or Alias`/IndexPartial](#operation--api-Services-Prc-IndexPartial-post)
 
+> [POST /api/Services/Prc/`GUID or Alias`/IndexPartial](#operation--api-Services-Prc-IndexPartial-post)
 
 *Example Response*
 
 > HTTP/1.1 202 Accepted
+
 ```JSON
 {
   "Id": "07499fad-6bec-4c66-a2bf-065ae2e7d853",
@@ -543,8 +601,8 @@ Partial indexing all the documents modified since last `Index` or `IndexPartial`
 ### Recommend By Id
 
 *Example Request*
-> [POST /api/Services/Prc/`GUID or Alias`/RecommendById](#operation--api-Services-Prc-RecommendById-post)
 
+> [POST /api/Services/Prc/`GUID or Alias`/RecommendById](#operation--api-Services-Prc-RecommendById-post)
 
 ```JSON
 {
@@ -558,6 +616,7 @@ Partial indexing all the documents modified since last `Index` or `IndexPartial`
 ```
 
 *Example Response*
+
 ```JSON
 [
     {

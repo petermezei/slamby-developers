@@ -1,31 +1,32 @@
 ## Document
 
-Manage your **documents** easily. Create, edit, remove and running text analysis.
+Manage your **documents** easily. Create, edit, remove documents, manage tags and run text analysis.
 
-Every document is related to a dataset. You have to specify which dataset you want to use in the `X-DataSet` header by the name of the dataset.
+Each document is related to a dataset. You have to specify which dataset you want to use in the `X-DataSet` header by the name of the dataset.
 
 > **Tip:** If you use any of the Document methods without or an unexisting `X-DataSet` header you will get a `Missing X-DataSet header!` error.
 
-With document you can:
+Using document endpoint you can:
+
+* Insert single document
 * Insert multiple documents
-* Using your own schema
-* Accessing your documents easily
-* Modifying your documents easily
-* Running text analysis
+* Acess your documents
+* Modify your documents
+* Run text analysis
 
 > **Tip:** Store all the related information - such as text, prices, image URLs - and use powerful queries.
 
 ### Insert New Document
 
-Insert a new document to a dataset using the predefined schema.
+Insert a new document to a dataset using a predefined schema.
 
 *Example REQUEST*
 > [POST /api/Documents](#operation--api-Documents-post)
->
+
 Header   |Value
 ---------|---
 X-DataSet|example
->
+
 ```JSON
 {
     "id": 9,
@@ -44,12 +45,13 @@ Get a document from a dataset.
 
 *Example REQUEST*
 > [GET /api/Documents/`9`](#operation--api-Documents-get)
->
+
 Header   |Value
 ---------|---
 X-DataSet|example
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
 ```JSON
 {
@@ -62,14 +64,16 @@ X-DataSet|example
 
 ### Edit Document
 
-Edit an existing document in a dataset.
+Edit (update) an existing document in a dataset.
 
 *Example REQUEST*
+
 > [PUT /api/Documents/`9`](#operation--api-Documents-put)
->
+
 Header   |Value
 ---------|---
 X-DataSet|example
+
 ```JSON
 {
     "id": 9,
@@ -80,16 +84,19 @@ X-DataSet|example
 ```
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
 
 Partial document update is allowed. Only modified data should be specified in this case. The rest of the document will be unchanged.
 
 *Example REQUEST*
+
 > [PUT /api/Documents/`9`](#operation--api-Documents-put)
->
+
 Header   |Value
 ---------|---
 X-DataSet|example
+
 ```JSON
 {
     "tags": [7,8,9]
@@ -97,6 +104,7 @@ X-DataSet|example
 ```
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
 
 ### Delete Document
@@ -104,27 +112,31 @@ X-DataSet|example
 Delete an existing document in a dataset.
 
 *Examle REQUEST*
+
 > [DELETE /api/Documents/`9`](#operation--api-Documents-delete)
->
+
 Header   |Value
 ---------|---
 X-DataSet|example
 
-
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
 
 ### Copy To
 
 Copying documents from a dataset to another one. You can specify the documents by id. You can copy documents to an existing dataset.
+
 The selected documents will **remain in the source dataset** as well.
 
 *Example REQUEST*
+
 > [POST /api/Documents/Copy](#operation--api-Documents-Copy-post)
->
+
 Header   |Value
 ---------|---
 X-DataSet|example
+
 ```JSON
 {
     "DestinationDataSetName": "TARGET_DATASET_NAME",
@@ -133,6 +145,7 @@ X-DataSet|example
 ```
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
 
 > **Tip:** You can use the [POST /api/Documents/Sample](#operation--api-Documents-Sample-post) or the [POST /api/Documents/Filter](#operation--api-Documents-Filter-post) methods to get document ids easily.
@@ -143,11 +156,13 @@ Moving documents from a dataset to another one. You can specify documents by id.
 The selected documents will be **removed from the source dataset**.
 
 *Example REQUEST*
+
 > [POST /api/Documents/Move](#operation--api-Documents-Move-post)
->
+
 Header   |Value
 ---------|---
 X-DataSet|example
+
 ```JSON
 {
     "DestinationDataSetName": "TARGET_DATASET_NAME",
@@ -156,6 +171,7 @@ X-DataSet|example
 ```
 
 *Example RESPONSE*
+
 > HTTP/1.1 200 OK
 
 > **Tip:** You can use the [POST /api/Documents/Sample](#operation--api-Documents-Sample-post) or the [POST /api/Documents/Filter](#operation--api-Documents-Filter-post) methods to get document ids easily.
