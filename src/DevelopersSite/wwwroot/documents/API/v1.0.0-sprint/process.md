@@ -4,6 +4,36 @@ There are long running tasks in the Slamby API. These requests are served in an 
 
 > **Tip:** You can cancel a process anytime during its progress
 
+### Get Active Process List
+
+Get all running processes.
+
+*Example REQUEST*
+
+> [GET /api/Processes/](#operation--api-Processes-get)
+
+*Example RESPONSE*
+
+> HTTP/1.1 200 OK
+
+```JSON
+[
+  {
+    "Id": "abaa9144-2b1b-4539-a322-4157b8bde3f2",
+    "Start": "2016-08-23T15:57:53.292296Z",
+    "End": "0001-01-01T00:00:00",
+    "Percent": 14.07,
+    "Description": "Exporting dictionaries from Classifier service Yoda.",
+    "Status": "InProgress",
+    "Type": "ClassifierExportDictionaries",
+    "ErrorMessages": [],
+    "ResultMessage": null
+  }
+]
+```
+
+To get historical process list use `allStatus=true` URL parameter.
+
 ### Get-Process information
 
 Get process details by its Id.
