@@ -52,8 +52,8 @@ Filter  |   TagIds  |   Source tag id list in which the filter request will be p
 Filter  |   Query   |   Search query. Simple search query, logical expressions, field:value form, wildcard.
 Order   |   OrderDirection  |   Asc, Desc
 Order   |   OrderByField    |   Any field from your dataset.
-Pagination  |   Limit   |   Item count in response object. Maximum value is 1000.
-Fields  |   -   |   Requested fields. Empty means all the available fields. The id field is a must.
+Pagination  |   Limit   |   Item count in the response object. Maximum value is 1000. When limit value is -1 it will return all the result items, but maximum 1000.
+Fields  |   -   |   Requested fields. Empty means all the available fields. Use "*" to get all the fields.
 
 > `Important`: Maximum pagination limit: 1000.
 
@@ -120,6 +120,8 @@ The `ScrollId` is used to get the next `Limit` items if available. Provide the `
 When your filter result object contains more items than your count value, you need to use the scroll to scroll over the results. In the first response, you can find a `ScrollId` field that you can use to identify your filter process and request the next items.
 
 As you can see when you have a ScrollId you can use it in your request URL: `POST /API/Documents/Filter/ScrollId`
+
+To check when to stop scrolling, check the count value. When the count value is 0 there are no more items to scroll.
 
 ##### For the parameters explanation check the DocumentFilterSettings schema definition [here](#/definitions/DocumentFilterSettings)
 
