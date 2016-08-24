@@ -80,17 +80,17 @@ X-DataSet|example
 {
   "Results": [
     {
-      "StatusCode": 400,
+      "StatusCode": 201,
       "Id": "Id1",
       "Error": ""
     },
     {
-      "StatusCode": 400,
+      "StatusCode": 201,
       "Id": "Id2",
       "Error": ""
     },
     {
-      "StatusCode": 400,
+      "StatusCode": 201,
       "Id": "Id3",
       "Error": ""
     }
