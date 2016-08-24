@@ -39,6 +39,65 @@ X-DataSet|example
 *Example RESPONSE*
 > HTTP/1.1 201 CREATED
 
+### Insert Bulk Documents
+
+Add multiple documents to a dataset.
+
+*Example REQUEST*
+> [POST /api/Documents/Bulk](#operation--api-Documents-bulk)
+
+Header   |Value
+---------|---
+X-DataSet|example
+
+```JSON
+{
+    "documents": [{
+        "id": "Id1",
+        "title": "Han Solo",
+        "desc": "Example Product Description",
+        "tags": [1,2,3]
+    },
+    {
+        "id": "Id2",
+        "title": "Luke",
+        "desc": "Example Product Description",
+        "tags": [1,2,3]
+    },
+    {
+        "id": "Id3",
+        "title": "Wookies",
+        "desc": "Example Product Description",
+        "tags": [1,2,3]
+    }]
+}
+```
+
+*Example RESPONSE*
+> HTTP/1.1 200 OK
+
+```JSON
+{
+  "Results": [
+    {
+      "StatusCode": 400,
+      "Id": "Id1",
+      "Error": ""
+    },
+    {
+      "StatusCode": 400,
+      "Id": "Id2",
+      "Error": ""
+    },
+    {
+      "StatusCode": 400,
+      "Id": "Id3",
+      "Error": ""
+    }
+  ]
+}
+```
+
 ### Get Document
 
 Get a document from a dataset.
@@ -111,7 +170,7 @@ X-DataSet|example
 
 Delete an existing document in a dataset.
 
-*Examle REQUEST*
+*Example REQUEST*
 
 > [DELETE /api/Documents/`9`](#operation--api-Documents-delete)
 
