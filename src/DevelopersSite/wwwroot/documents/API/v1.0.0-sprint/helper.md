@@ -10,7 +10,7 @@ File parsing and text extraction endpoint. Content must be provided as valid `ba
 > [POST /api/Helper/FileParser](#operation--api-Helper-FileParser-post)
 ```json
 {
-    "Content": "IkdvZCBTYXZlIHRoZSBRdWVlbiIgKGFsdGVybmF0aXZlbHkgIkdvZCBTYXZlIHRoZSBLaW5nIg=="
+    "Content": "77u/QSBsb25nIHRpbWUgYWdvIGluIGEgZ2FsYXh5IGZhciwgZmFyIGF3YXkuLi4="
 }
 ```
 
@@ -18,13 +18,13 @@ File parsing and text extraction endpoint. Content must be provided as valid `ba
 > HTTP/1.1 200 OK
 ```JSON
 {
-  "Content": "\"God Save the Queen\" (alternatively \"God Save the King\"\n",
+  "Content": "A long time ago in a galaxy far, far away...\n",
   "Title": null,
   "Date": null,
   "Author": null,
   "Keywords": null,
-  "ContentType": "text/plain; charset=ISO-8859-1",
-  "ContentLength": 55,
+  "ContentType": "text/plain; charset=UTF-8",
+  "ContentLength": 47,
   "Language": "en"
 }
 ```
