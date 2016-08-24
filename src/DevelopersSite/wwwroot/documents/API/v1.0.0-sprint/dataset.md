@@ -299,7 +299,7 @@ Updates a dataset. Currently only updating Dataset name is possible. As Dataset 
 
 *Example REQUEST*
 
-> [PUT /api/DataSets](#operation--api-DataSets-put))
+> [PUT /api/DataSets/`example`](#operation--api-DataSets-put))
 ```JSON
 {
     "Name": "new dataset name"
