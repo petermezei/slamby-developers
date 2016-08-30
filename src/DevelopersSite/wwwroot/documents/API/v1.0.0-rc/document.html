@@ -1,0 +1,288 @@
+<h2 id="document">Document</h2>
+<p>Manage your <strong>documents</strong> easily. Create, edit, remove documents, manage tags and run text analysis.</p>
+<p>Each document is related to a dataset. You have to specify which dataset you want to use in the <code>X-DataSet</code> header by the name of the dataset.</p>
+<blockquote>
+<p><strong>Tip:</strong> If you use any of the Document methods without or an unexisting <code>X-DataSet</code> header you will get a <code>Missing X-DataSet header!</code> error.</p>
+</blockquote>
+<p>Using document endpoint you can:</p>
+<ul>
+<li>Insert single document</li>
+<li>Insert multiple documents</li>
+<li>Acess your documents</li>
+<li>Modify your documents</li>
+<li>Run text analysis</li>
+</ul>
+<blockquote>
+<p><strong>Tip:</strong> Store all the related information - such as text, prices, image URLs - and use powerful queries.</p>
+</blockquote>
+<h3 id="insert-new-document">Insert New Document</h3>
+<p>Insert a new document to a dataset using a predefined schema.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents-post">POST /api/Documents</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+    &quot;id&quot;: 9,
+    &quot;title&quot;: &quot;Example Product Title&quot;,
+    &quot;desc&quot;: &quot;Example Product Description&quot;,
+    &quot;tags&quot;: [1,2,3]
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 201 CREATED</p>
+</blockquote>
+<h3 id="insert-bulk-documents">Insert Bulk Documents</h3>
+<p>Add multiple documents to a dataset.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents-Bulk-post">POST /api/Documents/Bulk</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+    &quot;documents&quot;: [{
+        &quot;id&quot;: &quot;Id1&quot;,
+        &quot;title&quot;: &quot;Han Solo&quot;,
+        &quot;desc&quot;: &quot;Example Product Description&quot;,
+        &quot;tags&quot;: [1,2,3]
+    },
+    {
+        &quot;id&quot;: &quot;Id2&quot;,
+        &quot;title&quot;: &quot;Luke&quot;,
+        &quot;desc&quot;: &quot;Example Product Description&quot;,
+        &quot;tags&quot;: [1,2,3]
+    },
+    {
+        &quot;id&quot;: &quot;Id3&quot;,
+        &quot;title&quot;: &quot;Wookies&quot;,
+        &quot;desc&quot;: &quot;Example Product Description&quot;,
+        &quot;tags&quot;: [1,2,3]
+    }]
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{
+  &quot;Results&quot;: [
+    {
+      &quot;StatusCode&quot;: 201,
+      &quot;Id&quot;: &quot;Id1&quot;,
+      &quot;Error&quot;: &quot;&quot;
+    },
+    {
+      &quot;StatusCode&quot;: 201,
+      &quot;Id&quot;: &quot;Id2&quot;,
+      &quot;Error&quot;: &quot;&quot;
+    },
+    {
+      &quot;StatusCode&quot;: 201,
+      &quot;Id&quot;: &quot;Id3&quot;,
+      &quot;Error&quot;: &quot;&quot;
+    }
+  ]
+}
+</code></pre>
+<h3 id="get-document">Get Document</h3>
+<p>Get a document from a dataset.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents--id--get">GET /api/Documents/<code>9</code></a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-json">{
+    &quot;id&quot;: 9,
+    &quot;title&quot;: &quot;Example Product Title&quot;,
+    &quot;desc&quot;: &quot;Example Product Description&quot;,
+    &quot;tags&quot;: [1,2,3]
+}
+</code></pre>
+</blockquote>
+<h3 id="edit-document">Edit Document</h3>
+<p>Edit (update) an existing document in a dataset.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents--id--put">PUT /api/Documents/<code>9</code></a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+    &quot;id&quot;: 9,
+    &quot;title&quot;: &quot;Example Modified Product Title&quot;,
+    &quot;desc&quot;: &quot;Example Modified Product Description&quot;,
+    &quot;tags&quot;: [1,2,3,4,5,6,7,8,9]
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<p>Partial document update is allowed. Only modified data should be specified in this case. The rest of the document will be unchanged.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents--id--put">PUT /api/Documents/<code>9</code></a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+    &quot;tags&quot;: [7,8,9]
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<h3 id="delete-document">Delete Document</h3>
+<p>Delete an existing document in a dataset.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents--id--delete">DELETE /api/Documents/<code>9</code></a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<h3 id="copy-to">Copy To</h3>
+<p>Copying documents from a dataset to another one. You can specify the documents by id. You can copy documents to an existing dataset.</p>
+<p>The selected documents will <strong>remain in the source dataset</strong> as well.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents-Copy-post">POST /api/Documents/Copy</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+    &quot;TargetDataSetName&quot;: &quot;TARGET_DATASET_NAME&quot;,
+    &quot;DocumentIdList&quot;: [&quot;10&quot;, &quot;11&quot;]
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<p><strong>Tip:</strong> You can use the <a href="swagger#operation--api-Documents-Sample-post">POST /api/Documents/Sample</a> or the <a href="swagger#operation--api-Documents-Filter--scrollId--post">POST /api/Documents/Filter</a> methods to get document ids easily.</p>
+</blockquote>
+<h3 id="move-to">Move To</h3>
+<p>Moving documents from a dataset to another one. You can specify documents by id. You can move documents to an existing dataset. 
+The selected documents will be <strong>removed from the source dataset</strong>.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents-Move-post">POST /api/Documents/Move</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+    &quot;TargetDataSetName&quot;: &quot;TARGET_DATASET_NAME&quot;,
+    &quot;DocumentIdList&quot;: [&quot;10&quot;, &quot;11&quot;]
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<p><strong>Tip:</strong> You can use the <a href="swagger#operation--api-Documents-Sample-post">POST /api/Documents/Sample</a> or the <a href="#operation--api-Documents-Filter-post">POST /api/Documents/Filter</a> methods to get document ids easily.</p>
+</blockquote>

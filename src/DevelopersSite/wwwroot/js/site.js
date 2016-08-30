@@ -19,6 +19,11 @@
     // Add smooth scrolling to all links inside a documentation
     $("#documentation a").on('click', function (event) {
 
+        var href = $(this).attr("href");
+        if (href.startsWith("swagger#")) {
+            return;
+        }
+
         if (!this.hash) {
             //event.preventDefault();
             //var href = $(this).attr("href");
