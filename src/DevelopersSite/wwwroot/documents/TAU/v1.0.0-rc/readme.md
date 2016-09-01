@@ -310,21 +310,23 @@ If you have any questions please contact us via `hello@slamby.com`, or `support@
 
 ## Many thanks for third-party providers
 
-[CsvHelper](https://github.com/JoshClose/CsvHelper)
+<a href="https://github.com/JoshClose/CsvHelper" target="_blank">CsvHelper</a>
 
-[DataGridExtensions](http://datagridextensions.codeplex.com/)
+<a href="http://datagridextensions.codeplex.com/" target="_blank">DataGridExtensions</a>
 
-[Dragablz](https://dragablz.net/)
+<a href="https://dragablz.net/" target="_blank">Dragablz</a>
 
-[FontAwesome.WPF](https://github.com/charri/Font-Awesome-WPF/)
+<a href="https://github.com/charri/Font-Awesome-WPF/" target="_blank">FontAwesome.WPF</a>
 
-[log4net](http://logging.apache.org/log4net/)
+<a href="http://logging.apache.org/log4net/" target="_blank">log4net</a>
 
-[MaterialDesign (MaterialDesignThemes & MaterialDesignColors)](https://github.com/ButchersBoy/MaterialDesignInXamlToolkit)
+<a href="https://github.com/ButchersBoy/MaterialDesignInXamlToolkit" target="_blank">MaterialDesign (MaterialDesignThemes & MaterialDesignColors)</a>
 
-[MvvmLight](http://www.galasoft.ch/mvvmÖ)
+<a href="http://www.galasoft.ch/mvvm" target="_blank">MvvmLight</a>
 
-[Newtonsoft.Json](http://www.newtonsoft.com/json)
+<a href="http://www.newtonsoft.com/json" target="_blank">Newtonsoft.Json</a>
+
+<a href="https://github.com/squirrel/Squirrel.Windows" target="_blank">Squirrel.Windows</a>
 
 ---
 
