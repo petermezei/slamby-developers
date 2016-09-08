@@ -41,6 +41,39 @@ X-DataSet|example
 
 > HTTP/1.1 201 CREATED
 
+### Create Bulk Tags
+
+Import tags using bulk method.
+
+*Example REQUEST*
+
+> [POST /api/Tags/Bulk](swagger#operation--api-Tags-Bulk-post)
+
+Header  |   Value
+--- |   ---
+X-DataSet   |   example
+
+```json
+{
+  "Tags": [
+    {
+      "Id": 1,
+      "Name": "Tag1",
+      "ParentId": null
+    },
+    {
+      "Id": 2,
+      "Name": 1,
+      "ParentId": "1"
+    }
+  ]
+}
+```
+
+*Example RESPONSE*
+
+> HTTP/1.1 200 OK
+
 ### Get Tag
 
 Get a tag by its Id. Provide 'withDetails=true' query parameter in order to get DocumentCount, WordCount values. Default value is 'false' because it takes time to calculate these properties.
