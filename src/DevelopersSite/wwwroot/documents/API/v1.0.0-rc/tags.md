@@ -58,13 +58,33 @@ X-DataSet   |   example
   "Tags": [
     {
       "Id": 1,
-      "Name": "Tag1",
+      "Name": "Jedi",
       "ParentId": null
     },
     {
       "Id": 2,
-      "Name": 1,
+      "Name": "Luke",
       "ParentId": "1"
+    },
+    {
+      "Id": 3,
+      "Name": "Anakin",
+      "ParentId": "1"
+    },
+    {
+      "Id": 4,
+      "Name": "Dark side of the Force",
+      "ParentId": null
+    },
+    {
+      "Id": 5,
+      "Name": "Darth Vader",
+      "ParentId": "4"
+    },
+    {
+      "Id": 6,
+      "Name": "Darth Bandon",
+      "ParentId": "4"
     }
   ]
 }
