@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using DevelopersSite.Services;
 using System.Linq;
 using DevelopersSite.Models;

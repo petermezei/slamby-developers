@@ -46,6 +46,65 @@
 <blockquote>
 <p>HTTP/1.1 201 CREATED</p>
 </blockquote>
+<h3 id="create-bulk-tags">Create Bulk Tags</h3>
+<p>Import tags using bulk method.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Tags-Bulk-post">POST /api/Tags/Bulk</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Tags&quot;: [
+    {
+      &quot;Id&quot;: 1,
+      &quot;Name&quot;: &quot;Jedi&quot;,
+      &quot;ParentId&quot;: null
+    },
+    {
+      &quot;Id&quot;: 2,
+      &quot;Name&quot;: &quot;Luke&quot;,
+      &quot;ParentId&quot;: &quot;1&quot;
+    },
+    {
+      &quot;Id&quot;: 3,
+      &quot;Name&quot;: &quot;Anakin&quot;,
+      &quot;ParentId&quot;: &quot;1&quot;
+    },
+    {
+      &quot;Id&quot;: 4,
+      &quot;Name&quot;: &quot;Dark side of the Force&quot;,
+      &quot;ParentId&quot;: null
+    },
+    {
+      &quot;Id&quot;: 5,
+      &quot;Name&quot;: &quot;Darth Vader&quot;,
+      &quot;ParentId&quot;: &quot;4&quot;
+    },
+    {
+      &quot;Id&quot;: 6,
+      &quot;Name&quot;: &quot;Darth Bandon&quot;,
+      &quot;ParentId&quot;: &quot;4&quot;
+    }
+  ]
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
 <h3 id="get-tag">Get Tag</h3>
 <p>Get a tag by its Id. Provide &#39;withDetails=true&#39; query parameter in order to get DocumentCount, WordCount values. Default value is &#39;false&#39; because it takes time to calculate these properties.</p>
 <p><em>Example REQUEST</em></p>

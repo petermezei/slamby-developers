@@ -13,3 +13,5 @@ Thumbs.db
 
 /src/DevelopersSite/wwwroot/lib
 /src/DevelopersSite/appsettings.production.json
+obj/
+bin/

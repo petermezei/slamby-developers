@@ -1,11 +1,11 @@
 ﻿using DevelopersSite.Models;
 using DevelopersSite.Services;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
 
 namespace DevelopersSite
 {
@@ -15,6 +15,7 @@ namespace DevelopersSite
         {
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile("appsettings.production.json", optional: true)
                 .AddEnvironmentVariables();
@@ -29,7 +30,7 @@ namespace DevelopersSite
             // Add framework services.
             services.AddMvc();
 
-            services.AddCaching();
+            services.AddDistributedMemoryCache();
 
             services.AddOptions();
             services.Configure<SiteConfig>(Configuration.GetSection("SiteConfig"));
@@ -64,8 +65,5 @@ namespace DevelopersSite
                    template: "{controller=home}/{action=index}");
             });            
         }
-
-        // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

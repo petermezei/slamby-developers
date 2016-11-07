@@ -3,7 +3,7 @@
 <div class="container">
     <div class="wrapper wrapper-docpage">
         <div class="list">
-            @Component.Invoke("Sidebar", Model)
+            @await Component.InvokeAsync("Sidebar", new { model = Model })
         </div>
         <div class="body" id="documentation">
             @Html.Raw(Model.Content)

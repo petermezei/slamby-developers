@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using DevelopersSite.Helpers;
 using DevelopersSite.Models;
-using Microsoft.AspNet.Hosting;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace DevelopersSite.Services
 {

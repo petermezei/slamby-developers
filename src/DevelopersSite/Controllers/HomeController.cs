@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using Slamby.SDK.Net.Managers;
-using Slamby.SDK.Net;
+using Microsoft.AspNetCore.Mvc;
 using DevelopersSite.Services;
 using DevelopersSite.Models;
 using DevelopersSite.Enums;
 using System.Globalization;
+using Slamby.SDK.Net;
+using Slamby.SDK.Net.Managers;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -56,17 +56,17 @@ namespace DevelopersSite.Controllers
                 };
 
                 var result = await manager.CreateDocumentAsync(document);
-                if (result.IsSuccessFul)
+                if (result.IsSuccessful)
                 {
                     return Ok(new { success = false });
                 }
             }
             catch
             {
-                return HttpBadRequest(new { success = false, message = "Subscribe failed!" });
+                return BadRequest(new { success = false, message = "Subscribe failed!" });
             }
 
-            return HttpBadRequest(new { success = false, message = "Subscribe failed!" });
+            return BadRequest(new { success = false, message = "Subscribe failed!" });
         }
     }
 }
