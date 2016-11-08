@@ -479,6 +479,32 @@ When a first full index is ready, you can synchronize your index dataset by part
 
 ### Recommend
 
+When a PRC service is activated use it for matchmaking. The basic method is `recommend`. For start pick a text for analysis and send it to your PRC service. You can identify your service using either `service id` or `service alias`.
+
+Basic algorithm:
+
+1. Read input text,
+
+2. Analyzing the text in the context of the required tag,
+
+3. Picking the meaningful word,
+
+4. Run a pre-search query using the given filter object,
+
+5. Start a powerful search in the given dataset part,
+
+6. Run a post-weighting process on the result,
+
+7. Returns the most similar documents from the given dataset.
+
+Typical usage:
+
+- Matchmaking,
+
+- Keyword extraction,
+
+- Duplicate detection.
+
 *Example Request*
 
 > [POST /api/Services/Prc/`GUID or Alias`/Recommend](swagger#operation--api-Services-Prc--id--Recommend-post)
@@ -520,6 +546,82 @@ When a first full index is ready, you can synchronize your index dataset by part
     }
 ]
 ```
+
+`Request parameters`
+
+Field   |   Description
+---   |   ---
+Text   |   Text to analyze. Recommend method analyses this given text.
+Count   |   Result document number in response.
+Filter   |   Filter object. We can use each available field from the dataset to pre-filter the potential result documents before matchmaking.
+Weights   |   Weights object. We can use each available dataset field, a preferred value and a weighted score between 0 and 10 to boost the result.
+TagId   |   For recommends method we need to set in which tag we want to do the matchmaking.
+NeedDocumentInResult   |   `true` or `false`, when it true result documents can be found in the response.
+
+`Filter Object`
+
+Use it for pre-filter your potential documents before matchmaking. More precise results, custom filters, higher performance.
+
+*Filter Object Structure*
+
+```JSON
+{
+    "Query":"fieldName:fieldValue"
+}
+```
+
+`Demo Filter Object`
+
+```JSON
+{
+    "Query":"status:active"
+}
+```
+
+`Weights Object`
+
+Use it for boosting your results. You can access to each available document field, set custom values and weights.
+
+*Weights Object Structure*
+
+```JSON
+[
+    {
+        "Query": "fieldName:targetValue",
+        "value": "weight between 0-10"
+    },
+    {
+        "Query": "fieldName:targetValue",
+        "value": "weight between 0-10"
+    },
+    {
+        ...
+    }
+]
+```
+
+`Demo Weight Query`
+
+```JSON
+[
+    {
+        "Query": "city:Budapest",
+        "value": "7"
+    },
+    {
+        "Query": "position:engineer",
+        "value": "9"
+    }
+]
+```
+
+`Response parameters`
+
+Field   |   Description
+---   |   ---
+DocumentId   |   
+Score   |   Result score between 0 and 2. It reflects a relevance order between the documents in ASC order. Score range 0-0.99 means the result documents have many meaningful words in common, but not all the meaningful words match. Score 1 means all the meaningful words match, potentially duplicate documents. Score range 1-2 means the result documents contains the meaningful words more frequently than the source text.
+Document Object   |   When `NeedDocumentInResult` is true, this is the complete document object we store.
 
 ### Keywords Extraction
 
