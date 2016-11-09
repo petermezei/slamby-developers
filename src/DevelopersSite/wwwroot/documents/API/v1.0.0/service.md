@@ -403,6 +403,13 @@ Similar product/document recommendation engine.
 }
 ```
 
+`Parameter List`:
+
+Field Name   |   Description
+---   |   ---
+DataSetName   |   Source dataset that will be the part of the preparation.
+TagIdList   |   Available tag ids from the source dataset that will be analyzed and stored during the preparation process. Using a PRC Service you will be able to use just the prepared tags.
+
 *Example RESPONSE*
 
 > HTTP/1.1 202 ACCEPTED
@@ -555,7 +562,7 @@ Text   |   Text to analyze. Recommend method analyses this given text.
 Count   |   Result document number in response.
 Filter   |   Filter object. We can use each available field from the dataset to pre-filter the potential result documents before matchmaking.
 Weights   |   Weights object. We can use each available dataset field, a preferred value and a weighted score between 0 and 10 to boost the result.
-TagId   |   For recommends method we need to set in which tag we want to do the matchmaking.
+TagId   |   For recommends method, we need to set in which tag we want to do the matchmaking. When TagId is null, the server predicts the most suitable category and uses it for matchmaking.
 NeedDocumentInResult   |   `true` or `false`, when it true result documents can be found in the response.
 
 `Filter Object`
@@ -683,20 +690,24 @@ With this function, you can easily extract the relevant keywords (according to t
 
 ### Index
 
+Built-in index engine for PRC service. When you have a prepared PRC service, you can run index process to analyze all the available matching results and store it in an index database. When the indexing process finished you can use PRC `recommend by id` method.
+
+Two kinds of index available: first start a full index then use the partial index to update your index database with smaller dataset changes.
+
 *Example Request*
 
 > [POST /api/Services/Prc/`GUID or Alias`/Index](swagger#operation--api-Services-Prc--id--Index-post)
 
-```json
+```JSON
 {
     "Filter": {
-        "Query" : "title:michelin",
+        "Query" : "status:active",
         "TagIdList": ["tag1Id","tag2Id"]
     }
 }
 ```
 
-> **Tip:** If you skip the `TagIdList` or set it to `null` then the API will use all the tags
+> **Tip:** If you skip the `TagIdList` or set it to `null` then the API will use all the *prepared tags*.
 
 *Example Response*
 
@@ -743,6 +754,8 @@ Partial indexing all the documents modified since last `Index` or `IndexPartial`
 
 ### Recommend By Id
 
+PRC Recommend method using a predefined index database. To use it you need a `DocumentId` to identify the source document; all the other fields are the same like using `Recommend` endpoint.
+
 *Example Request*
 
 > [POST /api/Services/Prc/`GUID or Alias`/RecommendById](swagger#operation--api-Services-Prc--id--RecommendById-post)
@@ -757,6 +770,8 @@ Partial indexing all the documents modified since last `Index` or `IndexPartial`
     "NeedDocumentInResult": true
 }
 ```
+
+> When `TagId` is null, the API server predicts the most suitable tag using the source document.
 
 *Example Response*
 
