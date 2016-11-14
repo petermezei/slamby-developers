@@ -198,9 +198,9 @@ Managing a document you can use the drop-down menu by documents.
 
 Menu Option | Description
 --- | ---
-Preview | Open document in pop-up window.
+Preview | Open the document in the pop-up window.
 Open | Open document in a new tab.
-Edit | Open document to edit.
+Edit | Open the document to edit.
 Copy to | Copy document to a selected dataset.
 Move to | Move document to a selected dataset.
 Add tags | Add tags to the document from the dataset list.
@@ -238,7 +238,7 @@ Here you can see all of your available tags. To filter them use the built-in fil
 
 ![Tags Panel](img/tags-panel.png)
 
-To add a new tag click the `Add new tag` button. Here provide the tag id, name and the parent id. When you use a category tree, then you can organize your tags into hierarchy by child-parent relations. When you manage a tag cloud instead, just leave the parent id as empty.
+To add a new tag click the `Add new tag` button. Here provide the tag id, name and the parent id. When you use a category tree, then you can organize your tags into a hierarchy by child-parent relations. When you manage a tag cloud instead, just leave the parent id as empty.
 
 ![Add New Tag](img/add-new-tag.png)
 
