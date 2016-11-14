@@ -244,6 +244,133 @@ To add a new tag click the `Add new tag` button. Here provide the tag id, name a
 
 > To export all the words from your database for further analysis, click the `Export Words` button; a long-term process starts.
 
+## Services panel
+
+Main panel for service management. List, create and manage your available services. Currently, Slamby supports two type of services:
+
+- Slamby Classifier Service,
+
+- Slamby PRC Service.
+
+`Slamby Classifier Service` is a text-classification service with high accuracy level and language independence. Specialized for e-commerce text-classification and category-recommendation for thousands of categories.
+
+`Slamby PRC Service` is a text-based matchmaking service for matchmaking, keyword extraction, and duplicate finding.
+
+To create a service click the add new service button by selecting the required service type.
+
+Each service has 3 state depends on the preparation and activation status:
+
+- New,
+
+- Prepared,
+
+- Activated.
+
+`Meaning of different service status`
+
+Status | Description
+--- | ---
+New | When a service is just created it has a name, description, and an alias. The first status is `new`. This service has no settings provided, it's not prepared, you cannot activate it. To use it you need to continue with a preparation process.
+Prepared | This is a status when a service is `prepared`, all the settings and background machine-learning process done. For preparation click the prepared menu and provide the required settings for the training such as the source dataset name, and needed tags. When the status is prepared, the service is ready for use, however, you need to activate it first.
+Activated | Just the activated services are callable. When a service is prepared you can start the activation process by clicking the activate menu. During the activation process, all the required files and settings are loading into the machine memory. When a service is activated you can use it by id or by alias.
+
+![Service Panel](img/services.png)
+
+### Add Classifier Service
+
+To add a classifier service, click the `Add Classifier` button. For start provide the required name, alias, and description.
+
+`What to know about the input parameters?`
+
+Field | Description
+--- | ---
+Name | Name of the service. Human readable name for better management. You cannot modify it in the future.
+Alias | Service alias for flexible integration. You can set and modify it in the future.
+Description | Human readable description for better management.
+
+![Add Classifier Service](img/add-classifier-service.png)
+
+### Prepare Classifier Service
+
+When you need a Classifier Service, the second step is the preparation process. This is the process when based on the provided settings the machine-learning process starts.
+
+`Available settings`
+
+Field | Description
+--- | ---
+Dataset | Dataset selector. Choose the source dataset that you want to use for the training process.
+NGramCount | Default value is 3, or the maximum ngram number of the dataset.
+TagIdList | Popup tag selector window where you can pick the required tags. If you want to create a classifier service that can use just the first level categories from the tree, then select just the first level tags.
+CompressLevel | Built-in compress engine settings. Set it 1 as a default value, it will compress the results by analyzing the unnecessary words, remaining lower resource need at the same accuracy level.
+Compress Settings | Custom compress settings. For more information visit the [developers site](https://developers.slamby.com).
+
+![Prepare Classifier Service](img/prepare-classifier-service.png)
+
+### Activate Classifier Service
+
+When a Classifier Service is prepared activation available. For activation, you can use custom settings to specify you usage criteria.
+
+`Available Classifier activation service`
+
+Field | Description
+--- | ---
+NGramCount | Ngram model that you want to use for your activated service. The default value is the maximum prepared ngram value.
+TagIdList | Tag id filter from the available prepared tag list. You can filter which tags you want to use for category recommendation.
+
+![Activate Classifier Service](img/activate-classifier-service.png)
+
+### Recommend for Classifier Service
+
+To try an activated Classifier service, click the recommend menu. Here you can set the text for analysis, the required response count. When you want a detailed response click true the NeedTagsInResult.
+
+![Recommend for Classifier Service](img/recommend-classifier.png)
+
+`Classifier Recommend Response`
+
+After sending a recommend query to the selected service, the response pops up immediately. In the response the following parameters available:
+
+![Recommend for Classifier Service](img/recommend-classifier2.png)
+
+### Add PRC Service
+
+To create a PRC Service 3 parameter required: `name` as a human readable text, `alias` for flexible integration and `description` for more detailed human-readable text for better service management.
+
+![Add a PRC Service](img/add-prc-service.png)
+
+### Prepare PRC Service
+
+For preparation the required fields:
+
+Field | Description
+--- | ---
+Dataset | Select the source dataset for training.
+TagIdList | Tag selector for training. When there is no tag selected, by default all the lead tags are selected.
+CompressLevel | Built-in compress engine, recommended value is 1.
+Compress Settings | Custom compress settings, for more details visit the [developers site](https://developers.slamby.com).
+
+![Prepare PRC Service](img/prepare-prc-service.png)
+
+### Activate PRC Service
+
+For activation please check which field you want to use as a recommendation / matchmaking source. When you check a dataset field, during the text-analysis the PRC service will provide the matched items based on the selected fields.
+
+![Activate a PRC Service](img/activate-prc-service.png)
+
+### Recommend for PRC Service
+
+To try your activated PRC service, click the Recommend menu. The available options:
+
+Field | Description
+--- | ---
+Text | Text for analysis
+Count | Response item number
+Filter | PRC filter as a pre-filter before matchmaking. For more information please check the API documentation.
+NeedDocumentsInResult | When it's true response contains full document objects.
+TagId | The target tag id, in which the matchmaking will be processing. When it's empty, the API will predict a suitable one.
+Weights | Weight object to boost the results. For more information please check the API documentation.
+
+![Recommend PRC Service](img/recommend-prc-service.png)
+
 ## Processes
 
 Using Slamby API server all the long-term jobs are organized into background processes. Such as dataset copy or classifier service training are managed using background processes.
