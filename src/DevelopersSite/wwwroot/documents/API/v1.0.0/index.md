@@ -53,6 +53,21 @@ Authorization|Slamby `API_KEY`
 
 >**Tip:** You will get your `API_KEY` after your server is ready to use.
 
+## Processor core management
+
+Using your API you can set the required amount of processor core to each process. To set the suitable core number manually you can use `X-API-Parallel-Limit` in the request header.
+
+>*Example*
+
+Header | Value
+--- | ---
+X-API-Parallel-Limit | 2
+
+This example set 2 processor cores to the given process.
+
+`When this header is not set, the basic value is the available maximum core number.`
+
+
 ## API Version
 
 Every response contains API version information in response HTTP `X-API-Version` header.
