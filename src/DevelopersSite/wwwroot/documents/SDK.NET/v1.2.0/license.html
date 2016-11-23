@@ -1,0 +1,17 @@
+<h2 id="license">License</h2>
+<p>Returns with version, processor, memory and disk information about the API server.</p>
+<h3 id="get-license">Get License</h3>
+<p>Returns back with license information.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var licenseManager = new LicenseManager(_configuration);
+var license = await licenseManager.GetLicenseAsync();
+</code></pre>
+<h3 id="change-license">Change License</h3>
+<p>Replace or set your current license with a new one. License is a <code>base64</code> encoded string which is provided by Slamby.</p>
+<pre><code class="lang-cs">var licenseManager = new LicenseManager(_configuration);
+var model = new ChangeLicense() 
+    { 
+        License = &quot;PExpY2Vuc2U+CiAgPFR5cGU+T3BlblNvdXJjZTwvV...(truncated for brevity)&quot; 
+    };
+var license = await licenseManager.SetLicenseAsync(model);
+</code></pre>

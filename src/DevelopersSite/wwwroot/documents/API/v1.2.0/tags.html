@@ -1,0 +1,297 @@
+<h2 id="tags">Tags</h2>
+<p>Manage tags to organize your data. Use tags as a tag cloud, or build a category tree organizing tags into a hierarchy.</p>
+<p>Each tag is related to a Dataset. You have to specify which dataset you want to use in the <code>X-DataSet</code> header by the name of the dataset.</p>
+<blockquote>
+<p><strong>Tip:</strong> If you use any of the tag methods without or an unexisting <code>X-DataSet</code> header you will get a <code>Missing X-DataSet header!</code> error.</p>
+</blockquote>
+<p>With Tags you can:</p>
+<ul>
+<li>Create new tag</li>
+<li>Update a tag</li>
+<li>Get a single tag or a full tag list</li>
+<li>Organize your tags into hierarchy</li>
+<li>Use tags for categorization</li>
+<li>Use tags for tagging.</li>
+</ul>
+<h3 id="create-new-tag">Create New Tag</h3>
+<p>Create a new tag in a dataset.</p>
+<blockquote>
+<p><strong>Tip:</strong> To create hierarchy you have to specify the ParentId of the tag. The ParentId is the Id of the parent of the tag. In the dataset, there must be an existing tag with the id given in the ParentId. If the tag is a root element, or you don&#39;t want to use hierarchy then just skip the property or set to <code>null</code>.</p>
+</blockquote>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Tags-post">POST /api/Tags</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;example tag 1&quot;,
+    &quot;ParentId&quot;: null
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 201 CREATED</p>
+</blockquote>
+<h3 id="create-bulk-tags">Create Bulk Tags</h3>
+<p>Import tags using bulk method.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Tags-Bulk-post">POST /api/Tags/Bulk</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Tags&quot;: [
+    {
+      &quot;Id&quot;: 1,
+      &quot;Name&quot;: &quot;Jedi&quot;,
+      &quot;ParentId&quot;: null
+    },
+    {
+      &quot;Id&quot;: 2,
+      &quot;Name&quot;: &quot;Luke&quot;,
+      &quot;ParentId&quot;: &quot;1&quot;
+    },
+    {
+      &quot;Id&quot;: 3,
+      &quot;Name&quot;: &quot;Anakin&quot;,
+      &quot;ParentId&quot;: &quot;1&quot;
+    },
+    {
+      &quot;Id&quot;: 4,
+      &quot;Name&quot;: &quot;Dark side of the Force&quot;,
+      &quot;ParentId&quot;: null
+    },
+    {
+      &quot;Id&quot;: 5,
+      &quot;Name&quot;: &quot;Darth Vader&quot;,
+      &quot;ParentId&quot;: &quot;4&quot;
+    },
+    {
+      &quot;Id&quot;: 6,
+      &quot;Name&quot;: &quot;Darth Bandon&quot;,
+      &quot;ParentId&quot;: &quot;4&quot;
+    }
+  ]
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<h3 id="get-tag">Get Tag</h3>
+<p>Get a tag by its Id. Provide &#39;withDetails=true&#39; query parameter in order to get DocumentCount, WordCount values. Default value is &#39;false&#39; because it takes time to calculate these properties.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Tags-get">GET /api/Tags/<code>Id</code>?withDetails=false</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;example tag 1&quot;,
+    &quot;ParentId&quot;: &quot;5&quot;,
+    &quot;Properties&quot;: {
+        &quot;Paths&quot;: [
+            {
+                &quot;Id&quot;: &quot;5&quot;,
+                &quot;Level&quot;: &quot;1&quot;,
+                &quot;Name&quot;: &quot;example parent tag 5&quot;
+            }
+        ],
+        &quot;Level&quot;: 2,
+        &quot;IsLeaf&quot;: &quot;false&quot;,
+        &quot;DocumentCount&quot;: 33,
+        &quot;WordCount&quot;: 123
+    }
+}
+</code></pre>
+<p><code>Available response fields:</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Id</td>
+<td>Tag id</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Tag name</td>
+</tr>
+<tr>
+<td>ParentId</td>
+<td>Tag parent id, default value <code>null</code></td>
+</tr>
+<tr>
+<td>Paths</td>
+<td>Object. When ParentId is given, it contains the full category path of the given tag.</td>
+</tr>
+<tr>
+<td>Level</td>
+<td>When we use ParentId this field shows us the position of the given tag. First category level is 1.</td>
+</tr>
+<tr>
+<td>IsLeaf</td>
+<td>Using a category tree, this boolean field shows us the position of the given tag. When IsLeaf is true, the given tag is located in a leaf node position in the category tree. When this value is false, it means this tag has children in the category tree.</td>
+</tr>
+<tr>
+<td>DocumentCount</td>
+<td>Related document number in the given dataset.</td>
+</tr>
+<tr>
+<td>WordCount</td>
+<td>Related word count number in the given dataset.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get-tag-list">Get Tag List</h3>
+<p>Get all tags list from a given dataset. Provide &#39;withDetails=true&#39; query parameter in order to get DocumentCount, WordCount values. Default value is &#39;false&#39; because it takes time to calculate these properties.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Tags-get">GET /api/Tags?withDetails=false</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">[
+    {
+        &quot;Id&quot;: &quot;1&quot;,
+        &quot;Name&quot;: &quot;example tag 1&quot;,
+        &quot;ParentId&quot;: null,
+        &quot;Properties&quot;: {
+            &quot;Paths&quot;: [],
+            &quot;Level&quot;: 1,
+            &quot;IsLeaf&quot;: true,
+            &quot;DocumentCount&quot;: 0,
+            &quot;WordCount&quot;: 0
+        }
+    },
+    {
+        &quot;Id&quot;: &quot;2&quot;,
+        &quot;Name&quot;: &quot;example tag 2&quot;,
+        &quot;ParentId&quot;: null,
+        &quot;Properties&quot;: {
+            &quot;Paths&quot;: [],
+            &quot;Level&quot;: 1,
+            &quot;IsLeaf&quot;: true,
+            &quot;DocumentCount&quot;: 0,
+            &quot;WordCount&quot;: 0
+        }
+    }
+]
+</code></pre>
+<h3 id="update-tag">Update Tag</h3>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Tags-put">PUT /api/Tags/<code>Id</code></a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;example tag 1&quot;,
+    &quot;ParentId&quot;: null
+}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 CREATED</p>
+</blockquote>
+<h3 id="remove-tag">Remove Tag</h3>
+<p>Remove a tag from tag list. Default behavior is that only leaf elements can be deleted. You should provide &#39;force=true&#39; query parameter in order to remove tags with child elements. &#39;cleanDocument&#39;. Setting &#39;cleanDocuments=true&#39; removes the specified tag also from its documents.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Tags-delete">DELETE /api/Tags/<code>Id</code>?force=false&amp;cleanDocuments=false</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>

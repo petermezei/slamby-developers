@@ -1,0 +1,11 @@
+<h2 id="maintenance">Maintenance</h2>
+<h3 id="change-secret">Change Secret</h3>
+<p>Changes API secret. </p>
+<blockquote>
+<p>WARNING! Changing API secret could prevent others from accessing API functions!</p>
+</blockquote>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var maintenanceManager = new MaintenanceManager(_configuration);
+var model = new ChangeSecret() { Secret = &quot;MyNewS3cr3t&quot; };
+var result = await maintenanceManager.ChangeSecretAsync(model);
+</code></pre>

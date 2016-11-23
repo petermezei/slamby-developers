@@ -1,0 +1,81 @@
+<h2 id="tags">Tags</h2>
+<p>Manage tags to organize your data. Using tags create a tag cloud or a hierarchical tag tree.</p>
+<p>You can find more details about the Tags <a href="/docs/api/{{docversion}}/tags">here</a>.</p>
+<h3 id="create-new-tag">Create New Tag</h3>
+<p>Create a new tag in a dataset.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new TagManager(configuration, &quot;DATASET_NAME&quot;);
+var tag = new Tag
+            {
+                Id = &quot;3&quot;,
+                Name = &quot;example tag 1&quot;,
+                ParentId = null
+            };
+var result = await manager.CreateTagAsync(tag);
+</code></pre>
+<h3 id="get-tag">Get Tag</h3>
+<p>Get a tag by its Id.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new TagManager(configuration, &quot;DATASET_NAME&quot;);
+var result = await manager.GetTagAsync(&quot;3&quot;);
+</code></pre>
+<h3 id="get-tag-list">Get Tag List</h3>
+<p>Get all tags list from a given dataset.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new TagManager(configuration, &quot;DATASET_NAME&quot;);
+var result = await manager.GetTagsAsync();
+</code></pre>
+<h3 id="update-tag">Update Tag</h3>
+<p>Update a tag by new values.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new TagManager(configuration, &quot;DATASET_NAME&quot;);
+var tag = new Tag
+            {
+                Id = &quot;5&quot;,
+                Name = &quot;tag2&quot;
+            };
+var result = await manager.UpdateTagAsync(&quot;3&quot;, tag);
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> You can also change the <code>Id</code> of the object, as you can see in the example.</p>
+</blockquote>
+<h3 id="remove-tag">Remove Tag</h3>
+<p>Remove a tag from tag list. By default, documents and datasets are not affected.</p>
+<p>The method has two additional parameters:</p>
+<ul>
+<li><code>force</code> - if true then the tag with children can be deleted, but be careful! All the children will be deleted also.</li>
+<li><code>cleanDocuments</code> - if true then the removed tag will be also removed from the documents</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new TagManager(configuration, &quot;DATASET_NAME&quot;);
+var result = await manager.DeleteTagAsync(&quot;5&quot;);
+</code></pre>
+<h3 id="bulk-tag">Bulk Tag</h3>
+<p>Replaces existing tags with the provided list. Recommended for tag list initializing.</p>
+<blockquote>
+<p><strong>Tip:</strong> You can limit used thread count for this function in the configuration object</p>
+</blockquote>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var settings = new TagBulkSettings()
+                    {
+                        Tags = myImportTagList
+                    };
+var manager = new TagManager(configuration, &quot;DATASET_NAME&quot;);
+var result = await manager.BulkTagsAsync(settings);
+</code></pre>
+<h3 id="clean-documents">Clean Documents</h3>
+<p>Remove all not existing tags from the documents.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new TagManager(configuration, &quot;DATASET_NAME&quot;);
+var result = await manager.CleanDocumentsAsync();
+</code></pre>
+<h3 id="words-occurrences">Words Occurrences</h3>
+<p>Get words and the occurrences of the words.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">var manager = new TagManager(configuration, &quot;DATASET_NAME&quot;);
+var settings = new TagsExportWordsSettings {
+    NGramList = new List&lt;int&gt; { 1, 2 },
+    TagIdList = new List&lt;string&gt; { &quot;123&quot;, &quot;44&quot; }
+};
+var resultProcess = await manager.WordsExportAsync(settings);
+</code></pre>

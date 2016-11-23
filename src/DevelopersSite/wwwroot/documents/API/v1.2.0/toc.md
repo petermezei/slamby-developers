@@ -7,4 +7,6 @@
 - [Process](process)
 - [Status](status)
 - [Helper](helper)
+- [License](license)
+- [Maintenance](maintenace)
 - [Endpoints & Models](swagger.html)

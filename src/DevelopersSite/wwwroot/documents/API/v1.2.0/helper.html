@@ -1,0 +1,70 @@
+<h2 id="helper-functions">Helper functions</h2>
+<p>A collection of helper methods.</p>
+<h3 id="file-parser">File Parser</h3>
+<p>File parsing and text extraction endpoint. Content must be provided as valid <code>base64</code> string.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Helper-FileParser-post">POST /api/Helper/FileParser</a></p>
+<pre><code class="lang-json">{
+    &quot;Content&quot;: &quot;77u/QSBsb25nIHRpbWUgYWdvIGluIGEgZ2FsYXh5IGZhciwgZmFyIGF3YXkuLi4=&quot;
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-json">{
+  &quot;Content&quot;: &quot;A long time ago in a galaxy far, far away...\n&quot;,
+  &quot;Title&quot;: null,
+  &quot;Date&quot;: null,
+  &quot;Author&quot;: null,
+  &quot;Keywords&quot;: null,
+  &quot;ContentType&quot;: &quot;text/plain; charset=UTF-8&quot;,
+  &quot;ContentLength&quot;: 47,
+  &quot;Language&quot;: &quot;en&quot;
+}
+</code></pre>
+</blockquote>
+<p><code>Available response parameters:</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content</td>
+<td>Extracted plain text content</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>File metadata title</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>File metadata date</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>File metadata author</td>
+</tr>
+<tr>
+<td>Keywords</td>
+<td>File metadata keywords</td>
+</tr>
+<tr>
+<td>ContentType</td>
+<td>Detected content type and character encoding</td>
+</tr>
+<tr>
+<td>ContentLength</td>
+<td>Plain text content length</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>Detected content language</td>
+</tr>
+</tbody>
+</table>

@@ -5,6 +5,7 @@
     "bootprint": "^0.8.5",
     "bootprint-openapi": "^0.16.0",
     "bower": "^1.7.9",
+    "customize": "^0.8.4",
     "deasync": "^0.1.6",
     "findit2": "^2.2.3",
     "github": "^0.2.4",

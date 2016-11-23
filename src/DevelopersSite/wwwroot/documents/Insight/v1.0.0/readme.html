@@ -1,0 +1,500 @@
+<h1 id="slamby-insight">Slamby Insight</h1>
+<p><em>Version: {{docversion}}</em></p>
+<p>Slamby Insight is an open-source project under <a href="https://raw.githubusercontent.com/slamby/slamby-tau/master/LICENSE" target="_blank">Apache 2.0</a> license. Please find it at <a href="https://github.com/slamby/slamby-insight">github.com/slamby/slamby-insight</a></p>
+<hr>
+<h2 id="download-install">Download, install</h2>
+<p>Download and install Slamby Insight from <a href="https://insight.slamby.com">https://insight.slamby.com</a></p>
+<p><code>Supported operating systems</code></p>
+<ul>
+<li><p><a href="https://insight.slamby.com/download/osx">Apple Mac OSX</a></p>
+</li>
+<li><p><a href="https://insight.slamby.com/download/linux">Linux (Ubuntu, Debian)</a></p>
+</li>
+<li><p><a href="https://insight.slamby.com/download/windows">Microsoft Windows</a></p>
+</li>
+</ul>
+<blockquote>
+<p><code>Automated Update:</code> Slamby Insight checks updates when it starts. When updates available a popup dialog displays and request permission for updates.</p>
+</blockquote>
+<h2 id="login">Login</h2>
+<p>When Insight starts login window comes first. Here you can select or add your Slamby Server to work with.</p>
+<blockquote>
+<p>To use Slamby Insight you need to have a working Slamby API server. If you don&#39;t have one, you can try Insight using our public demo server.</p>
+</blockquote>
+<p><img src="img/server-selector.png" alt="Insight login"></p>
+<p><code>Manage servers</code></p>
+<p>To add, edit servers click the Manage Endpoints button. A server editor pops up that lets you edit your servers.</p>
+<p><img src="img/server-editor.png" alt="Insight login server editor"></p>
+<p><code>Demo Server Data:</code></p>
+<p>The demo server is available in the server list as default.</p>
+<p><em>This is a Slamby hosted demo server in our European cloud</em></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ApiBaseEndpoint</td>
+<td><a href="https://europe.slamby.com/demo/">https://europe.slamby.com/demo/</a></td>
+</tr>
+<tr>
+<td>ApiSecret</td>
+<td>s3cr3t</td>
+</tr>
+<tr>
+<td>ParallelLimit</td>
+<td>0</td>
+</tr>
+<tr>
+<td>BulkSize</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="welcome-screen">Welcome screen</h2>
+<p>When you log in your server the first panel you see is the welcome screen. Here you can check the software versions and find a quick link to our developer&#39;s site for more detailed information.</p>
+<p><img src="img/welcome.png" alt="Insight Welcome Login"></p>
+<h2 id="basic-structure">Basic structure</h2>
+<p>Insight has a simple design structure. You can find the main menu panel icons on the left side as a vertical menu. To open one, use double click. When you open a menu panel it pops up as a tab. You can check the tabs in the tab section in the top middle section.</p>
+<p>To close a tab click the <code>x</code> sign or press middle mouse button on it. When you have more tabs open that can be displayed horizontally, a horizontal scrollbar shows.</p>
+<p>In the top dark header lane you can find you Insight version in the top left corner, then the selected server address. In the right header side you can find three buttons:</p>
+<ol>
+<li><p>Notification button,</p>
+</li>
+<li><p>Refresh button,</p>
+</li>
+<li><p>Settings button.</p>
+</li>
+</ol>
+<p>When you server responses such as successful service activation, you can find the available notifications in under the notification panel.</p>
+<p>For update check, you can click the middle button.</p>
+<p>For server settings click the settings button.</p>
+<h2 id="dataset-panel">Dataset panel</h2>
+<p>This is the main panel for dataset management. List, create and edit and open your datasets. When you open this panel you see your available dataset list, a few information about them and an <code>Add New Dataset</code> button.</p>
+<p><img src="img/dataset-panel.png" alt="Dataset Panel"></p>
+<h3 id="create-new-dataset">Create new dataset</h3>
+<p>To create a new dataset click the <code>Add New Dataset</code> button. In the popup form, you need to provide a few information about the name and the required structure of the new dataset.</p>
+<p>Available fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Name of the new dataset. a-Z, 0-9 accepted.</td>
+</tr>
+<tr>
+<td>NGram Count</td>
+<td>Datasets using ngram model for text analysis. The suggested number is <code>3</code></td>
+</tr>
+<tr>
+<td>Id Field</td>
+<td>As you can set any field in your sample/schema, then we need to know which field is the id field. The id field is a must.</td>
+</tr>
+<tr>
+<td>Tag Field</td>
+<td>In each dataset a tag field is a must. Tag field means the document related tags that we are going to use for text-analysis and category prediction. <code>Slamby API manages categories as tags.</code></td>
+</tr>
+<tr>
+<td>Interpreted Fields</td>
+<td>For text analysis we need to know which fields contain text. For that, you need to set those field names here that contain text and you are going to use those text for analysis.</td>
+</tr>
+<tr>
+<td>Sample document or Schema</td>
+<td>To define which fields, data types and structure you wish to use in your dataset you have two options: using a JSON sample document, or use Schema.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>For more information please visit our developer&#39;s site <a href="https://developers.slamby.com">developers.slamby.com</a></p>
+</blockquote>
+<p><img src="img/add-new-dataset.png" alt="Create New Dataset"></p>
+<h3 id="dataset-management-options">Dataset management options</h3>
+<p>Available dataset management options:</p>
+<ul>
+<li><p>Rename</p>
+</li>
+<li><p>Delete</p>
+</li>
+<li><p>Clone</p>
+</li>
+<li><p>Show sample document</p>
+</li>
+</ul>
+<p><img src="img/dataset-right-click-menu.png" alt="Dataset Options"></p>
+<h3 id="rename-dataset">Rename dataset</h3>
+<p>To rename a dataset click the dataset options button on the right side. In the drop-down menu click the rename option.</p>
+<p>Type the new name and click Ok.</p>
+<p><img src="img/rename-dataset.png" alt="Dataset Rename"></p>
+<h3 id="clone-dataset">Clone dataset</h3>
+<p>When you want to copy a dataset with all the details but data; you can use the clone options. It copies all the settings and structure of a dataset, your only job is to name it.</p>
+<p>To clone a dataset click the Clone option in the drop-down menu.</p>
+<p><img src="img/clone-dataset.png" alt="Dataset Clone"></p>
+<h3 id="show-sample-document">Show sample document</h3>
+<p>When you need to now the available fields and types inside a dataset you can check the structure it by clicking the Show Sample button in the drop-down dataset menu.</p>
+<p><img src="img/show-sample.png" alt="Dataset Show Sample"></p>
+<h3 id="remove-dataset">Remove dataset</h3>
+<p>To remove a dataset click the remove button in the drop-down dataset menu. You can delete a dataset when there is no related active service running.</p>
+<blockquote>
+<p><code>Important!</code> Removing a dataset cause data loss, there is no way for recovery.</p>
+</blockquote>
+<h2 id="import-panel">Import panel</h2>
+<p>To import documents into a dataset you can use our built-in import panel. To open the import panel double click it on the left menu.</p>
+<p>At first select the target dataset, then select the import file on your computer. Currently the supported file formats <code>CSV</code> and <code>JSON</code>.</p>
+<p>Please find this sample CSV content to test the import process. Copy and save it as slamby-demo-import.csv.</p>
+<pre><code class="lang-csv">&quot;id&quot;,&quot;title&quot;,&quot;desc&quot;,&quot;tag&quot;
+&quot;1&quot;,&quot;A&quot;,&quot;A&quot;,&quot;1&quot;
+&quot;2&quot;,&quot;B&quot;,&quot;B&quot;,&quot;1&quot;
+&quot;3&quot;,&quot;C&quot;,&quot;C&quot;,&quot;2&quot;
+&quot;4&quot;,&quot;D&quot;,&quot;D&quot;,&quot;2&quot;
+&quot;5&quot;,&quot;E&quot;,&quot;E&quot;,&quot;3&quot;
+</code></pre>
+<p>You can use the import panel to import both documents and tags. To select the required one use the selector.</p>
+<p>When everything ready click the import button.</p>
+<p><img src="img/import.png" alt="Import Panel"></p>
+<p>When you use CSV as a file format a delimiter field pops up. Here please provide the required delimiter.</p>
+<p>When it&#39;s done, click the import button for start.</p>
+<blockquote>
+<p><code>Important!</code> In the source file using CSV, a header row is a must. Your source file should contain each dataset field and it should have the same field names.</p>
+</blockquote>
+<p><img src="img/import-progress.png" alt="Import Panel Second Step"></p>
+<h2 id="documents">Documents</h2>
+<p>To manage your documents inside a dataset use the document panel. First, open dataset panel, select the required one and double-click it, or select the open menu item in the drop-down menu.</p>
+<p><code>Basic window structure</code></p>
+<p>After opening documents tab you can see a bit complex window. In the header part, you can switch between the document or tag view.</p>
+<p>Before the sub-selector, there is a helper panel with filter, sample, and field selector. To use it click the panel and it drops down.</p>
+<p>Here you can see three columns. The first section is the field selector. Here you can see the available dataset fields, and you can filter them to display.</p>
+<p>The second section is a Filter panel, where you can filter your documents by tag or by search query. The search results will be displayed in the document list.</p>
+<p>The third section is the sampling module. You can use it to create statistical samples from your dataset. You can set the sampling mode, size, and the tags. </p>
+<p><img src="img/filter-panel.png" alt="Filter Panel"></p>
+<p>The second biggest section is the document list. This list displays the selected documents. Here you can manage the documents by one, or as bulk.</p>
+<p><img src="img/document-panel.png" alt="Documents"></p>
+<p>Managing a document you can use the drop-down menu by documents.</p>
+<p><code>Available menu options</code></p>
+<table>
+<thead>
+<tr>
+<th>Menu Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Preview</td>
+<td>Open the document in the pop-up window.</td>
+</tr>
+<tr>
+<td>Open</td>
+<td>Open document in a new tab.</td>
+</tr>
+<tr>
+<td>Edit</td>
+<td>Open the document to edit.</td>
+</tr>
+<tr>
+<td>Copy to</td>
+<td>Copy document to a selected dataset.</td>
+</tr>
+<tr>
+<td>Move to</td>
+<td>Move document to a selected dataset.</td>
+</tr>
+<tr>
+<td>Add tags</td>
+<td>Add tags to the document from the dataset list.</td>
+</tr>
+<tr>
+<td>Remove tags</td>
+<td>Remove the selected tags from the document.</td>
+</tr>
+<tr>
+<td>Clear tags</td>
+<td>Remove all the tags from the document.</td>
+</tr>
+<tr>
+<td>Delete</td>
+<td>Delete the document. <code>There is no recovery option!</code></td>
+</tr>
+</tbody>
+</table>
+<p><img src="img/document-right-click-menu.png" alt="Document Menu"></p>
+<h3 id="bulk-document-actions">Bulk document actions</h3>
+<p>There are two bulk options available:</p>
+<ul>
+<li><p>Copy all documents to another dataset,</p>
+</li>
+<li><p>Move all documents to another dataset.</p>
+</li>
+</ul>
+<p>To manage it click the <code>Copy All To</code> or <code>Move All To</code> button. After clicking them a tag selector pops up, here you can select the target dataset.</p>
+<blockquote>
+<p><code>Important!</code> the target dataset must have the same data structure than the source one. To create one easily you can use dataset clone.</p>
+</blockquote>
+<h3 id="add-new-document">Add new document</h3>
+<p>To create a new document manually, click the <code>Add new document</code> button. A document editor pops up with the sample document of the dataset. You can copy and paste your document here, or re-write the sample document to the required data.</p>
+<blockquote>
+<p><code>Important!</code> document must have a valid JSON format.</p>
+</blockquote>
+<p><img src="img/add-new-document.png" alt="Add New Document"></p>
+<h3 id="managing-tags">Managing tags</h3>
+<p>This is the panel where you can list, add and edit your available tags in a dataset.</p>
+<p>Here you can see all of your available tags. To filter them use the built-in filter in the table header. </p>
+<p><img src="img/tags-panel.png" alt="Tags Panel"></p>
+<p>To add a new tag click the <code>Add new tag</code> button. Here provide the tag id, name and the parent id. When you use a category tree, then you can organize your tags into a hierarchy by child-parent relations. When you manage a tag cloud instead, just leave the parent id as empty.</p>
+<p><img src="img/add-new-tag.png" alt="Add New Tag"></p>
+<blockquote>
+<p>To export all the words from your database for further analysis, click the <code>Export Words</code> button; a long-term process starts.</p>
+</blockquote>
+<h2 id="services-panel">Services panel</h2>
+<p>Main panel for service management. List, create and manage your available services. Currently, Slamby supports two type of services:</p>
+<ul>
+<li><p>Slamby Classifier Service,</p>
+</li>
+<li><p>Slamby PRC Service.</p>
+</li>
+</ul>
+<p><code>Slamby Classifier Service</code> is a text-classification service with high accuracy level and language independence. Specialized for e-commerce text-classification and category-recommendation for thousands of categories.</p>
+<p><code>Slamby PRC Service</code> is a text-based matchmaking service for matchmaking, keyword extraction, and duplicate finding.</p>
+<p>To create a service click the add new service button by selecting the required service type.</p>
+<p>Each service has 3 state depends on the preparation and activation status:</p>
+<ul>
+<li><p>New,</p>
+</li>
+<li><p>Prepared,</p>
+</li>
+<li><p>Activated.</p>
+</li>
+</ul>
+<p><code>Meaning of different service status</code></p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New</td>
+<td>When a service is just created it has a name, description, and an alias. The first status is <code>new</code>. This service has no settings provided, it&#39;s not prepared, you cannot activate it. To use it you need to continue with a preparation process.</td>
+</tr>
+<tr>
+<td>Prepared</td>
+<td>This is a status when a service is <code>prepared</code>, all the settings and background machine-learning process done. For preparation click the prepared menu and provide the required settings for the training such as the source dataset name, and needed tags. When the status is prepared, the service is ready for use, however, you need to activate it first.</td>
+</tr>
+<tr>
+<td>Activated</td>
+<td>Just the activated services are callable. When a service is prepared you can start the activation process by clicking the activate menu. During the activation process, all the required files and settings are loading into the machine memory. When a service is activated you can use it by id or by alias.</td>
+</tr>
+</tbody>
+</table>
+<p><img src="img/services.png" alt="Service Panel"></p>
+<h3 id="add-classifier-service">Add Classifier Service</h3>
+<p>To add a classifier service, click the <code>Add Classifier</code> button. For start provide the required name, alias, and description.</p>
+<p><code>What to know about the input parameters?</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Name of the service. Human readable name for better management. You cannot modify it in the future.</td>
+</tr>
+<tr>
+<td>Alias</td>
+<td>Service alias for flexible integration. You can set and modify it in the future.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Human readable description for better management.</td>
+</tr>
+</tbody>
+</table>
+<p><img src="img/add-classifier-service.png" alt="Add Classifier Service"></p>
+<h3 id="prepare-classifier-service">Prepare Classifier Service</h3>
+<p>When you need a Classifier Service, the second step is the preparation process. This is the process when based on the provided settings the machine-learning process starts.</p>
+<p><code>Available settings</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dataset</td>
+<td>Dataset selector. Choose the source dataset that you want to use for the training process.</td>
+</tr>
+<tr>
+<td>NGramCount</td>
+<td>Default value is 3, or the maximum ngram number of the dataset.</td>
+</tr>
+<tr>
+<td>TagIdList</td>
+<td>Popup tag selector window where you can pick the required tags. If you want to create a classifier service that can use just the first level categories from the tree, then select just the first level tags.</td>
+</tr>
+<tr>
+<td>CompressLevel</td>
+<td>Built-in compress engine settings. Set it 1 as a default value, it will compress the results by analyzing the unnecessary words, remaining lower resource need at the same accuracy level.</td>
+</tr>
+<tr>
+<td>Compress Settings</td>
+<td>Custom compress settings. For more information visit the <a href="https://developers.slamby.com">developers site</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><img src="img/prepare-classifier-service.png" alt="Prepare Classifier Service"></p>
+<h3 id="activate-classifier-service">Activate Classifier Service</h3>
+<p>When a Classifier Service is prepared activation available. For activation, you can use custom settings to specify you usage criteria.</p>
+<p><code>Available Classifier activation service</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NGramCount</td>
+<td>Ngram model that you want to use for your activated service. The default value is the maximum prepared ngram value.</td>
+</tr>
+<tr>
+<td>TagIdList</td>
+<td>Tag id filter from the available prepared tag list. You can filter which tags you want to use for category recommendation.</td>
+</tr>
+</tbody>
+</table>
+<p><img src="img/activate-classifier-service.png" alt="Activate Classifier Service"></p>
+<h3 id="recommend-for-classifier-service">Recommend for Classifier Service</h3>
+<p>To try an activated Classifier service, click the recommend menu. Here you can set the text for analysis, the required response count. When you want a detailed response click true the NeedTagsInResult.</p>
+<p><img src="img/recommend-classifier.png" alt="Recommend for Classifier Service"></p>
+<p><code>Classifier Recommend Response</code></p>
+<p>After sending a recommend query to the selected service, the response pops up immediately. In the response the following parameters available:</p>
+<p><img src="img/recommend-classifier2.png" alt="Recommend for Classifier Service"></p>
+<h3 id="add-prc-service">Add PRC Service</h3>
+<p>To create a PRC Service 3 parameter required: <code>name</code> as a human readable text, <code>alias</code> for flexible integration and <code>description</code> for more detailed human-readable text for better service management.</p>
+<p><img src="img/add-prc-service.png" alt="Add a PRC Service"></p>
+<h3 id="prepare-prc-service">Prepare PRC Service</h3>
+<p>For preparation the required fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dataset</td>
+<td>Select the source dataset for training.</td>
+</tr>
+<tr>
+<td>TagIdList</td>
+<td>Tag selector for training. When there is no tag selected, by default all the lead tags are selected.</td>
+</tr>
+<tr>
+<td>CompressLevel</td>
+<td>Built-in compress engine, recommended value is 1.</td>
+</tr>
+<tr>
+<td>Compress Settings</td>
+<td>Custom compress settings, for more details visit the <a href="https://developers.slamby.com">developers site</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><img src="img/prepare-prc-service.png" alt="Prepare PRC Service"></p>
+<h3 id="activate-prc-service">Activate PRC Service</h3>
+<p>For activation please check which field you want to use as a recommendation / matchmaking source. When you check a dataset field, during the text-analysis the PRC service will provide the matched items based on the selected fields.</p>
+<p><img src="img/activate-prc-service.png" alt="Activate a PRC Service"></p>
+<h3 id="recommend-for-prc-service">Recommend for PRC Service</h3>
+<p>To try your activated PRC service, click the Recommend menu. The available options:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text</td>
+<td>Text for analysis</td>
+</tr>
+<tr>
+<td>Count</td>
+<td>Response item number</td>
+</tr>
+<tr>
+<td>Filter</td>
+<td>PRC filter as a pre-filter before matchmaking. For more information please check the API documentation.</td>
+</tr>
+<tr>
+<td>NeedDocumentsInResult</td>
+<td>When it&#39;s true response contains full document objects.</td>
+</tr>
+<tr>
+<td>TagId</td>
+<td>The target tag id, in which the matchmaking will be processing. When it&#39;s empty, the API will predict a suitable one.</td>
+</tr>
+<tr>
+<td>Weights</td>
+<td>Weight object to boost the results. For more information please check the API documentation.</td>
+</tr>
+</tbody>
+</table>
+<p><img src="img/recommend-prc-service.png" alt="Recommend PRC Service"></p>
+<h2 id="processes">Processes</h2>
+<p>Using Slamby API server all the long-term jobs are organized into background processes. Such as dataset copy or classifier service training are managed using background processes.</p>
+<p>Open processes double click on the processes menu.</p>
+<p>Here you can see all the active processes: result, timing details, status, description and other details. To check the historical, not active processes check the <code>Show inactive processes</code></p>
+<p><img src="img/processes-panel.png" alt="Processes"></p>
+<h2 id="notification">Notification</h2>
+<p>Notification panel for Insight and API messages. Here you can list all the historical notifications received during your session.</p>
+<p><img src="img/notification.png" alt="Notification Panel"></p>
+<h2 id="resources-panel">Resources panel</h2>
+<p>Panel for better resource management. Here you can check the available server resources.</p>
+<p><code>Resource information</code></p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API version</td>
+<td>Current API version number.</td>
+</tr>
+<tr>
+<td>Number of CPU core(s)</td>
+<td>Available core number.</td>
+</tr>
+<tr>
+<td>CPU usage</td>
+<td>CPU usage in percentage.</td>
+</tr>
+<tr>
+<td>Available free disk space</td>
+<td>Free disk space in MB.</td>
+</tr>
+<tr>
+<td>Free memory / total memory</td>
+<td>Memory data in MB.</td>
+</tr>
+</tbody>
+</table>
+<p><img src="img/resource-panel.png" alt="Resource Panel"></p>

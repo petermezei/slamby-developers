@@ -1,0 +1,32 @@
+<h2 id="license">License</h2>
+<h3 id="get-license">Get License</h3>
+<p>Returns back with license information.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-License-get">GET /api/License</a></p>
+</blockquote>
+<p><em>Example RESPONSE (truncated for brevity)</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-json">{
+  &quot;IsValid&quot;: true,
+  &quot;Message&quot;: &quot;&quot;,
+  &quot;Type&quot;: &quot;OpenSource&quot;,
+  &quot;Base64&quot;: &quot;PExpY2Vuc2U+CiAgPFR5cGU+T3BlblNvdXJjZTwvVHlwZT...&quot;
+}
+</code></pre>
+</blockquote>
+<h3 id="change-license">Change License</h3>
+<p>Replace or set your current license with a new one.</p>
+<p><em>Example REQUEST (truncated for brevity)</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-License-post">POST /api/License</a></p>
+<pre><code class="lang-json">{
+    &quot;License&quot;: &quot;PExpY2Vuc2U+CiAgPFR5cGU+T3BlblNvdXJjZTwvVHlwZT...&quot;
+}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
