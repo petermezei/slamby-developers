@@ -57,6 +57,40 @@ To complete your Slamby API installation follow the steps below:
 
 > For more information visit [https://www.slamby.com/getting-started](https://www.slamby.com/getting-started)
 
+## API update
+
+There are two ways two update your Slamby API, depending whish hosting you have.
+
+### Saas, or Microsoft Azure Marketplace
+
+When you are using your Slamby API via Microsoft Azure Marketplace, or SaaS by Slamby then you can use our built-in update endpoint.
+
+*Example REQUEST*
+> GET /update
+
+*Example RESPONSE*
+> HTTP/1.1 200 OK
+OK
+
+> When the response is `OK` it means you have an update endpoint.
+
+`Update your API`
+
+*Example REQUEST*
+> POST /update
+
+*Example RESPONSE*
+> HTTP/1.1 200 OK
+```json
+{
+    "Log": "slamby_redis is up-to-date\nslamby_api_updater is up-to-date\nslamby_elasticsearch is up-to-date\nslamby_api is up-to-date\nslamby_nginx is up-to-date\n"
+}
+```
+
+### On-premise update
+
+When you installed Slamby API on your machine, then download and replace your `docker-compose file` with the latest version, then `docker-compose up -d`. 
+
 ## Authentication
 
 The base of the authentication is the `API_KEY`.
