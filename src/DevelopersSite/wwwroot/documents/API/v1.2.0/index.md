@@ -41,6 +41,22 @@ Secret  |   `s3cr3t`
 
 > **Tip:** The `CLIENT_ID` is your unique identifier what you get after your server is ready to use.
 
+## Setup
+
+To complete your Slamby API installation follow the steps below:
+
+- open the setup page at `http://api-url/setup`
+
+- request an open-source license for test purpose (free)
+
+- set the API secret
+
+- set your license
+
+- Now your API ready for use
+
+> For more information visit [https://www.slamby.com/getting-started](https://www.slamby.com/getting-started)
+
 ## Authentication
 
 The base of the authentication is the `API_KEY`.
