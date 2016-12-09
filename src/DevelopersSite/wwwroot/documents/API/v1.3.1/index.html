@@ -1,0 +1,95 @@
+<h1 id="slamby-api-docversion-">Slamby API {{docversion}}</h1>
+<p>Slamby introduces Slamby Server (API). Build powerful data management service, store and analyze your data. This documentation shows you a quick overview of the available API endpoints, functions, technical details and business usage.</p>
+<p>With Slamby you can:</p>
+<ul>
+<li>Store and manage your data easily</li>
+<li>Get high data security and privacy</li>
+<li>Use improved data analysis</li>
+<li>Create category recommendation engine</li>
+<li>Create similar product recommendation engine</li>
+</ul>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li>added License endpoint</li>
+<li>added Maintenance endpoint</li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li>Released {{docversion}}</li>
+</ul>
+<hr>
+<p>Once you&#39;ve
+<a href="http://slamby.com/register/">registered your client</a> it&#39;s easy
+to start working with Slamby API.</p>
+<p>All endpoints are only accessible via https and are located at <code>europe.slamby.com</code> or <code>asia.slamby.com</code>.</p>
+<pre><code>    https://europe.slamby.com/CLIENT_ID
+</code></pre><p><code>Demo server access:</code></p>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th><code>https://europe.slamby.com/demo/</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secret</td>
+<td><code>s3cr3t</code></td>
+</tr>
+</tbody>
+</table>
+<p><em>For on-premise hosting please contact us: <a href="mailto:support@slamby.com">support@slamby.com</a></em></p>
+<blockquote>
+<p><strong>Tip:</strong> The <code>CLIENT_ID</code> is your unique identifier what you get after your server is ready to use.</p>
+</blockquote>
+<h2 id="authentication">Authentication</h2>
+<p>The base of the authentication is the <code>API_KEY</code>.
+You have to provide it in the authorization header. It is <strong>required for every API call</strong>.</p>
+<p>The examples of the documentation are presuming that you provide the API key in the header.</p>
+<blockquote>
+<p><em>Example</em></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>Slamby <code>API_KEY</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Tip:</strong> You will get your <code>API_KEY</code> after your server is ready to use.</p>
+</blockquote>
+<h2 id="processor-core-management">Processor core management</h2>
+<p>Using your API you can set the required amount of processor core to each process. To set the suitable core number manually you can use <code>X-API-Parallel-Limit</code> in the request header.</p>
+<blockquote>
+<p><em>Example</em></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-API-Parallel-Limit</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>This example set 2 processor cores to the given process.</p>
+<p><code>When this header is not set, the basic value is the available maximum core number.</code></p>
+<h2 id="api-version">API Version</h2>
+<p>Every response contains API version information in response HTTP <code>X-API-Version</code> header.</p>
+<blockquote>
+<p><em>Example</em></p>
+</blockquote>
+<p>X-Api-Version: {{version}}</p>

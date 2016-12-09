@@ -1,0 +1,121 @@
+<h2 id="sampling">Sampling</h2>
+<p>Statistical method to support sampling activity. Using sampling you can  create <strong>random samples</strong> for experiments.</p>
+<p>With sampling you can:</p>
+<ul>
+<li>Create statistical samples</li>
+<li>Set the source categories</li>
+<li>Set sample size by fix number or percentage</li>
+<li>Filter fields</li>
+</ul>
+<p>For sampling, you have to specify which dataset you want to use in the <code>X-DataSet</code> header by the name of the dataset.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents-Sample-post">POST /api/Documents/Sample</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+    &quot;Id&quot; : &quot;6902a2d3-0708-41f7-b21d-c5bd4b302bdc&quot;,
+    &quot;Percent&quot; : &quot;10&quot;,
+    &quot;Size&quot; : &quot;0&quot;,
+    &quot;TagIdList&quot; : [],
+    &quot;FieldList&quot;: [&quot;id&quot;, &quot;name&quot;, &quot;desc&quot;]
+}
+</code></pre>
+<p><code>Available settings:</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Id</td>
+<td>To create a sample you need to provide a specific sample id. This id specifies your sample process and you can use it in the future to refer your sample. Sample id can be any generated <code>guid</code> or other string content.</td>
+</tr>
+<tr>
+<td>Percent</td>
+<td>You can determine the required sample size using percentage or fix number. When you use percentage <code>eg.: 10%</code> fill this field by the required value and leave the Size field 0.</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>You can determine the required sample size using a fix number instead of a given percentage. When you need a sample with 42 items, you can specify your sample size providing Size field with value 42. In this case, leave the Percent field as 0.</td>
+</tr>
+<tr>
+<td>TagIdList</td>
+<td>If you need a sample just from a given category or categories, you can specify the source categories by providing an id list. It is not a required field, you can create sample without using tag selection as well.</td>
+</tr>
+<tr>
+<td>FieldList</td>
+<td>Field selector to determine the response item fields. If you do not need full document objects, just specify the required fields here.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{
+    &quot;Items&quot;: [
+        {
+            &quot;id&quot;: &quot;1455197295447&quot;,
+            &quot;title&quot;: &quot;example title&quot;,
+            &quot;desc&quot;: &quot;example description&quot;,
+            &quot;tags&quot;: [ &quot;2&quot;, &quot;3&quot;]
+        },
+        {
+            &quot;id&quot;: &quot;1455197591439&quot;,
+            &quot;title&quot;: &quot;example title&quot;,
+            &quot;desc&quot;: &quot;example description&quot;,
+            &quot;tags&quot;: [
+            &quot;3&quot;
+            ]
+        },
+        ...
+    ],
+    &quot;Count&quot;: 15,
+    &quot;Total&quot;: 150
+}
+</code></pre>
+<p><code>Response items:</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Items</td>
+<td>Object, it contains all the result documents.</td>
+</tr>
+<tr>
+<td>Count</td>
+<td>Sample size. It should be the same value as the sample size when we use Size instead of Percent.</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Dataset total document count value.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>Important:</code> there is no built-in scroll or pagination. Please be careful when you determine the sample size.</p>
+</blockquote>
+<h5 id="for-the-parameters-explanation-check-the-documentsamplesettings-schema-definition-here-definitions-documentsamplesettings-">For the parameters explanation check the DocumentSampleSettings schema definition <a href="#/definitions/DocumentSampleSettings">here</a></h5>
+<h5 id="for-the-pagination-explanation-check-the-pagination-section-here-pagination-">For the pagination explanation check the pagination section <a href="#pagination">here</a></h5>
