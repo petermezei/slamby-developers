@@ -22,7 +22,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Tags-post">POST /api/Tags</a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -36,11 +36,7 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="lang-json">{
-    &quot;Id&quot;: &quot;1&quot;,
-    &quot;Name&quot;: &quot;example tag 1&quot;,
-    &quot;ParentId&quot;: null
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example tag 1"</span></span>,<br>    "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
@@ -52,7 +48,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Tags-Bulk-post">POST /api/Tags/Bulk</a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -66,40 +62,7 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="lang-json">{
-  &quot;Tags&quot;: [
-    {
-      &quot;Id&quot;: 1,
-      &quot;Name&quot;: &quot;Jedi&quot;,
-      &quot;ParentId&quot;: null
-    },
-    {
-      &quot;Id&quot;: 2,
-      &quot;Name&quot;: &quot;Luke&quot;,
-      &quot;ParentId&quot;: &quot;1&quot;
-    },
-    {
-      &quot;Id&quot;: 3,
-      &quot;Name&quot;: &quot;Anakin&quot;,
-      &quot;ParentId&quot;: &quot;1&quot;
-    },
-    {
-      &quot;Id&quot;: 4,
-      &quot;Name&quot;: &quot;Dark side of the Force&quot;,
-      &quot;ParentId&quot;: null
-    },
-    {
-      &quot;Id&quot;: 5,
-      &quot;Name&quot;: &quot;Darth Vader&quot;,
-      &quot;ParentId&quot;: &quot;4&quot;
-    },
-    {
-      &quot;Id&quot;: 6,
-      &quot;Name&quot;: &quot;Darth Bandon&quot;,
-      &quot;ParentId&quot;: &quot;4&quot;
-    }
-  ]
-}
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Tags</span>": <span class="hljs-value">[<br>    {<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,<br>      "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Jedi"</span></span>,<br>      "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>    </span>},<br>    {<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,<br>      "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Luke"</span></span>,<br>      "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-string">"1"</span><br>    </span>},<br>    {<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,<br>      "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Anakin"</span></span>,<br>      "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-string">"1"</span><br>    </span>},<br>    {<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,<br>      "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Dark side of the Force"</span></span>,<br>      "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>    </span>},<br>    {<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,<br>      "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Darth Vader"</span></span>,<br>      "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-string">"4"</span><br>    </span>},<br>    {<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,<br>      "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Darth Bandon"</span></span>,<br>      "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-string">"4"</span><br>    </span>}<br>  ]<br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
@@ -111,7 +74,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Tags-get">GET /api/Tags/<code>Id</code>?withDetails=false</a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -129,27 +92,10 @@
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Id&quot;: &quot;1&quot;,
-    &quot;Name&quot;: &quot;example tag 1&quot;,
-    &quot;ParentId&quot;: &quot;5&quot;,
-    &quot;Properties&quot;: {
-        &quot;Paths&quot;: [
-            {
-                &quot;Id&quot;: &quot;5&quot;,
-                &quot;Level&quot;: &quot;1&quot;,
-                &quot;Name&quot;: &quot;example parent tag 5&quot;
-            }
-        ],
-        &quot;Level&quot;: 2,
-        &quot;IsLeaf&quot;: &quot;false&quot;,
-        &quot;DocumentCount&quot;: 33,
-        &quot;WordCount&quot;: 123
-    }
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example tag 1"</span></span>,<br>    "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-string">"5"</span></span>,<br>    "<span class="hljs-attribute">Properties</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">Paths</span>": <span class="hljs-value">[<br>            {<br>                "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"5"</span></span>,<br>                "<span class="hljs-attribute">Level</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,<br>                "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example parent tag 5"</span><br>            </span>}<br>        ]</span>,<br>        "<span class="hljs-attribute">Level</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,<br>        "<span class="hljs-attribute">IsLeaf</span>": <span class="hljs-value"><span class="hljs-string">"false"</span></span>,<br>        "<span class="hljs-attribute">DocumentCount</span>": <span class="hljs-value"><span class="hljs-number">33</span></span>,<br>        "<span class="hljs-attribute">WordCount</span>": <span class="hljs-value"><span class="hljs-number">123</span><br>    </span>}<br></span>}
 </code></pre>
 <p><code>Available response fields:</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Name</th>
@@ -197,7 +143,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Tags-get">GET /api/Tags?withDetails=false</a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -215,39 +161,14 @@
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">[
-    {
-        &quot;Id&quot;: &quot;1&quot;,
-        &quot;Name&quot;: &quot;example tag 1&quot;,
-        &quot;ParentId&quot;: null,
-        &quot;Properties&quot;: {
-            &quot;Paths&quot;: [],
-            &quot;Level&quot;: 1,
-            &quot;IsLeaf&quot;: true,
-            &quot;DocumentCount&quot;: 0,
-            &quot;WordCount&quot;: 0
-        }
-    },
-    {
-        &quot;Id&quot;: &quot;2&quot;,
-        &quot;Name&quot;: &quot;example tag 2&quot;,
-        &quot;ParentId&quot;: null,
-        &quot;Properties&quot;: {
-            &quot;Paths&quot;: [],
-            &quot;Level&quot;: 1,
-            &quot;IsLeaf&quot;: true,
-            &quot;DocumentCount&quot;: 0,
-            &quot;WordCount&quot;: 0
-        }
-    }
-]
+<pre><code class="lang-json">[<br>    {<br>        "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,<br>        "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example tag 1"</span></span>,<br>        "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>        "<span class="hljs-attribute">Properties</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">Paths</span>": <span class="hljs-value">[]</span>,<br>            "<span class="hljs-attribute">Level</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,<br>            "<span class="hljs-attribute">IsLeaf</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,<br>            "<span class="hljs-attribute">DocumentCount</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>            "<span class="hljs-attribute">WordCount</span>": <span class="hljs-value"><span class="hljs-number">0</span><br>        </span>}<br>    </span>},<br>    {<br>        "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,<br>        "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example tag 2"</span></span>,<br>        "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>        "<span class="hljs-attribute">Properties</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">Paths</span>": <span class="hljs-value">[]</span>,<br>            "<span class="hljs-attribute">Level</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,<br>            "<span class="hljs-attribute">IsLeaf</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,<br>            "<span class="hljs-attribute">DocumentCount</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>            "<span class="hljs-attribute">WordCount</span>": <span class="hljs-value"><span class="hljs-number">0</span><br>        </span>}<br>    </span>}<br>]
 </code></pre>
 <h3 id="update-tag">Update Tag</h3>
 <p><em>Example REQUEST</em></p>
 <blockquote>
 <p><a href="swagger#operation--api-Tags-put">PUT /api/Tags/<code>Id</code></a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -261,11 +182,7 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="lang-json">{
-    &quot;Id&quot;: &quot;1&quot;,
-    &quot;Name&quot;: &quot;example tag 1&quot;,
-    &quot;ParentId&quot;: null
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example tag 1"</span></span>,<br>    "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
@@ -277,7 +194,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Tags-delete">DELETE /api/Tags/<code>Id</code>?force=false&amp;cleanDocuments=false</a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>

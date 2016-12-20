@@ -15,5 +15,7 @@ namespace DevelopersSite.Models
         public string TocFilename { get; set; }
 
         public string StaticBase { get; set; }
+
+        public string CdnBase { get; set; }
     }
 }

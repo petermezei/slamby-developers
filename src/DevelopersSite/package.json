@@ -2,8 +2,8 @@
   "name": "slamby-developers-site",
   "version": "1.0.0",
   "devDependencies": {
-    "bootprint": "^0.8.5",
-    "bootprint-openapi": "^0.16.0",
+    "bootprint": "^0.10.0",
+    "bootprint-openapi": "^0.17.1",
     "bower": "^1.7.9",
     "customize": "^0.8.4",
     "deasync": "^0.1.6",

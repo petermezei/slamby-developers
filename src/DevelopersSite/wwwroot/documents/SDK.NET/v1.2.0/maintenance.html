@@ -5,7 +5,5 @@
 <p>WARNING! Changing API secret could prevent others from accessing API functions!</p>
 </blockquote>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var maintenanceManager = new MaintenanceManager(_configuration);
-var model = new ChangeSecret() { Secret = &quot;MyNewS3cr3t&quot; };
-var result = await maintenanceManager.ChangeSecretAsync(model);
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> maintenanceManager = <span class="hljs-keyword">new</span> MaintenanceManager(_configuration);<br><span class="hljs-keyword">var</span> model = <span class="hljs-keyword">new</span> ChangeSecret() { Secret = <span class="hljs-string">"MyNewS3cr3t"</span> };<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> maintenanceManager.ChangeSecretAsync(model);
 </code></pre>

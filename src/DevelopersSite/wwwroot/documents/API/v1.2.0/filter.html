@@ -18,7 +18,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Documents-Filter--scrollId--post">POST /api/Documents/Filter</a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -33,23 +33,10 @@
 </tbody>
 </table>
 <p>If Fields is not set then by default returns with IdField, TagField and InterpretedFields (<code>attachment</code> fields are excluded because their size) of the current DataSet. You can specify a field list or &quot;*&quot; which means all fields will return.</p>
-<pre><code class="lang-json">{
-    &quot;Filter&quot; : {
-        &quot;TagIdList&quot; : [&quot;1&quot;],
-        &quot;Query&quot; : &quot;title:michelin&quot;
-    },
-    &quot;Order&quot;: {
-        &quot;OrderDirection&quot; : &quot;Asc&quot;,
-        &quot;OrderByField&quot; : &quot;id&quot;
-    },
-    &quot;Pagination&quot; : {
-        &quot;Limit&quot;: 100
-    },
-    &quot;FieldList&quot;: [&quot;id&quot;, &quot;name&quot;, &quot;desc&quot;]
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Filter</span>" : <span class="hljs-value">{<br>        "<span class="hljs-attribute">TagIdList</span>" : <span class="hljs-value">[<span class="hljs-string">"1"</span>]</span>,<br>        "<span class="hljs-attribute">Query</span>" : <span class="hljs-value"><span class="hljs-string">"title:michelin"</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">Order</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">OrderDirection</span>" : <span class="hljs-value"><span class="hljs-string">"Asc"</span></span>,<br>        "<span class="hljs-attribute">OrderByField</span>" : <span class="hljs-value"><span class="hljs-string">"id"</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">Pagination</span>" : <span class="hljs-value">{<br>        "<span class="hljs-attribute">Limit</span>": <span class="hljs-value"><span class="hljs-number">100</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">FieldList</span>": <span class="hljs-value">[<span class="hljs-string">"id"</span>, <span class="hljs-string">"name"</span>, <span class="hljs-string">"desc"</span>]<br></span>}
 </code></pre>
 <p><code>Available Filter Object Parameters</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Parameter Group</th>
@@ -97,24 +84,7 @@
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Items&quot;: [
-        {
-            &quot;id&quot;: &quot;1455197455453&quot;,
-            &quot;title&quot;: &quot;example title 1&quot;,
-            &quot;desc&quot;: &quot;example description&quot;
-        },
-        {
-            &quot;id&quot;: &quot;1455197455203&quot;,
-            &quot;title&quot;: &quot;example title 2&quot;,
-            &quot;desc&quot;: &quot;example description&quot;
-        },
-        ...
-        ],
-    &quot;ScrollId&quot;: &quot;cXVlcnlBbmRGZXRjaDsxOzE2OTA6b3NoRjRMZlVUNUNIWlNxa1RDdzdEZzswOw==&quot;,
-    &quot;Count&quot;: 100,
-    &quot;Total&quot;: 154
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Items</span>": <span class="hljs-value">[<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197455453"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title 1"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span><br>        </span>},<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197455203"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title 2"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span><br>        </span>},<br>        ...<br>        ]</span>,<br>    "<span class="hljs-attribute">ScrollId</span>": <span class="hljs-value"><span class="hljs-string">"cXVlcnlBbmRGZXRjaDsxOzE2OTA6b3NoRjRMZlVUNUNIWlNxa1RDdzdEZzswOw=="</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,<br>    "<span class="hljs-attribute">Total</span>": <span class="hljs-value"><span class="hljs-number">154</span><br></span>}
 </code></pre>
 <p>The <code>ScrollId</code> is used to get the next <code>Limit</code> items if available. Provide the <code>ScrollId</code> from every response to the Filter endpoint to get the next page until the <code>Count</code> equals with the <code>Limit</code> or a <code>ScrollId</code> is present. </p>
 <blockquote>
@@ -128,24 +98,7 @@
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Items&quot;: [
-        {
-            &quot;id&quot;: &quot;1455197459967&quot;,
-            &quot;title&quot;: &quot;example title 101&quot;,
-            &quot;desc&quot;: &quot;example description&quot;
-        },
-        {
-            &quot;id&quot;: &quot;1455197451428&quot;,
-            &quot;title&quot;: &quot;example title 102&quot;,
-            &quot;desc&quot;: &quot;example description&quot;
-        },
-        ...
-        ],
-    &quot;ScrollId&quot;: &quot;cXVlcnlBbmRGZXRjaDsxOzE2OTA6b3NoRjRMZlVUNUNIWlNxa1RDdzdEZzswOw==&quot;,
-    &quot;Count&quot;: 54,
-    &quot;Total&quot;: 1543
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Items</span>": <span class="hljs-value">[<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197459967"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title 101"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span><br>        </span>},<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197451428"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title 102"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span><br>        </span>},<br>        ...<br>        ]</span>,<br>    "<span class="hljs-attribute">ScrollId</span>": <span class="hljs-value"><span class="hljs-string">"cXVlcnlBbmRGZXRjaDsxOzE2OTA6b3NoRjRMZlVUNUNIWlNxa1RDdzdEZzswOw=="</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">54</span></span>,<br>    "<span class="hljs-attribute">Total</span>": <span class="hljs-value"><span class="hljs-number">1543</span><br></span>}
 </code></pre>
 <h3 id="how-to-use-the-scrollid-">How to use the ScrollId?</h3>
 <p>When your filter result object contains more items than your count value, you need to use the scroll to scroll over the results. In the first response, you can find a <code>ScrollId</code> field that you can use to identify your filter process and request the next items.</p>

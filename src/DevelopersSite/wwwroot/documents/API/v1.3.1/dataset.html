@@ -25,23 +25,11 @@
 <p><em>Example REQUEST</em></p>
 <blockquote>
 <p><a href="swagger#operation--api-DataSets-post">POST /api/DataSets</a></p>
-<pre><code class="lang-json">{
-    &quot;IdField&quot;: &quot;id&quot;,
-    &quot;InterpretedFields&quot;: [&quot;title&quot;, &quot;desc&quot;],
-    &quot;Name&quot;: &quot;test1&quot;,
-    &quot;NGramCount&quot;: &quot;3&quot;,
-    &quot;TagField&quot;: &quot;tag&quot;,
-    &quot;SampleDocument&quot;: {
-        &quot;id&quot;: 9,
-        &quot;title&quot;: &quot;Example Product Title&quot;,
-        &quot;desc&quot;: &quot;Example Product Description&quot;,
-        &quot;tag&quot;: [1,2,3]
-    }
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">IdField</span>": <span class="hljs-value"><span class="hljs-string">"id"</span></span>,<br>    "<span class="hljs-attribute">InterpretedFields</span>": <span class="hljs-value">[<span class="hljs-string">"title"</span>, <span class="hljs-string">"desc"</span>]</span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"test1"</span></span>,<br>    "<span class="hljs-attribute">NGramCount</span>": <span class="hljs-value"><span class="hljs-string">"3"</span></span>,<br>    "<span class="hljs-attribute">TagField</span>": <span class="hljs-value"><span class="hljs-string">"tag"</span></span>,<br>    "<span class="hljs-attribute">SampleDocument</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,<br>        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Title"</span></span>,<br>        "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>        "<span class="hljs-attribute">tag</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>}<br></span>}
 </code></pre>
 </blockquote>
 <p><code>Available settings to create a dataset:</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Name</th>
@@ -87,36 +75,7 @@
 <p><em>Example REQUEST</em></p>
 <blockquote>
 <p><a href="swagger#operation--api-DataSets-Schema-post">POST /api/DataSets/Schema</a></p>
-<pre><code class="lang-json">{
-    &quot;IdField&quot;: &quot;id&quot;,
-    &quot;InterpretedFields&quot;: [
-        &quot;title&quot;,
-        &quot;desc&quot;
-    ],
-    &quot;Name&quot;: &quot;test2&quot;,
-    &quot;NGramCount&quot;: &quot;3&quot;,
-    &quot;TagField&quot;: &quot;tag&quot;,
-    &quot;Schema&quot;: {
-        &quot;type&quot;: &quot;object&quot;,
-        &quot;properties&quot;: {
-            &quot;id&quot;: {
-                &quot;type&quot;: &quot;integer&quot;
-            },
-            &quot;title&quot;: {
-                &quot;type&quot;: &quot;string&quot;
-            },
-            &quot;desc&quot;: {
-                &quot;type&quot;: &quot;string&quot;
-            },
-            &quot;tag&quot;: {
-                &quot;type&quot;: &quot;array&quot;,
-                &quot;items&quot;: {
-                    &quot;type&quot;: &quot;byte&quot;
-                }
-            }
-        }
-    }
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">IdField</span>": <span class="hljs-value"><span class="hljs-string">"id"</span></span>,<br>    "<span class="hljs-attribute">InterpretedFields</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"title"</span>,<br>        <span class="hljs-string">"desc"</span><br>    ]</span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"test2"</span></span>,<br>    "<span class="hljs-attribute">NGramCount</span>": <span class="hljs-value"><span class="hljs-string">"3"</span></span>,<br>    "<span class="hljs-attribute">TagField</span>": <span class="hljs-value"><span class="hljs-string">"tag"</span></span>,<br>    "<span class="hljs-attribute">Schema</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,<br>        "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value">{<br>                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"integer"</span><br>            </span>}</span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value">{<br>                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span><br>            </span>}</span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value">{<br>                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span><br>            </span>}</span>,<br>            "<span class="hljs-attribute">tag</span>": <span class="hljs-value">{<br>                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,<br>                "<span class="hljs-attribute">items</span>": <span class="hljs-value">{<br>                    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"byte"</span><br>                </span>}<br>            </span>}<br>        </span>}<br>    </span>}<br></span>}
 </code></pre>
 <p><code>Tip:</code> for available field types check the following <code>Data Types</code> section.</p>
 </blockquote>
@@ -128,7 +87,7 @@
 <h3 id="data-types">Data Types</h3>
 <p>Defining a dataset schema you can set your custom field type.</p>
 <p><em>Currently available field types:</em></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Name</th>
@@ -167,40 +126,14 @@
 </tbody>
 </table>
 <p><em>Example schema</em></p>
-<pre><code class="lang-json">{
-    &quot;type&quot;: &quot;object&quot;,
-    &quot;properties&quot;: {
-        &quot;name&quot;: {
-            &quot;type&quot;: &quot;object&quot;,
-            &quot;properties&quot;: {
-                &quot;firstName&quot;: {
-                    &quot;type&quot;: &quot;string&quot;
-                },
-                &quot;secondName&quot;: {
-                    &quot;type&quot;: &quot;string&quot;
-                }
-            },
-        &quot;age&quot;: {
-            &quot;type&quot;:&quot;integer&quot;
-        },
-        &quot;sex&quot;: {
-            &quot;type&quot;:&quot;boolean&quot;
-        },
-        &quot;luckyNumbers&quot;: {
-            &quot;type&quot;: &quot;array&quot;,
-            &quot;items&quot;: {
-                &quot;type&quot;: &quot;integer&quot;
-            }
-        }
-    }
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,<br>    "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">name</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,<br>            "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{<br>                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value">{<br>                    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span><br>                </span>}</span>,<br>                "<span class="hljs-attribute">secondName</span>": <span class="hljs-value">{<br>                    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span><br>                </span>}<br>            </span>}</span>,<br>        "<span class="hljs-attribute">age</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"integer"</span><br>        </span>}</span>,<br>        "<span class="hljs-attribute">sex</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"boolean"</span><br>        </span>}</span>,<br>        "<span class="hljs-attribute">luckyNumbers</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,<br>            "<span class="hljs-attribute">items</span>": <span class="hljs-value">{<br>                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"integer"</span><br>            </span>}<br>        </span>}<br>    </span>}<br></span>}</span>
 </code></pre>
 <h4 id="date-formats">Date Formats</h4>
 <p>You can define your custom date format to specify your needs.</p>
 <p>For dataset date formats you can use the built-in <a href="https://www.elastic.co/guide/en/elasticsearch/reference/2.2/mapping-date-format.html">elastic-search custom formats</a>.</p>
 <p>If you do not provide date format, default value is <code>&quot;strict_date_optional_time||epoch_millis&quot;</code>.</p>
 <p><strong>Built in formats (excerpt)</strong></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>name</th>
@@ -259,25 +192,7 @@
 <p><em>Example RESPONSE</em></p>
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
-<pre><code class="lang-json">{
-    &quot;Name&quot;: &quot;example&quot;,
-    &quot;NGramCount&quot;: 3,
-    &quot;IdField&quot;: &quot;id&quot;,
-    &quot;TagField&quot;: &quot;tag&quot;,
-    &quot;InterpretedFields&quot;: [
-        &quot;title&quot;,
-        &quot;desc&quot;
-    ],
-    &quot;Statistics&quot;: {
-        &quot;DocumentsCount&quot;: 3
-    },
-    &quot;SampleDocument&quot;: {
-        &quot;id&quot;: 1,
-        &quot;title&quot;: &quot;Example title&quot;,
-        &quot;desc&quot;: &quot;Example Description&quot;,
-        &quot;tag&quot;: [1,2,3]
-    }
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example"</span></span>,<br>    "<span class="hljs-attribute">NGramCount</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,<br>    "<span class="hljs-attribute">IdField</span>": <span class="hljs-value"><span class="hljs-string">"id"</span></span>,<br>    "<span class="hljs-attribute">TagField</span>": <span class="hljs-value"><span class="hljs-string">"tag"</span></span>,<br>    "<span class="hljs-attribute">InterpretedFields</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"title"</span>,<br>        <span class="hljs-string">"desc"</span><br>    ]</span>,<br>    "<span class="hljs-attribute">Statistics</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">DocumentsCount</span>": <span class="hljs-value"><span class="hljs-number">3</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">SampleDocument</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,<br>        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example title"</span></span>,<br>        "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Description"</span></span>,<br>        "<span class="hljs-attribute">tag</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>}<br></span>}
 </code></pre>
 </blockquote>
 <h5 id="check-the-dataset-schema-definition-here-definitions-dataset-">Check the DataSet schema definition <a href="#/definitions/DataSet">here</a></h5>
@@ -294,50 +209,11 @@
 <p><em>Example RESPONSE</em></p>
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
-<pre><code class="lang-json">[
-    {
-    &quot;Name&quot;: &quot;example&quot;,
-    &quot;NGramCount&quot;: 3,
-    &quot;IdField&quot;: &quot;id&quot;,
-    &quot;TagField&quot;: &quot;tags&quot;,
-    &quot;InterpretedFields&quot;: [
-        &quot;title&quot;,
-        &quot;desc&quot;
-    ],
-    &quot;Statistics&quot;: {
-        &quot;DocumentsCount&quot;: 3
-    },
-    &quot;SampleDocument&quot;: {
-        &quot;id&quot;: 1,
-        &quot;title&quot;: &quot;Example title&quot;,
-        &quot;desc&quot;: &quot;Example Description&quot;,
-        &quot;tags&quot;: [1,2,3]
-    }
-    },
-    {
-    &quot;Name&quot;: &quot;example2&quot;,
-    &quot;NGramCount&quot;: 3,
-    &quot;IdField&quot;: &quot;id&quot;,
-    &quot;TagField&quot;: &quot;tags&quot;,
-    &quot;InterpretedFields&quot;: [
-        &quot;title&quot;,
-        &quot;desc&quot;
-    ],
-    &quot;Statistics&quot;: {
-        &quot;DocumentsCount&quot;: 3
-    },
-    &quot;SampleDocument&quot;: {
-        &quot;id&quot;: 1,
-        &quot;title&quot;: &quot;Example title&quot;,
-        &quot;desc&quot;: &quot;Example Description&quot;,
-        &quot;tags&quot;: [1,2,3]
-    }
-    }
-]
+<pre><code class="lang-json">[<br>    {<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example"</span></span>,<br>    "<span class="hljs-attribute">NGramCount</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,<br>    "<span class="hljs-attribute">IdField</span>": <span class="hljs-value"><span class="hljs-string">"id"</span></span>,<br>    "<span class="hljs-attribute">TagField</span>": <span class="hljs-value"><span class="hljs-string">"tags"</span></span>,<br>    "<span class="hljs-attribute">InterpretedFields</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"title"</span>,<br>        <span class="hljs-string">"desc"</span><br>    ]</span>,<br>    "<span class="hljs-attribute">Statistics</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">DocumentsCount</span>": <span class="hljs-value"><span class="hljs-number">3</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">SampleDocument</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,<br>        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example title"</span></span>,<br>        "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Description"</span></span>,<br>        "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>}<br>    </span>},<br>    {<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example2"</span></span>,<br>    "<span class="hljs-attribute">NGramCount</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,<br>    "<span class="hljs-attribute">IdField</span>": <span class="hljs-value"><span class="hljs-string">"id"</span></span>,<br>    "<span class="hljs-attribute">TagField</span>": <span class="hljs-value"><span class="hljs-string">"tags"</span></span>,<br>    "<span class="hljs-attribute">InterpretedFields</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"title"</span>,<br>        <span class="hljs-string">"desc"</span><br>    ]</span>,<br>    "<span class="hljs-attribute">Statistics</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">DocumentsCount</span>": <span class="hljs-value"><span class="hljs-number">3</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">SampleDocument</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,<br>        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example title"</span></span>,<br>        "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Description"</span></span>,<br>        "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>}<br>    </span>}<br>]
 </code></pre>
 </blockquote>
 <p><code>Available fields in the dataset object</code>:</p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Name</th>
@@ -385,9 +261,7 @@
 <p><em>Example REQUEST</em></p>
 <blockquote>
 <p><a href="swagger#operation--api-DataSets--existingName--put">PUT /api/DataSets/<code>example</code></a>)</p>
-<pre><code class="lang-json">{
-    &quot;Name&quot;: &quot;new dataset name&quot;
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"new dataset name"</span><br></span>}
 </code></pre>
 </blockquote>
 <p><em>Example RESPONSE</em></p>

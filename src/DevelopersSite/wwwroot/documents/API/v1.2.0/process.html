@@ -13,19 +13,7 @@
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">[
-  {
-    &quot;Id&quot;: &quot;abaa9144-2b1b-4539-a322-4157b8bde3f2&quot;,
-    &quot;Start&quot;: &quot;2016-08-23T15:57:53.292296Z&quot;,
-    &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
-    &quot;Percent&quot;: 14.07,
-    &quot;Description&quot;: &quot;Exporting dictionaries from Classifier service Yoda.&quot;,
-    &quot;Status&quot;: &quot;InProgress&quot;,
-    &quot;Type&quot;: &quot;ClassifierExportDictionaries&quot;,
-    &quot;ErrorMessages&quot;: [],
-    &quot;ResultMessage&quot;: null
-  }
-]
+<pre><code class="lang-json">[<br>  {<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"abaa9144-2b1b-4539-a322-4157b8bde3f2"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-08-23T15:57:53.292296Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">14.07</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Exporting dictionaries from Classifier service Yoda."</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"ClassifierExportDictionaries"</span></span>,<br>    "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>  </span>}<br>]
 </code></pre>
 <p>To get historical process list use <code>allStatus=true</code> URL parameter.</p>
 <h3 id="get-process-information">Get-Process information</h3>
@@ -38,17 +26,7 @@
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Id&quot;: &quot;958c1bdd-cd21-48f6-b9ec-c232271adec5&quot;,
-    &quot;Start&quot;: &quot;2016-04-18T16:04:04.2156558Z&quot;,
-    &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
-    &quot;Percent&quot;: 0,
-    &quot;Description&quot;: &quot;Exporting words from 1 tag(s) of dataset test...&quot;,
-    &quot;Status&quot;: &quot;InProgress&quot;,
-    &quot;Type&quot;: &quot;TagsExportWords&quot;,
-    &quot;ErrorMessages&quot;: [],
-    &quot;ResultMessage&quot;: null
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"958c1bdd-cd21-48f6-b9ec-c232271adec5"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T16:04:04.2156558Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Exporting words from 1 tag(s) of dataset test..."</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"TagsExportWords"</span></span>,<br>    "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <h3 id="cancel-process">Cancel Process</h3>
 <p>Cancel the process. Only Process with status <code>InProgress</code> can be canceled. The method returns with <code>HTTP/1.1 202 ACCEPTED</code> because it can take time to cancel a process. After it&#39;s accepted, the status of the process will be <code>Cancelling</code>. You have to check periodically that whether the process status is already <code>Canceled</code>.</p>

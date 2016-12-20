@@ -10,8 +10,8 @@
 </ul>
 <h2 id="changelog">Changelog</h2>
 <ul>
-<li>added License endpoint</li>
-<li>added Maintenance endpoint</li>
+<li>improved PRC service,</li>
+<li>schema bugfix</li>
 </ul>
 <h3 id="features">Features</h3>
 <ul>
@@ -22,9 +22,9 @@
 <a href="http://slamby.com/register/">registered your client</a> it&#39;s easy
 to start working with Slamby API.</p>
 <p>All endpoints are only accessible via https and are located at <code>europe.slamby.com</code> or <code>asia.slamby.com</code>.</p>
-<pre><code>    https://europe.slamby.com/CLIENT_ID
+<pre><code>    <span class="hljs-attribute">https</span>:<span class="hljs-comment">//europe.slamby.com/CLIENT_ID</span>
 </code></pre><p><code>Demo server access:</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>URL</th>
@@ -42,6 +42,50 @@ to start working with Slamby API.</p>
 <blockquote>
 <p><strong>Tip:</strong> The <code>CLIENT_ID</code> is your unique identifier what you get after your server is ready to use.</p>
 </blockquote>
+<h2 id="setup">Setup</h2>
+<p>To complete your Slamby API installation follow the steps below:</p>
+<ul>
+<li><p>open the setup page at <code>http://api-url/setup</code></p>
+</li>
+<li><p>request an open-source license for test purpose (free)</p>
+</li>
+<li><p>set the API secret</p>
+</li>
+<li><p>set your license</p>
+</li>
+<li><p>Now your API ready for use</p>
+</li>
+</ul>
+<blockquote>
+<p>For more information visit <a href="https://www.slamby.com/getting-started">https://www.slamby.com/getting-started</a></p>
+</blockquote>
+<h2 id="api-update">API update</h2>
+<p>There are two ways two update your Slamby API, depending whish hosting you have.</p>
+<h3 id="saas-or-microsoft-azure-marketplace">Saas, or Microsoft Azure Marketplace</h3>
+<p>When you are using your Slamby API via Microsoft Azure Marketplace, or SaaS by Slamby then you can use our built-in update endpoint.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p>GET /update</p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK
+OK</p>
+<p>When the response is <code>OK</code> it means you have an update endpoint.</p>
+</blockquote>
+<p><code>Update your API</code></p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p>POST /update</p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Log</span>": <span class="hljs-value"><span class="hljs-string">"slamby_redis is up-to-date\nslamby_api_updater is up-to-date\nslamby_elasticsearch is up-to-date\nslamby_api is up-to-date\nslamby_nginx is up-to-date\n"</span><br></span>}
+</code></pre>
+</blockquote>
+<h3 id="on-premise-update">On-premise update</h3>
+<p>When you installed Slamby API on your machine, then download and replace your <code>docker-compose file</code> with the latest version, then <code>docker-compose up -d</code>. </p>
 <h2 id="authentication">Authentication</h2>
 <p>The base of the authentication is the <code>API_KEY</code>.
 You have to provide it in the authorization header. It is <strong>required for every API call</strong>.</p>
@@ -49,7 +93,7 @@ You have to provide it in the authorization header. It is <strong>required for e
 <blockquote>
 <p><em>Example</em></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -71,7 +115,7 @@ You have to provide it in the authorization header. It is <strong>required for e
 <blockquote>
 <p><em>Example</em></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>

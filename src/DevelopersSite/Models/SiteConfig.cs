@@ -8,6 +8,9 @@ namespace DevelopersSite.Models
 
         public string WordPressApiUrl { get; set; }
 
+        public string CdnUrl { get; set; }
+
+        public string Version { get; set; }
 
         private double _cacheExpirationHours;
 

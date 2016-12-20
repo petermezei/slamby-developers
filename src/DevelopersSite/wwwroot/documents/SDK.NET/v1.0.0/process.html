@@ -2,18 +2,14 @@
 <p>There are long running tasks in the Slamby API. These requests are served in an async way. These methods return a Process object.</p>
 <h3 id="get-process">Get Process</h3>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var processManager = new ProcessManager(_configuration);
-var response = processManager.GetProcessAsync(processId));
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> processManager = <span class="hljs-keyword">new</span> ProcessManager(_configuration);<br><span class="hljs-keyword">var</span> response = processManager.GetProcessAsync(processId));
 </code></pre>
 <h3 id="get-processes">Get Processes</h3>
 <p>If the parameter is <code>true</code> then you get all processes, if it&#39;s <code>false</code> (default), then you get only the active processes.</p>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var allStatus = true;
-var processManager = new ProcessManager(_configuration);
-var response = processManager.GetProcessesAsync(allStatus));
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> allStatus = <span class="hljs-keyword">true</span>;<br><span class="hljs-keyword">var</span> processManager = <span class="hljs-keyword">new</span> ProcessManager(_configuration);<br><span class="hljs-keyword">var</span> response = processManager.GetProcessesAsync(allStatus));
 </code></pre>
 <h3 id="cancel-a-process">Cancel a Process</h3>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var processManager = new ProcessManager(_configuration);
-var cancelRespone = await processManager.CancelProcessAsync(process.Id);
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> processManager = <span class="hljs-keyword">new</span> ProcessManager(_configuration);<br><span class="hljs-keyword">var</span> cancelRespone = <span class="hljs-keyword">await</span> processManager.CancelProcessAsync(process.Id);
 </code></pre>

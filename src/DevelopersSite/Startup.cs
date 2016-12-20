@@ -1,4 +1,5 @@
-﻿using DevelopersSite.Models;
+﻿using DevelopersSite.Helpers;
+using DevelopersSite.Models;
 using DevelopersSite.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,8 +12,13 @@ namespace DevelopersSite
 {
     public class Startup
     {
+        private string ApiVersion = VersionHelper.GetProductVersion(typeof(Startup));
+        private bool IsProduction;
+
         public Startup(IHostingEnvironment env)
         {
+            IsProduction = env.IsProduction();
+
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
@@ -34,6 +40,15 @@ namespace DevelopersSite
 
             services.AddOptions();
             services.Configure<SiteConfig>(Configuration.GetSection("SiteConfig"));
+            services.Configure<SiteConfig>(sc => sc.Version = ApiVersion);
+            if (IsProduction)
+            {
+                services.Configure<SiteConfig>(sc => sc.CdnUrl = string.Format(sc.CdnUrl, ApiVersion));
+            }
+            else
+            {
+                services.Configure<SiteConfig>(sc => sc.CdnUrl = string.Empty);
+            }
 
             services.AddSingleton<SiteConfig>(sp => sp.GetService<IOptions<SiteConfig>>().Value);
             services.AddSingleton<DocumentService>();

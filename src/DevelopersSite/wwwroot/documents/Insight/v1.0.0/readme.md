@@ -141,13 +141,13 @@ To remove a dataset click the remove button in the drop-down dataset menu. You c
 
 ## Import panel
 
-To import documents into a dataset you can use our built-in import panel. To open the import panel double click it on the left menu.
+To import documents or tags into a dataset you can use our built-in import panel. To open the import panel double click it on the left menu.
 
-At first select the target dataset, then select the import file on your computer. Currently the supported file formats `CSV` and `JSON`.
+At first select the target dataset, then select the import file on your computer. Currently the supported file formats `CSV` (both for documents and tags) and `JSON` (just for tags).
 
-Please find this sample CSV content to test the import process. Copy and save it as slamby-demo-import.csv.
+Please find this sample CSV content to test the document import process. Copy and save it as slamby-demo-import.csv.
 
-```csv
+```json
 "id","title","desc","tag"
 "1","A","A","1"
 "2","B","B","1"

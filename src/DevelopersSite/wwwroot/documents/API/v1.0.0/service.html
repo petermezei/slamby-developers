@@ -29,32 +29,7 @@
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">[
-    {
-        &quot;Id&quot;: &quot;57c845dc-6aa4-475c-bbf2-0d682f471f32&quot;,
-        &quot;Name&quot;: &quot;Example name of a service&quot;,
-        &quot;Alias&quot;: &quot;The Service&quot;
-        &quot;Description&quot;: &quot;This is an example service description&quot;,
-        &quot;Status&quot;: &quot;New&quot;,
-        &quot;Type&quot;: &quot;Classifier&quot;,
-        &quot;ProcessIdList&quot;: [
-            &quot;e251dbbf-04ff-4d34-a959-90dc4a602142&quot;,
-            &quot;d335edaf-354a-482c-ade4-4d8172f81a40&quot;
-        ],
-        &quot;ActualProcessId&quot;: null
-    },
-    {
-        &quot;Id&quot;: &quot;02f92528-5ae3-4496-9dd1-e3d69327a5a0&quot;,
-        &quot;Name&quot;: &quot;Example name of a service 2&quot;,
-        &quot;Alias&quot;: &quot;The Service 2&quot;
-        &quot;Description&quot;: &quot;This is an example service description&quot;,
-        &quot;Status&quot;: &quot;New&quot;,
-        &quot;Type&quot;: &quot;Prc&quot;,
-        &quot;ProcessIdList&quot;: [            
-        ],
-        &quot;ActualProcessId&quot;: null
-    }
-]
+<pre><code class="lang-json">[<br>    {<br>        "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"57c845dc-6aa4-475c-bbf2-0d682f471f32"</span></span>,<br>        "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Example name of a service"</span></span>,<br>        "<span class="hljs-attribute">Alias</span>": <span class="hljs-value"><span class="hljs-string">"The Service"</span><br>        <span class="hljs-string">"Description"</span>: <span class="hljs-string">"This is an example service description"</span></span>,<br>        "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"New"</span></span>,<br>        "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Classifier"</span></span>,<br>        "<span class="hljs-attribute">ProcessIdList</span>": <span class="hljs-value">[<br>            <span class="hljs-string">"e251dbbf-04ff-4d34-a959-90dc4a602142"</span>,<br>            <span class="hljs-string">"d335edaf-354a-482c-ade4-4d8172f81a40"</span><br>        ]</span>,<br>        "<span class="hljs-attribute">ActualProcessId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>    </span>},<br>    {<br>        "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"02f92528-5ae3-4496-9dd1-e3d69327a5a0"</span></span>,<br>        "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Example name of a service 2"</span></span>,<br>        "<span class="hljs-attribute">Alias</span>": <span class="hljs-value"><span class="hljs-string">"The Service 2"</span><br>        <span class="hljs-string">"Description"</span>: <span class="hljs-string">"This is an example service description"</span></span>,<br>        "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"New"</span></span>,<br>        "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Prc"</span></span>,<br>        "<span class="hljs-attribute">ProcessIdList</span>": <span class="hljs-value">[            <br>        ]</span>,<br>        "<span class="hljs-attribute">ActualProcessId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>    </span>}<br>]
 </code></pre>
 <h3 id="get-service">Get Service</h3>
 <p>You can get general information about a service using the Id or Alias of the service. </p>
@@ -66,19 +41,7 @@
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Id&quot;: &quot;57c845dc-6aa4-475c-bbf2-0d682f471f32&quot;,
-    &quot;Name&quot;: &quot;Example name of a service&quot;,
-    &quot;Alias&quot;: &quot;The Service&quot;
-    &quot;Description&quot;: &quot;This is an example service description&quot;,
-    &quot;Status&quot;: &quot;New&quot;,
-    &quot;Type&quot;: &quot;Classifier&quot;,
-    &quot;ProcessIdList&quot;: [
-        &quot;e251dbbf-04ff-4d34-a959-90dc4a602142&quot;,
-        &quot;d335edaf-354a-482c-ade4-4d8172f81a40&quot;
-    ],
-    &quot;ActualProcessId&quot;: null
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"57c845dc-6aa4-475c-bbf2-0d682f471f32"</span></span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Example name of a service"</span></span>,<br>    "<span class="hljs-attribute">Alias</span>": <span class="hljs-value"><span class="hljs-string">"The Service"</span><br>    <span class="hljs-string">"Description"</span>: <span class="hljs-string">"This is an example service description"</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"New"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Classifier"</span></span>,<br>    "<span class="hljs-attribute">ProcessIdList</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"e251dbbf-04ff-4d34-a959-90dc4a602142"</span>,<br>        <span class="hljs-string">"d335edaf-354a-482c-ade4-4d8172f81a40"</span><br>    ]</span>,<br>    "<span class="hljs-attribute">ActualProcessId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <h3 id="create-new-service">Create New Service</h3>
 <p>Create a new Service</p>
@@ -86,12 +49,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Services-post">POST /api/Services</a></p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Name&quot;: &quot;Example name of a service&quot;,
-    &quot;Description&quot;: &quot;This is an example service description&quot;,
-    &quot;Type&quot; : &quot;Classifier&quot;,
-    &quot;Alias&quot; : &quot;The Service&quot;
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Example name of a service"</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"This is an example service description"</span></span>,<br>    "<span class="hljs-attribute">Type</span>" : <span class="hljs-value"><span class="hljs-string">"Classifier"</span></span>,<br>    "<span class="hljs-attribute">Alias</span>" : <span class="hljs-value"><span class="hljs-string">"The Service"</span><br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
@@ -103,11 +61,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Services--id--put">PUT /api/Services/<code>GUID or Alias</code></a></p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Name&quot;: &quot;Updated example name of a service&quot;,
-    &quot;Description&quot;: &quot;This is an updated example service description&quot;,
-    &quot;Alias&quot;: &quot;My Updated Service&quot;
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Updated example name of a service"</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"This is an updated example service description"</span></span>,<br>    "<span class="hljs-attribute">Alias</span>": <span class="hljs-value"><span class="hljs-string">"My Updated Service"</span><br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
@@ -141,17 +95,7 @@
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Id&quot;: &quot;83326e75-dd16-4e5c-a66d-5ea5197bd8e0&quot;,
-    &quot;Name&quot;: &quot;Example name of a classifier service&quot;,
-    &quot;Description&quot;: &quot;This is an example classifier service description&quot;,
-    &quot;Status&quot;: &quot;New&quot;,
-    &quot;Type&quot;: &quot;Classifier&quot;,
-    &quot;ProcessIdList&quot;: null,
-    &quot;ActualProcessId&quot;: null,
-    &quot;PrepareSettings&quot;: null,
-    &quot;ActivateSettings&quot;: null
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"83326e75-dd16-4e5c-a66d-5ea5197bd8e0"</span></span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Example name of a classifier service"</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"This is an example classifier service description"</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"New"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Classifier"</span></span>,<br>    "<span class="hljs-attribute">ProcessIdList</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">ActualProcessId</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">PrepareSettings</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">ActivateSettings</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <h3 id="prepare-classifier-service">Prepare Classifier Service</h3>
 <p>Training Process Steps:</p>
@@ -172,16 +116,10 @@
 <blockquote>
 <p><a href="swagger#operation--api-Services-Classifier--id--Prepare-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/Prepare</a></p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;DataSetName&quot; : &quot;test dataset&quot;,
-    &quot;NGramList&quot;: [1,2],
-    &quot;TagIdList&quot;: [&quot;tag1Id&quot;,&quot;tag2Id&quot;],
-    &quot;CompressLevel&quot;: 1,
-    &quot;CompressSettings&quot;: {...}
-}
+<pre><code class="lang-json">{<br>    "DataSetName" : "test dataset",<br>    "NGramList": [1,2],<br>    "TagIdList": ["tag1Id","tag2Id"],<br>    "CompressLevel": 1,<br>    "CompressSettings": {...}<br>}
 </code></pre>
 <p><code>Settings</code> explanation</p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Name</th>
@@ -215,13 +153,7 @@
 <blockquote>
 <p>HTTP/1.1 202 ACCEPTED</p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Id&quot;: &quot;d335edaf-354a-482c-ade4-4d8172f81a40&quot;,
-    &quot;Start&quot;: &quot;2016-03-16T13:12:15.5520625Z&quot;,
-    &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
-    &quot;Percent&quot;: 0,
-    &quot;Status&quot;: &quot;InProgress&quot;
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"d335edaf-354a-482c-ade4-4d8172f81a40"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-03-16T13:12:15.5520625Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span><br></span>}
 </code></pre>
 <h3 id="activate-classifier-service">Activate Classifier Service</h3>
 <p>Each service has two statuses: active, deactive. When a preparation/training process is ready, the service has a deactivated status. A deactivated service is ready, but it&#39;s not loaded into memory and the API is not able to process the incoming requests. To use a service set the status to Activated. After the activation process, the service is ready to use, all the required files are loaded and stored in memory, the API endpoint is active.</p>
@@ -230,27 +162,13 @@
 <blockquote>
 <p><a href="swagger#operation--api-Services-Classifier--id--Activate-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/Activate</a></p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;NGramList&quot;: [1,2],
-    &quot;EmphasizedTagIdList&quot;: null,
-    &quot;TagIdList&quot;: null
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">NGramList</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]</span>,<br>    "<span class="hljs-attribute">EmphasizedTagIdList</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">TagIdList</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
 <p>HTTP/1.1 202 ACCEPTED</p>
 </blockquote>
-<pre><code class="lang-json">{
-  &quot;Id&quot;: &quot;d46850e8-1a22-43f5-b304-d22e6b7e5e6a&quot;,
-  &quot;Start&quot;: &quot;2016-06-28T10:53:36.9553132Z&quot;,
-  &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
-  &quot;Percent&quot;: 0,
-  &quot;Description&quot;: &quot;Activating Classifier service Example name of a classifier service...&quot;,
-  &quot;Status&quot;: &quot;InProgress&quot;,
-  &quot;Type&quot;: &quot;ClassifierActivate&quot;,
-  &quot;ErrorMessages&quot;: [],
-  &quot;ResultMessage&quot;: null
-}
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"d46850e8-1a22-43f5-b304-d22e6b7e5e6a"</span></span>,<br>  "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-28T10:53:36.9553132Z"</span></span>,<br>  "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>  "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>  "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Activating Classifier service Example name of a classifier service..."</span></span>,<br>  "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"ClassifierActivate"</span></span>,<br>  "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <h3 id="deactivate-classifier-service">Deactivate Classifier Service</h3>
 <p>When a service is not needed for continuous usage you can deactivate it. After deactivating a service, all the settings and files remain, but they are not using any resources (memory, cores). You can store your deactivated services and activate them anytime.</p>
@@ -268,36 +186,10 @@
 <blockquote>
 <p><a href="swagger#operation--api-Services-Classifier--id--Recommend-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/Recommend</a></p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Text&quot;: &quot;Lorem Ipsum Dolorem&quot;,
-    &quot;Count&quot;: &quot;2&quot;,
-    &quot;UseEmphasizing&quot;: false,
-    &quot;NeedTagInResults&quot;: true
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Text</span>": <span class="hljs-value"><span class="hljs-string">"Lorem Ipsum Dolorem"</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,<br>    "<span class="hljs-attribute">UseEmphasizing</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,<br>    "<span class="hljs-attribute">NeedTagInResults</span>": <span class="hljs-value"><span class="hljs-literal">true</span><br></span>}
 </code></pre>
 <p><em>Example Response</em></p>
-<pre><code class="lang-json">[
-    {
-        &quot;TagId&quot;: &quot;324&quot;,
-        &quot;Score&quot;: 0.35175663155586434,
-        &quot;Tag&quot;: {
-            &quot;Id&quot;: &quot;324&quot;,
-            &quot;Name&quot;: &quot;Tag name&quot;,
-            &quot;ParentId&quot;: &quot;16&quot;,
-            &quot;Properties&quot;: null
-        }
-    },
-    {
-        &quot;TagId&quot;: &quot;232&quot;,
-        &quot;Score&quot;: 0.30277479057126688,
-        &quot;Tag&quot;: {
-            &quot;Id&quot;: &quot;232&quot;,
-            &quot;Name&quot;: &quot;Tag name&quot;,
-            &quot;ParentId&quot;: &quot;24&quot;,
-            &quot;Properties&quot;: null
-        }
-    }
-]
+<pre><code class="lang-json">[<br>    {<br>        "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"324"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.35175663155586434</span></span>,<br>        "<span class="hljs-attribute">Tag</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"324"</span></span>,<br>            "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Tag name"</span></span>,<br>            "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-string">"16"</span></span>,<br>            "<span class="hljs-attribute">Properties</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>        </span>}<br>    </span>},<br>    {<br>        "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"232"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.30277479057126688</span></span>,<br>        "<span class="hljs-attribute">Tag</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"232"</span></span>,<br>            "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Tag name"</span></span>,<br>            "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,<br>            "<span class="hljs-attribute">Properties</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>        </span>}<br>    </span>}<br>]
 </code></pre>
 <h4 id="emphasizing">Emphasizing</h4>
 <p>During the recommendation process, if there are any emphasized tag in the TOP N result list then Slamby checks if the given document contains the name of the emphasized tag.
@@ -313,26 +205,13 @@ With the usage of the score, the original order can be restored anytime.</p>
 <blockquote>
 <p><a href="swagger#operation--api-Services-Classifier--id--ExportDictionaries-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/ExportDictionaries</a></p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;NGramList&quot;: [1],
-    &quot;TagIdList&quot;: null
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">NGramList</span>": <span class="hljs-value">[<span class="hljs-number">1</span>]</span>,<br>    "<span class="hljs-attribute">TagIdList</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <blockquote>
 <p><strong>Tip:</strong> If you skip the <code>TagIdList</code> or set it to <code>null</code> then the API will use all the leaf tags</p>
 </blockquote>
 <p><em>Example Response</em></p>
-<pre><code class="lang-json">{
-    &quot;Id&quot;: &quot;345e1c79-dc78-427f-8ad1-facce75f6ae3&quot;,
-    &quot;Start&quot;: &quot;2016-04-18T13:29:15.3728991Z&quot;,
-    &quot;End&quot;: &quot;2016-04-18T13:29:39.3144202Z&quot;,
-    &quot;Percent&quot;: 0,
-    &quot;Description&quot;: &quot;Exporting dictionaries from Classifier service prc...&quot;,
-    &quot;Status&quot;: &quot;Finished&quot;,
-    &quot;Type&quot;: &quot;ClassifierExportDictionaries&quot;,
-    &quot;ErrorMessages&quot;: [],
-    &quot;ResultMessage&quot;: &quot;Successfully exported dictionaries from Classifier service prc!\nExport file can be download from here: https://api.slamby.com/demo-api/files/345e1c79-dc78-427f-8ad1-facce75f6ae3.zip&quot;
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"345e1c79-dc78-427f-8ad1-facce75f6ae3"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T13:29:15.3728991Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T13:29:39.3144202Z"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Exporting dictionaries from Classifier service prc..."</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"Finished"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"ClassifierExportDictionaries"</span></span>,<br>    "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-string">"Successfully exported dictionaries from Classifier service prc!\nExport file can be download from here: https://api.slamby.com/demo-api/files/345e1c79-dc78-427f-8ad1-facce75f6ae3.zip"</span><br></span>}
 </code></pre>
 <h2 id="prc-service">Prc Service</h2>
 <p>Similar product/document recommendation engine.</p>
@@ -345,30 +224,17 @@ With the usage of the score, the original order can be restored anytime.</p>
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;PrepareSettings&quot;: null,
-    &quot;ActivateSettings&quot;: null,
-    &quot;Id&quot;: &quot;996f91f4-f1ca-428b-af1a-929ccf3b0243&quot;,
-    &quot;Name&quot;: &quot;prc&quot;,
-    &quot;Description&quot;: null,
-    &quot;Status&quot;: &quot;New&quot;,
-    &quot;Type&quot;: &quot;Prc&quot;,
-    &quot;ProcessIdList&quot;: [],
-    &quot;ActualProcessId&quot;: null
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">PrepareSettings</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">ActivateSettings</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"996f91f4-f1ca-428b-af1a-929ccf3b0243"</span></span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"prc"</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"New"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Prc"</span></span>,<br>    "<span class="hljs-attribute">ProcessIdList</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ActualProcessId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <h3 id="prepare-prc-service">Prepare Prc Service</h3>
 <p><em>Example REQUEST</em></p>
 <blockquote>
 <p><a href="swagger#operation--api-Services-Prc--id--Prepare-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Prepare</a></p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;DataSetName&quot; : &quot;test dataset&quot;,
-    &quot;TagIdList&quot;: [&quot;tag1Id&quot;,&quot;tag2Id&quot;]
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">DataSetName</span>" : <span class="hljs-value"><span class="hljs-string">"test dataset"</span></span>,<br>    "<span class="hljs-attribute">TagIdList</span>": <span class="hljs-value">[<span class="hljs-string">"tag1Id"</span>,<span class="hljs-string">"tag2Id"</span>]<br></span>}
 </code></pre>
 <p><code>Parameter List</code>:</p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Field Name</th>
@@ -390,17 +256,7 @@ With the usage of the score, the original order can be restored anytime.</p>
 <blockquote>
 <p>HTTP/1.1 202 ACCEPTED</p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Id&quot;: &quot;ceed2045-70fb-4785-b483-aadb9bf9a992&quot;,
-    &quot;Start&quot;: &quot;2016-04-18T13:09:49.6032716Z&quot;,
-    &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
-    &quot;Percent&quot;: 0,
-    &quot;Description&quot;: &quot;Preparing Prc service prc...&quot;,
-    &quot;Status&quot;: &quot;InProgress&quot;,
-    &quot;Type&quot;: &quot;PrcPrepare&quot;,
-    &quot;ErrorMessages&quot;: [],
-    &quot;ResultMessage&quot;: &quot;&quot;
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"ceed2045-70fb-4785-b483-aadb9bf9a992"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T13:09:49.6032716Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Preparing Prc service prc..."</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"PrcPrepare"</span></span>,<br>    "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-string">""</span><br></span>}
 </code></pre>
 <h3 id="activate-prc-service">Activate Prc Service</h3>
 <p>This request can be a long running task so the API do it in an async way. Therefore the response is a Process.</p>
@@ -408,25 +264,13 @@ With the usage of the score, the original order can be restored anytime.</p>
 <blockquote>
 <p><a href="swagger#operation--api-Services-Prc--id--Activate-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Activate</a></p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;FieldsForRecommendation&quot;: [&quot;title&quot;]
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">FieldsForRecommendation</span>": <span class="hljs-value">[<span class="hljs-string">"title"</span>]<br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
 <p>HTTP/1.1 202 ACCEPTED</p>
 </blockquote>
-<pre><code class="lang-json">{
-  &quot;Id&quot;: &quot;181b445c-3c91-44bb-bcf7-759a7e40a98c&quot;,
-  &quot;Start&quot;: &quot;2016-06-28T10:49:52.5726793Z&quot;,
-  &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
-  &quot;Percent&quot;: 0,
-  &quot;Description&quot;: &quot;Activating Prc service prc...&quot;,
-  &quot;Status&quot;: &quot;InProgress&quot;,
-  &quot;Type&quot;: &quot;PrcActivate&quot;,
-  &quot;ErrorMessages&quot;: [],
-  &quot;ResultMessage&quot;: null
-}
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"181b445c-3c91-44bb-bcf7-759a7e40a98c"</span></span>,<br>  "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-28T10:49:52.5726793Z"</span></span>,<br>  "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>  "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>  "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Activating Prc service prc..."</span></span>,<br>  "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"PrcActivate"</span></span>,<br>  "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <h3 id="index-on-prc-service">Index on PRC Service</h3>
 <p>After PRC Service Activation the service is available for real-time analysis that might take time. For real-time quick analysis, you can use PRC Index function. It has 2 main part: a first full index, then a reputable partial index.</p>
@@ -476,41 +320,13 @@ With the usage of the score, the original order can be restored anytime.</p>
 <blockquote>
 <p><a href="swagger#operation--api-Services-Prc--id--Recommend-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Recommend</a></p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Text&quot;: &quot;Lorem Ipsum Dolorem&quot;,
-    &quot;Count&quot;: &quot;2&quot;,
-    &quot;Filter&quot;: null,
-    &quot;Weights&quot;: null,
-    &quot;TagId&quot;: &quot;tag1Id&quot;,
-    &quot;NeedDocumentInResult&quot;: true
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Text</span>": <span class="hljs-value"><span class="hljs-string">"Lorem Ipsum Dolorem"</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,<br>    "<span class="hljs-attribute">Filter</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">Weights</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>    "<span class="hljs-attribute">NeedDocumentInResult</span>": <span class="hljs-value"><span class="hljs-literal">true</span><br></span>}
 </code></pre>
 <p><em>Example Response</em></p>
-<pre><code class="lang-json">[
-    {
-        &quot;DocumentId&quot;: &quot;1777237&quot;,
-        &quot;Score&quot;: 0.89313365295595715,
-        &quot;Document&quot;: {
-            &quot;id&quot;: &quot;1777237&quot;,
-            &quot;tag_id&quot;: &quot;tag1Id&quot;,
-            &quot;title&quot;: &quot;Lorem&quot;,
-            &quot;body&quot;: &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor&quot;
-        }
-    },
-    {
-        &quot;DocumentId&quot;: &quot;6507461&quot;,
-        &quot;Score&quot;: 0.7894283811358983,
-        &quot;Document&quot;: {
-            &quot;ad_id&quot;: &quot;6507461&quot;,
-            &quot;tag_id&quot;: &quot;tag1Id&quot;,
-            &quot;title&quot;: &quot;Duis aute irure dolorem&quot;,
-            &quot;body&quot;: &quot;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&quot;
-        }
-    }
-]
+<pre><code class="lang-json">[<br>    {<br>        "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"1777237"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.89313365295595715</span></span>,<br>        "<span class="hljs-attribute">Document</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1777237"</span></span>,<br>            "<span class="hljs-attribute">tag_id</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Lorem"</span></span>,<br>            "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"</span><br>        </span>}<br>    </span>},<br>    {<br>        "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"6507461"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.7894283811358983</span></span>,<br>        "<span class="hljs-attribute">Document</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">ad_id</span>": <span class="hljs-value"><span class="hljs-string">"6507461"</span></span>,<br>            "<span class="hljs-attribute">tag_id</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Duis aute irure dolorem"</span></span>,<br>            "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</span><br>        </span>}<br>    </span>}<br>]
 </code></pre>
 <p><code>Request parameters</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Field</th>
@@ -547,46 +363,21 @@ With the usage of the score, the original order can be restored anytime.</p>
 <p><code>Filter Object</code></p>
 <p>Use it for pre-filter your potential documents before matchmaking. More precise results, custom filters, higher performance.</p>
 <p><em>Filter Object Structure</em></p>
-<pre><code class="lang-JSON">{
-    &quot;Query&quot;:&quot;fieldName:fieldValue&quot;
-}
+<pre><code class="lang-JSON">{<br>    "<span class="hljs-attribute">Query</span>":<span class="hljs-value"><span class="hljs-string">"fieldName:fieldValue"</span><br></span>}
 </code></pre>
 <p><code>Demo Filter Object</code></p>
-<pre><code class="lang-JSON">{
-    &quot;Query&quot;:&quot;status:active&quot;
-}
+<pre><code class="lang-JSON">{<br>    "<span class="hljs-attribute">Query</span>":<span class="hljs-value"><span class="hljs-string">"status:active"</span><br></span>}
 </code></pre>
 <p><code>Weights Object</code></p>
 <p>Use it for boosting your results. You can access to each available document field, set custom values and weights.</p>
 <p><em>Weights Object Structure</em></p>
-<pre><code class="lang-JSON">[
-    {
-        &quot;Query&quot;: &quot;fieldName:targetValue&quot;,
-        &quot;value&quot;: &quot;weight between 0-10&quot;
-    },
-    {
-        &quot;Query&quot;: &quot;fieldName:targetValue&quot;,
-        &quot;value&quot;: &quot;weight between 0-10&quot;
-    },
-    {
-        ...
-    }
-]
+<pre><code class="lang-JSON">[<br>    {<br>        "Query": "fieldName:targetValue",<br>        "value": "weight between 0-10"<br>    },<br>    {<br>        "Query": "fieldName:targetValue",<br>        "value": "weight between 0-10"<br>    },<br>    {<br>        ...<br>    }<br>]
 </code></pre>
 <p><code>Demo Weight Query</code></p>
-<pre><code class="lang-JSON">[
-    {
-        &quot;Query&quot;: &quot;city:Budapest&quot;,
-        &quot;value&quot;: &quot;7&quot;
-    },
-    {
-        &quot;Query&quot;: &quot;position:engineer&quot;,
-        &quot;value&quot;: &quot;9&quot;
-    }
-]
+<pre><code class="lang-JSON">[<br>    {<br>        "<span class="hljs-attribute">Query</span>": <span class="hljs-value"><span class="hljs-string">"city:Budapest"</span></span>,<br>        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"7"</span><br>    </span>},<br>    {<br>        "<span class="hljs-attribute">Query</span>": <span class="hljs-value"><span class="hljs-string">"position:engineer"</span></span>,<br>        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"9"</span><br>    </span>}<br>]
 </code></pre>
 <p><code>Response parameters</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Field</th>
@@ -613,48 +404,24 @@ With the usage of the score, the original order can be restored anytime.</p>
 <p><em>Example Request</em></p>
 <blockquote>
 <p><a href="swagger#operation--api-Services-Prc--id--Keywords-post">POST /api/Services/Prc/<code>GUID</code>/Keywords</a></p>
-<pre><code class="lang-json">{
-    &quot;Text&quot;: &quot;Lorem Ipsum Dolorem&quot;,
-    &quot;TagId&quot;: &quot;tag1Id&quot;
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Text</span>": <span class="hljs-value"><span class="hljs-string">"Lorem Ipsum Dolorem"</span></span>,<br>    "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span><br></span>}
 </code></pre>
 </blockquote>
 <p><em>Example Response</em></p>
-<pre><code class="lang-json">[
-  {
-    &quot;Word&quot;: &quot;lorem&quot;,
-    &quot;Score&quot;: 75.457626224664608
-  },
-  {
-    &quot;Word&quot;: &quot;ipsum&quot;,
-    &quot;Score&quot;: 40.333326695449692
-  }
-]
+<pre><code class="lang-json">[<br>  {<br>    "<span class="hljs-attribute">Word</span>": <span class="hljs-value"><span class="hljs-string">"lorem"</span></span>,<br>    "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">75.457626224664608</span><br>  </span>},<br>  {<br>    "<span class="hljs-attribute">Word</span>": <span class="hljs-value"><span class="hljs-string">"ipsum"</span></span>,<br>    "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">40.333326695449692</span><br>  </span>}<br>]
 </code></pre>
 <h3 id="export-dictionaries">Export dictionaries</h3>
 <p><em>Example Request</em></p>
 <blockquote>
 <p><a href="swagger#operation--api-Services-Prc--id--ExportDictionaries-post">POST /api/Services/Prc/<code>GUID or Alias</code>/ExportDictionaries</a></p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;TagIdList&quot;: null
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">TagIdList</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <blockquote>
 <p><strong>Tip:</strong> If you skip the <code>TagIdList</code> or set it to <code>null</code> then the API will use all the leaf tags</p>
 </blockquote>
 <p><em>Example Response</em></p>
-<pre><code class="lang-json">{
-    &quot;Id&quot;: &quot;345e1c79-dc78-427f-8ad1-facce75f6ae3&quot;,
-    &quot;Start&quot;: &quot;2016-04-18T13:29:15.3728991Z&quot;,
-    &quot;End&quot;: &quot;2016-04-18T13:29:39.3144202Z&quot;,
-    &quot;Percent&quot;: 0,
-    &quot;Description&quot;: &quot;Exporting dictionaries from Prc service prc...&quot;,
-    &quot;Status&quot;: &quot;Finished&quot;,
-    &quot;Type&quot;: &quot;PrcExportDictionaries&quot;,
-    &quot;ErrorMessages&quot;: [],
-    &quot;ResultMessage&quot;: &quot;Successfully exported dictionaries from Prc service prc!\nExport file can be download from here: https://api.slamby.com/demo-api/files/345e1c79-dc78-427f-8ad1-facce75f6ae3.zip&quot;
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"345e1c79-dc78-427f-8ad1-facce75f6ae3"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T13:29:15.3728991Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T13:29:39.3144202Z"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Exporting dictionaries from Prc service prc..."</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"Finished"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"PrcExportDictionaries"</span></span>,<br>    "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-string">"Successfully exported dictionaries from Prc service prc!\nExport file can be download from here: https://api.slamby.com/demo-api/files/345e1c79-dc78-427f-8ad1-facce75f6ae3.zip"</span><br></span>}
 </code></pre>
 <h3 id="index">Index</h3>
 <p>Built-in index engine for PRC service. When you have a prepared PRC service, you can run index process to analyze all the available matching results and store it in an index database. When the indexing process finished you can use PRC <code>recommend by id</code> method.</p>
@@ -663,12 +430,7 @@ With the usage of the score, the original order can be restored anytime.</p>
 <blockquote>
 <p><a href="swagger#operation--api-Services-Prc--id--Index-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Index</a></p>
 </blockquote>
-<pre><code class="lang-JSON">{
-    &quot;Filter&quot;: {
-        &quot;Query&quot; : &quot;status:active&quot;,
-        &quot;TagIdList&quot;: [&quot;tag1Id&quot;,&quot;tag2Id&quot;]
-    }
-}
+<pre><code class="lang-JSON">{<br>    "<span class="hljs-attribute">Filter</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">Query</span>" : <span class="hljs-value"><span class="hljs-string">"status:active"</span></span>,<br>        "<span class="hljs-attribute">TagIdList</span>": <span class="hljs-value">[<span class="hljs-string">"tag1Id"</span>,<span class="hljs-string">"tag2Id"</span>]<br>    </span>}<br></span>}
 </code></pre>
 <blockquote>
 <p><strong>Tip:</strong> If you skip the <code>TagIdList</code> or set it to <code>null</code> then the API will use all the <em>prepared tags</em>.</p>
@@ -676,17 +438,7 @@ With the usage of the score, the original order can be restored anytime.</p>
 <p><em>Example Response</em></p>
 <blockquote>
 <p>HTTP/1.1 202 Accepted</p>
-<pre><code class="lang-json">{
-  &quot;Id&quot;: &quot;f8e8860b-9e40-4d75-be57-a1f36fdb3c1e&quot;,
-  &quot;Start&quot;: &quot;2016-08-17T13:19:31.6187032Z&quot;,
-  &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
-  &quot;Percent&quot;: 0,
-  &quot;Description&quot;: &quot;Indexing Prc service sampla_dataset...&quot;,
-  &quot;Status&quot;: &quot;InProgress&quot;,
-  &quot;Type&quot;: &quot;PrcIndex&quot;,
-  &quot;ErrorMessages&quot;: [],
-  &quot;ResultMessage&quot;: null
-}
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"f8e8860b-9e40-4d75-be57-a1f36fdb3c1e"</span></span>,<br>  "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-08-17T13:19:31.6187032Z"</span></span>,<br>  "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>  "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>  "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Indexing Prc service sampla_dataset..."</span></span>,<br>  "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"PrcIndex"</span></span>,<br>  "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 </blockquote>
 <h3 id="index-partial">Index Partial</h3>
@@ -699,17 +451,7 @@ With the usage of the score, the original order can be restored anytime.</p>
 <blockquote>
 <p>HTTP/1.1 202 Accepted</p>
 </blockquote>
-<pre><code class="lang-json">{
-  &quot;Id&quot;: &quot;07499fad-6bec-4c66-a2bf-065ae2e7d853&quot;,
-  &quot;Start&quot;: &quot;2016-08-17T13:24:47.0345313Z&quot;,
-  &quot;End&quot;: &quot;0001-01-01T00:00:00&quot;,
-  &quot;Percent&quot;: 0,
-  &quot;Description&quot;: &quot;Partial indexing Prc service sampla_dataset...&quot;,
-  &quot;Status&quot;: &quot;InProgress&quot;,
-  &quot;Type&quot;: &quot;PrcIndexPartial&quot;,
-  &quot;ErrorMessages&quot;: [],
-  &quot;ResultMessage&quot;: null
-}
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"07499fad-6bec-4c66-a2bf-065ae2e7d853"</span></span>,<br>  "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-08-17T13:24:47.0345313Z"</span></span>,<br>  "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>  "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>  "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Partial indexing Prc service sampla_dataset..."</span></span>,<br>  "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"PrcIndexPartial"</span></span>,<br>  "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
 </code></pre>
 <h3 id="recommend-by-id">Recommend By Id</h3>
 <p>PRC Recommend method using a predefined index database. To use it you need a <code>DocumentId</code> to identify the source document; all the other fields are the same like using <code>Recommend</code> endpoint.</p>
@@ -717,39 +459,11 @@ With the usage of the score, the original order can be restored anytime.</p>
 <blockquote>
 <p><a href="swagger#operation--api-Services-Prc--id--RecommendById-post">POST /api/Services/Prc/<code>GUID or Alias</code>/RecommendById</a></p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;DocumentId&quot;: &quot;987654&quot;,
-    &quot;Count&quot;: &quot;2&quot;,
-    &quot;Filter&quot;: null,
-    &quot;Weights&quot;: null,
-    &quot;TagId&quot;: &quot;tag1Id&quot;,
-    &quot;NeedDocumentInResult&quot;: true
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"987654"</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,<br>    "<span class="hljs-attribute">Filter</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">Weights</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>    "<span class="hljs-attribute">NeedDocumentInResult</span>": <span class="hljs-value"><span class="hljs-literal">true</span><br></span>}
 </code></pre>
 <blockquote>
 <p>When <code>TagId</code> is null, the API server predicts the most suitable tag using the source document.</p>
 </blockquote>
 <p><em>Example Response</em></p>
-<pre><code class="lang-json">[
-    {
-        &quot;DocumentId&quot;: &quot;1777237&quot;,
-        &quot;Score&quot;: 0.89313365295595715,
-        &quot;Document&quot;: {
-            &quot;id&quot;: &quot;1777237&quot;,
-            &quot;tag_id&quot;: &quot;tag1Id&quot;,
-            &quot;title&quot;: &quot;Lorem&quot;,
-            &quot;body&quot;: &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor&quot;
-        }
-    },
-    {
-        &quot;DocumentId&quot;: &quot;6507461&quot;,
-        &quot;Score&quot;: 0.7894283811358983,
-        &quot;Document&quot;: {
-            &quot;ad_id&quot;: &quot;6507461&quot;,
-            &quot;tag_id&quot;: &quot;tag1Id&quot;,
-            &quot;title&quot;: &quot;Duis aute irure dolorem&quot;,
-            &quot;body&quot;: &quot;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&quot;
-        }
-    }
-]
+<pre><code class="lang-json">[<br>    {<br>        "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"1777237"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.89313365295595715</span></span>,<br>        "<span class="hljs-attribute">Document</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1777237"</span></span>,<br>            "<span class="hljs-attribute">tag_id</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Lorem"</span></span>,<br>            "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"</span><br>        </span>}<br>    </span>},<br>    {<br>        "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"6507461"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.7894283811358983</span></span>,<br>        "<span class="hljs-attribute">Document</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">ad_id</span>": <span class="hljs-value"><span class="hljs-string">"6507461"</span></span>,<br>            "<span class="hljs-attribute">tag_id</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Duis aute irure dolorem"</span></span>,<br>            "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</span><br>        </span>}<br>    </span>}<br>]
 </code></pre>

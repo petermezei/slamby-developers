@@ -28,7 +28,7 @@
 <p><code>Demo Server Data:</code></p>
 <p>The demo server is available in the server list as default.</p>
 <p><em>This is a Slamby hosted demo server in our European cloud</em></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Name</th>
@@ -78,7 +78,7 @@
 <h3 id="create-new-dataset">Create new dataset</h3>
 <p>To create a new dataset click the <code>Add New Dataset</code> button. In the popup form, you need to provide a few information about the name and the required structure of the new dataset.</p>
 <p>Available fields:</p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Field name</th>
@@ -146,15 +146,10 @@
 <p><code>Important!</code> Removing a dataset cause data loss, there is no way for recovery.</p>
 </blockquote>
 <h2 id="import-panel">Import panel</h2>
-<p>To import documents into a dataset you can use our built-in import panel. To open the import panel double click it on the left menu.</p>
-<p>At first select the target dataset, then select the import file on your computer. Currently the supported file formats <code>CSV</code> and <code>JSON</code>.</p>
-<p>Please find this sample CSV content to test the import process. Copy and save it as slamby-demo-import.csv.</p>
-<pre><code class="lang-csv">&quot;id&quot;,&quot;title&quot;,&quot;desc&quot;,&quot;tag&quot;
-&quot;1&quot;,&quot;A&quot;,&quot;A&quot;,&quot;1&quot;
-&quot;2&quot;,&quot;B&quot;,&quot;B&quot;,&quot;1&quot;
-&quot;3&quot;,&quot;C&quot;,&quot;C&quot;,&quot;2&quot;
-&quot;4&quot;,&quot;D&quot;,&quot;D&quot;,&quot;2&quot;
-&quot;5&quot;,&quot;E&quot;,&quot;E&quot;,&quot;3&quot;
+<p>To import documents or tags into a dataset you can use our built-in import panel. To open the import panel double click it on the left menu.</p>
+<p>At first select the target dataset, then select the import file on your computer. Currently the supported file formats <code>CSV</code> (both for documents and tags) and <code>JSON</code> (just for tags).</p>
+<p>Please find this sample CSV content to test the document import process. Copy and save it as slamby-demo-import.csv.</p>
+<pre><code class="lang-json">"id","title","desc","tag"<br>"1","A","A","1"<br>"2","B","B","1"<br>"3","C","C","2"<br>"4","D","D","2"<br>"5","E","E","3"
 </code></pre>
 <p>You can use the import panel to import both documents and tags. To select the required one use the selector.</p>
 <p>When everything ready click the import button.</p>
@@ -178,7 +173,7 @@
 <p><img src="img/document-panel.png" alt="Documents"></p>
 <p>Managing a document you can use the drop-down menu by documents.</p>
 <p><code>Available menu options</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Menu Option</th>
@@ -273,7 +268,7 @@
 </li>
 </ul>
 <p><code>Meaning of different service status</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Status</th>
@@ -299,7 +294,7 @@
 <h3 id="add-classifier-service">Add Classifier Service</h3>
 <p>To add a classifier service, click the <code>Add Classifier</code> button. For start provide the required name, alias, and description.</p>
 <p><code>What to know about the input parameters?</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Field</th>
@@ -325,7 +320,7 @@
 <h3 id="prepare-classifier-service">Prepare Classifier Service</h3>
 <p>When you need a Classifier Service, the second step is the preparation process. This is the process when based on the provided settings the machine-learning process starts.</p>
 <p><code>Available settings</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Field</th>
@@ -359,7 +354,7 @@
 <h3 id="activate-classifier-service">Activate Classifier Service</h3>
 <p>When a Classifier Service is prepared activation available. For activation, you can use custom settings to specify you usage criteria.</p>
 <p><code>Available Classifier activation service</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Field</th>
@@ -389,7 +384,7 @@
 <p><img src="img/add-prc-service.png" alt="Add a PRC Service"></p>
 <h3 id="prepare-prc-service">Prepare PRC Service</h3>
 <p>For preparation the required fields:</p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Field</th>
@@ -421,7 +416,7 @@
 <p><img src="img/activate-prc-service.png" alt="Activate a PRC Service"></p>
 <h3 id="recommend-for-prc-service">Recommend for PRC Service</h3>
 <p>To try your activated PRC service, click the Recommend menu. The available options:</p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Field</th>
@@ -467,7 +462,7 @@
 <h2 id="resources-panel">Resources panel</h2>
 <p>Panel for better resource management. Here you can check the available server resources.</p>
 <p><code>Resource information</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>name</th>

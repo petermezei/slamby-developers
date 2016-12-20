@@ -4,40 +4,22 @@
 <h3 id="insert-new-document">Insert New Document</h3>
 <p>Insert a new document to a dataset using the predefined schema.</p>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
-var document = new
-            {
-                id = &quot;42&quot;,
-                title = &quot;Example Product Title&quot;,
-                desc = &quot;Example Product Description&quot;,
-                tag = [2,7]
-            };
-var result = await manager.CreateDocumentAsync(document);
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> document = <span class="hljs-keyword">new</span><br>            {<br>                id = <span class="hljs-string">"42"</span>,<br>                title = <span class="hljs-string">"Example Product Title"</span>,<br>                desc = <span class="hljs-string">"Example Product Description"</span>,<br>                tag = [<span class="hljs-number">2</span>,<span class="hljs-number">7</span>]<br>            };<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.CreateDocumentAsync(document);
 </code></pre>
 <h3 id="get-document">Get Document</h3>
 <p>Get a document from a dataset.</p>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
-var result = await manager.GetDocumentAsync(&quot;DOCUMENT_ID&quot;);
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.GetDocumentAsync(<span class="hljs-string">"DOCUMENT_ID"</span>);
 </code></pre>
 <h3 id="get-document-list">Get Document List</h3>
 <p>Get document list from a dataset.</p>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
-var result = await manager.GetDocumentsAsync();
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.GetDocumentsAsync();
 </code></pre>
 <h3 id="edit-document">Edit Document</h3>
 <p>Edit an existing document in a dataset. Partial document update is allowed. Only modified data should be specified in this case. The rest of the document will be unchanged.</p>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
-var document = new
-            {
-                id = &quot;45&quot;,
-                title = &quot;Example Modified Product Title&quot;,
-                desc = &quot;Example Modified Product Description&quot;,
-                tag = &quot;2&quot;
-            };
-var result = await manager.UpdateDocumentAsync(&quot;45&quot;, document);
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> document = <span class="hljs-keyword">new</span><br>            {<br>                id = <span class="hljs-string">"45"</span>,<br>                title = <span class="hljs-string">"Example Modified Product Title"</span>,<br>                desc = <span class="hljs-string">"Example Modified Product Description"</span>,<br>                tag = <span class="hljs-string">"2"</span><br>            };<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.UpdateDocumentAsync(<span class="hljs-string">"45"</span>, document);
 </code></pre>
 <h3 id="copy-to">Copy To</h3>
 <p>Copying documents from a dataset to another one. You can specify the documents by id. You can copy documents to an existing dataset.
@@ -46,13 +28,7 @@ The selected documents will <strong>remain in the source dataset</strong> as wel
 <p><strong>Tip:</strong> You can limit used thread count for this function in the configuration object</p>
 </blockquote>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
-var settings = new DocumentCopySettings()
-{
-    IdList = new List&lt;string&gt; { &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot; },
-    TargetDataSetName = &quot;TARGET_DATASET_NAME&quot;
-};
-var result = await manager.CopyDocumentsToAsync(settings);
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> settings = <span class="hljs-keyword">new</span> DocumentCopySettings()<br>{<br>    IdList = <span class="hljs-keyword">new</span> List&lt;<span class="hljs-keyword">string</span>&gt; { <span class="hljs-string">"5"</span>, <span class="hljs-string">"6"</span>, <span class="hljs-string">"7"</span>, <span class="hljs-string">"8"</span>, <span class="hljs-string">"9"</span> },<br>    TargetDataSetName = <span class="hljs-string">"TARGET_DATASET_NAME"</span><br>};<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.CopyDocumentsToAsync(settings);
 </code></pre>
 <blockquote>
 <p><strong>Tip:</strong> You can use the <code>Documents/Sample</code> or the <code>Documents/Filter</code> methods to get document ids easily.</p>
@@ -64,13 +40,7 @@ The selected documents will be <strong>removed from the source dataset</strong>.
 <p><strong>Tip:</strong> You can limit used thread count for this function in the configuration object</p>
 </blockquote>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
-var settings = new DocumentMoveSettings()
-{
-    IdList = new List&lt;string&gt; { &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot; },
-    TargetDataSetName = &quot;TARGET_DATASET_NAME&quot;
-};
-var result = await manager.MoveDocumentsToAsync(settings);
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> settings = <span class="hljs-keyword">new</span> DocumentMoveSettings()<br>{<br>    IdList = <span class="hljs-keyword">new</span> List&lt;<span class="hljs-keyword">string</span>&gt; { <span class="hljs-string">"5"</span>, <span class="hljs-string">"6"</span>, <span class="hljs-string">"7"</span>, <span class="hljs-string">"8"</span>, <span class="hljs-string">"9"</span> },<br>    TargetDataSetName = <span class="hljs-string">"TARGET_DATASET_NAME"</span><br>};<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.MoveDocumentsToAsync(settings);
 </code></pre>
 <blockquote>
 <p><strong>Tip:</strong> You can use the <code>Documents/Sample</code> or the <code>Documents/Filter</code> methods to get document ids easily.</p>
@@ -81,10 +51,5 @@ var result = await manager.MoveDocumentsToAsync(settings);
 <p><strong>Tip:</strong> You can limit used thread count for this function in the configuration object</p>
 </blockquote>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var settings = new DocumentBulkSettings()
-                    {
-                        Documents = myNewDocumentsList
-                    };
-var manager = new DocumentManager(configuration, &quot;DATASET_NAME&quot;);
-var result = await manager.BulkDocumentsAsync(settings);
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> settings = <span class="hljs-keyword">new</span> DocumentBulkSettings()<br>                    {<br>                        Documents = myNewDocumentsList<br>                    };<br><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.BulkDocumentsAsync(settings);
 </code></pre>

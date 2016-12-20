@@ -12,7 +12,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Documents-Sample-post">POST /api/Documents/Sample</a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -26,16 +26,10 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="lang-json">{
-    &quot;Id&quot; : &quot;6902a2d3-0708-41f7-b21d-c5bd4b302bdc&quot;,
-    &quot;Percent&quot; : &quot;10&quot;,
-    &quot;Size&quot; : &quot;0&quot;,
-    &quot;TagIdList&quot; : [],
-    &quot;FieldList&quot;: [&quot;id&quot;, &quot;name&quot;, &quot;desc&quot;]
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>" : <span class="hljs-value"><span class="hljs-string">"6902a2d3-0708-41f7-b21d-c5bd4b302bdc"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>" : <span class="hljs-value"><span class="hljs-string">"10"</span></span>,<br>    "<span class="hljs-attribute">Size</span>" : <span class="hljs-value"><span class="hljs-string">"0"</span></span>,<br>    "<span class="hljs-attribute">TagIdList</span>" : <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">FieldList</span>": <span class="hljs-value">[<span class="hljs-string">"id"</span>, <span class="hljs-string">"name"</span>, <span class="hljs-string">"desc"</span>]<br></span>}
 </code></pre>
 <p><code>Available settings:</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Name</th>
@@ -69,30 +63,10 @@
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">{
-    &quot;Items&quot;: [
-        {
-            &quot;id&quot;: &quot;1455197295447&quot;,
-            &quot;title&quot;: &quot;example title&quot;,
-            &quot;desc&quot;: &quot;example description&quot;,
-            &quot;tags&quot;: [ &quot;2&quot;, &quot;3&quot;]
-        },
-        {
-            &quot;id&quot;: &quot;1455197591439&quot;,
-            &quot;title&quot;: &quot;example title&quot;,
-            &quot;desc&quot;: &quot;example description&quot;,
-            &quot;tags&quot;: [
-            &quot;3&quot;
-            ]
-        },
-        ...
-    ],
-    &quot;Count&quot;: 15,
-    &quot;Total&quot;: 150
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Items</span>": <span class="hljs-value">[<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197295447"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span></span>,<br>            "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[ <span class="hljs-string">"2"</span>, <span class="hljs-string">"3"</span>]<br>        </span>},<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197591439"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span></span>,<br>            "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<br>            <span class="hljs-string">"3"</span><br>            ]<br>        </span>},<br>        ...<br>    ]</span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,<br>    "<span class="hljs-attribute">Total</span>": <span class="hljs-value"><span class="hljs-number">150</span><br></span>}
 </code></pre>
 <p><code>Response items:</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Name</th>

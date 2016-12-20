@@ -15,6 +15,7 @@ namespace DevelopersSite.Services
         private const string documentsFolder = "documents";
         string documentsRootFolder = string.Empty;
         SiteConfig _siteConfig;
+        string _cdnUrl;
         string _webRootPath;
         string[] defaultDocs = { "index.html" };
 
@@ -25,6 +26,7 @@ namespace DevelopersSite.Services
             _webRootPath = env.WebRootPath;
             _siteConfig = options.Value;
             documentsRootFolder = Path.Combine(_webRootPath, documentsFolder);
+            _cdnUrl = options.Value.CdnUrl;
 
             ScanDocuments();
         }
@@ -50,12 +52,13 @@ namespace DevelopersSite.Services
 
                 foreach (var versionDirectory in versionDirectories)
                 {
+                    var dir = versionDirectory.Replace(_webRootPath, string.Empty).Replace('\\', '/').TrimEnd('/') + "/";
                     var documentVersionModel = new DocumentVersionModel()
                     {
                         Path = versionDirectory,
                         ContentFilenames = Directory.EnumerateFiles(versionDirectory, "*.html", SearchOption.AllDirectories).Select(Path.GetFileName).ToList(),
                         Version = Path.GetFileName(versionDirectory),
-                        StaticBase = versionDirectory.Replace(_webRootPath, string.Empty).Replace('\\', '/').TrimEnd('/') + "/"
+                        StaticBase = $"{_cdnUrl}{dir}"
                     };
 
                     documentVersionModel.StartFilename = documentVersionModel

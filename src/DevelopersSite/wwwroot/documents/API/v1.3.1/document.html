@@ -21,7 +21,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Documents-post">POST /api/Documents</a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -35,12 +35,7 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="lang-json">{
-    &quot;id&quot;: 9,
-    &quot;title&quot;: &quot;Example Product Title&quot;,
-    &quot;desc&quot;: &quot;Example Product Description&quot;,
-    &quot;tags&quot;: [1,2,3]
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,<br>    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Title"</span></span>,<br>    "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
@@ -52,7 +47,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Documents-Bulk-post">POST /api/Documents/Bulk</a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -66,50 +61,13 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="lang-json">{
-    &quot;documents&quot;: [{
-        &quot;id&quot;: &quot;Id1&quot;,
-        &quot;title&quot;: &quot;Han Solo&quot;,
-        &quot;desc&quot;: &quot;Example Product Description&quot;,
-        &quot;tags&quot;: [1,2,3]
-    },
-    {
-        &quot;id&quot;: &quot;Id2&quot;,
-        &quot;title&quot;: &quot;Luke&quot;,
-        &quot;desc&quot;: &quot;Example Product Description&quot;,
-        &quot;tags&quot;: [1,2,3]
-    },
-    {
-        &quot;id&quot;: &quot;Id3&quot;,
-        &quot;title&quot;: &quot;Wookies&quot;,
-        &quot;desc&quot;: &quot;Example Product Description&quot;,
-        &quot;tags&quot;: [1,2,3]
-    }]
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">documents</span>": <span class="hljs-value">[{<br>        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Id1"</span></span>,<br>        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Han Solo"</span></span>,<br>        "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>        "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>},<br>    {<br>        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Id2"</span></span>,<br>        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Luke"</span></span>,<br>        "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>        "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>},<br>    {<br>        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Id3"</span></span>,<br>        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Wookies"</span></span>,<br>        "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>        "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>}]<br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre><code class="lang-json">{
-  &quot;Results&quot;: [
-    {
-      &quot;StatusCode&quot;: 201,
-      &quot;Id&quot;: &quot;Id1&quot;,
-      &quot;Error&quot;: &quot;&quot;
-    },
-    {
-      &quot;StatusCode&quot;: 201,
-      &quot;Id&quot;: &quot;Id2&quot;,
-      &quot;Error&quot;: &quot;&quot;
-    },
-    {
-      &quot;StatusCode&quot;: 201,
-      &quot;Id&quot;: &quot;Id3&quot;,
-      &quot;Error&quot;: &quot;&quot;
-    }
-  ]
-}
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Results</span>": <span class="hljs-value">[<br>    {<br>      "<span class="hljs-attribute">StatusCode</span>": <span class="hljs-value"><span class="hljs-number">201</span></span>,<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"Id1"</span></span>,<br>      "<span class="hljs-attribute">Error</span>": <span class="hljs-value"><span class="hljs-string">""</span><br>    </span>},<br>    {<br>      "<span class="hljs-attribute">StatusCode</span>": <span class="hljs-value"><span class="hljs-number">201</span></span>,<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"Id2"</span></span>,<br>      "<span class="hljs-attribute">Error</span>": <span class="hljs-value"><span class="hljs-string">""</span><br>    </span>},<br>    {<br>      "<span class="hljs-attribute">StatusCode</span>": <span class="hljs-value"><span class="hljs-number">201</span></span>,<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"Id3"</span></span>,<br>      "<span class="hljs-attribute">Error</span>": <span class="hljs-value"><span class="hljs-string">""</span><br>    </span>}<br>  ]<br></span>}
 </code></pre>
 <h3 id="get-document">Get Document</h3>
 <p>Get a document from a dataset.</p>
@@ -117,7 +75,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Documents--id--get">GET /api/Documents/<code>9</code></a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -134,12 +92,7 @@
 <p><em>Example RESPONSE</em></p>
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
-<pre><code class="lang-json">{
-    &quot;id&quot;: 9,
-    &quot;title&quot;: &quot;Example Product Title&quot;,
-    &quot;desc&quot;: &quot;Example Product Description&quot;,
-    &quot;tags&quot;: [1,2,3]
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,<br>    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Title"</span></span>,<br>    "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br></span>}
 </code></pre>
 </blockquote>
 <h3 id="edit-document">Edit Document</h3>
@@ -148,7 +101,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Documents--id--put">PUT /api/Documents/<code>9</code></a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -162,12 +115,7 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="lang-json">{
-    &quot;id&quot;: 9,
-    &quot;title&quot;: &quot;Example Modified Product Title&quot;,
-    &quot;desc&quot;: &quot;Example Modified Product Description&quot;,
-    &quot;tags&quot;: [1,2,3,4,5,6,7,8,9]
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,<br>    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example Modified Product Title"</span></span>,<br>    "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Modified Product Description"</span></span>,<br>    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]<br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
@@ -178,7 +126,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Documents--id--put">PUT /api/Documents/<code>9</code></a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -192,9 +140,7 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="lang-json">{
-    &quot;tags&quot;: [7,8,9]
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]<br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
@@ -206,7 +152,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Documents--id--delete">DELETE /api/Documents/<code>9</code></a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -231,7 +177,7 @@
 <blockquote>
 <p><a href="swagger#operation--api-Documents-Copy-post">POST /api/Documents/Copy</a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -245,10 +191,7 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="lang-json">{
-    &quot;TargetDataSetName&quot;: &quot;TARGET_DATASET_NAME&quot;,
-    &quot;DocumentIdList&quot;: [&quot;10&quot;, &quot;11&quot;]
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">TargetDataSetName</span>": <span class="hljs-value"><span class="hljs-string">"TARGET_DATASET_NAME"</span></span>,<br>    "<span class="hljs-attribute">DocumentIdList</span>": <span class="hljs-value">[<span class="hljs-string">"10"</span>, <span class="hljs-string">"11"</span>]<br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
@@ -262,7 +205,7 @@ The selected documents will be <strong>removed from the source dataset</strong>.
 <blockquote>
 <p><a href="swagger#operation--api-Documents-Move-post">POST /api/Documents/Move</a></p>
 </blockquote>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Header</th>
@@ -276,10 +219,7 @@ The selected documents will be <strong>removed from the source dataset</strong>.
 </tr>
 </tbody>
 </table>
-<pre><code class="lang-json">{
-    &quot;TargetDataSetName&quot;: &quot;TARGET_DATASET_NAME&quot;,
-    &quot;DocumentIdList&quot;: [&quot;10&quot;, &quot;11&quot;]
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">TargetDataSetName</span>": <span class="hljs-value"><span class="hljs-string">"TARGET_DATASET_NAME"</span></span>,<br>    "<span class="hljs-attribute">DocumentIdList</span>": <span class="hljs-value">[<span class="hljs-string">"10"</span>, <span class="hljs-string">"11"</span>]<br></span>}
 </code></pre>
 <p><em>Example RESPONSE</em></p>
 <blockquote>

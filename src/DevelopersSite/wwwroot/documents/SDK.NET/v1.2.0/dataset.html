@@ -4,93 +4,29 @@
 <h3 id="create-new-dataset">Create new Dataset</h3>
 <p>Create a new dataset by providing a sample JSON document and additional parameters.</p>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DataSetManager(configuration);
-var dataset = new Models.DataSet()
-    {
-        IdField = &quot;id&quot;,
-        Name = &quot;name&quot;,
-        NGramCount = 2,
-        InterpretedFields = new List&lt;string&gt; { &quot;title&quot;, &quot;desc&quot; },
-        TagField = &quot;tag&quot;,
-        SampleDocument = new
-        {
-            id = 10,
-            title = &quot;Example Product Title&quot;,
-            desc = &quot;Example Product Description&quot;,
-            tag = [1,2,3]
-        }
-    }
-var response = await manager.CreateDataSetAsync(dataset);
-if (!response.IsSuccessful)
-{
-    // handle error with the help of the Errors property in the response
-}
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DataSetManager(configuration);<br><span class="hljs-keyword">var</span> dataset = <span class="hljs-keyword">new</span> Models.DataSet()<br>    {<br>        IdField = <span class="hljs-string">"id"</span>,<br>        Name = <span class="hljs-string">"name"</span>,<br>        NGramCount = <span class="hljs-number">2</span>,<br>        InterpretedFields = <span class="hljs-keyword">new</span> List&lt;<span class="hljs-keyword">string</span>&gt; { <span class="hljs-string">"title"</span>, <span class="hljs-string">"desc"</span> },<br>        TagField = <span class="hljs-string">"tag"</span>,<br>        SampleDocument = <span class="hljs-keyword">new</span><br>        {<br>            id = <span class="hljs-number">10</span>,<br>            title = <span class="hljs-string">"Example Product Title"</span>,<br>            desc = <span class="hljs-string">"Example Product Description"</span>,<br>            tag = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>        }<br>    }<br><span class="hljs-keyword">var</span> response = <span class="hljs-keyword">await</span> manager.CreateDataSetAsync(dataset);<br><span class="hljs-keyword">if</span> (!response.IsSuccessful)<br>{<br>    <span class="hljs-comment">// handle error with the help of the Errors property in the response</span><br>}
 </code></pre>
 <p>Create a new dataset by providing a JSON schema and additional parameters.</p>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DataSetManager(configuration);
-var dataset = new Models.DataSet
-            {
-                IdField = &quot;id&quot;,
-                Name = &quot;name&quot;,
-                NGramCount = 2,
-                InterpretedFields = new List&lt;string&gt; { &quot;title&quot;, &quot;desc&quot; },
-                TagField = &quot;tag&quot;,
-                Schema = new
-                {
-                    id = new 
-                    {
-                        type = &quot;integer&quot;
-                    },
-                    title = new 
-                    {
-                        type = &quot;string&quot;
-                    },
-                    desc =  new 
-                    {
-                        type = &quot;string&quot;
-                    },
-                    tag =  new 
-                    {
-                        type = &quot;array&quot;,
-                        items = new
-                        {
-                            type = &quot;byte&quot;
-                        }
-                    }
-                }
-            }
-var response = await manager.CreateDataSchemaSetAsync(dataset);
-if (!response.IsSuccessful)
-{
-    // handle error with the help of the Errors property in the response
-}
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DataSetManager(configuration);<br><span class="hljs-keyword">var</span> dataset = <span class="hljs-keyword">new</span> Models.DataSet<br>            {<br>                IdField = <span class="hljs-string">"id"</span>,<br>                Name = <span class="hljs-string">"name"</span>,<br>                NGramCount = <span class="hljs-number">2</span>,<br>                InterpretedFields = <span class="hljs-keyword">new</span> List&lt;<span class="hljs-keyword">string</span>&gt; { <span class="hljs-string">"title"</span>, <span class="hljs-string">"desc"</span> },<br>                TagField = <span class="hljs-string">"tag"</span>,<br>                Schema = <span class="hljs-keyword">new</span><br>                {<br>                    id = <span class="hljs-keyword">new</span> <br>                    {<br>                        type = <span class="hljs-string">"integer"</span><br>                    },<br>                    title = <span class="hljs-keyword">new</span> <br>                    {<br>                        type = <span class="hljs-string">"string"</span><br>                    },<br>                    desc =  <span class="hljs-keyword">new</span> <br>                    {<br>                        type = <span class="hljs-string">"string"</span><br>                    },<br>                    tag =  <span class="hljs-keyword">new</span> <br>                    {<br>                        type = <span class="hljs-string">"array"</span>,<br>                        items = <span class="hljs-keyword">new</span><br>                        {<br>                            type = <span class="hljs-string">"byte"</span><br>                        }<br>                    }<br>                }<br>            }<br><span class="hljs-keyword">var</span> response = <span class="hljs-keyword">await</span> manager.CreateDataSchemaSetAsync(dataset);<br><span class="hljs-keyword">if</span> (!response.IsSuccessful)<br>{<br>    <span class="hljs-comment">// handle error with the help of the Errors property in the response</span><br>}
 </code></pre>
 <h3 id="get-dataset">Get Dataset</h3>
 <p>Get information about a given dataset. A dataset can be accessed by its name.</p>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DataSetManager(configuration);
-var dataset = await manager.GetDataSetAsync();
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DataSetManager(configuration);<br><span class="hljs-keyword">var</span> dataset = <span class="hljs-keyword">await</span> manager.GetDataSetAsync();
 </code></pre>
 <h3 id="get-dataset-list">Get Dataset List</h3>
 <p>Get a list of the available datasets.</p>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DataSetManager(configuration);
-var datasets = await manager.GetDataSetsAsync();
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DataSetManager(configuration);<br><span class="hljs-keyword">var</span> datasets = <span class="hljs-keyword">await</span> manager.GetDataSetsAsync();
 </code></pre>
 <h3 id="update-dataset">Update Dataset</h3>
 <p>Updates a dataset. Currently only updating Dataset name is possible. As Dataset names are unique it will return with an error if the name is taken by another Dataset.</p>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DataSetManager(configuration);
-var model = new DataSetUpdate()
-{
-    Name = &quot;NEW_DATASET_NAME&quot;
-};
-var datasets = await manager.UpdateDataSetAsync(model);
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DataSetManager(configuration);<br><span class="hljs-keyword">var</span> model = <span class="hljs-keyword">new</span> DataSetUpdate()<br>{<br>    Name = <span class="hljs-string">"NEW_DATASET_NAME"</span><br>};<br><span class="hljs-keyword">var</span> datasets = <span class="hljs-keyword">await</span> manager.UpdateDataSetAsync(model);
 </code></pre>
 <h3 id="remove-dataset">Remove Dataset</h3>
 <p>Removes a given dataset. All the stored data will be removed.</p>
 <p><em>Example:</em></p>
-<pre><code class="lang-cs">var manager = new DataSetManager(configuration);
-var result = await manager.DeleteDataSetAsync(&quot;DATASET_NAME&quot;);
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DataSetManager(configuration);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.DeleteDataSetAsync(<span class="hljs-string">"DATASET_NAME"</span>);
 </code></pre>

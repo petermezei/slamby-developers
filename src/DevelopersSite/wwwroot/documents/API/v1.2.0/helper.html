@@ -5,28 +5,17 @@
 <p><em>Example REQUEST</em></p>
 <blockquote>
 <p><a href="swagger#operation--api-Helper-FileParser-post">POST /api/Helper/FileParser</a></p>
-<pre><code class="lang-json">{
-    &quot;Content&quot;: &quot;77u/QSBsb25nIHRpbWUgYWdvIGluIGEgZ2FsYXh5IGZhciwgZmFyIGF3YXkuLi4=&quot;
-}
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Content</span>": <span class="hljs-value"><span class="hljs-string">"77u/QSBsb25nIHRpbWUgYWdvIGluIGEgZ2FsYXh5IGZhciwgZmFyIGF3YXkuLi4="</span><br></span>}
 </code></pre>
 </blockquote>
 <p><em>Example RESPONSE</em></p>
 <blockquote>
 <p>HTTP/1.1 200 OK</p>
-<pre><code class="lang-json">{
-  &quot;Content&quot;: &quot;A long time ago in a galaxy far, far away...\n&quot;,
-  &quot;Title&quot;: null,
-  &quot;Date&quot;: null,
-  &quot;Author&quot;: null,
-  &quot;Keywords&quot;: null,
-  &quot;ContentType&quot;: &quot;text/plain; charset=UTF-8&quot;,
-  &quot;ContentLength&quot;: 47,
-  &quot;Language&quot;: &quot;en&quot;
-}
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Content</span>": <span class="hljs-value"><span class="hljs-string">"A long time ago in a galaxy far, far away...\n"</span></span>,<br>  "<span class="hljs-attribute">Title</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>  "<span class="hljs-attribute">Date</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>  "<span class="hljs-attribute">Author</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>  "<span class="hljs-attribute">Keywords</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>  "<span class="hljs-attribute">ContentType</span>": <span class="hljs-value"><span class="hljs-string">"text/plain; charset=UTF-8"</span></span>,<br>  "<span class="hljs-attribute">ContentLength</span>": <span class="hljs-value"><span class="hljs-number">47</span></span>,<br>  "<span class="hljs-attribute">Language</span>": <span class="hljs-value"><span class="hljs-string">"en"</span><br></span>}
 </code></pre>
 </blockquote>
 <p><code>Available response parameters:</code></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Name</th>
