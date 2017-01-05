@@ -10,7 +10,7 @@ Get all running processes.
 
 *Example REQUEST*
 
-> [GET /api/Processes/](swagger#operation--api-Processes-get)
+> [GET /api/Processes/allStatus=false&allTime=false](swagger#operation--api-Processes-get)
 
 *Example RESPONSE*
 
@@ -32,7 +32,12 @@ Get all running processes.
 ]
 ```
 
-To get historical process list use `allStatus=true` URL parameter.
+**By default** the reponse contains the processes from the **last 30 days** and with **active status**. 
+
+To get processes with any status (not just the active ones) use `allStatus=true` URL parameter.
+
+If you would like to see your processes from all time then use the `allStatus=true` URL parameter.
+
 
 ### Get-Process information
 
