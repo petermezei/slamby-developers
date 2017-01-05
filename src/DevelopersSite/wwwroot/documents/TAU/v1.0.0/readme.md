@@ -11,7 +11,7 @@ License: <a href="https://raw.githubusercontent.com/slamby/slamby-tau/master/LIC
 
 ## Download, Install
 
-Download TAU from [here](https://tau.slamby.com/install/1.0.0/setup.exe)
+Download TAU from [here](https://tau.slamby.com/install/1.0.2/setup.exe)
 
 It currently supports just Microsoft Windows 8 or later.
 
