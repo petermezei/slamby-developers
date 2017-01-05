@@ -648,13 +648,22 @@ With this function, you can easily extract the relevant keywords (according to t
 
 *Example Request*
 
-> [POST /api/Services/Prc/`GUID`/Keywords](swagger#operation--api-Services-Prc--id--Keywords-post)
+> [POST /api/Services/Prc/`GUID`/Keywords?isStrict=false](swagger#operation--api-Services-Prc--id--Keywords-post)
 ```json
 {
     "Text": "Lorem Ipsum Dolorem",
     "TagId": "tag1Id"
 }
 ```
+
+`Request parameters`
+
+Field   |   Description
+---   |   ---
+Text   |   Text to analyze. Keywords method analyses this given text.
+TagId   |   Keywords extraction within this given tag. Not required. Once it is given, the results will be from this tagId. Once it's empty, Slamby will analyze and predict the most appropriate tag.
+IsStrict (query parameter)   |   `true` or `false`, when it true then you will get lesser keywords. The score limit is stricter. The default value is `false`.
+
 
 *Example Response*
 ```json
