@@ -1,0 +1,95 @@
+<h2 id="sampling">Sampling</h2>
+<p>Statistical method to support sampling activity. Using sampling you can  create <strong>random samples</strong> for experiments.</p>
+<p>With sampling you can:</p>
+<ul>
+<li>Create statistical samples</li>
+<li>Set the source categories</li>
+<li>Set sample size by fix number or percentage</li>
+<li>Filter fields</li>
+</ul>
+<p>For sampling, you have to specify which dataset you want to use in the <code>X-DataSet</code> header by the name of the dataset.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents-Sample-post">POST /api/Documents/Sample</a></p>
+</blockquote>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>" : <span class="hljs-value"><span class="hljs-string">"6902a2d3-0708-41f7-b21d-c5bd4b302bdc"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>" : <span class="hljs-value"><span class="hljs-string">"10"</span></span>,<br>    "<span class="hljs-attribute">Size</span>" : <span class="hljs-value"><span class="hljs-string">"0"</span></span>,<br>    "<span class="hljs-attribute">TagIdList</span>" : <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">FieldList</span>": <span class="hljs-value">[<span class="hljs-string">"id"</span>, <span class="hljs-string">"name"</span>, <span class="hljs-string">"desc"</span>]<br></span>}
+</code></pre>
+<p><code>Available settings:</code></p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Id</td>
+<td>To create a sample you need to provide a specific sample id. This id specifies your sample process and you can use it in the future to refer your sample. Sample id can be any generated <code>guid</code> or other string content.</td>
+</tr>
+<tr>
+<td>Percent</td>
+<td>You can determine the required sample size using percentage or fix number. When you use percentage <code>eg.: 10%</code> fill this field by the required value and leave the Size field 0.</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>You can determine the required sample size using a fix number instead of a given percentage. When you need a sample with 42 items, you can specify your sample size providing Size field with value 42. In this case, leave the Percent field as 0.</td>
+</tr>
+<tr>
+<td>TagIdList</td>
+<td>If you need a sample just from a given category or categories, you can specify the source categories by providing an id list. It is not a required field, you can create sample without using tag selection as well.</td>
+</tr>
+<tr>
+<td>FieldList</td>
+<td>Field selector to determine the response item fields. If you do not need full document objects, just specify the required fields here.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Items</span>": <span class="hljs-value">[<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197295447"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span></span>,<br>            "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[ <span class="hljs-string">"2"</span>, <span class="hljs-string">"3"</span>]<br>        </span>},<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197591439"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span></span>,<br>            "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<br>            <span class="hljs-string">"3"</span><br>            ]<br>        </span>},<br>        ...<br>    ]</span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,<br>    "<span class="hljs-attribute">Total</span>": <span class="hljs-value"><span class="hljs-number">150</span><br></span>}
+</code></pre>
+<p><code>Response items:</code></p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Items</td>
+<td>Object, it contains all the result documents.</td>
+</tr>
+<tr>
+<td>Count</td>
+<td>Sample size. It should be the same value as the sample size when we use Size instead of Percent.</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Dataset total document count value.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>Important:</code> there is no built-in scroll or pagination. Please be careful when you determine the sample size.</p>
+</blockquote>
+<h5 id="for-the-parameters-explanation-check-the-documentsamplesettings-schema-definition-here-definitions-documentsamplesettings-">For the parameters explanation check the DocumentSampleSettings schema definition <a href="#/definitions/DocumentSampleSettings">here</a></h5>
+<h5 id="for-the-pagination-explanation-check-the-pagination-section-here-pagination-">For the pagination explanation check the pagination section <a href="#pagination">here</a></h5>

@@ -1,0 +1,55 @@
+<h2 id="document">Document</h2>
+<p>Manage your <strong>documents</strong> easily. Create, edit, remove and running text analysis.</p>
+<p>You can find more details about the Documents <a href="/docs/api/{{docversion}}/document">here.</a></p>
+<h3 id="insert-new-document">Insert New Document</h3>
+<p>Insert a new document to a dataset using the predefined schema.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> document = <span class="hljs-keyword">new</span><br>            {<br>                id = <span class="hljs-string">"42"</span>,<br>                title = <span class="hljs-string">"Example Product Title"</span>,<br>                desc = <span class="hljs-string">"Example Product Description"</span>,<br>                tag = [<span class="hljs-number">2</span>,<span class="hljs-number">7</span>]<br>            };<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.CreateDocumentAsync(document);
+</code></pre>
+<h3 id="get-document">Get Document</h3>
+<p>Get a document from a dataset.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.GetDocumentAsync(<span class="hljs-string">"DOCUMENT_ID"</span>);
+</code></pre>
+<h3 id="get-document-list">Get Document List</h3>
+<p>Get document list from a dataset.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.GetDocumentsAsync();
+</code></pre>
+<h3 id="edit-document">Edit Document</h3>
+<p>Edit an existing document in a dataset. Partial document update is allowed. Only modified data should be specified in this case. The rest of the document will be unchanged.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> document = <span class="hljs-keyword">new</span><br>            {<br>                id = <span class="hljs-string">"45"</span>,<br>                title = <span class="hljs-string">"Example Modified Product Title"</span>,<br>                desc = <span class="hljs-string">"Example Modified Product Description"</span>,<br>                tag = <span class="hljs-string">"2"</span><br>            };<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.UpdateDocumentAsync(<span class="hljs-string">"45"</span>, document);
+</code></pre>
+<h3 id="copy-to">Copy To</h3>
+<p>Copying documents from a dataset to another one. You can specify the documents by id. You can copy documents to an existing dataset.
+The selected documents will <strong>remain in the source dataset</strong> as well.</p>
+<blockquote>
+<p><strong>Tip:</strong> You can limit used thread count for this function in the configuration object</p>
+</blockquote>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> settings = <span class="hljs-keyword">new</span> DocumentCopySettings()<br>{<br>    IdList = <span class="hljs-keyword">new</span> List&lt;<span class="hljs-keyword">string</span>&gt; { <span class="hljs-string">"5"</span>, <span class="hljs-string">"6"</span>, <span class="hljs-string">"7"</span>, <span class="hljs-string">"8"</span>, <span class="hljs-string">"9"</span> },<br>    TargetDataSetName = <span class="hljs-string">"TARGET_DATASET_NAME"</span><br>};<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.CopyDocumentsToAsync(settings);
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> You can use the <code>Documents/Sample</code> or the <code>Documents/Filter</code> methods to get document ids easily.</p>
+</blockquote>
+<h3 id="move-to">Move To</h3>
+<p>Moving documents from a dataset to another one. You can specify documents by id. You can move documents to an existing dataset. 
+The selected documents will be <strong>removed from the source dataset</strong>.</p>
+<blockquote>
+<p><strong>Tip:</strong> You can limit used thread count for this function in the configuration object</p>
+</blockquote>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> settings = <span class="hljs-keyword">new</span> DocumentMoveSettings()<br>{<br>    IdList = <span class="hljs-keyword">new</span> List&lt;<span class="hljs-keyword">string</span>&gt; { <span class="hljs-string">"5"</span>, <span class="hljs-string">"6"</span>, <span class="hljs-string">"7"</span>, <span class="hljs-string">"8"</span>, <span class="hljs-string">"9"</span> },<br>    TargetDataSetName = <span class="hljs-string">"TARGET_DATASET_NAME"</span><br>};<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.MoveDocumentsToAsync(settings);
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> You can use the <code>Documents/Sample</code> or the <code>Documents/Filter</code> methods to get document ids easily.</p>
+</blockquote>
+<h3 id="bulk-documents">Bulk Documents</h3>
+<p>Inserts mass documents to a dataset using the predefined schema.</p>
+<blockquote>
+<p><strong>Tip:</strong> You can limit used thread count for this function in the configuration object</p>
+</blockquote>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> settings = <span class="hljs-keyword">new</span> DocumentBulkSettings()<br>                    {<br>                        Documents = myNewDocumentsList<br>                    };<br><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> DocumentManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.BulkDocumentsAsync(settings);
+</code></pre>

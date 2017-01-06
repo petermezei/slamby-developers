@@ -1,0 +1,7 @@
+<h2 id="helper">Helper</h2>
+<h3 id="file-parser">File Parser</h3>
+<p>File parsing and text extraction endpoint. Content must be provided as valid <code>base64</code> string. 
+Binary files can be easily loaded with <a href="https://msdn.microsoft.com/en-us/library/system.io.file.readallbytes(v=vs.110">File.ReadAllBytes</a>.aspx) and converted to base64 string using <a href="https://msdn.microsoft.com/en-us/library/dhx0d524(v=vs.110">Convert.ToBase64String</a>.aspx) methods.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> HelperManager(configuration);<br><span class="hljs-keyword">var</span> fileParser = <span class="hljs-keyword">new</span> FileParser<br>    {<br>        Content = <span class="hljs-string">"IkdvZCBTYXZlIHRoZSBRdWVlbiIgKGFsdGVybmF0aXZlbHkgIkdvZCBTYXZlIHRoZSBLaW5nIg=="</span><br>    };<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.FileParserAsync(tag);
+</code></pre>

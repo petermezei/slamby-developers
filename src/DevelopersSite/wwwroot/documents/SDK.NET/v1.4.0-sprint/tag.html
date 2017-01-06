@@ -1,0 +1,54 @@
+<h2 id="tags">Tags</h2>
+<p>Manage tags to organize your data. Using tags create a tag cloud or a hierarchical tag tree.</p>
+<p>You can find more details about the Tags <a href="/docs/api/{{docversion}}/tags">here</a>.</p>
+<h3 id="create-new-tag">Create New Tag</h3>
+<p>Create a new tag in a dataset.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> TagManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> tag = <span class="hljs-keyword">new</span> Tag<br>            {<br>                Id = <span class="hljs-string">"3"</span>,<br>                Name = <span class="hljs-string">"example tag 1"</span>,<br>                ParentId = <span class="hljs-keyword">null</span><br>            };<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.CreateTagAsync(tag);
+</code></pre>
+<h3 id="get-tag">Get Tag</h3>
+<p>Get a tag by its Id.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> TagManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.GetTagAsync(<span class="hljs-string">"3"</span>);
+</code></pre>
+<h3 id="get-tag-list">Get Tag List</h3>
+<p>Get all tags list from a given dataset.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> TagManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.GetTagsAsync();
+</code></pre>
+<h3 id="update-tag">Update Tag</h3>
+<p>Update a tag by new values.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> TagManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> tag = <span class="hljs-keyword">new</span> Tag<br>            {<br>                Id = <span class="hljs-string">"5"</span>,<br>                Name = <span class="hljs-string">"tag2"</span><br>            };<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.UpdateTagAsync(<span class="hljs-string">"3"</span>, tag);
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> You can also change the <code>Id</code> of the object, as you can see in the example.</p>
+</blockquote>
+<h3 id="remove-tag">Remove Tag</h3>
+<p>Remove a tag from tag list. By default, documents and datasets are not affected.</p>
+<p>The method has two additional parameters:</p>
+<ul>
+<li><code>force</code> - if true then the tag with children can be deleted, but be careful! All the children will be deleted also.</li>
+<li><code>cleanDocuments</code> - if true then the removed tag will be also removed from the documents</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> TagManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.DeleteTagAsync(<span class="hljs-string">"5"</span>);
+</code></pre>
+<h3 id="bulk-tag">Bulk Tag</h3>
+<p>Replaces existing tags with the provided list. Recommended for tag list initializing.</p>
+<blockquote>
+<p><strong>Tip:</strong> You can limit used thread count for this function in the configuration object</p>
+</blockquote>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> settings = <span class="hljs-keyword">new</span> TagBulkSettings()<br>                    {<br>                        Tags = myImportTagList<br>                    };<br><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> TagManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.BulkTagsAsync(settings);
+</code></pre>
+<h3 id="clean-documents">Clean Documents</h3>
+<p>Remove all not existing tags from the documents.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> TagManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> manager.CleanDocumentsAsync();
+</code></pre>
+<h3 id="words-occurrences">Words Occurrences</h3>
+<p>Get words and the occurrences of the words.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> manager = <span class="hljs-keyword">new</span> TagManager(configuration, <span class="hljs-string">"DATASET_NAME"</span>);<br><span class="hljs-keyword">var</span> settings = <span class="hljs-keyword">new</span> TagsExportWordsSettings {<br>    NGramList = <span class="hljs-keyword">new</span> List&lt;<span class="hljs-keyword">int</span>&gt; { <span class="hljs-number">1</span>, <span class="hljs-number">2</span> },<br>    TagIdList = <span class="hljs-keyword">new</span> List&lt;<span class="hljs-keyword">string</span>&gt; { <span class="hljs-string">"123"</span>, <span class="hljs-string">"44"</span> }<br>};<br><span class="hljs-keyword">var</span> resultProcess = <span class="hljs-keyword">await</span> manager.WordsExportAsync(settings);
+</code></pre>

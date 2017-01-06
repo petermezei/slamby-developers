@@ -1,0 +1,41 @@
+<h1 id="slamby-sdk-net-docversion-">Slamby SDK .NET {{docversion}}</h1>
+<p>Slamby .NET SDK and NuGet Package.
+This project is open source. Please check the documentation and <a href="http://www.slamby.com/Community">join</a> to the community group.</p>
+<p>GitHub Slamby page: <a href="https://github.com/slamby">www.github.com/slamby</a>
+GitHub page:  <a href="https://github.com/slamby/slamby-sdk-net">www.github.com/slamby/slamby-sdk-net</a></p>
+<h2 id="changelog">Changelog</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li>Released {{docversion}}</li>
+</ul>
+<hr>
+<h2 id="general">General</h2>
+<h3 id="request-basics">Request Basics</h3>
+<p>Configuration example:</p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> configuration = <span class="hljs-keyword">new</span> Configuration<br>    {<br>        ApiBaseEndpoint = <span class="hljs-keyword">new</span> Uri(<span class="hljs-string">"https://api.slamby.com/CLIENT_ID/"</span>),<br>        ApiSecret = <span class="hljs-string">"API_KEY"</span><br>    };
+</code></pre>
+<p>You have to use this <code>configuration</code> object for every <code>Manager</code>.</p>
+<p>You can find more details about the Authentication <a href="/docs/api/{{docversion}}/index#authentication">here</a></p>
+<p>Slamby SDK.NET sends its version information to the API for version matching. Major and minor values should match in order to prevent version incompatibility. </p>
+<p><code>ParallelLimit</code> property enables you to limit or maximize CPU usage in certain functions. Limit value should be greater than zero in order to be sent.</p>
+<blockquote>
+<p><strong>Note:</strong> In some cases API can limit your value if your configuration cannot handle it efficiently</p>
+</blockquote>
+<h3 id="response-basics">Response Basics</h3>
+<p>Every request returns one of the following results:</p>
+<pre><code class="lang-cs">public class ClientResponse<br>{<br>    public bool IsSuccessful { get; set; }<br>    public HttpStatusCode HttpStatusCode { get; set; }<br>    public string ServerMessage { get; set; }<br>    public ErrorsModel Errors { get; set; }<br>    public string ApiVersion { get; set; }<br>}<br><br>public class ClientResponseWithObject&lt;T&gt; : ClientResponse<br>{<br>    public T ResponseObject { get; set; }<br>}
+</code></pre>
+<h3 id="logging">Logging</h3>
+<p>Logging raw request and response message with <code>RawMessagePublisher</code>. 
+Currently <code>DebugSubscriber</code> is available  which writes messages to <strong>debug output</strong>. Custom subscribers can be created via implementing <code>IRawMessageSubscriber</code> interface.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs">IRawMessageSubscriber subscriber = <span class="hljs-keyword">new</span> DebugSubscriber();<br>RawMessagePublisher.Instance.AddSubscriber(subscriber);<br><br><span class="hljs-comment">// API calls</span><br><br>RawMessagePublisher.Instance.RemoveSubscriber(subscriber);
+</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="lang-cs">REQUEST <span class="hljs-preprocessor">#63592531131529252663115</span><br>----------------------<br>POST http:<span class="hljs-comment">//localhost:29689/api/tags</span><br>Headers:<br>Accept|application/json<br>Authorization|Slamby API_KEY<br>X-DataSet|test1<br><br>Content:  <br>{<span class="hljs-string">"Id"</span>:<span class="hljs-string">"999"</span>,<span class="hljs-string">"Name"</span>:<span class="hljs-string">"tag"</span>,<span class="hljs-string">"ParentTagId"</span>:<span class="hljs-keyword">null</span>,<span class="hljs-string">"Properties"</span>:<span class="hljs-keyword">null</span>}
+</code></pre>
+<h3 id="async-methods">Async methods</h3>
+<p>In all the <code>Manager</code> class there are async methods. If you would like to use in a synchronized way, you can get the <code>Result</code> object of the task.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> dataset = manager.GetDataSetAsync().Result;
+</code></pre>

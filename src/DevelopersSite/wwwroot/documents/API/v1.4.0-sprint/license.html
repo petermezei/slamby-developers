@@ -1,0 +1,25 @@
+<h2 id="license">License</h2>
+<h3 id="get-license">Get License</h3>
+<p>Returns back with license information.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-License-get">GET /api/License</a></p>
+</blockquote>
+<p><em>Example RESPONSE (truncated for brevity)</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">IsValid</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,<br>  "<span class="hljs-attribute">Message</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"OpenSource"</span></span>,<br>  "<span class="hljs-attribute">Base64</span>": <span class="hljs-value"><span class="hljs-string">"PExpY2Vuc2U+CiAgPFR5cGU+T3BlblNvdXJjZTwvVHlwZT..."</span><br></span>}
+</code></pre>
+</blockquote>
+<h3 id="change-license">Change License</h3>
+<p>Replace or set your current license with a new one.</p>
+<p><em>Example REQUEST (truncated for brevity)</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-License-post">POST /api/License</a></p>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">License</span>": <span class="hljs-value"><span class="hljs-string">"PExpY2Vuc2U+CiAgPFR5cGU+T3BlblNvdXJjZTwvVHlwZT..."</span><br></span>}
+</code></pre>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>

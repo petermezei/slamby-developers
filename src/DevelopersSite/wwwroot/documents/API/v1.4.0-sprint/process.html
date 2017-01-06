@@ -1,0 +1,43 @@
+<h2 id="processes">Processes</h2>
+<p>There are long running tasks in the Slamby API. These requests are served in an async way. These methods return with <code>HTTP/1.1 202 ACCEPTED</code>and with a Process object.</p>
+<blockquote>
+<p><strong>Tip:</strong> You can cancel a process anytime during its progress</p>
+</blockquote>
+<h3 id="get-active-process-list">Get Active Process List</h3>
+<p>Get all running processes.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Processes-get">GET /api/Processes/allStatus=false&amp;allTime=false</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">[<br>  {<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"abaa9144-2b1b-4539-a322-4157b8bde3f2"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-08-23T15:57:53.292296Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">14.07</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Exporting dictionaries from Classifier service Yoda."</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"ClassifierExportDictionaries"</span></span>,<br>    "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>  </span>}<br>]
+</code></pre>
+<p><strong>By default</strong> the reponse contains the processes from the <strong>last 30 days</strong> and with <strong>active status</strong>. </p>
+<p>To get processes with any status (not just the active ones) use <code>allStatus=true</code> URL parameter.</p>
+<p>If you would like to see your processes from all time then use the <code>allStatus=true</code> URL parameter.</p>
+<h3 id="get-process-information">Get-Process information</h3>
+<p>Get process details by its Id.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Processes--id--get">GET /api/Processes/<code>GUID</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"958c1bdd-cd21-48f6-b9ec-c232271adec5"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T16:04:04.2156558Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Exporting words from 1 tag(s) of dataset test..."</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"TagsExportWords"</span></span>,<br>    "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<h3 id="cancel-process">Cancel Process</h3>
+<p>Cancel the process. Only Process with status <code>InProgress</code> can be canceled. The method returns with <code>HTTP/1.1 202 ACCEPTED</code> because it can take time to cancel a process. After it&#39;s accepted, the status of the process will be <code>Cancelling</code>. You have to check periodically that whether the process status is already <code>Canceled</code>.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Processes--id--Cancel-post">POST /api/Processes/<code>GUID</code>/Cancel</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+</blockquote>
+<h5 id="for-the-parameters-explanation-check-the-process-schema-definition-here-definitions-process-">For the parameters explanation check the Process schema definition <a href="#/definitions/Process">here</a></h5>

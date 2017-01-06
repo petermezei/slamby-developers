@@ -1,0 +1,11 @@
+<h2 id="license">License</h2>
+<p>Returns with version, processor, memory and disk information about the API server.</p>
+<h3 id="get-license">Get License</h3>
+<p>Returns back with license information.</p>
+<p><em>Example:</em></p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> licenseManager = <span class="hljs-keyword">new</span> LicenseManager(_configuration);<br><span class="hljs-keyword">var</span> license = <span class="hljs-keyword">await</span> licenseManager.GetLicenseAsync();
+</code></pre>
+<h3 id="change-license">Change License</h3>
+<p>Replace or set your current license with a new one. License is a <code>base64</code> encoded string which is provided by Slamby.</p>
+<pre><code class="lang-cs"><span class="hljs-keyword">var</span> licenseManager = <span class="hljs-keyword">new</span> LicenseManager(_configuration);<br><span class="hljs-keyword">var</span> model = <span class="hljs-keyword">new</span> ChangeLicense() <br>    { <br>        License = <span class="hljs-string">"PExpY2Vuc2U+CiAgPFR5cGU+T3BlblNvdXJjZTwvV...(truncated for brevity)"</span> <br>    };<br><span class="hljs-keyword">var</span> license = <span class="hljs-keyword">await</span> licenseManager.SetLicenseAsync(model);
+</code></pre>
