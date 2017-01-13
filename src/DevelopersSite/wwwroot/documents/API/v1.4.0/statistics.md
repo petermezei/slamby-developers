@@ -4,7 +4,7 @@ Get simple usage statistics of the API.
 
 *Example REQUEST*
 
-> [GET /api/Statictics/2017/01](swagger#operation--api-Status-get)
+> [GET /api/Statistics/2017/01](swagger#operation--api-Status-get)
 
 
 The `year` and the `month` parameters are optional.
