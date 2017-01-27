@@ -1,12 +1,18 @@
 {
   "name": "slamby-developers-site",
   "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp watch-sass"
+  },
   "devDependencies": {
     "bootprint": "^0.10.0",
     "bootprint-openapi": "^0.17.1",
+    "bootstrap-sass": "^3.3.7",
     "bower": "^1.7.9",
     "customize": "^0.8.4",
     "deasync": "^0.1.6",
+    "del": "^2.2.0",
     "findit2": "^2.2.3",
     "github": "^0.2.4",
     "gulp": "^3.9.1",
@@ -17,11 +23,9 @@
     "gulp-util": "^3.0.7",
     "lodash": "^4.12.0",
     "mkdirp": "^0.5.1",
+    "promise": "^7.1.1",
     "rimraf": "^2.5.2",
-    "del": "^2.2.0",
-    "run-sequence": "^1.2.1",
-    "promise": "^7.1.1"
+    "run-sequence": "^1.2.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

@@ -16,7 +16,8 @@ var gulp = require("gulp"),
     runSequence = require('run-sequence'),
     _ = require('lodash'),
     Promise = require('promise'),
-    gutil = require("gulp-util");
+    gutil = require("gulp-util"),
+    sass = require('gulp-sass');
 
 var paths = {
     webroot: "./wwwroot/"
@@ -240,3 +241,15 @@ function getGitContent(github, msg, repoPath, ref, output, basePath) {
         }
     );
 }
+
+// SASS processing
+
+gulp.task('sass', function () {
+    return gulp.src('wwwroot/css/*.scss')
+                .pipe(sass())
+                .pipe(gulp.dest('wwwroot/css/'));
+});
+
+gulp.task('watch-sass', function () {
+    gulp.watch("wwwroot/css/*.scss", ['sass']);
+});

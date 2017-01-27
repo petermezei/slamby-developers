@@ -1,4 +1,4 @@
-﻿.wrapper-docpage {
+.wrapper-docpage {
   min-height: 600px;
   /* hide sidebar sub menus by default */
   /* show sub menu when parent is active */ }
@@ -51,4 +51,3 @@
     .wrapper-docpage .back-to-index a {
       text-decoration: none;
       font-size: 1.2em; }
-
