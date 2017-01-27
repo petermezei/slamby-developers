@@ -1,0 +1,46 @@
+<h2 id="status">Status</h2>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Status-get">GET /api/Status</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">ProcessorCount</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,<br>    "<span class="hljs-attribute">AvailableFreeSpace</span>": <span class="hljs-value"><span class="hljs-number">47895.53</span></span>,<br>    "<span class="hljs-attribute">ApiVersion</span>": <span class="hljs-value"><span class="hljs-string">"0.14.0"</span></span>,<br>    "<span class="hljs-attribute">CpuUsage</span>": <span class="hljs-value"><span class="hljs-number">0.6</span></span>,<br>    "<span class="hljs-attribute">TotalMemory</span>": <span class="hljs-value"><span class="hljs-number">996.08</span></span>,<br>    "<span class="hljs-attribute">FreeMemory</span>": <span class="hljs-value"><span class="hljs-number">36.3</span><br></span>}
+</code></pre>
+<p><code>Available status parameters</code></p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ApiVersion</td>
+<td>Slamby Server API version number.</td>
+</tr>
+<tr>
+<td>ProcessorCount</td>
+<td>Integer. Available processor thread number in your Slamby Server.</td>
+</tr>
+<tr>
+<td>CpuUsage</td>
+<td>Actual CPU usage in percentage. 5 sec average value.</td>
+</tr>
+<tr>
+<td>TotalMemory</td>
+<td>Available memory size in MB.</td>
+</tr>
+<tr>
+<td>FreeMemory</td>
+<td>Currently available free memory in MB. 5 sec average value.</td>
+</tr>
+<tr>
+<td>AvailableFreeSpace</td>
+<td>Available free storage space in MB. 5 sec average value.</td>
+</tr>
+</tbody>
+</table>

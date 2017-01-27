@@ -1,0 +1,238 @@
+<h2 id="document">Document</h2>
+<p>Manage your <strong>documents</strong> easily. Create, edit, remove documents, manage tags and run text analysis.</p>
+<p>Each document is related to a dataset. You have to specify which dataset you want to use in the <code>X-DataSet</code> header by the name of the dataset.</p>
+<blockquote>
+<p><strong>Tip:</strong> If you use any of the Document methods without or an unexisting <code>X-DataSet</code> header you will get a <code>Missing X-DataSet header!</code> error.</p>
+</blockquote>
+<p>Using document endpoint you can:</p>
+<ul>
+<li>Insert single document</li>
+<li>Insert multiple documents</li>
+<li>Acess your documents</li>
+<li>Modify your documents</li>
+<li>Run text analysis</li>
+</ul>
+<blockquote>
+<p><strong>Tip:</strong> Store all the related information - such as text, prices, image URLs - and use powerful queries.</p>
+</blockquote>
+<h3 id="insert-new-document">Insert New Document</h3>
+<p>Insert a new document to a dataset using a predefined schema.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents-post">POST /api/Documents</a></p>
+</blockquote>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,<br>    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Title"</span></span>,<br>    "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br></span>}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 201 CREATED</p>
+</blockquote>
+<h3 id="insert-bulk-documents">Insert Bulk Documents</h3>
+<p>Add multiple documents to a dataset.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents-Bulk-post">POST /api/Documents/Bulk</a></p>
+</blockquote>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">documents</span>": <span class="hljs-value">[{<br>        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Id1"</span></span>,<br>        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Han Solo"</span></span>,<br>        "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>        "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>},<br>    {<br>        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Id2"</span></span>,<br>        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Luke"</span></span>,<br>        "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>        "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>},<br>    {<br>        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Id3"</span></span>,<br>        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Wookies"</span></span>,<br>        "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>        "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>    </span>}]<br></span>}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Results</span>": <span class="hljs-value">[<br>    {<br>      "<span class="hljs-attribute">StatusCode</span>": <span class="hljs-value"><span class="hljs-number">201</span></span>,<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"Id1"</span></span>,<br>      "<span class="hljs-attribute">Error</span>": <span class="hljs-value"><span class="hljs-string">""</span><br>    </span>},<br>    {<br>      "<span class="hljs-attribute">StatusCode</span>": <span class="hljs-value"><span class="hljs-number">201</span></span>,<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"Id2"</span></span>,<br>      "<span class="hljs-attribute">Error</span>": <span class="hljs-value"><span class="hljs-string">""</span><br>    </span>},<br>    {<br>      "<span class="hljs-attribute">StatusCode</span>": <span class="hljs-value"><span class="hljs-number">201</span></span>,<br>      "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"Id3"</span></span>,<br>      "<span class="hljs-attribute">Error</span>": <span class="hljs-value"><span class="hljs-string">""</span><br>    </span>}<br>  ]<br></span>}
+</code></pre>
+<h3 id="get-document">Get Document</h3>
+<p>Get a document from a dataset.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents--id--get">GET /api/Documents/<code>9</code></a></p>
+</blockquote>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,<br>    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Title"</span></span>,<br>    "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Product Description"</span></span>,<br>    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br></span>}
+</code></pre>
+</blockquote>
+<h3 id="edit-document">Edit Document</h3>
+<p>Edit (update) an existing document in a dataset.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents--id--put">PUT /api/Documents/<code>9</code></a></p>
+</blockquote>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,<br>    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Example Modified Product Title"</span></span>,<br>    "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"Example Modified Product Description"</span></span>,<br>    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]<br></span>}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<p>Partial document update is allowed. Only modified data should be specified in this case. The rest of the document will be unchanged.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents--id--put">PUT /api/Documents/<code>9</code></a></p>
+</blockquote>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]<br></span>}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<h3 id="delete-document">Delete Document</h3>
+<p>Delete an existing document in a dataset.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents--id--delete">DELETE /api/Documents/<code>9</code></a></p>
+</blockquote>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<h3 id="copy-to">Copy To</h3>
+<p>Copying documents from a dataset to another one. You can specify the documents by id. You can copy documents to an existing dataset.</p>
+<p>The selected documents will <strong>remain in the source dataset</strong> as well.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents-Copy-post">POST /api/Documents/Copy</a></p>
+</blockquote>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">TargetDataSetName</span>": <span class="hljs-value"><span class="hljs-string">"TARGET_DATASET_NAME"</span></span>,<br>    "<span class="hljs-attribute">DocumentIdList</span>": <span class="hljs-value">[<span class="hljs-string">"10"</span>, <span class="hljs-string">"11"</span>]<br></span>}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"f321abcf-354a-482c-ade4-4d8172f81a40"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-03-16T13:12:15.5520625Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span><br></span>}
+</code></pre>
+<p>If the process is ready then the result of the process will contains a link to a detailed JSON. This JSON contains the result code for every document operation.</p>
+<blockquote>
+<p><strong>Tip:</strong> You can use the <a href="swagger#operation--api-Documents-Sample-post">POST /api/Documents/Sample</a> or the <a href="swagger#operation--api-Documents-Filter--scrollId--post">POST /api/Documents/Filter</a> methods to get document ids easily.</p>
+</blockquote>
+<h3 id="move-to">Move To</h3>
+<p>Moving documents from a dataset to another one. You can specify documents by id. You can move documents to an existing dataset. 
+The selected documents will be <strong>removed from the source dataset</strong>.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents-Move-post">POST /api/Documents/Move</a></p>
+</blockquote>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">TargetDataSetName</span>": <span class="hljs-value"><span class="hljs-string">"TARGET_DATASET_NAME"</span></span>,<br>    "<span class="hljs-attribute">DocumentIdList</span>": <span class="hljs-value">[<span class="hljs-string">"10"</span>, <span class="hljs-string">"11"</span>]<br></span>}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"f321abcf-354a-482c-ade4-4d4433b81a40"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-03-16T13:12:15.5520625Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span><br></span>}
+</code></pre>
+<p>If the process is ready then the result of the process will contains a link to a detailed JSON. This JSON contains the result code for every document operation.</p>
+<blockquote>
+<p><strong>Tip:</strong> You can use the <a href="swagger#operation--api-Documents-Sample-post">POST /api/Documents/Sample</a> or the <a href="#operation--api-Documents-Filter-post">POST /api/Documents/Filter</a> methods to get document ids easily.</p>
+</blockquote>
