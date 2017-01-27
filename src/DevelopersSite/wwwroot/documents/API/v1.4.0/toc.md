@@ -10,4 +10,4 @@
 - [Helper](helper)
 - [License](license)
 - [Maintenance](maintenace)
-- [Endpoints & Models](swagger.html)
+- [Endpoints & Models](swagger)
