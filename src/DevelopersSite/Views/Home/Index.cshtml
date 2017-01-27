@@ -1,43 +1,61 @@
 ﻿@model NewsViewModel
-@*<div class="container">
+
+<section class="main">
+    <div class="container">
         <div class="row">
-            <div class="col-xs-4">
-                <h4>Product Docs</h4>
-                <ul>
-                    <li><a href="/docs/API/">Slamby API</a></li>
-                    <li><a href="/docs/SDK.NET/">Slamby SDK.NET</a></li>
-                    <li><a href="/docs/TAU/">Slamby TAU</a></li>
-                </ul>
+            <div class="col-md-6">
+                <img src="/images/home/stars.svg" alt="" class="img-responsive">
             </div>
-            <div class="col-xs-4">
-                <h4>Tutorials, Guides</h4>
-                <ul>
-                    <li>Category Recommendation</li>
-                    <li>Similar Document Recommendation</li>
-                    <li>Duplicate Detector</li>
-                </ul>
-            </div>
-            <div class="col-xs-4">
-                <h4>Video Tutorials</h4>
-                <ul>
-                    <li><a href="https://www.youtube.com/watch?v=-1TE78i8BAs&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf&index=1" target="_blank">Slamby TAU (0.12.1) Tutorial - Introduction</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=S0H8lufnPng&index=2&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorials - Installation and Server Settings</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=H5_jSZJmTPg&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf&index=3" target="_blank">Slamby TAU (0.12.1) Tutorial - Basics</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=cjdQRfFQd9k&index=4&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - Dataset Managemenet</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=k6Xrr6nmjJ0&index=5&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - Document Management</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=0zhDeW_pQUU&index=6&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - Classifier Service</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=2TwqXjnGWXM&index=7&list=PLbEbVmTCIQiFS-yvgvzKpNb63JMkkgTjf" target="_blank">Slamby TAU (0.12.1) Tutorial - PRC Service</a></li>
-                </ul>
+            <div class="col-md-6">
+                <h1>Slamby API 1.4.0</h1>
+                <p class="lead">The latest Slamby API now available. Improved performance, new awesome features.</p>
+                <p>
+                    <a href="/docs/api" class="btn btn-default">Let's check this</a>
+                </p>
             </div>
         </div>
-        <hr />
-    </div>*@
+    </div>
+</section>
 
+<hr>
 
+<section class="menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-xs-4 guide-image">
+                        <img src="/images/home/documentation.svg" alt="" class="img-responsive">
+                    </div>
+                    <div class="col-xs-8">
+                        <h2>Documentation</h2>
+                        <p class="lead">Start by learning the basics of the Slamby API, and view available resources in our complete API
+                            Reference.</p>
+                        <p><a href="#">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="news-panel">
+                    <h3>News, Updates</h3>
+                    <a href="#" class="read-all pull-right btn btn-default">Read all</a>
+                    <ul class="list-group">
+                        @foreach (var item in Model.News.Count() > 5 ? Model.News.Take(5) : Model.News) {
+                        <li class="list-group-item">
+                            <a href="/news#@(item.Slug)" target="_self">@Html.Raw(item.Title.Rendered)</a>
+                        </li>}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*
 <div class="container-fluid">
     <div class="wrapper">
         <img use-cdn style="width:100%" src="/images/misc/bg_demo_big_half.jpg" />
-    </div>
+</div>
 </div>
 
 <div class="container">
@@ -49,43 +67,13 @@
     </div>
 </div>
 
-@*<div class="container">
-        <div class="wrapper text-center">
-            <div class="col-xs-4 bg-danger">
-                <h4>Slamby API</h4>
-                <p>Lorem Ipsum Dolorem</p>
-            </div>
-            <div class="col-xs-4 bg-info">
-                <h4>.Net SDK</h4>
-                <p>Lorem Ipsum Dolorem</p>
-            </div>
-            <div class="col-xs-4 bg-primary">
-                <h4>Python SDK</h4>
-                <p>Lorem Ipsum Dolorem</p>
-            </div>
-            <div class="col-xs-4 bg-success">
-                <h4>Node.JS SDK</h4>
-                <p>Lorem Ipsum Dolorem</p>
-            </div>
-            <div class="col-xs-4 bg-warning">
-                <h4>PHP SDK</h4>
-                <p>Lorem Ipsum Dolorem</p>
-            </div>
-            <div class="col-xs-4 bg-info">
-                <h4>Slamby TAU</h4>
-                <p>Lorem Ipsum Dolorem</p>
-            </div>
-        </div>
-    </div>*@
-
 <div class="container text-center">
     <div class="wrapper">
         <div class="col-sm-4">
             <i class="fa fa-newspaper-o fa-3x"></i>
             <h4>Newsletter</h4>
             <p>Subscribe to receive our latest developments via e-mail.</p>
-            <button class="btn btn-info" data-toggle="modal" data-target="#SubscriptionForm">Subscribe</button>
-            @Html.Partial("Partial/_SubscriptionModal")
+            <button class="btn btn-info" data-toggle="modal" data-target="#SubscriptionForm">Subscribe</button> @Html.Partial("Partial/_SubscriptionModal")
         </div>
         <div class="col-sm-4">
             <i class="fa fa-linkedin fa-3x"></i>
@@ -109,30 +97,26 @@
             <h3>Recent Updates</h3>
         </div>
         <div class="col-md-12">
-            @if (Model.News.Count() == 0)
-            {
-                <p>Currently there is no news available.</p>
+            @if (Model.News.Count() == 0) {
+            <p>Currently there is no news available.</p>
+            } else {
+            <ul class="list-group">
+                @foreach (var item in Model.News) {
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <a href="/news#@(item.Slug)" target="_self">@Html.Raw(item.Title.Rendered)</a>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <span class="pull-right text-muted">@item.DateFormatted</span>
+                        </div>
+                    </div>
+                </li>
+                }
+            </ul>
+            <div class="pull-right col-md-2 col-md-offset-11">
+                <a href="/News" class="btn btn-info" role="button" target="_self">Read All News</a>
+            </div>
             }
-            else
-            {
-                <ul class="list-group">
-                    @foreach (var item in Model.News)
-                    {
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-sm-6 col-xs-12">
-                                    <a href="/news#@(item.Slug)" target="_self">@Html.Raw(item.Title.Rendered)</a>
-                                </div>
-                                <div class="col-sm-6 col-xs-12">
-                                    <span class="pull-right text-muted">@item.DateFormatted</span>
-                                </div>
-                            </div>
-                        </li>
-                    }
-                </ul>
-                <div class="pull-right col-md-2 col-md-offset-11">
-                    <a href="/News" class="btn btn-info" role="button" target="_self">Read All News</a>
-                </div>
-            }
-    </div>
-</div>
+        </div>
+    </div>*@
