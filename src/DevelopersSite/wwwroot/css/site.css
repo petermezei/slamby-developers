@@ -6552,15 +6552,15 @@ p.lead {
       font-family: slamby-logo;
       color: black;
       margin-right: 5px; }
-  .navbar .menu {
+  .navbar .navbar-left {
     margin-left: 50px; }
-    .navbar .menu li a {
-      color: #484848;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 2.44em; }
-    .navbar .menu li:hover {
-      animation: example 1s forwards; }
+  .navbar .menu li a {
+    color: #484848;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 2.44em; }
+  .navbar .menu li:hover {
+    animation: example 1s forwards; }
 
 @keyframes example {
   from {

@@ -31,14 +31,14 @@
                         <h2>Documentation</h2>
                         <p class="lead">Start by learning the basics of the Slamby API, and view available resources in our complete API
                             Reference.</p>
-                        <p><a href="#">Learn more</a></p>
+                        <p><a href="/docs/api">Learn more</a></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="news-panel">
                     <h3>News, Updates</h3>
-                    <a href="#" class="read-all pull-right btn btn-default">Read all</a>
+                    <a href="/news" class="read-all pull-right btn btn-default">Read all</a>
                     <ul class="list-group">
                         @foreach (var item in Model.News.Count() > 5 ? Model.News.Take(5) : Model.News) {
                         <li class="list-group-item">
