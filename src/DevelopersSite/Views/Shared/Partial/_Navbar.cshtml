@@ -3,20 +3,17 @@
     var currentProduct = ViewBag.CurrentProduct;
 }
 
-@{
-    var result = false;
-    var plusStyle = "";
-    if (ViewBag.IsNavbarTopFixed != null) {
-        result = ViewBag.IsNavbarTopFixed;
-    }
-    if (result) {
-        plusStyle = "<style> body { padding-top: 50px; } </style>";
-    }
+@if (ViewBag.IsNavbarTopFixed == true)
+{
+    <style>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+
 }
 
-@Html.Raw(plusStyle)
-
-<nav class="navbar navbar-default @(@result ? "navbar-fixed-top" : "")">
+<nav class="navbar navbar-default @(ViewBag.IsNavbarTopFixed == true ? "navbar-fixed-top" : "")">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
