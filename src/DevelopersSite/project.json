@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.7.2",
   "dependencies": {
     "Microsoft.AspNetCore.Diagnostics": "1.1.0",
     "Microsoft.AspNetCore.Mvc": "1.1.0",
