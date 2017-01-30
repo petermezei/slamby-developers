@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6523,7 +6523,7 @@ ul li.li-header {
 
 @font-face {
   font-family: slamby-logo;
-  src: url("/css/fonts/slamby-logo.woff"); }
+  src: url("fonts/slamby-logo.woff"); }
 
 body {
   font-family: 'Libre Franklin', sans-serif;
@@ -6615,3 +6615,4 @@ section.footer {
     text-align: center; }
     section.footer .legal p {
       font-size: 12px; }
+

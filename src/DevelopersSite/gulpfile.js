@@ -198,7 +198,7 @@ function getTags(github, msg) {
         });
              
         tagMsg.page++;
-    } while (lastTagsCount == tagMsg.per_page);
+    } while (lastTagsCount === tagMsg.per_page);
 
     return tagNames;
 }

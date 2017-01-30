@@ -2,7 +2,7 @@
 // Bundler & Minifier https://visualstudiogallery.msdn.microsoft.com/9ec27da7-e24b-4d56-8064-fd7e88ac1c40
 
 //Bootstrap Template
-@import '../../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 
 // Swagger styles
 @import 'swagger.scss';
@@ -84,7 +84,7 @@ ul {
 
 @font-face {
     font-family: slamby-logo;
-    src: url('/css/fonts/slamby-logo.woff');
+    src: url('fonts/slamby-logo.woff');
 }
 
 body {
