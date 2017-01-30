@@ -1,0 +1,42 @@
+<h2 id="statistics">Statistics</h2>
+<p>Get simple usage statistics of the API.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Status-get">GET /api/Statistics/2017/01</a></p>
+</blockquote>
+<p>The <code>year</code> and the <code>month</code> parameters are optional.
+If you give a <code>year</code> then you will get the statistics from the given year only.
+If you give a <code>year</code> and a <code>month</code> then you will get the statistics from the given year and the given month only.</p>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Sum</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,<br>  "<span class="hljs-attribute">Statistics</span>": <span class="hljs-value">{<br>    "<span class="hljs-attribute">2017-01</span>": <span class="hljs-value">{<br>      "<span class="hljs-attribute">Actions</span>": <span class="hljs-value">[<br>        {<br>          "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Classifier/Get"</span></span>,<br>          "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">4</span><br>        </span>},<br>        {<br>          "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Status/Get"</span></span>,<br>          "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">2</span><br>        </span>},<br>        {<br>          "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Statistics/Get"</span></span>,<br>          "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">1</span><br>        </span>}<br>      ]</span>,<br>      "<span class="hljs-attribute">Sum</span>": <span class="hljs-value"><span class="hljs-number">7</span><br>    </span>}<br>  </span>}<br></span>}
+</code></pre>
+<p><code>Response object properties</code></p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sum</td>
+<td>The sum of all requests of all time.</td>
+</tr>
+<tr>
+<td>Statistics</td>
+<td>Statistics object (dictionary), describes the usage statistics of periods (months). The keys are the months.</td>
+</tr>
+<tr>
+<td>Statistics[].Sum</td>
+<td>The sum of all requests count in the period of the current statistics object.</td>
+</tr>
+<tr>
+<td>Statistics[].Actions</td>
+<td>List of actions. An action is an event which is measured by the statistics. Currently it is equivalent with the API endpoints.</td>
+</tr>
+</tbody>
+</table>

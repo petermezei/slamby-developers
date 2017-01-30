@@ -1,0 +1,744 @@
+<h2 id="services">Services</h2>
+<p>Slamby introduces services. You can create a data processing service from the available service templates. Manage your data processing with services, run different tests, run more data management services parallelly.</p>
+<p><strong>Service definition:</strong> a data management service with custom settings, dedicated resources, and available API endpoint.</p>
+<p><em>Available service types:</em></p>
+<ul>
+<li>Text classification service</li>
+<li>Similar product recommendation service</li>
+</ul>
+<p>With services you can:</p>
+<ul>
+<li>Create a service</li>
+<li>Get your services list</li>
+<li>Get a service</li>
+<li>Remove a service</li>
+<li>Manage processes</li>
+<li>Create category recommendation engine</li>
+<li>Create similar product recommendation engine</li>
+</ul>
+<blockquote>
+<p><strong>Tip:</strong> Unlike Id Service Alias is defined by the user and it is also unique among services. Alias name should be URL-encoded (e.g.: &quot;My Service&quot; -&gt; &quot;My%20Service&quot;) when used in URL.</p>
+</blockquote>
+<h3 id="get-services">Get Services</h3>
+<p>You can query general information about services. </p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-get">GET /api/Services</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">[<br>    {<br>        "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"57c845dc-6aa4-475c-bbf2-0d682f471f32"</span></span>,<br>        "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Example name of a service"</span></span>,<br>        "<span class="hljs-attribute">Alias</span>": <span class="hljs-value"><span class="hljs-string">"The Service"</span><br>        <span class="hljs-string">"Description"</span>: <span class="hljs-string">"This is an example service description"</span></span>,<br>        "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"New"</span></span>,<br>        "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Classifier"</span></span>,<br>        "<span class="hljs-attribute">ProcessIdList</span>": <span class="hljs-value">[<br>            <span class="hljs-string">"e251dbbf-04ff-4d34-a959-90dc4a602142"</span>,<br>            <span class="hljs-string">"d335edaf-354a-482c-ade4-4d8172f81a40"</span><br>        ]</span>,<br>        "<span class="hljs-attribute">ActualProcessId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>    </span>},<br>    {<br>        "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"02f92528-5ae3-4496-9dd1-e3d69327a5a0"</span></span>,<br>        "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Example name of a service 2"</span></span>,<br>        "<span class="hljs-attribute">Alias</span>": <span class="hljs-value"><span class="hljs-string">"The Service 2"</span><br>        <span class="hljs-string">"Description"</span>: <span class="hljs-string">"This is an example service description"</span></span>,<br>        "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"New"</span></span>,<br>        "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Prc"</span></span>,<br>        "<span class="hljs-attribute">ProcessIdList</span>": <span class="hljs-value">[            <br>        ]</span>,<br>        "<span class="hljs-attribute">ActualProcessId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>    </span>}<br>]
+</code></pre>
+<h3 id="get-service">Get Service</h3>
+<p>You can get general information about a service using the Id or Alias of the service. </p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services--id--get">GET /api/Services/<code>GUID or Alias</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"57c845dc-6aa4-475c-bbf2-0d682f471f32"</span></span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Example name of a service"</span></span>,<br>    "<span class="hljs-attribute">Alias</span>": <span class="hljs-value"><span class="hljs-string">"The Service"</span><br>    <span class="hljs-string">"Description"</span>: <span class="hljs-string">"This is an example service description"</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"New"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Classifier"</span></span>,<br>    "<span class="hljs-attribute">ProcessIdList</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"e251dbbf-04ff-4d34-a959-90dc4a602142"</span>,<br>        <span class="hljs-string">"d335edaf-354a-482c-ade4-4d8172f81a40"</span><br>    ]</span>,<br>    "<span class="hljs-attribute">ActualProcessId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<h3 id="create-new-service">Create New Service</h3>
+<p>Create a new Service</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-post">POST /api/Services</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Example name of a service"</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"This is an example service description"</span></span>,<br>    "<span class="hljs-attribute">Type</span>" : <span class="hljs-value"><span class="hljs-string">"Classifier"</span></span>,<br>    "<span class="hljs-attribute">Alias</span>" : <span class="hljs-value"><span class="hljs-string">"The Service"</span><br></span>}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 201 CREATED</p>
+</blockquote>
+<h3 id="update-service">Update Service</h3>
+<p>You can update only the Name and the Description field. If specified Alias exists on another Service then it will be removed first.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services--id--put">PUT /api/Services/<code>GUID or Alias</code></a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Updated example name of a service"</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"This is an updated example service description"</span></span>,<br>    "<span class="hljs-attribute">Alias</span>": <span class="hljs-value"><span class="hljs-string">"My Updated Service"</span><br></span>}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 CREATED</p>
+</blockquote>
+<h3 id="remove-service">Remove Service</h3>
+<p>You remove a service anytime. If it&#39;s in Activated status then it will be Deactivated first. If it&#39;s in Busy status then it will be canceled first. </p>
+<blockquote>
+<p><code>WARNING:</code> If you use Alias for deletion then make sure the Alias is on the right service!</p>
+</blockquote>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services--id--delete">DELETE /api/Services/<code>GUID or Alias</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<h2 id="classifier-service">Classifier Service</h2>
+<p>Service for text classification. Create a classifier service from a selected dataset, specify your settings and use this service API endpoint to classify your incoming text.</p>
+<blockquote>
+<p>Currently Slamby provides <code>Slamby Twister</code> as a highly accurate classification algorithm designed for e-commerce market.</p>
+</blockquote>
+<h3 id="get-classifier-service">Get Classifier Service</h3>
+<p>You can get classifier specified information about a classifier service with the Id of the service</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Classifier--id--get">GET /api/Services/Classifier/<code>GUID or Alias</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"83326e75-dd16-4e5c-a66d-5ea5197bd8e0"</span></span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Example name of a classifier service"</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"This is an example classifier service description"</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"New"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Classifier"</span></span>,<br>    "<span class="hljs-attribute">ProcessIdList</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">ActualProcessId</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">PrepareSettings</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">ActivateSettings</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<h3 id="prepare-classifier-service">Prepare Classifier Service</h3>
+<p>Training Process Steps:</p>
+<ol>
+<li>Give a suitable name to the service,</li>
+<li>Set the ngram values,</li>
+<li>Provide the tag ids you are going to use during the training,</li>
+<li>Start the training process.</li>
+</ol>
+<blockquote>
+<p>For Training process Slamby is using <code>Slamby Twister</code> as its own classification algorithm. </p>
+</blockquote>
+<p>This request is a long running task so the API do it in an async way. Therefore the response is a Process.</p>
+<blockquote>
+<p><code>N-gram settings</code>: each dataset has an n-gram setting. For set the required n-gram the minimum value is 1, the maximum value equals the maximum n-gram number of the given dataset. Using a [1,2,3] n-gram settings means during the training process the classifier is going to create 1,2,3 n-gram dictionaries. <a href="https://en.wikipedia.org/wiki/N-gram">Learn more about N-gram</a></p>
+</blockquote>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Classifier--id--Prepare-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/Prepare</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "DataSetName" : "test dataset",<br>    "NGramList": [1,2],<br>    "TagIdList": ["tag1Id","tag2Id"],<br>    "CompressLevel": 1,<br>    "CompressSettings": {...}<br>}
+</code></pre>
+<p><code>Settings</code> explanation</p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Name</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataSetName</td>
+<td>Dataset as a training database, as a source database.</td>
+</tr>
+<tr>
+<td>NGramList</td>
+<td>Ngram model for prepare process.</td>
+</tr>
+<tr>
+<td>TagIdList</td>
+<td>Tag ID list that will be used during the training. Default value is <code>null</code> that means all the lead nodes.</td>
+</tr>
+<tr>
+<td>CompressLevel</td>
+<td>Built-in compress function. During the training process compress makes the training faster and more efficient. The output files are smaller, that makes the classification process faster. Using compress a smaller server size can serve the same training dataset as a bigger machine. CompressLevel is a built-in compress function, values can be: 1, 2 or 3. 1 is a smaller, 2 is a medium compress level, 3 is a higher compress level.</td>
+</tr>
+<tr>
+<td>CompressSettings</td>
+<td>Customized compress process. Instead of using predefined compress levels, you can use more detailed settings. For this please contact our support.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"d335edaf-354a-482c-ade4-4d8172f81a40"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-03-16T13:12:15.5520625Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span><br></span>}
+</code></pre>
+<h3 id="activate-classifier-service">Activate Classifier Service</h3>
+<p>Each service has two statuses: active, deactive. When a preparation/training process is ready, the service has a deactivated status. A deactivated service is ready, but it&#39;s not loaded into memory and the API is not able to process the incoming requests. To use a service set the status to Activated. After the activation process, the service is ready to use, all the required files are loaded and stored in memory, the API endpoint is active.</p>
+<p>This request can be a long running task so the API do it in an async way. Therefore the response is a Process.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Classifier--id--Activate-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/Activate</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">NGramList</span>": <span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]</span>,<br>    "<span class="hljs-attribute">EmphasizedTagIdList</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">TagIdList</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+</blockquote>
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"d46850e8-1a22-43f5-b304-d22e6b7e5e6a"</span></span>,<br>  "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-28T10:53:36.9553132Z"</span></span>,<br>  "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>  "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>  "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Activating Classifier service Example name of a classifier service..."</span></span>,<br>  "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"ClassifierActivate"</span></span>,<br>  "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<h3 id="deactivate-classifier-service">Deactivate Classifier Service</h3>
+<p>When a service is not needed for continuous usage you can deactivate it. After deactivating a service, all the settings and files remain, but they are not using any resources (memory, cores). You can store your deactivated services and activate them anytime.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Classifier--id--Deactivate-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/Deactivate</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<h3 id="recommend">Recommend</h3>
+<p>Built-in text classification engine. Uses the prepared Classifier dictionaries and calculations. High speed and classification capability. Built-in n-gram analyzer.</p>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Classifier--id--Recommend-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/Recommend</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Text</span>": <span class="hljs-value"><span class="hljs-string">"Lorem Ipsum Dolorem"</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,<br>    "<span class="hljs-attribute">UseEmphasizing</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,<br>    "<span class="hljs-attribute">NeedTagInResults</span>": <span class="hljs-value"><span class="hljs-literal">true</span><br></span>}
+</code></pre>
+<p><em>Example Response</em></p>
+<pre><code class="lang-json">[<br>    {<br>        "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"324"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.35175663155586434</span></span>,<br>        "<span class="hljs-attribute">Tag</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"324"</span></span>,<br>            "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Tag name"</span></span>,<br>            "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-string">"16"</span></span>,<br>            "<span class="hljs-attribute">Properties</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>        </span>}<br>    </span>},<br>    {<br>        "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"232"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.30277479057126688</span></span>,<br>        "<span class="hljs-attribute">Tag</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"232"</span></span>,<br>            "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Tag name"</span></span>,<br>            "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,<br>            "<span class="hljs-attribute">Properties</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>        </span>}<br>    </span>}<br>]
+</code></pre>
+<h4 id="emphasizing">Emphasizing</h4>
+<p>During the recommendation process, if there are any emphasized tag in the TOP N result list then Slamby checks if the given document contains the name of the emphasized tag.
+If yes, then Slamby changes the order of the recommended tags and moves the emphasized results to the first place.
+If there are more than one emphasized tag on the list that meeting with the criteria then all of them will be moved to the top (with keeping their orders).
+If the <code>IsEmphasized</code> parameter is true in a result element, it means that the actual result was emphasized. The score is the original in each case.
+With the usage of the score, the original order can be restored anytime.</p>
+<blockquote>
+<p><strong>Tip:</strong> You have to define the emphasized tags during the activation of the service </p>
+</blockquote>
+<h3 id="export-dictionaries">Export dictionaries</h3>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Classifier--id--ExportDictionaries-post">POST /api/Services/Classifier/<code>GUID or Alias</code>/ExportDictionaries</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">NGramList</span>": <span class="hljs-value">[<span class="hljs-number">1</span>]</span>,<br>    "<span class="hljs-attribute">TagIdList</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> If you skip the <code>TagIdList</code> or set it to <code>null</code> then the API will use all the leaf tags</p>
+</blockquote>
+<p><em>Example Response</em></p>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"345e1c79-dc78-427f-8ad1-facce75f6ae3"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T13:29:15.3728991Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T13:29:39.3144202Z"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Exporting dictionaries from Classifier service prc..."</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"Finished"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"ClassifierExportDictionaries"</span></span>,<br>    "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-string">"Successfully exported dictionaries from Classifier service prc!\nExport file can be download from here: https://api.slamby.com/demo-api/files/345e1c79-dc78-427f-8ad1-facce75f6ae3.zip"</span><br></span>}
+</code></pre>
+<h2 id="prc-service">Prc Service</h2>
+<p>Similar product/document recommendation engine.</p>
+<h3 id="get-prc-service">Get Prc Service</h3>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Prc--id--get">GET /api/Services/Prc/<code>GUID or Alias</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">PrepareSettings</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">ActivateSettings</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"996f91f4-f1ca-428b-af1a-929ccf3b0243"</span></span>,<br>    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"prc"</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"New"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Prc"</span></span>,<br>    "<span class="hljs-attribute">ProcessIdList</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ActualProcessId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<h3 id="prepare-prc-service">Prepare Prc Service</h3>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Prc--id--Prepare-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Prepare</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">DataSetName</span>" : <span class="hljs-value"><span class="hljs-string">"test dataset"</span></span>,<br>    "<span class="hljs-attribute">TagIdList</span>": <span class="hljs-value">[<span class="hljs-string">"tag1Id"</span>,<span class="hljs-string">"tag2Id"</span>]<br></span>}
+</code></pre>
+<p><code>Parameter List</code>:</p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataSetName</td>
+<td>Source dataset that will be the part of the preparation.</td>
+</tr>
+<tr>
+<td>TagIdList</td>
+<td>Available tag ids from the source dataset that will be analyzed and stored during the preparation process. Using a PRC Service you will be able to use just the prepared tags.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"ceed2045-70fb-4785-b483-aadb9bf9a992"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T13:09:49.6032716Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Preparing Prc service prc..."</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"PrcPrepare"</span></span>,<br>    "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-string">""</span><br></span>}
+</code></pre>
+<h3 id="activate-prc-service">Activate Prc Service</h3>
+<p>This request can be a long running task so the API do it in an async way. Therefore the response is a Process.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Prc--id--Activate-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Activate</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">FieldsForRecommendation</span>": <span class="hljs-value">[<span class="hljs-string">"title"</span>]<br></span>}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+</blockquote>
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"181b445c-3c91-44bb-bcf7-759a7e40a98c"</span></span>,<br>  "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-28T10:49:52.5726793Z"</span></span>,<br>  "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>  "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>  "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Activating Prc service prc..."</span></span>,<br>  "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"PrcActivate"</span></span>,<br>  "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<h3 id="index-on-prc-service">Index on PRC Service</h3>
+<p>After PRC Service Activation the service is available for real-time analysis that might take time. For real-time quick analysis, you can use PRC Index function. It has 2 main part: a first full index, then a reputable partial index.</p>
+<p>During the indexing process, PRC Index analyze all the available documents inside the source dataset and store the results in an index database. Using PRC Index, a quick real-time analysis is available.</p>
+<h4 id="full-index">Full Index</h4>
+<p>First index stage. After a PRC Service is activated its ready for text analysis. To boost its speed we suggest using PRC Index. During the first full index, using the available PRC Service, your server analysis all of your documents and save the results in an index database.</p>
+<h4 id="partial-index">Partial Index</h4>
+<p>When a first full index is ready, you can synchronize your index dataset by partial index update. Using partial index process, just the new documents will be analyzed and stored. We suggest using partial PRC Index frequently.</p>
+<h3 id="deactivate-prc-service">Deactivate Prc Service</h3>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Prc--id--Deactivate-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Deactivate</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<h3 id="recommend-prc-">Recommend (PRC)</h3>
+<p>When a PRC service is activated use it for matchmaking. The basic method is <code>recommend</code>. For start pick a text for analysis and send it to your PRC service. You can identify your service using either <code>service id</code> or <code>service alias</code>.</p>
+<p>Basic algorithm:</p>
+<ol>
+<li><p>Read input text,</p>
+</li>
+<li><p>Analyzing the text in the context of the required tag,</p>
+</li>
+<li><p>Picking the meaningful keywords,</p>
+</li>
+<li><p>Run a pre-search query using the given filter object,</p>
+</li>
+<li><p>Start a powerful search in the given dataset part,</p>
+</li>
+<li><p>Run a post-weighting process on the result,</p>
+</li>
+<li><p>Returns the most similar documents from the given dataset.</p>
+</li>
+</ol>
+<p>Typical usage:</p>
+<ul>
+<li><p>Matchmaking,</p>
+</li>
+<li><p>Keyword extraction,</p>
+</li>
+<li><p>Duplicate detection.</p>
+</li>
+</ul>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Prc--id--Recommend-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Recommend</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Text</span>": <span class="hljs-value"><span class="hljs-string">"Lorem Ipsum Dolorem"</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,<br>    "<span class="hljs-attribute">Filter</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">TagIdList</span>" : <span class="hljs-value">[<span class="hljs-string">"1"</span>]</span>,<br>        "<span class="hljs-attribute">Query</span>" : <span class="hljs-value"><span class="hljs-string">"status:1 AND title:michael"</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">Weights</span>": <span class="hljs-value">[<br>        {<br>            "<span class="hljs-attribute">Query</span>": <span class="hljs-value"><span class="hljs-string">"price&gt;1000"</span></span>,<br>            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">7</span><br>        </span>},<br>        {<br>            "<span class="hljs-attribute">Query</span>": <span class="hljs-value"><span class="hljs-string">"lang:84"</span></span>,<br>            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">9</span><br>        </span>}<br>    ]</span>,<br>    "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>    "<span class="hljs-attribute">NeedDocumentInResult</span>": <span class="hljs-value"><span class="hljs-literal">true</span><br></span>}
+</code></pre>
+<p><em>Example Response</em></p>
+<pre><code class="lang-json">[<br>    {<br>        "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"1777237"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.89313365295595715</span></span>,<br>        "<span class="hljs-attribute">Document</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1777237"</span></span>,<br>            "<span class="hljs-attribute">tag_id</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Lorem"</span></span>,<br>            "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"</span><br>        </span>}<br>    </span>},<br>    {<br>        "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"6507461"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.7894283811358983</span></span>,<br>        "<span class="hljs-attribute">Document</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">ad_id</span>": <span class="hljs-value"><span class="hljs-string">"6507461"</span></span>,<br>            "<span class="hljs-attribute">tag_id</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Duis aute irure dolorem"</span></span>,<br>            "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</span><br>        </span>}<br>    </span>}<br>]
+</code></pre>
+<p><code>Request parameters</code></p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text</td>
+<td>Text to analyze. Recommend method analyses this given text.</td>
+</tr>
+<tr>
+<td>Count</td>
+<td>Result document number in response.</td>
+</tr>
+<tr>
+<td>Filter</td>
+<td>Not required. Filter object. We can use each available field from the dataset to pre-filter the potential result documents before matchmaking.</td>
+</tr>
+<tr>
+<td>Weights</td>
+<td>Not required. Weights object. We can use each available dataset field, a preferred value and a weighted score between 0 and 10 to boost the result.</td>
+</tr>
+<tr>
+<td>TagId</td>
+<td>Matchmaking within this given tag. Not required. Once it is given, the results will be from this tagId. Once it&#39;s empty, Slamby will analyze and predict the most appropriate tag, but the results will be from the entire dataset.</td>
+</tr>
+<tr>
+<td>NeedDocumentInResult</td>
+<td><code>true</code> or <code>false</code>, when it true result documents can be found in the response.</td>
+</tr>
+</tbody>
+</table>
+<p><code>Filter Object</code></p>
+<p>Use it for pre-filter your potential documents before matchmaking. More precise results, custom filters, higher performance.</p>
+<p><em>Filter Object Structure</em></p>
+<pre><code class="lang-JSON">{<br>    "<span class="hljs-attribute">Query</span>":<span class="hljs-value"><span class="hljs-string">"fieldName:fieldValue"</span><br></span>}
+</code></pre>
+<p><code>Demo Filter Object</code></p>
+<pre><code class="lang-JSON">{<br>    "<span class="hljs-attribute">Query</span>":<span class="hljs-value"><span class="hljs-string">"status:active"</span><br></span>}
+</code></pre>
+<p><code>Weights Object</code></p>
+<p>Use it for boosting your results. You can access to each available document field, set custom values and weights.</p>
+<p><em>Weights Object Structure</em></p>
+<pre><code class="lang-JSON">[<br>    {<br>        "Query": "fieldName:targetValue",<br>        "value": "weight between 0-10"<br>    },<br>    {<br>        "Query": "fieldName:targetValue",<br>        "value": "weight between 0-10"<br>    },<br>    {<br>        ...<br>    }<br>]
+</code></pre>
+<p><code>Demo Weight Query</code></p>
+<pre><code class="lang-JSON">[<br>    {<br>        "<span class="hljs-attribute">Query</span>": <span class="hljs-value"><span class="hljs-string">"city:Budapest"</span></span>,<br>        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"7"</span><br>    </span>},<br>    {<br>        "<span class="hljs-attribute">Query</span>": <span class="hljs-value"><span class="hljs-string">"position:engineer"</span></span>,<br>        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"9"</span><br>    </span>}<br>]
+</code></pre>
+<p><code>Response parameters</code></p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DocumentId</td>
+<td></td>
+</tr>
+<tr>
+<td>Score</td>
+<td>Result score between 0 and 2. It reflects a relevance order between the documents in ASC order. Score range 0-0.99 means the result documents have many meaningful words in common, but not all the meaningful words match. Score 1 means all the meaningful words match, potentially duplicate documents. Score range 1-2 means the result documents contains the meaningful words more frequently than the source text.</td>
+</tr>
+<tr>
+<td>Document Object</td>
+<td>When <code>NeedDocumentInResult</code> is true, this is the complete document object we store.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="keywords-extraction">Keywords Extraction</h3>
+<p>With this function, you can easily extract the relevant keywords (according to the given tag) from your text, with the help of PRC service.</p>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Prc--id--Keywords-post">POST /api/Services/Prc/<code>GUID</code>/Keywords?isStrict=false</a></p>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Text</span>": <span class="hljs-value"><span class="hljs-string">"Lorem Ipsum Dolorem"</span></span>,<br>    "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span><br></span>}
+</code></pre>
+</blockquote>
+<p><code>Request parameters</code></p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text</td>
+<td>Text to analyze. Keywords method analyses this given text.</td>
+</tr>
+<tr>
+<td>TagId</td>
+<td>Keywords extraction within this given tag. Not required. Once it is given, the results will be from this tagId. Once it&#39;s empty, Slamby will analyze and predict the most appropriate tag.</td>
+</tr>
+<tr>
+<td>IsStrict (query parameter)</td>
+<td><code>true</code> or <code>false</code>, when it true then you will get lesser keywords. The score limit is stricter. The default value is <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example Response</em></p>
+<pre><code class="lang-json">[<br>  {<br>    "<span class="hljs-attribute">Word</span>": <span class="hljs-value"><span class="hljs-string">"lorem"</span></span>,<br>    "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">75.457626224664608</span><br>  </span>},<br>  {<br>    "<span class="hljs-attribute">Word</span>": <span class="hljs-value"><span class="hljs-string">"ipsum"</span></span>,<br>    "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">40.333326695449692</span><br>  </span>}<br>]
+</code></pre>
+<h3 id="export-dictionaries">Export dictionaries</h3>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Prc--id--ExportDictionaries-post">POST /api/Services/Prc/<code>GUID or Alias</code>/ExportDictionaries</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">TagIdList</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> If you skip the <code>TagIdList</code> or set it to <code>null</code> then the API will use all the leaf tags</p>
+</blockquote>
+<p><em>Example Response</em></p>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"345e1c79-dc78-427f-8ad1-facce75f6ae3"</span></span>,<br>    "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T13:29:15.3728991Z"</span></span>,<br>    "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"2016-04-18T13:29:39.3144202Z"</span></span>,<br>    "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>    "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Exporting dictionaries from Prc service prc..."</span></span>,<br>    "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"Finished"</span></span>,<br>    "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"PrcExportDictionaries"</span></span>,<br>    "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>    "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-string">"Successfully exported dictionaries from Prc service prc!\nExport file can be download from here: https://api.slamby.com/demo-api/files/345e1c79-dc78-427f-8ad1-facce75f6ae3.zip"</span><br></span>}
+</code></pre>
+<h3 id="index">Index</h3>
+<p>Built-in index engine for PRC service. When you have a prepared PRC service, you can run index process to analyze all the available matching results and store it in an index database. When the indexing process finished you can use PRC <code>recommend by id</code> method.</p>
+<p>Two kinds of index available: first start a full index then use the partial index to update your index database with smaller dataset changes.</p>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Prc--id--Index-post">POST /api/Services/Prc/<code>GUID or Alias</code>/Index</a></p>
+</blockquote>
+<pre><code class="lang-JSON">{<br>    "<span class="hljs-attribute">Filter</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">Query</span>" : <span class="hljs-value"><span class="hljs-string">"status:active"</span></span>,<br>        "<span class="hljs-attribute">TagIdList</span>": <span class="hljs-value">[<span class="hljs-string">"tag1Id"</span>,<span class="hljs-string">"tag2Id"</span>]<br>    </span>}<br></span>}
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> If you skip the <code>TagIdList</code> or set it to <code>null</code> then the API will use all the <em>prepared tags</em>.</p>
+</blockquote>
+<p><em>Example Response</em></p>
+<blockquote>
+<p>HTTP/1.1 202 Accepted</p>
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"f8e8860b-9e40-4d75-be57-a1f36fdb3c1e"</span></span>,<br>  "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-08-17T13:19:31.6187032Z"</span></span>,<br>  "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>  "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>  "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Indexing Prc service sampla_dataset..."</span></span>,<br>  "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"PrcIndex"</span></span>,<br>  "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+</blockquote>
+<h3 id="index-partial">Index Partial</h3>
+<p>Partial indexing all the documents modified since last <code>Index</code> or <code>IndexPartial</code> call. It can call after an <code>Index</code> once called.</p>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Prc--id--IndexPartial-post">POST /api/Services/Prc/<code>GUID or Alias</code>/IndexPartial</a></p>
+</blockquote>
+<p><em>Example Response</em></p>
+<blockquote>
+<p>HTTP/1.1 202 Accepted</p>
+</blockquote>
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"07499fad-6bec-4c66-a2bf-065ae2e7d853"</span></span>,<br>  "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2016-08-17T13:24:47.0345313Z"</span></span>,<br>  "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>  "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>  "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Partial indexing Prc service sampla_dataset..."</span></span>,<br>  "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"PrcIndexPartial"</span></span>,<br>  "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<h3 id="recommend-by-id">Recommend By Id</h3>
+<p>PRC Recommend method using a predefined index database. To use it you need a <code>DocumentId</code> to identify the source document; all the other fields are the same like using <code>Recommend</code> endpoint.</p>
+<p><em>Example Request</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Prc--id--RecommendById-post">POST /api/Services/Prc/<code>GUID or Alias</code>/RecommendById</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"987654"</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,<br>    "<span class="hljs-attribute">Filter</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">Weights</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>    "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>    "<span class="hljs-attribute">NeedDocumentInResult</span>": <span class="hljs-value"><span class="hljs-literal">true</span><br></span>}
+</code></pre>
+<blockquote>
+<p>When <code>TagId</code> is null, the API server predicts the most suitable tag using the source document.</p>
+</blockquote>
+<p><em>Example Response</em></p>
+<pre><code class="lang-json">[<br>    {<br>        "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"1777237"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.89313365295595715</span></span>,<br>        "<span class="hljs-attribute">Document</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1777237"</span></span>,<br>            "<span class="hljs-attribute">tag_id</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Lorem"</span></span>,<br>            "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"</span><br>        </span>}<br>    </span>},<br>    {<br>        "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"6507461"</span></span>,<br>        "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.7894283811358983</span></span>,<br>        "<span class="hljs-attribute">Document</span>": <span class="hljs-value">{<br>            "<span class="hljs-attribute">ad_id</span>": <span class="hljs-value"><span class="hljs-string">"6507461"</span></span>,<br>            "<span class="hljs-attribute">tag_id</span>": <span class="hljs-value"><span class="hljs-string">"tag1Id"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Duis aute irure dolorem"</span></span>,<br>            "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</span><br>        </span>}<br>    </span>}<br>]
+</code></pre>
+<h2 id="search-service">Search Service</h2>
+<p>Slamby tuned Search Engine.</p>
+<h3 id="get-search-service">Get Search Service</h3>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Search--id--get">GET /api/Services/Search/<code>GUID or Alias</code></a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">PrepareSettings</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>  "<span class="hljs-attribute">ActivateSettings</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"88c4a687-a268-40a5-bccb-dc4776b98c61"</span></span>,<br>  "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"Search Service"</span></span>,<br>  "<span class="hljs-attribute">Alias</span>": <span class="hljs-value"><span class="hljs-string">"search"</span></span>,<br>  "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Search Service for test"</span></span>,<br>  "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"New"</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Search"</span></span>,<br>  "<span class="hljs-attribute">ProcessIdList</span>": <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">ActualProcessId</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<h3 id="prepare-search-service">Prepare Search Service</h3>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Search--id--Prepare-post">POST /api/Services/Search/<code>GUID or Alias</code>/Prepare</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">DataSetName</span>" : <span class="hljs-value"><span class="hljs-string">"test-dataset"</span><br></span>}
+</code></pre>
+<p><code>Parameter List</code>:</p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataSetName</td>
+<td>The name of the DataSet in which this service will search.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+</blockquote>
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"e7803992-0aa0-441d-8462-2f3cad07d899"</span></span>,<br>  "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2017-01-27T14:34:44.516776Z"</span></span>,<br>  "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>  "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>  "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Preparing Search service Search Service"</span></span>,<br>  "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"SearchPrepare"</span></span>,<br>  "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<h3 id="activate-search-service">Activate Search Service</h3>
+<p>This request is not really a long running task but in the future it can be so the API do it in an async way. Therefore the response is a Process.
+During the Prepare step, the API trying to get the best parameters for the selected DataSet.
+So if you get the Service details after the preparing operation, you can get a recommended Activation settings.
+If you would like to Activate the Service with those calculated default parameters, then you can just send an empty object.</p>
+<p><em>Example REQUEST with calculated default settings</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Search--id--Activate-post">POST /api/Services/Search/<code>GUID or Alias</code>/Activate</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>}
+</code></pre>
+<p><em>Example REQUEST with manual settings</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Search--id--Activate-post">POST /api/Services/Search/<code>GUID or Alias</code>/Activate</a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">AutoCompleteSettings</span>": <span class="hljs-value">{<br>      "<span class="hljs-attribute">Confidence</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,<br>      "<span class="hljs-attribute">MaximumErrors</span>": <span class="hljs-value"><span class="hljs-number">0.5</span></span>,<br>      "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">3</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">SearchSettings</span>": <span class="hljs-value">{<br>      "<span class="hljs-attribute">Filter</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>      "<span class="hljs-attribute">UseDefaultFilter</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,<br>      "<span class="hljs-attribute">Weights</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>      "<span class="hljs-attribute">UseDefaultWeights</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,<br>      "<span class="hljs-attribute">ResponseFieldList</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"subject"</span>,<br>        <span class="hljs-string">"body"</span>,<br>        <span class="hljs-string">"id"</span>,<br>        <span class="hljs-string">"category"</span><br>      ]</span>,<br>      "<span class="hljs-attribute">SearchFieldList</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"subject"</span>,<br>        <span class="hljs-string">"body"</span><br>      ]</span>,<br>      "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Match"</span></span>,<br>      "<span class="hljs-attribute">CutOffFrequency</span>": <span class="hljs-value"><span class="hljs-number">0.001</span></span>,<br>      "<span class="hljs-attribute">Fuzziness</span>": <span class="hljs-value">-<span class="hljs-number">1</span></span>,<br>      "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,<br>      "<span class="hljs-attribute">Operator</span>": <span class="hljs-value"><span class="hljs-string">"OR"</span></span>,<br>      "<span class="hljs-attribute">Order</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">ClassifierSettings</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"classifier_alias"</span></span>,<br>        "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">3</span><br>    </span>}<br></span>}
+</code></pre>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 202 ACCEPTED</p>
+</blockquote>
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"da6d2231-7715-41e5-8dc3-c4ccaea56fb2"</span></span>,<br>  "<span class="hljs-attribute">Start</span>": <span class="hljs-value"><span class="hljs-string">"2017-01-27T14:39:29.481085Z"</span></span>,<br>  "<span class="hljs-attribute">End</span>": <span class="hljs-value"><span class="hljs-string">"0001-01-01T00:00:00"</span></span>,<br>  "<span class="hljs-attribute">Percent</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,<br>  "<span class="hljs-attribute">Description</span>": <span class="hljs-value"><span class="hljs-string">"Activating Search service Search Service"</span></span>,<br>  "<span class="hljs-attribute">Status</span>": <span class="hljs-value"><span class="hljs-string">"InProgress"</span></span>,<br>  "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"ClassifierActivate"</span></span>,<br>  "<span class="hljs-attribute">ErrorMessages</span>": <span class="hljs-value">[]</span>,<br>  "<span class="hljs-attribute">ResultMessage</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<p><code>Request parameters</code></p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AutoCompleteSettings</td>
+<td>Not required. AutoCompleteSettings object. The AutoComplete settings. The AutoComplete is using the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters-phrase.html">ElasticSearch Phrase Suggester</a>. Find detailed description below.</td>
+</tr>
+<tr>
+<td>SearchSettings</td>
+<td>Not required. The Search settings. The search is using ElasticSearch MATCH or QUERYSTRING search. Depends on the Type setting. Find detailed description below.</td>
+</tr>
+<tr>
+<td>ClassifierSettings</td>
+<td>The related Classifier Settings. Find detailed description below.</td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/>
+<code>AutoCompleteSettings Object</code></p>
+<p><em>AutoCompleteSettings Object Structure</em></p>
+<pre><code class="lang-JSON">{<br>    "<span class="hljs-attribute">Confidence</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,<br>    "<span class="hljs-attribute">MaximumErrors</span>": <span class="hljs-value"><span class="hljs-number">0.5</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">3</span><br></span>}
+</code></pre>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confidence</td>
+<td>The confidence level defines a factor applied to the input phrases score which is used as a threshold for other suggest candidates. Only candidates that score higher than the threshold will be included in the result. For instance a confidence level of 1.0 will only return suggestions that score higher than the input phrase. If set to 0.0 the top N candidates are returned. The default is 1.0.</td>
+</tr>
+<tr>
+<td>MaximumErrors</td>
+<td>The maximum percentage of the terms that at most considered to be misspellings in order to form a correction. This method accepts a float value in the range [0..1) as a fraction of the actual query terms or a number &gt;=1 as an absolute number of query terms. The default is set to 1.0 which corresponds to that only corrections with at most 1 misspelled term are returned.</td>
+</tr>
+<tr>
+<td>Count</td>
+<td>The number of candidates that are generated for each individual query term. Low numbers like 3 or 5 typically produce good results. Raising this can bring up terms with higher edit distances.</td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/>
+<code>SearchSettings Object</code></p>
+<p><em>SearchSettings Object Structure</em></p>
+<pre><code class="lang-JSON">{<br>      "<span class="hljs-attribute">Filter</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>      "<span class="hljs-attribute">UseDefaultFilter</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,<br>      "<span class="hljs-attribute">Weights</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>      "<span class="hljs-attribute">UseDefaultWeights</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,<br>      "<span class="hljs-attribute">ResponseFieldList</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"subject"</span>,<br>        <span class="hljs-string">"body"</span>,<br>        <span class="hljs-string">"id"</span>,<br>        <span class="hljs-string">"category"</span><br>      ]</span>,<br>      "<span class="hljs-attribute">SearchFieldList</span>": <span class="hljs-value">[<br>        <span class="hljs-string">"subject"</span>,<br>        <span class="hljs-string">"body"</span><br>      ]</span>,<br>      "<span class="hljs-attribute">Type</span>": <span class="hljs-value"><span class="hljs-string">"Match"</span></span>,<br>      "<span class="hljs-attribute">CutOffFrequency</span>": <span class="hljs-value"><span class="hljs-number">0.001</span></span>,<br>      "<span class="hljs-attribute">Fuzziness</span>": <span class="hljs-value">-<span class="hljs-number">1</span></span>,<br>      "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,<br>      "<span class="hljs-attribute">Operator</span>": <span class="hljs-value"><span class="hljs-string">"OR"</span></span>,<br>      "<span class="hljs-attribute">Order</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br></span>}
+</code></pre>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filter</td>
+<td>Not required. Filter object. We can use each available field from the dataset to pre-filter the potential result documents before matchmaking. Find details <a href="swagger#/definitions/Filter">here</a></td>
+</tr>
+<tr>
+<td>UseDefaultFilter</td>
+<td>When you activate a Search service with a Filter, you can use this property to control if you want to use that &#39;default filter&#39; during each search.</td>
+</tr>
+<tr>
+<td>Weights</td>
+<td>Not required. Weights object. We can use each available dataset field, a preferred value and a weighted score between 0 and 10 to boost the result. Find details <a href="swagger#/definitions/Weight">here</a></td>
+</tr>
+<tr>
+<td>UseDefaultWeights</td>
+<td>When you activate a Search service with Weights, you can use this property to control if you want to use that &#39;default weights&#39; during each search.</td>
+</tr>
+<tr>
+<td>ResponseFieldList</td>
+<td>Which dataset fields must be in the search response.</td>
+</tr>
+<tr>
+<td>SearchFieldList</td>
+<td>In which fields you would like to search. The list can contains boosts. For example: title^2 which means matches on the title field will have twice the weight as those on the other fields.</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>The type of the search. Can be MATCH (default) which means a simple word based search or can be QUERY which means you can use expressions in the query, like in the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax">QueryString query</a> in ElasticSearch.</td>
+</tr>
+<tr>
+<td>CutOffFrequency</td>
+<td>Allows specifying an absolute or relative document frequency where high frequency terms are moved into an optional subquery and are only scored if one of the low frequency (below the cutoff) terms in the case of an OR operator or all of the low frequency terms in the case of an AND operator match.</td>
+</tr>
+<tr>
+<td>Fuzziness</td>
+<td>Interpreted as a Levenshtein Edit Distance - the number of one character changes that need to be made to one string to make it the same as another string. Can be specified as: -1 (generates an edit distance based on the length of the term) or 0, 1, 2 (the maximum allowed Levenshtein Edit Distance).</td>
+</tr>
+<tr>
+<td>Count</td>
+<td>The maximum number of matches.</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>You can change the order of the search results. You have to specify a field of the dataset the order (Ascending or Descending) Be careful with this, if you change the default order then not the most relevant (for the text) documents will be on the top. Find details <a href="swagger#/definitions/Order">here</a></td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/>
+<code>ClassifierSettings Object</code></p>
+<p><em>ClassifierSettings Object Structure</em></p>
+<pre><code class="lang-JSON">{<br>    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"classifier_service_id_or_alias"</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">3</span><br></span>}
+</code></pre>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Id</td>
+<td>The Alias or the ID of a Classifier Service.</td>
+</tr>
+<tr>
+<td>Count</td>
+<td>How many results the Classifier should response.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="search">Search</h3>
+<p>When a Search service is activated use it for search. For start pick a text for search and send it to your Search service. You can identify your service using either <code>service id</code> or <code>service alias</code>.</p>
+<p>You can use the Search Service even with a text only.</p>
+<p><em>Example Request with activated settings</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Search--id--post">POST /api/Services/Search/<code>GUID or Alias</code></a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Text</span>": <span class="hljs-value"><span class="hljs-string">"Lorem Ipsum Dolorem"</span><br></span>}
+</code></pre>
+<p>Or you can add extra details if you want to search differently from the default activation settings. (The skipped settings will be filled with the activated settings.)</p>
+<p><em>Example Request with custom settings</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Search--id--post">POST /api/Services/Search/<code>GUID or Alias</code></a></p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Text</span>": <span class="hljs-value"><span class="hljs-string">"Lorem Ipsum Dolorem"</span></span>,<br>    "<span class="hljs-attribute">AutoCompleteSettings</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">Confidence</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,<br>        "<span class="hljs-attribute">MaximumErrors</span>": <span class="hljs-value"><span class="hljs-number">0.5</span></span>,<br>        "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">10</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">SearchSettings</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">20</span></span>,<br>        "<span class="hljs-attribute">Operator</span>": <span class="hljs-value"><span class="hljs-string">"AND"</span><br>    </span>}<br></span>}
+</code></pre>
+<p><em>Example Response</em></p>
+<pre><code class="lang-json">{<br>  "<span class="hljs-attribute">AutoCompleteResultList</span>": <span class="hljs-value">[<br>        {<br>            "<span class="hljs-attribute">Text</span>": <span class="hljs-value"><span class="hljs-string">"loren ipsum dolorem"</span></span>,<br>            "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.0043871803</span></span>,<br>            "<span class="hljs-attribute">ClassifierResultList</span>": <span class="hljs-value">[<br>                {<br>                    "<span class="hljs-attribute">SearchResultMatch</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,<br>                    "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"1233"</span></span>,<br>                    "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.2231103663661502</span></span>,<br>                    "<span class="hljs-attribute">Tag</span>": <span class="hljs-value">{<br>                        "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"1233"</span></span>,<br>                        "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example tag"</span></span>,<br>                        "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>                        "<span class="hljs-attribute">Properties</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>                    </span>}</span>,<br>                    "<span class="hljs-attribute">IsEmphasized</span>": <span class="hljs-value"><span class="hljs-literal">false</span><br>                </span>}<br>            ]<br>        </span>}<br>    ]</span>,<br>  "<span class="hljs-attribute">ClassifierResultList</span>": <span class="hljs-value">[<br>    {<br>                "<span class="hljs-attribute">SearchResultMatch</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,<br>                "<span class="hljs-attribute">TagId</span>": <span class="hljs-value"><span class="hljs-string">"1233"</span></span>,<br>                "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">0.893498933</span></span>,<br>                "<span class="hljs-attribute">Tag</span>": <span class="hljs-value">{<br>                    "<span class="hljs-attribute">Id</span>": <span class="hljs-value"><span class="hljs-string">"1233"</span></span>,<br>                    "<span class="hljs-attribute">Name</span>": <span class="hljs-value"><span class="hljs-string">"example tag"</span></span>,<br>                    "<span class="hljs-attribute">ParentId</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,<br>                    "<span class="hljs-attribute">Properties</span>": <span class="hljs-value"><span class="hljs-literal">null</span><br>                </span>}</span>,<br>                "<span class="hljs-attribute">IsEmphasized</span>": <span class="hljs-value"><span class="hljs-literal">false</span><br>    </span>}<br>  ]</span>,<br>  "<span class="hljs-attribute">SearchResultList</span>": <span class="hljs-value">[<br>    {<br>      "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"94536849"</span></span>,<br>      "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">1.5601982</span></span>,<br>      "<span class="hljs-attribute">Document</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">ad_id</span>": <span class="hljs-value"><span class="hljs-string">"94536849"</span></span>,<br>        "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Lorem ipsum 1"</span></span>,<br>        "<span class="hljs-attribute">category</span>": <span class="hljs-value">[<br>          <span class="hljs-string">"1233"</span><br>        ]</span>,<br>        "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"Lorem ipsum dolor sit amet, no eos verear perpetua tincidunt. His at molestie facilisi deseruisse, feugiat contentiones reprehendunt vix ne"</span><br>      </span>}<br>    </span>},<br>    {<br>      "<span class="hljs-attribute">DocumentId</span>": <span class="hljs-value"><span class="hljs-string">"94536333"</span></span>,<br>      "<span class="hljs-attribute">Score</span>": <span class="hljs-value"><span class="hljs-number">1.4885228</span></span>,<br>      "<span class="hljs-attribute">Document</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">ad_id</span>": <span class="hljs-value"><span class="hljs-string">"94536333"</span></span>,<br>        "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Lorem ipsum 1"</span></span>,<br>        "<span class="hljs-attribute">category</span>": <span class="hljs-value">[<br>          <span class="hljs-string">"4397"</span><br>        ]</span>,<br>        "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content"</span><br>      </span>}<br>    </span>}<br>  ]</span>,<br>  "<span class="hljs-attribute">Total</span>": <span class="hljs-value"><span class="hljs-number">2</span><br></span>}
+</code></pre>
+<p><code>Response parameters</code></p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AutoCompleteResultList</td>
+<td>List of the AutoComplete suggestions. Also includes Classifier recommendations for each suggestion.</td>
+</tr>
+<tr>
+<td>ClassifierResultList</td>
+<td>List of the Classifier recommendations of the input text.</td>
+</tr>
+<tr>
+<td>SearchResultList</td>
+<td>The matched documents with relevance scores.</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>The total matched document count.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deactivate-search-service">Deactivate Search Service</h3>
+<p>When a service is not needed for continuous usage you can deactivate it. After deactivating a service, all the settings remain, but they are not using any resources (memory, cores). You can store your deactivated services and activate them anytime.</p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Services-Search--id--Deactivate-post">POST /api/Services/Search/<code>GUID or Alias</code>/Deactivate</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>

@@ -1,0 +1,108 @@
+<h2 id="filter">Filter</h2>
+<p>Built-in <strong>search engine</strong>. Easily access to your documents with <strong>simple search queries</strong>, <strong>logical expressions</strong> and <strong>wild cards</strong>. </p>
+<p>Manage your language dependencies using <strong>optional tokenizer</strong>.</p>
+<p>With Filter you can:</p>
+<ul>
+<li>Create search queries</li>
+<li>Filter by tags</li>
+<li>Search in multiple fields</li>
+<li>Access to all the available document fields and parameters</li>
+<li>Use logical expressions</li>
+<li>Use wild cards</li>
+<li>Use optional tokenizers</li>
+<li>Use built-in pagination</li>
+<li>Filter fields</li>
+</ul>
+<p><em>Using filter please check <code>scrolling</code>.</em></p>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="swagger#operation--api-Documents-Filter--scrollId--post">POST /api/Documents/Filter</a></p>
+</blockquote>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-DataSet</td>
+<td>example</td>
+</tr>
+</tbody>
+</table>
+<p>If Fields is not set then by default returns with IdField, TagField and InterpretedFields (<code>attachment</code> fields are excluded because their size) of the current DataSet. You can specify a field list or &quot;*&quot; which means all fields will return.</p>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Filter</span>" : <span class="hljs-value">{<br>        "<span class="hljs-attribute">TagIdList</span>" : <span class="hljs-value">[<span class="hljs-string">"1"</span>]</span>,<br>        "<span class="hljs-attribute">Query</span>" : <span class="hljs-value"><span class="hljs-string">"title:michelin"</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">Order</span>": <span class="hljs-value">{<br>        "<span class="hljs-attribute">OrderDirection</span>" : <span class="hljs-value"><span class="hljs-string">"Asc"</span></span>,<br>        "<span class="hljs-attribute">OrderByField</span>" : <span class="hljs-value"><span class="hljs-string">"id"</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">Pagination</span>" : <span class="hljs-value">{<br>        "<span class="hljs-attribute">Limit</span>": <span class="hljs-value"><span class="hljs-number">100</span><br>    </span>}</span>,<br>    "<span class="hljs-attribute">FieldList</span>": <span class="hljs-value">[<span class="hljs-string">"id"</span>, <span class="hljs-string">"name"</span>, <span class="hljs-string">"desc"</span>]<br></span>}
+</code></pre>
+<p><code>Available Filter Object Parameters</code></p>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Parameter Group</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filter</td>
+<td>TagIdList</td>
+<td>Source tag id list in which the filter request will be processed.</td>
+</tr>
+<tr>
+<td>Filter</td>
+<td>Query</td>
+<td>Search query. Simple search query, logical expressions, field:value form, wildcard.</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>OrderDirection</td>
+<td>Asc, Desc</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>OrderByField</td>
+<td>Any field from your dataset.</td>
+</tr>
+<tr>
+<td>Pagination</td>
+<td>Limit</td>
+<td>Item count in the response object. Maximum value is 1000. When limit value is -1 it will return all the result items, but maximum 1000.</td>
+</tr>
+<tr>
+<td>FieldList</td>
+<td>-</td>
+<td>Requested fields. Empty means all the available fields. Use &quot;*&quot; to get all the fields.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>Important</code>: Maximum pagination limit: 1000.</p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Items</span>": <span class="hljs-value">[<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197455453"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title 1"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span><br>        </span>},<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197455203"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title 2"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span><br>        </span>},<br>        ...<br>        ]</span>,<br>    "<span class="hljs-attribute">ScrollId</span>": <span class="hljs-value"><span class="hljs-string">"cXVlcnlBbmRGZXRjaDsxOzE2OTA6b3NoRjRMZlVUNUNIWlNxa1RDdzdEZzswOw=="</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,<br>    "<span class="hljs-attribute">Total</span>": <span class="hljs-value"><span class="hljs-number">154</span><br></span>}
+</code></pre>
+<p>The <code>ScrollId</code> is used to get the next <code>Limit</code> items if available. Provide the <code>ScrollId</code> from every response to the Filter endpoint to get the next page until the <code>Count</code> equals with the <code>Limit</code> or a <code>ScrollId</code> is present. </p>
+<blockquote>
+<p>TIP: <code>ScrollId</code> can be same or different from call to call. Use the value from the last response.</p>
+</blockquote>
+<p><em>Example REQUEST</em></p>
+<blockquote>
+<p><a href="#operation--api-Documents-Filter-post">POST /api/Documents/Filter/cXVlcnlBbmRGZXRjaDsxOzE2OTA6b3NoRjRMZlVUNUNIWlNxa1RDdzdEZzswOw==</a></p>
+</blockquote>
+<p><em>Example RESPONSE</em></p>
+<blockquote>
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre><code class="lang-json">{<br>    "<span class="hljs-attribute">Items</span>": <span class="hljs-value">[<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197459967"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title 101"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span><br>        </span>},<br>        {<br>            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1455197451428"</span></span>,<br>            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"example title 102"</span></span>,<br>            "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"example description"</span><br>        </span>},<br>        ...<br>        ]</span>,<br>    "<span class="hljs-attribute">ScrollId</span>": <span class="hljs-value"><span class="hljs-string">"cXVlcnlBbmRGZXRjaDsxOzE2OTA6b3NoRjRMZlVUNUNIWlNxa1RDdzdEZzswOw=="</span></span>,<br>    "<span class="hljs-attribute">Count</span>": <span class="hljs-value"><span class="hljs-number">54</span></span>,<br>    "<span class="hljs-attribute">Total</span>": <span class="hljs-value"><span class="hljs-number">1543</span><br></span>}
+</code></pre>
+<h3 id="how-to-use-the-scrollid-">How to use the ScrollId?</h3>
+<p>When your filter result object contains more items than your count value, you need to use the scroll to scroll over the results. In the first response, you can find a <code>ScrollId</code> field that you can use to identify your filter process and request the next items.</p>
+<p>As you can see when you have a ScrollId you can use it in your request URL: <code>POST /API/Documents/Filter/ScrollId</code></p>
+<p>To check when to stop scrolling, check the count value. When the count value is 0 there are no more items to scroll.</p>
+<h5 id="for-the-parameters-explanation-check-the-documentfiltersettings-schema-definition-here-definitions-documentfiltersettings-">For the parameters explanation check the DocumentFilterSettings schema definition <a href="#/definitions/DocumentFilterSettings">here</a></h5>
+<h5 id="for-the-pagination-explanation-check-the-pagination-section-here-pagination-">For the pagination explanation check the pagination section <a href="#pagination">here</a></h5>
