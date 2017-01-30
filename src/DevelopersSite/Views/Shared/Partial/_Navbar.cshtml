@@ -3,41 +3,44 @@
     var currentProduct = ViewBag.CurrentProduct;
 }
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-7" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="/">
-                <img use-cdn src="/images/slamby.developers-logo.png" class="navbar-brand" />
-            </a>
+@if (ViewBag.IsNavbarTopFixed == true)
+{
+    <style>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+
+}
+
+<nav class="navbar navbar-default @(ViewBag.IsNavbarTopFixed == true ? "navbar-fixed-top" : "")">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><span>Slamby</span> Developers</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left menu">
+                    <li><a href="/docs/api">API</a></li>
+                    <li><a href="/docs/insight">Insight</a></li>
+                    <li><a href="/docs/tau">TAU</a></li>
+                    <li><a href="/docs/SDK.NET">.Net SDK</a></li>
+                    <li><a href="/tutorial">Tutorials</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right menu">
+                    <li><a href="https://www.slamby.com/support" target="_blank">Support</a></li>
+                    <li><a href="http://blog.slamby.com" target="_blank">Blog</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-7">
-            <ul class="nav navbar-nav">
-                @foreach (var document in service.Documents)
-                {
-                    var routeParams = service.GetRouteParams(document.Product);
-                    <li class="@(currentProduct == document.Product ? "active" : "" )">
-                        <a asp-controller="docs" asp-action="Index" asp-route-product="@routeParams.Product" asp-route-version="@routeParams.Version" asp-route-file="@routeParams.File">
-                            @(document.Product)
-                        </a>
-                    </li>
-                }
-                <li>&nbsp;</li>
-                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Tutorial" ? "active" : "")">
-                    <a href="/tutorial/" target="_self">Tutorials</a>
-                </li>
-                <li>
-                    <a href="http://www.slamby.com/support" target="_blank">Support</a>
-                </li>
-                <li>
-                    <a href="http://blog.slamby.com" target="_blank">Blog</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    </nav>

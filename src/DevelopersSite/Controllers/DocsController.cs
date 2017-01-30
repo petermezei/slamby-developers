@@ -58,6 +58,7 @@ namespace DevelopersSite.Controllers
             ViewBag.StaticBase = docVersion.StaticBase;
             ViewBag.CurrentProduct = product;
             ViewBag.Title = model.Document.Product;
+            ViewBag.IsNavbarTopFixed = true;
 
             return View(model);
         }

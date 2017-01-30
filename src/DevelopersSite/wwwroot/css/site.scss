@@ -2,25 +2,195 @@
 // Bundler & Minifier https://visualstudiogallery.msdn.microsoft.com/9ec27da7-e24b-4d56-8064-fd7e88ac1c40
 
 //Bootstrap Template
-@import 'Custom/_variables.scss';
-@import 'bootstrap_template/_bootstrap.scss';
-/*@import "bootstrap_template/bootstrap/mixins/grid";
-@import "bootstrap_template/bootstrap/mixins/clearfix";
-@import "bootstrap_template/bootstrap/mixins/image";*/
+@import '../../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 
+// Swagger styles
 @import 'swagger.scss';
 
 //Main Styles
-@import 'Custom/_Main.scss';
-@import 'Custom/_Wrapper.scss';
-@import 'Custom/_Ul.scss';
+// @import 'Custom/_Main.scss';
+// @import 'Custom/_Wrapper.scss';
+
+// Wrapper styles
+
+.wrapper {
+    @include make-row();
+    margin-bottom: 25px;
+}
+
+.wrapper-docpage {
+    text-align:left;
+    padding:15px;
+    
+    .list {
+        @include make-md-column(3);
+        //@include make-xs-column(3);
+        border-right:1px solid lightgray;
+
+        .version-selector {
+            margin-bottom:15px;
+        }
+
+        ul {
+            padding:0px;
+            margin:0px;
+            list-style:none;
+        }
+    }
+    .body {
+        @include make-md-column(9);
+        //@include make-xs-column(9);
+
+        .container {
+            @include make-row();
+            @include make-xs-column(12);
+        }
+        img {
+            @include img-responsive();
+        }
+    }
+}
+
+.tutorial {
+    //@include make-md-column(3);
+    //@include make-xs-column(3);
+    ul li {
+        padding-bottom:5px;
+        border-bottom:1px solid lightgray;
+    }
+
+    img {
+        @include img-responsive();
+    }
+}
+
+// @import 'Custom/_Ul.scss';
+
+ul {
+    li.li-header {
+        color:$text-muted;
+        list-style:none;
+        text-decoration:underline;
+    }
+}
 
 //Pages, Modules
-@import 'Custom/_Jobs.scss';
-@import 'Custom/_Footer.scss';
+// @import 'Custom/_Jobs.scss';
+// @import 'Custom/_Footer.scss';
 
 @import 'sidebar.scss';
 
-.tutorial img {
-    @include img-responsive();
+// New design style
+
+@font-face {
+    font-family: slamby-logo;
+    src: url('/css/fonts/slamby-logo.woff');
+}
+
+body {
+    @import url('https://fonts.googleapis.com/css?family=Libre+Franklin:100,300,400,500');
+    font-family: 'Libre Franklin', sans-serif;
+    line-height: 1.44em;
+}
+
+h1, h2, h3, h4 { font-weight: 300; }
+
+p, p.lead {
+    color: #303030;
+}
+
+p { font-weight: 200; }
+
+p.lead { font-weight: 200; }
+
+// Navbar
+.navbar {
+    border: none;
+    background-color: #f4f4f4;
+    .navbar-header {
+        .navbar-brand {
+            line-height: 1.5em;
+            font-weight: 400;
+            color: #484848;
+            span {
+                font-family: slamby-logo;
+                color: black;
+                margin-right: 5px;
+            }
+        }
+    }
+    .navbar-left { margin-left: 50px; }
+    .menu {
+        li a {
+            color: #484848;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 2.44em;
+        }
+        li:hover {
+            animation: example 1s forwards;
+        }
+
+        @keyframes example {
+            from {background-color: transparent;}
+            to {background-color: #efefef;}
+        }
+    }
+}
+
+section.main {
+    padding: 100px;
+    h1 {
+        font-weight: 400;
+    }
+    .btn-default { background-color: #f4f4f4; }
+}
+
+section.menu {
+    // h2 { font-size: px;}
+    p.lead {
+        font-size: 19px;
+    }
+    .guide-image {
+        margin-top: 30px;
+    }
+    .news-panel {
+        h3 {
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        a.read-all {
+            margin-top: 20px;
+        }
+    }
+}
+
+section.footer {
+    margin-top: 30px;
+    text-align: center;
+    .footer {
+        @include make-row();
+        .links {
+            padding: 0;
+            margin: 0;
+            li {
+                display: inline-block;
+                text-decoration: none;
+                margin: 0px 15px 0px 0px;
+                font-weight: 400;
+                font-size: 16px;
+            }
+        }
+        .sla-external-link {
+            padding-left:3px;
+            font-size:10px;
+        }
+    }
+
+    .legal {
+        text-align: center;
+        p {
+            font-size: 12px;
+        }
+    }
 }
