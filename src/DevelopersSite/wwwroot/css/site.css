@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6569,11 +6569,22 @@ p.lead {
     background-color: #efefef; } }
 
 section.main {
-  padding: 100px; }
+  padding: 100px 0 100px 0; }
   section.main h1 {
     font-weight: 400; }
   section.main .btn-default {
     background-color: #f4f4f4; }
+  section.main .left,
+  section.main .right {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px; }
+    @media (min-width: 992px) {
+      section.main .left,
+      section.main .right {
+        float: left;
+        width: 50%; } }
 
 section.menu p.lead {
   font-size: 19px; }
@@ -6615,4 +6626,3 @@ section.footer {
     text-align: center; }
     section.footer .legal p {
       font-size: 12px; }
-

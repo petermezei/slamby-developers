@@ -139,11 +139,16 @@ p.lead { font-weight: 200; }
 }
 
 section.main {
-    padding: 100px;
+    padding: 100px 0 100px 0;
     h1 {
         font-weight: 400;
     }
     .btn-default { background-color: #f4f4f4; }
+    
+    .left,
+    .right {
+        @include make-md-column(6);
+    }
 }
 
 section.menu {
