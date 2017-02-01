@@ -37,14 +37,18 @@
             </div>
             <div class="col-md-6">
                 <div class="news-panel">
+                @if (Model.News != null)
+                {
                     <h3>News, Updates</h3>
                     <a href="/news" class="read-all pull-right btn btn-default">Read all</a>
                     <ul class="list-group">
                         @foreach (var item in Model.News.Count() > 5 ? Model.News.Take(5) : Model.News) {
-                        <li class="list-group-item">
-                            <a href="/news#@(item.Slug)" target="_self">@Html.Raw(item.Title.Rendered)</a>
-                        </li>}
+                            <li class="list-group-item">
+                                <a href="/news#@(item.Slug)" target="_self">@Html.Raw(item.Title.Rendered)</a>
+                            </li>
+                        }
                     </ul>
+                }
                 </div>
             </div>
         </div>

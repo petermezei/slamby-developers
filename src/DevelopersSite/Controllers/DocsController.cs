@@ -33,6 +33,10 @@ namespace DevelopersSite.Controllers
             {
                 return RedirectToAction("Index", "Docs", documentService.GetRouteParams("API"));
             }
+            if (string.IsNullOrEmpty(version))
+            {
+                return RedirectToAction("Index", "Docs", documentService.GetRouteParams(product));
+            }
 
             var docVersion = documentService.GetVersion(document, version);
 

@@ -40,17 +40,25 @@ namespace DevelopersSite.Services
 
             using (var httpClient = new HttpClient())
             {
-                var json = await httpClient.GetStringAsync(url);
-                cachedValue = JsonConvert.DeserializeObject<T>(json);
-
-                var opts = new MemoryCacheEntryOptions()
+                var json = string.Empty;
+                try
                 {
-                    SlidingExpiration = TimeSpan.FromHours(siteConfig.CacheExpirationHours)
-                };
+                    json = await httpClient.GetStringAsync(url);
+                    cachedValue = JsonConvert.DeserializeObject<T>(json);
 
-                memoryCache.Set(url, cachedValue, opts);
+                    var opts = new MemoryCacheEntryOptions()
+                    {
+                        SlidingExpiration = TimeSpan.FromHours(siteConfig.CacheExpirationHours)
+                    };
 
-                return cachedValue;
+                    memoryCache.Set(url, cachedValue, opts);
+
+                    return cachedValue;
+                }
+                catch (Exception ex)
+                {
+                    return cachedValue;
+                }
             }
         }
     }
