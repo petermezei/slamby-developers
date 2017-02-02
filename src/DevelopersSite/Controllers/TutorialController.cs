@@ -21,8 +21,8 @@ namespace DevelopersSite.Controllers
         [Route("tutorial/{slug?}")]
         public async Task<IActionResult> Index(string slug = null)
         {
-            var tutorials = (await wordPressService.GetPostsByCategory((int)PostCategory.Tutorials)).OrderByDescending(o => o.Id);
-            var firstSlug = tutorials.Select(s => s.Slug).FirstOrDefault();
+            var tutorials = (await wordPressService.GetPostsByCategory((int)PostCategory.Tutorials))?.OrderByDescending(o => o.Id);
+            var firstSlug = tutorials?.Select(s => s.Slug).FirstOrDefault();
 
             if (string.IsNullOrEmpty(firstSlug))
             {

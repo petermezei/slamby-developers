@@ -23,7 +23,7 @@ Configuration example:
 ```cs
 var configuration = new Configuration
     {
-        ApiBaseEndpoint = new Uri("https://api.slamby.com/CLIENT_ID/"),
+        ApiBaseEndpoint = new Uri("https://europe.slamby.com/CLIENT_ID/"),
         ApiSecret = "API_KEY"
     };
 ```
