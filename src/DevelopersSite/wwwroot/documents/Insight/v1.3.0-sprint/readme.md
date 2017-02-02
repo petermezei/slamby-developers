@@ -389,23 +389,57 @@ Strict mode | If it's enabled then you will get lesser keywords. The score limit
 
 ### Add Search service
 
+To create a new search service, open the services tab and click the `Add Search` button at the top.
+
+Now you can provide the name, alias and a short description for the service.
+
+> **Tip**: These settings can be modified in the future.
+
 ![Add search service](img/add-search-service.png)
 
 ### Prepare Search service
+
+The second step is to prepare the search service. During this step, we need to select which dataset we want to use as the search engine database.
+
+After selecting the source dataset, the search engine will analyze it, and a new search service will be available.
 
 ![Prepare search service](img/prepare-search-service.png)
 
 ### Activate Search service
 
+This is the last step before start using the Slamby Search service. During this step, we can provide the default search settings, that we want to use after activation as a default setting.
+
+For Slamby Search currently there are three settings groups:
+
+- AutoComplete settings for typo detection,
+- Classifier Settings for search query category recommendation,
+- Search Settings for search engine settings.
+
+> **Tip**: In this step, we can provide the default settings, but using the search we can overwrite these settings anytime.
+
+For the settings details please check the developer's site at <https://developers.slamby.com/docs/API/v1.5.0/service#activate-search-service>
+
 ![Activate search service](img/activate-search-service.png)
+
+*Autocomplete settings*
 
 ![Search service activation auto-complete settings](img/activate-search-service-ac-settings.png)
 
+*Classifier service settings*
+
 ![Search service activation classifier service settings](img/activate-search-service-classifier-settings.png)
+
+*Search engine settings*
 
 ![Search service activation search settings](img/activate-search-service-search-settings.png)
 
 ### Using Search
+
+Using Search you can use the activation default settings, and type your search query, or provide your custom search settings right now.
+
+When you typed your search query, and/or set your custom settings, then click the Ok button.
+
+Now your search result appears.
 
 ![Search service: search](img/search.png)
 
