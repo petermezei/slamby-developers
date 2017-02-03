@@ -291,7 +291,7 @@ Built-in text classification engine. Uses the prepared Classifier dictionaries a
     "Text": "Lorem Ipsum Dolorem",
     "Count": "2",
     "UseEmphasizing": false,
-    "NeedTagInResults": true
+    "NeedTagInResult": true
 }
 ```
 
