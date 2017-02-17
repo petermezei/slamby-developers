@@ -9,11 +9,13 @@ With Slamby you can:
 * Use improved data analysis
 * Create category recommendation engine
 * Create similar product recommendation engine
+- Create search engine with type fix and search query classification
 
 ## Changelog
 
-- improved PRC service,
-- schema bugfix
+- Search engine service (MVP)
+- Classifier service recommend -> parent tag filter
+- API Setup page, accept license section
 
 ### Features
 
