@@ -333,7 +333,7 @@ With the usage of the score, the original order can be restored anytime.
 
 #### Using parent tag filter
 
-Using the classifier recommendation method we can apply parent tag filter. The usage is optional. Example usage: when we have tags under category `A` and tags under category `B` we can set a parent tag filter with value `["A"]` to filter the recommended tags. In this case, only tags with parent tag `A` will be displayed.
+Using the classifier recommendation method we can apply parent tag filter (`ParentTagIdList`). The usage is optional. Example usage: when we have tags under category `A` and tags under category `B` we can set a parent tag filter with value `["A"]` to filter the recommended tags. In this case, only tags with parent tag `A` will be displayed. `ParentTagIdList` manages multiple tag levels - when tags are organized into parent-child relations.
 
 > **Tip:** You have to define the emphasized tags during the activation of the service 
 
