@@ -291,7 +291,8 @@ Built-in text classification engine. Uses the prepared Classifier dictionaries a
     "Text": "Lorem Ipsum Dolorem",
     "Count": "2",
     "UseEmphasizing": false,
-    "NeedTagInResult": true
+    "NeedTagInResult": true,
+    "ParentTagIdList": []
 }
 ```
 
@@ -329,6 +330,10 @@ If yes, then Slamby changes the order of the recommended tags and moves the emph
 If there are more than one emphasized tag on the list that meeting with the criteria then all of them will be moved to the top (with keeping their orders).
 If the `IsEmphasized` parameter is true in a result element, it means that the actual result was emphasized. The score is the original in each case.
 With the usage of the score, the original order can be restored anytime.
+
+#### Using parent tag filter
+
+Using the classifier recommendation method we can apply parent tag filter. The usage is optional. Example usage: when we have tags under category `A` and tags under category `B` we can set a parent tag filter with value `["A"]` to filter the recommended tags. In this case, only tags with parent tag `A` will be displayed.
 
 > **Tip:** You have to define the emphasized tags during the activation of the service 
 
