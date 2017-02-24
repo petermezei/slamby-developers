@@ -247,6 +247,22 @@
 <blockquote>
 <p>To export all the words from your database for further analysis, click the <code>Export Words</code> button; a long-term process starts.</p>
 </blockquote>
+<h4 id="copy-tags-to-another-dataset">Copy tags to another dataset</h4>
+<p>To copy the tags to another dataset, click the <code>Copy To All</code> button.</p>
+<p><img src="img/copy-tags.png" alt="Copy tags to another dataset"></p>
+<p>Select the target dataset and click the <code>Select</code> button. This process copies all the available tags to the target dataset.</p>
+<p><img src="img/copy-tags-selector.png" alt="Copy tags selector"></p>
+<h4 id="export-tags-into-csv-file">Export tags into csv file</h4>
+<p>To export the available tags into a CSV file, click the <code>Export Tags</code> button.</p>
+<p><img src="img/export-tags.png" alt="Export tags"></p>
+<p>Select the destination to save the CSV file, and click the <code>Save</code> button.</p>
+<blockquote>
+<p><code>Tip:</code> you can use the exported tags in the import process.</p>
+</blockquote>
+<h2 id="statistics-panel">Statistics panel</h2>
+<p>Built-in usage statistics panel. Open by double click the Statistics menu. In this panel, you can see the total request number and the detailed request numbers by API endpoints.</p>
+<p>The statistics are displayed by month. To select the required month, use the <code>Selected Period</code> selector.</p>
+<p><img src="img/statistics-tab.png" alt="Statistics panel"></p>
 <h2 id="services-panel">Services panel</h2>
 <p>Main panel for service management. List, create and manage your available services. Currently, Slamby supports the following type of services:</p>
 <ul>
@@ -294,6 +310,19 @@
 </tbody>
 </table>
 <p><img src="img/services.png" alt="Service Panel"></p>
+<h3 id="clone-service">Clone service</h3>
+<p>Using Slamby Insight a service can be cloned anytime. Cloneable settings: preparation settings, activation settings.</p>
+<p>Clone steps:</p>
+<ol>
+<li><p>first create a new service with the same service type,</p>
+</li>
+<li><p>click the preparation/activation button in the actions dropdown and then select the clone option in the top right corner. Select the source service. Now the settings are cloned.</p>
+</li>
+<li><p>Click the Ok button and finalize the process.</p>
+</li>
+</ol>
+<p><code>Example activation settings clone</code></p>
+<p><img src="img/service-clone.png" alt="Service clone example"></p>
 <h3 id="add-classifier-service">Add Classifier Service</h3>
 <p>To add a classifier service, click the <code>Add Classifier</code> button. For start provide the required name, alias, and description.</p>
 <p><code>What to know about the input parameters?</code></p>
@@ -377,7 +406,8 @@
 </table>
 <p><img src="img/activate-classifier-service.png" alt="Activate Classifier Service"></p>
 <h3 id="recommend-for-classifier-service">Recommend for Classifier Service</h3>
-<p>To try an activated Classifier service, click the recommend menu. Here you can set the text for analysis, the required response count. When you want a detailed response click true the NeedTagsInResult.</p>
+<p>To test an activated Classifier service, click the recommend menu. Here you can set the text for analysis, the required response count. When you want a detailed response click true the NeedTagsInResult.</p>
+<p><code>Parent tag filter</code>: if you need to get the category recommendation just from the children of a selected parent category, then use the <code>Parent Tags</code> filter. Click the <code>Select Tags</code> button, select the parent tags then click the <code>Ok</code> button.</p>
 <p><img src="img/recommend-classifier.png" alt="Recommend for Classifier Service"></p>
 <p><code>Classifier Recommend Response</code></p>
 <p>After sending a recommend query to the selected service, the response pops up immediately. In the response the following parameters available:</p>

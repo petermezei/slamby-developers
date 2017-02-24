@@ -371,7 +371,7 @@ TagIdList | Tag id filter from the available prepared tag list. You can filter w
 
 To test an activated Classifier service, click the recommend menu. Here you can set the text for analysis, the required response count. When you want a detailed response click true the NeedTagsInResult.
 
-`Parent tag filter`: if you need to get the category recommendation just between the children of a selected parent category, then use the `Parent Tags` filter. Click the `Select Tags` button, select the parent tags then click the `Ok` button.
+`Parent tag filter`: if you need to get the category recommendation just from the children of a selected parent category, then use the `Parent Tags` filter. Click the `Select Tags` button, select the parent tags then click the `Ok` button.
 
 ![Recommend for Classifier Service](img/recommend-classifier.png)
 
